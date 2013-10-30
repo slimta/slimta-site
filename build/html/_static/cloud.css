@@ -560,28 +560,6 @@ a.biglink
 }
 
 
-a.external:before
-{
-    content: "\21D7";
-    padding-right: .1em;
-}
-
-a.external.issue:before
-{
-    content: "\21D7";
-}
-
-a.external[href^="mailto:"]:before
-{
-    content: "";
-}
-
-em.issue:before
-{
-    content: "\21D7";
-    padding-right: .1em;
-}
-
 
 dt:target,
 .footnote:target,

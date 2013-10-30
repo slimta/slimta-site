@@ -19,8 +19,8 @@ traditional application or as a software platform that is developed on top of.
 
 .. |buildstatus| image:: http://ci.slimta.org/job/python-slimta/badge/icon
 
-#. :doc:`MIT License <license>`
-#. :doc:`Usage Manual <manual>`
+#. :doc:`license`
+#. :doc:`manual`
 #. `Continuous Integration <http://ci.slimta.org/>`_ |buildstatus|
 #. IRC Channel: `#slimta <http://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
 
@@ -40,8 +40,8 @@ Python's great community.
 #. `Download <https://github.com/slimta/python-slimta/tags>`_ [`Repository <https://github.com/slimta/python-slimta>`_]
 #. `Bug Reports <https://github.com/slimta/python-slimta/issues>`_
 #. `Installation <https://github.com/slimta/python-slimta/blob/master/README.md#getting-started>`_
-#. :doc:`Complete API Reference <api>`
-#. :doc:`Extensions <api/extra>`
+#. :doc:`api`
+#. :doc:`api/extra`
 
 .. literalinclude:: python-slimta-sample.txt
    :language: python
