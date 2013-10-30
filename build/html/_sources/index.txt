@@ -6,9 +6,9 @@ slimta: Mail Transfer Library
 .. toctree::
    :hidden:
 
-   license
    api
    manual
+   license
 
 .. _MTA: http://en.wikipedia.org/wiki/Message_transfer_agent
 
