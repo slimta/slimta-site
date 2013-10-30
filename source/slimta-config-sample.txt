@@ -1,0 +1,48 @@
+process: {
+  slimta: {
+    daemon: False
+  }
+}
+
+tls: {
+  main: {
+    certfile: '/path/to/cert.pem'
+    keyfile: '/path/to/key.pem'
+  }
+}
+
+rules: @"rules.conf"
+
+edge: {
+  outbound: {
+    type: smtp
+    queue: outbound
+    listener: {
+      interface: '127.0.0.1'
+      port: 587
+    }
+    tls: $tls.main
+    rules: $rules.outbound
+  }
+}
+
+queue: {
+  outbound: {
+    type: memory
+    relay: outbound
+    policies: [
+      { type: add_date_header }
+      { type: add_messageid_header }
+      { type: add_received_header }
+      { type: recipient_domain_split }
+    ]
+  }
+}
+
+relay: {
+  outbound: {
+    type: mx
+    tls: $tls.main
+  }
+}
+

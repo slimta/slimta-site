@@ -1,0 +1,36 @@
+import shelve
+import logging
+
+from slimta.edge.smtp import SmtpEdge
+from slimta.queue import Queue
+from slimta.queue.dict import DictStorage
+from slimta.relay.smtp.mx import MxSmtpRelay
+from slimta.policy.headers import *
+from slimta.policy.split import RecipientDomainSplit
+
+logging.basicConfig(level=logging.DEBUG)
+
+# Set up outbound delivery by MX lookup.
+relay = MxSmtpRelay()
+
+# Set up local queue storage to berkeley database files.
+env_db = shelve.open('envelope.db')
+meta_db = shelve.open('meta.db')
+queue_storage = DictStorage(env_db, meta_db)
+queue = Queue(queue_storage, relay)
+queue.start()
+
+# Ensure necessary headers are added.
+queue.add_policy(AddDateHeader())
+queue.add_policy(AddMessageIdHeader())
+queue.add_policy(AddReceivedHeader())
+queue.add_policy(RecipientDomainSplit())
+
+# Listen for messages on port 25.
+edge = SmtpEdge(('127.0.0.1', 25), queue)
+edge.start()
+try:
+    edge.get()
+except KeyboardInterrupt:
+    print
+
