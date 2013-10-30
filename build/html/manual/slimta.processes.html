@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring the Processes &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="Application Usage" href="slimta.html" />
+    <link rel="next" title="Configuring the Edges" href="slimta.edges.html" />
+    <link rel="prev" title="Application Usage" href="slimta.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edges.html" title="Configuring the Edges"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="Application Usage"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">Application Usage</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-the-processes">
+<h1>Configuring the Processes<a class="headerlink" href="#configuring-the-processes" title="Permalink to this headline">¶</a></h1>
+<p>The first section in <tt class="docutils literal"><span class="pre">slimta.conf</span></tt> is <tt class="docutils literal"><span class="pre">process</span></tt>:</p>
+<div class="highlight-python"><pre>process: {
+  slimta: {
+    daemon: False
+    logging: @"logging.conf"
+  }
+
+  worker: {
+    daemon: False
+    logging: @"logging.conf"
+  }
+}</pre>
+</div>
+<p>It has two sub-sections, <tt class="docutils literal"><span class="pre">slimta</span></tt> and <tt class="docutils literal"><span class="pre">worker</span></tt>, which manage settings for
+the <tt class="docutils literal"><span class="pre">slimta</span></tt> and <tt class="docutils literal"><span class="pre">slimta-worker</span></tt> executables, respectively. Each sub-section
+shares the same possible settings:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">daemon</span></tt>: Boolean</p>
+<p>Whether or not the executables should daemonize on startup. This option can be
+overriden by the <tt class="docutils literal"><span class="pre">--no-daemon</span></tt> command-line option. This value is False by
+default.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">user</span></tt>: String</p>
+<p>If given, the process will attempt to drop root privileges to this username.
+This is useful for when using privileged ports 25, 465, and/or 587. By
+default, privileges are not dropped by the process.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">group</span></tt>: String</p>
+<p>Like the <tt class="docutils literal"><span class="pre">user</span></tt> option, the process will attempt to drop privileges to this
+group name. By default, privileges are not dropped by the process.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">stdout</span></tt>: String</p>
+<p>If given, this path will be opened in append-mode (and created if necessary)
+and all standard output will be written to it instead of the console. This is
+particularly useful when daemonized. By default, the standard output stream is
+not redirected.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">stderr</span></tt>: String</p>
+<p>Like the <tt class="docutils literal"><span class="pre">stdout</span></tt> option, this redirects the standard error stream to the
+given path in append mode. By default, the standard error stream is not
+redirected.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">logging</span></tt>: Dictionary</p>
+<p>See the section on logging below. It&#8217;s often convenient to put logging configs
+in a separate config file, like in the example above. By default, debug-level
+logging is written to standard output.</p>
+</li>
+</ul>
+<div class="section" id="logging-configuration">
+<h2>Logging Configuration<a class="headerlink" href="#logging-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Because the <tt class="docutils literal"><span class="pre">logging</span></tt> sub-section is parsed into a dictionary-like object, it
+is compatible with the <a class="reference external" href="http://docs.python.org/library/logging.config.html#logging.config.dictConfig" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.config.dictConfig()</span></tt></a> function. The
+<a class="reference external" href="http://docs.python.org/2/library/logging.config.html#configuration-dictionary-schema">dictionary schema</a> explains how to use this configuration, and the
+<a class="reference external" href="https://github.com/slimta/slimta/blob/master/etc/logging.conf.sample">logging.conf</a> sample config has a good starting point.</p>
+<p>A more advanced, logging config that produces log files ready for rotation in a
+readable and parseable format might look like this:</p>
+<div class="highlight-python"><pre>version: 1
+
+formatters: {
+  console: {
+    format: '%(levelname)-8s %(name)-15s %(message)s'
+  }
+  default: {
+    format: '%(asctime)s %(levelname)s %(name)s %(message)s'
+  }
+}
+
+handlers: {
+  console: {
+    class: 'logging.StreamHandler'
+    level: DEBUG
+    formatter: console
+    stream: 'ext://sys.stdout'
+  }
+  file: {
+    class: 'logging.handlers.WatchedFileHandler'
+    level: DEBUG
+    formatter: default
+    filename: '/var/log/slimta/slimta.log'
+  }
+}
+
+loggers: {
+  celery: {
+    level: WARNING
+    propagate: True
+  }
+  slimta: {
+    level: DEBUG
+    propagate: True
+  }
+}
+
+root: {
+  level: DEBUG
+  handlers: [file]
+}
+
+# vim:sw=2:ts=2:sts=2:et:ai:</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxlocaltoc">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring the Processes</a><ul>
+<li><a class="reference internal" href="#logging-configuration">Logging Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.html"
+                        title="previous chapter">Application Usage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.edges.html"
+                        title="next chapter">Configuring the Edges</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edges.html" title="Configuring the Edges"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="Application Usage"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li><a href="slimta.html" >Application Usage</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

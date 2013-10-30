@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.edge &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta" href="slimta.html" />
+    <link rel="next" title="slimta.edge.smtp" href="slimta.edge.smtp.html" />
+    <link rel="prev" title="slimta" href="slimta.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edge.smtp.html" title="slimta.edge.smtp"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="slimta"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.edge">
+<span id="slimta-edge"></span><h1>slimta.edge<a class="headerlink" href="#module-slimta.edge" title="Permalink to this headline">¶</a></h1>
+<p>Package defining a common interface upon which a message can be received on
+a listening socket under various protocols.</p>
+<dl class="class">
+<dt id="slimta.edge.Edge">
+<em class="property">class </em><tt class="descclassname">slimta.edge.</tt><tt class="descname">Edge</tt><big>(</big><em>queue</em>, <em>hostname=None</em><big>)</big><a class="headerlink" href="#slimta.edge.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>This class should be used as the base for all <em>edge</em> services. Most will
+directly inherit <a class="reference internal" href="#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><tt class="xref py py-class docutils literal"><span class="pre">EdgeServer</span></tt></a> and thus indirectly inherit
+<a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>queue</strong> &#8211; <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> (Or <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>-like) object that will take
+responsibility for delivery of messages received by the
+<a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a>.</li>
+<li><strong>hostname</strong> &#8211; String identifying the local machine, stamped to each
+received message in its
+<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.receiver" title="slimta.envelope.Envelope.receiver"><tt class="xref py py-attr docutils literal"><span class="pre">receiver</span></tt></a> attribute for
+use in headers and bounce messages. By default, the return
+value of <tt class="xref py py-func docutils literal"><span class="pre">getfqdn()</span></tt> is used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="slimta.edge.Edge.handoff">
+<tt class="descname">handoff</tt><big>(</big><em>envelope</em><big>)</big><a class="headerlink" href="#slimta.edge.Edge.handoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method may be called manually or by whatever mechanism a
+sub-class uses to receive new <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> messages from a client.
+Because a <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">QueuePolicy</span></tt></a> may generate new <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> objects, this
+method returns a list of tuples, <tt class="docutils literal"><span class="pre">(envelope,</span> <span class="pre">result)</span></tt> where
+<tt class="docutils literal"><span class="pre">result</span></tt> is either an ID string or a
+<a class="reference internal" href="slimta.queue.html#slimta.queue.QueueError" title="slimta.queue.QueueError"><tt class="xref py py-class docutils literal"><span class="pre">QueueError</span></tt></a>. The edge service can then use this
+information to report back success or failure to the client.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> &#8211; <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> containing the received message.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of tuples containing each <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and its
+corresponding ID string or <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueError" title="slimta.queue.QueueError"><tt class="xref py py-class docutils literal"><span class="pre">QueueError</span></tt></a>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.edge.Edge.kill">
+<tt class="descname">kill</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.edge.Edge.kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used by <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a> and <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a>-like objects to properly
+end associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">Greenlet</span></tt></a>
+threads) and close resources.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.edge.EdgeServer">
+<em class="property">class </em><tt class="descclassname">slimta.edge.</tt><tt class="descname">EdgeServer</tt><big>(</big><em>listener</em>, <em>queue</em>, <em>pool=None</em>, <em>hostname=None</em><big>)</big><a class="headerlink" href="#slimta.edge.EdgeServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">slimta.edge.Edge</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">gevent.greenlet.Greenlet</span></tt></p>
+<p>This class implements a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">Greenlet</span></tt></a> serving a
+<a class="reference external" href="http://gevent.org/gevent.server.html#gevent.server.StreamServer" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">StreamServer</span></tt></a> until killed. Connections are accepted
+on the socket and passed to <a class="reference internal" href="#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><tt class="xref py py-meth docutils literal"><span class="pre">handle()</span></tt></a>, which should be overriden
+by implementers of this base class. The socket will be closed
+automatically.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>queue</strong> &#8211; <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> object used by <a class="reference internal" href="#slimta.edge.Edge.handoff" title="slimta.edge.Edge.handoff"><tt class="xref py py-meth docutils literal"><span class="pre">handoff()</span></tt></a> to ensure the
+envelope is properly queued before acknowledged by the edge
+service.</li>
+<li><strong>listener</strong> &#8211; Usually a <tt class="docutils literal"><span class="pre">(ip,</span> <span class="pre">port)</span></tt> tuple defining the interface and
+port upon which to listen for connections. See
+the <tt class="docutils literal"><span class="pre">listener</span></tt> parameter to
+<a class="reference external" href="http://gevent.org/gevent.baseserver.html#gevent.baseserver.BaseServer" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">BaseServer</span></tt></a> for more
+information.</li>
+<li><strong>pool</strong> &#8211; If given, defines a specific <a class="reference external" href="http://gevent.org/gevent.pool.html#gevent.pool.Pool" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.pool.Pool</span></tt></a> to
+use for new greenlets.</li>
+<li><strong>hostname</strong> &#8211; String identifying the local machine. See <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a> for more
+details.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="slimta.edge.EdgeServer.handle">
+<tt class="descname">handle</tt><big>(</big><em>socket</em>, <em>address</em><big>)</big><a class="headerlink" href="#slimta.edge.EdgeServer.handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function to receive messages on the socket and call
+<a class="reference internal" href="#slimta.edge.Edge.handoff" title="slimta.edge.Edge.handoff"><tt class="xref py py-meth docutils literal"><span class="pre">handoff()</span></tt></a> with each received <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>socket</strong> &#8211; The socket for the connected client.</li>
+<li><strong>address</strong> &#8211; The address of the connected client.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><tt class="xref py py-exc docutils literal"><span class="pre">NotImplementedError</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<p><strong>Sub-Modules:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slimta.edge.smtp.html">slimta.edge.smtp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.edge.wsgi.html">slimta.edge.wsgi</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.html"
+                        title="previous chapter">slimta</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.edge.smtp.html"
+                        title="next chapter">slimta.edge.smtp</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edge.smtp.html" title="slimta.edge.smtp"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="slimta"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

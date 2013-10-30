@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.policy.headers &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta.policy" href="slimta.policy.html" />
+    <link rel="next" title="slimta.policy.forward" href="slimta.policy.forward.html" />
+    <link rel="prev" title="slimta.policy" href="slimta.policy.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.forward.html" title="slimta.policy.forward"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.html" title="slimta.policy"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.policy.html" accesskey="U">slimta.policy</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.policy.headers">
+<span id="slimta-policy-headers"></span><h1>slimta.policy.headers<a class="headerlink" href="#module-slimta.policy.headers" title="Permalink to this headline">¶</a></h1>
+<p>Module containing several <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">QueuePolicy</span></tt></a> implementations for handling the
+standard RFC headers.</p>
+<dl class="class">
+<dt id="slimta.policy.headers.AddDateHeader">
+<em class="property">class </em><tt class="descclassname">slimta.policy.headers.</tt><tt class="descname">AddDateHeader</tt><a class="headerlink" href="#slimta.policy.headers.AddDateHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
+<p>Checks for the existence of the RFC-specified <tt class="docutils literal"><span class="pre">Date</span></tt> header, adding it
+if it does not exist.</p>
+<dl class="method">
+<dt id="slimta.policy.headers.AddDateHeader.build_date">
+<tt class="descname">build_date</tt><big>(</big><em>timestamp</em><big>)</big><a class="headerlink" href="#slimta.policy.headers.AddDateHeader.build_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a date string in the format desired for the header. This
+method can be overridden to control the format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> &#8211; Timestamp (as returned by <a class="reference external" href="http://docs.python.org/library/time.html#time.time" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">time.time()</span></tt></a>) to
+convert into date string.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Date string for the header.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.policy.headers.AddMessageIdHeader">
+<em class="property">class </em><tt class="descclassname">slimta.policy.headers.</tt><tt class="descname">AddMessageIdHeader</tt><big>(</big><em>hostname=None</em><big>)</big><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
+<p>Checks for the existence of the RFC-specified <tt class="docutils literal"><span class="pre">Message-Id</span></tt> header,
+adding it if it does not exist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hostname</strong> &#8211; The hostname to use in the generated headers. By default,
+<tt class="xref py py-func docutils literal"><span class="pre">getfqdn()</span></tt> is used.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.policy.headers.AddReceivedHeader">
+<em class="property">class </em><tt class="descclassname">slimta.policy.headers.</tt><tt class="descname">AddReceivedHeader</tt><big>(</big><em>date_format='%a</em>, <em>%d %b %Y %H:%M:%S +0000'</em><big>)</big><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
+<p>Adds the RFC-specified <tt class="docutils literal"><span class="pre">Received</span></tt> header to the message. This header
+should be added for every hop from a message&#8217;s origination to its
+destination.</p>
+<p>The format of this header is unusual, here is a good description:
+<a class="reference external" href="http://cr.yp.to/immhf/envelope.html">http://cr.yp.to/immhf/envelope.html</a></p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.policy.html"
+                        title="previous chapter">slimta.policy</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.policy.forward.html"
+                        title="next chapter">slimta.policy.forward</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.forward.html" title="slimta.policy.forward"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.html" title="slimta.policy"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.policy.html" >slimta.policy</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

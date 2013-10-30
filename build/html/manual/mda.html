@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Mail Delivery Agent &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="Usage Manual" href="../manual.html" />
+    <link rel="next" title="Mail Submission Agent" href="msa.html" />
+    <link rel="prev" title="Integrating Everything" href="integrating.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="msa.html" title="Mail Submission Agent"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="integrating.html" title="Integrating Everything"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" accesskey="U">Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mail-delivery-agent">
+<h1>Mail Delivery Agent<a class="headerlink" href="#mail-delivery-agent" title="Permalink to this headline">¶</a></h1>
+<p><em>Note:</em> This example requires the <tt class="docutils literal"><span class="pre">python-slimta-piperelay</span></tt> package.</p>
+<div class="section" id="step-1-create-the-relay">
+<h2>Step 1: Create the Relay<a class="headerlink" href="#step-1-create-the-relay" title="Permalink to this headline">¶</a></h2>
+<p>To get started, we create a <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> object. This is first because <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a> depends
+on <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> and <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> depends on <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a>. For this example, we&#8217;ll be using
+<a class="reference internal" href="../api/extra.piperelay.html#slimta.piperelay.MaildropRelay" title="slimta.piperelay.MaildropRelay"><tt class="xref py py-class docutils literal"><span class="pre">MaildropRelay</span></tt></a>, though you could just as easily
+substitute one of the other classes in <a class="reference internal" href="../api/extra.piperelay.html#module-slimta.piperelay" title="slimta.piperelay"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.piperelay</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.piperelay</span> <span class="kn">import</span> <span class="n">MaildropRelay</span>
+
+<span class="n">relay</span> <span class="o">=</span> <span class="n">MaildropRelay</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The result is a variable <tt class="docutils literal"><span class="pre">relay</span></tt> that can be passed in to the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>
+constructor. The <tt class="docutils literal"><span class="pre">relay</span></tt> will produce transient errors if the command takes
+too long to reply. An unhandled exception will be raised if the <tt class="docutils literal"><span class="pre">maildrop</span></tt>
+command does not exist in the system path.</p>
+</div>
+<div class="section" id="step-2-create-the-queue">
+<h2>Step 2: Create the Queue<a class="headerlink" href="#step-2-create-the-queue" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a>, we can create the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> and <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>
+objects. The simplest <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> sub-class is
+<a class="reference internal" href="../api/slimta.queue.dict.html#slimta.queue.dict.DictStorage" title="slimta.queue.dict.DictStorage"><tt class="xref py py-class docutils literal"><span class="pre">DictStorage</span></tt></a>, which stores message contents and meta
+in <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> objects. However, this can be made persistent using
+<a class="reference external" href="http://docs.python.org/library/shelve.html#module-shelve" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">shelve</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">shelve</span>
+<span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="kn">import</span> <span class="n">DictStorage</span>
+
+<span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;envelope.db&#39;</span><span class="p">)</span>
+<span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;meta.db&#39;</span><span class="p">)</span>
+<span class="n">storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">(</span><span class="n">env_db</span><span class="p">,</span> <span class="n">meta_db</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting <tt class="docutils literal"><span class="pre">storage</span></tt> variable along with <tt class="docutils literal"><span class="pre">relay</span></tt> from <em>Step 1</em> can create
+our <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+
+<span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Because queue objects inherit <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.Greenlet</span></tt></a>, they must call their
+<tt class="docutils literal"><span class="pre">.start()</span></tt> method to function properly.</p>
+</div>
+<div class="section" id="step-3-add-queue-policies">
+<h2>Step 3: Add Queue Policies<a class="headerlink" href="#step-3-add-queue-policies" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have our <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>, we will most likely want to add various
+<a class="reference internal" href="../api/slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">QueuePolicy</span></tt></a> and <a class="reference internal" href="../api/slimta.policy.html#slimta.policy.RelayPolicy" title="slimta.policy.RelayPolicy"><tt class="xref py py-class docutils literal"><span class="pre">RelayPolicy</span></tt></a> rules to affect behavior. MDAs should add
+various headers, such as <tt class="docutils literal"><span class="pre">Date</span></tt> and <tt class="docutils literal"><span class="pre">Received</span></tt>, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">queue</span><span class="o">.</span><span class="n">add_prequeue_policy</span><span class="p">(</span><span class="n">AddDateHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_prequeue_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_prequeue_policy</span><span class="p">(</span><span class="n">AddReceivedHeader</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Because an MDA configuration typically receives mail from the outside world, it
+is likely you will want to scan this mail from spam. The
+<a class="reference internal" href="../api/slimta.policy.spamassassin.html#slimta.policy.spamassassin.SpamAssassin" title="slimta.policy.spamassassin.SpamAssassin"><tt class="xref py py-class docutils literal"><span class="pre">SpamAssassin</span></tt></a> policy will add
+the <tt class="docutils literal"><span class="pre">X-Spam-Status</span></tt> set to <tt class="docutils literal"><span class="pre">YES</span></tt> or <tt class="docutils literal"><span class="pre">NO</span></tt> for each message, which can be
+used by maildrop to filter to a spam quarantine:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.policy.spamassassin</span> <span class="kn">import</span> <span class="n">SpamAssassin</span>
+
+<span class="n">queue</span><span class="o">.</span><span class="n">add_prequeue_policy</span><span class="p">(</span><span class="n">SpamAssassin</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>As with MSA configurations, MDAs will often find the
+<a class="reference internal" href="../api/slimta.policy.forward.html#slimta.policy.forward.Forward" title="slimta.policy.forward.Forward"><tt class="xref py py-class docutils literal"><span class="pre">Forward</span></tt></a> policy useful as well.</p>
+</div>
+<div class="section" id="step-4-create-the-edge">
+<h2>Step 4: Create the Edge<a class="headerlink" href="#step-4-create-the-edge" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a> is how messages are injected into the system from mail clients, and
+now that we have a <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> object, we can create one. The most common <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a>
+for an MDA will obviously be <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><tt class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></tt></a>, but you could
+also create an edge service that receives messages by HTTP or even from the
+filesystem. Most MDAs will use <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><tt class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></tt></a> on the
+RFC-specified port 25.</p>
+<p>Creating an <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a> can be very simple if you are not worried about how messages
+are received or from whom:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
+
+<span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s">&#39;certfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
+<span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will receive any messages from any sender intended for any recipient and
+send it to the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>. For an MDA however, we only want to accept emails sent
+to recipients we host. To do this, we will sub-class
+<a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><tt class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></tt></a> and restrict the addresses allowed by
+the <tt class="docutils literal"><span class="pre">RCPT</span> <span class="pre">TO:&lt;...&gt;</span></tt> command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpValidators</span>
+
+<span class="k">class</span> <span class="nc">MyValidators</span><span class="p">(</span><span class="n">SmtpValidators</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">handle_rcpt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">recipient</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">localpart</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">recipient</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s">&#39;@&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s">&#39;550&#39;</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;5.7.1 &lt;{0}&gt; Not a valid address&#39;</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">domain</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;slimta.org&#39;</span><span class="p">:</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s">&#39;550&#39;</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;5.7.1 &lt;{0}&gt; Not authenticated&#39;</span>
+            <span class="k">return</span>
+
+<span class="c"># Your edge creation line would now look like...</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">,</span> <span class="n">validator_class</span><span class="o">=</span><span class="n">MyValidators</span><span class="p">)</span>
+<span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Your SMTP server will now reject a client&#8217;s <tt class="docutils literal"><span class="pre">RCPT</span> <span class="pre">TO:&lt;...&gt;</span></tt> command if the
+address is not on the <tt class="docutils literal"><span class="pre">slimta.org</span></tt> domain.</p>
+</div>
+<div class="section" id="step-5-daemonizing">
+<h2>Step 5: Daemonizing<a class="headerlink" href="#step-5-daemonizing" title="Permalink to this headline">¶</a></h2>
+<p>You probably don&#8217;t want to keep a terminal open the entire time your MTA is
+running. There are some daemonization tools in the <a class="reference internal" href="../api/slimta.system.html#module-slimta.system" title="slimta.system"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.system</span></tt></a> module.
+Their usage is relatively simple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">gevent</span>
+<span class="kn">from</span> <span class="nn">slimta</span> <span class="kn">import</span> <span class="n">system</span>
+
+<span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">drop_privileges</span><span class="p">(</span><span class="s">&#39;smtp-user&#39;</span><span class="p">,</span> <span class="s">&#39;smtp-user&#39;</span><span class="p">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">redirect_stdio</span><span class="p">()</span>  <span class="c"># Redirects all streams to /dev/null by default.</span>
+<span class="n">system</span><span class="o">.</span><span class="n">daemonize</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../api/slimta.system.html#slimta.system.drop_privileges" title="slimta.system.drop_privileges"><tt class="xref py py-func docutils literal"><span class="pre">drop_privileges()</span></tt></a> command is only necessary if you
+ran your MTA as <tt class="docutils literal"><span class="pre">root</span></tt>, which is necessary to create servers listening on
+privileged ports such as 25, 587 or 465.</p>
+<p>The <a class="reference external" href="http://gevent.org/gevent.html#gevent.sleep" title="(in gevent v0.13.8)"><tt class="xref py py-func docutils literal"><span class="pre">gevent.sleep()</span></tt></a> call is not always necessary, but sometimes gevent
+will not have opened the ports by the time you drop privileges and then it will
+fail, so calling a short sleep will make sure everything is ready.</p>
+</div>
+<div class="section" id="step-6-profit">
+<h2>Step 6: Profit<a class="headerlink" href="#step-6-profit" title="Permalink to this headline">¶</a></h2>
+<p>Once you have all your pieces together, you can simply let the system function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
+    <span class="n">edge</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxlocaltoc">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mail Delivery Agent</a><ul>
+<li><a class="reference internal" href="#step-1-create-the-relay">Step 1: Create the Relay</a></li>
+<li><a class="reference internal" href="#step-2-create-the-queue">Step 2: Create the Queue</a></li>
+<li><a class="reference internal" href="#step-3-add-queue-policies">Step 3: Add Queue Policies</a></li>
+<li><a class="reference internal" href="#step-4-create-the-edge">Step 4: Create the Edge</a></li>
+<li><a class="reference internal" href="#step-5-daemonizing">Step 5: Daemonizing</a></li>
+<li><a class="reference internal" href="#step-6-profit">Step 6: Profit</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="integrating.html"
+                        title="previous chapter">Integrating Everything</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="msa.html"
+                        title="next chapter">Mail Submission Agent</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="msa.html" title="Mail Submission Agent"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="integrating.html" title="Integrating Everything"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Envelope Objects &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="Usage Manual" href="../manual.html" />
+    <link rel="next" title="Edge Services" href="edge.html" />
+    <link rel="prev" title="System Helpers" href="system.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="edge.html" title="Edge Services"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="system.html" title="System Helpers"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" accesskey="U">Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="envelope-objects">
+<h1>Envelope Objects<a class="headerlink" href="#envelope-objects" title="Permalink to this headline">¶</a></h1>
+<p>In <a class="reference external" href="http://slimta.org/">slimta</a>, an email message is thought of like a &#8216;snail mail&#8217; envelope, it&#8217;s
+not just the message contents but also sending and receiving addresses and other
+logistical information. An <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> object represents all of this information.</p>
+<p>The <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope.sender" title="slimta.envelope.Envelope.sender"><tt class="xref py py-attr docutils literal"><span class="pre">sender</span></tt></a> and
+<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><tt class="xref py py-attr docutils literal"><span class="pre">recipients</span></tt></a> attributes hold the sending address
+of the message and the list of intended recipients. The
+<a class="reference internal" href="../api/slimta.policy.forward.html#slimta.policy.forward.Forward" title="slimta.policy.forward.Forward"><tt class="xref py py-class docutils literal"><span class="pre">Forward</span></tt></a> policy can be useful to modify the
+intended recipients of a message.</p>
+<div class="section" id="headers-and-contents">
+<h2>Headers and Contents<a class="headerlink" href="#headers-and-contents" title="Permalink to this headline">¶</a></h2>
+<p>The headers and body of the email contents are split up into the
+<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><tt class="xref py py-attr docutils literal"><span class="pre">headers</span></tt></a> and
+<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><tt class="xref py py-attr docutils literal"><span class="pre">message</span></tt></a> attributes. The <tt class="docutils literal"><span class="pre">headers</span></tt> attribute
+is a <a class="reference external" href="http://docs.python.org/library/email.message.html#email.message.Message" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">email.message.Message</span></tt></a> object and can be used to view, add, and
+delete <em>headers only</em>, it does not contain the message payload as described by
+<a class="reference external" href="http://docs.python.org/library/email.message.html#email.message.Message" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Message</span></tt></a> documentation. The <tt class="docutils literal"><span class="pre">message</span></tt> attribute of the
+<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> object is Python string containing the contents of the message,
+everything after the headers.</p>
+<p>For delivery, <a class="reference external" href="http://slimta.org/">slimta</a> <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> transports will call
+<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope.flatten" title="slimta.envelope.Envelope.flatten"><tt class="xref py py-meth docutils literal"><span class="pre">flatten()</span></tt></a> to convert the <tt class="docutils literal"><span class="pre">headers</span></tt> (with any
+modifications) and <tt class="docutils literal"><span class="pre">message</span></tt> into a single string. After flattening, the
+message headers portion of the generated string is guaranteed to use <tt class="docutils literal"><span class="pre">\r\n</span></tt>
+line endings.</p>
+</div>
+<div class="section" id="non-delivery-reports-bounces">
+<span id="envelope-bounces"></span><h2>Non-Delivery Reports (Bounces)<a class="headerlink" href="#non-delivery-reports-bounces" title="Permalink to this headline">¶</a></h2>
+<p>Because a client that sent a message to an <em>edge</em> service will disconnect once
+the message has been queued, there is no way of reporting to the client that the
+message was delivered (successfully or unsuccessfully).</p>
+<p>As such, the message sender should assume that a message was delivered
+successfully unless told otherwise. If <a class="reference external" href="http://slimta.org/">slimta</a> failed to deliver a message,
+either because of too many delivery attempts or a permanent error, it will
+generate and deliver a <em>bounce</em> message back to the original sender address of
+the message. From this <em>bounce</em> message, the sender should be able to tell which
+message failed and why.</p>
+<div class="section" id="generating-bounce-messages">
+<h3>Generating Bounce Messages<a class="headerlink" href="#generating-bounce-messages" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><tt class="xref py py-class docutils literal"><span class="pre">Bounce</span></tt></a> objects are used to build <em>bounce</em> messages from the original
+<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> object and that message&#8217;s <a class="reference internal" href="../api/slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> object.</p>
+<p>The <a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><tt class="xref py py-class docutils literal"><span class="pre">Bounce</span></tt></a> class allows for customization of the format of this bounce
+message. The static class member <a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce.sender" title="slimta.bounce.Bounce.sender"><tt class="xref py py-attr docutils literal"><span class="pre">sender</span></tt></a> is the
+sender address to use. <em>Bounce</em> messages are not &#8220;from&#8221; anyone, and thus the
+(RFC mandated) default is an empty string (<tt class="docutils literal"><span class="pre">&quot;&quot;</span></tt>).</p>
+<p>The <a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><tt class="xref py py-class docutils literal"><span class="pre">Bounce</span></tt></a> class is a sub-class of <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and can thus be used wherever a
+regular <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> is required. The <a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><tt class="xref py py-class docutils literal"><span class="pre">Bounce</span></tt></a> message is generated using the
+original message&#8217;s flattened message data surrounded by the header and footer
+templates given in the <a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><tt class="xref py py-class docutils literal"><span class="pre">Bounce</span></tt></a> class&#8217;s static
+<a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce.header_template" title="slimta.bounce.Bounce.header_template"><tt class="xref py py-attr docutils literal"><span class="pre">header_template</span></tt></a> and
+<a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce.footer_template" title="slimta.bounce.Bounce.footer_template"><tt class="xref py py-attr docutils literal"><span class="pre">footer_template</span></tt></a> members. See the API documentation
+of these attributes for information on how they work.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxlocaltoc">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Envelope Objects</a><ul>
+<li><a class="reference internal" href="#headers-and-contents">Headers and Contents</a></li>
+<li><a class="reference internal" href="#non-delivery-reports-bounces">Non-Delivery Reports (Bounces)</a><ul>
+<li><a class="reference internal" href="#generating-bounce-messages">Generating Bounce Messages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="system.html"
+                        title="previous chapter">System Helpers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="edge.html"
+                        title="next chapter">Edge Services</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="edge.html" title="Edge Services"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="system.html" title="System Helpers"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.smtp &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta" href="slimta.html" />
+    <link rel="next" title="slimta.smtp.client" href="slimta.smtp.client.html" />
+    <link rel="prev" title="slimta.relay.http" href="slimta.relay.http.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.client.html" title="slimta.smtp.client"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.http.html" title="slimta.relay.http"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.smtp">
+<span id="slimta-smtp"></span><h1>slimta.smtp<a class="headerlink" href="#module-slimta.smtp" title="Permalink to this headline">¶</a></h1>
+<p>Root package for <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><tt class="xref py py-mod docutils literal"><span class="pre">slimta</span></tt></a> SMTP client and server libraries.</p>
+<dl class="exception">
+<dt id="slimta.smtp.SmtpError">
+<em class="property">exception </em><tt class="descclassname">slimta.smtp.</tt><tt class="descname">SmtpError</tt><a class="headerlink" href="#slimta.smtp.SmtpError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">slimta.core.SlimtaError</span></tt></p>
+<p>Base exception for all custom SMTP exceptions.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="slimta.smtp.ConnectionLost">
+<em class="property">exception </em><tt class="descclassname">slimta.smtp.</tt><tt class="descname">ConnectionLost</tt><a class="headerlink" href="#slimta.smtp.ConnectionLost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><tt class="xref py py-class docutils literal"><span class="pre">slimta.smtp.SmtpError</span></tt></a></p>
+<p>Thrown when the socket is closed prematurely.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="slimta.smtp.MessageTooBig">
+<em class="property">exception </em><tt class="descclassname">slimta.smtp.</tt><tt class="descname">MessageTooBig</tt><a class="headerlink" href="#slimta.smtp.MessageTooBig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><tt class="xref py py-class docutils literal"><span class="pre">slimta.smtp.SmtpError</span></tt></a></p>
+<p>Thrown when a message exceeds the maximum size given by the SMTP
+<tt class="docutils literal"><span class="pre">SIZE</span></tt> extension, if supported.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="slimta.smtp.BadReply">
+<em class="property">exception </em><tt class="descclassname">slimta.smtp.</tt><tt class="descname">BadReply</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#slimta.smtp.BadReply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><tt class="xref py py-class docutils literal"><span class="pre">slimta.smtp.SmtpError</span></tt></a></p>
+<p>Thrown when an SMTP server replies with a syntax-invalid code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; The data that was expected to start with an SMTP code, made
+available in the <tt class="docutils literal"><span class="pre">data</span></tt> attribute.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<hr class="docutils" />
+<p><strong>Sub-Modules:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slimta.smtp.client.html">slimta.smtp.client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.smtp.server.html">slimta.smtp.server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.smtp.extensions.html">slimta.smtp.extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.smtp.reply.html">slimta.smtp.reply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.smtp.auth.html">slimta.smtp.auth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.auth.standard.html">slimta.smtp.auth.standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.auth.oauth.html">slimta.smtp.auth.oauth</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.relay.http.html"
+                        title="previous chapter">slimta.relay.http</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.smtp.client.html"
+                        title="next chapter">slimta.smtp.client</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.client.html" title="slimta.smtp.client"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.http.html" title="slimta.relay.http"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.envelope &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta" href="slimta.html" />
+    <link rel="next" title="slimta.bounce" href="slimta.bounce.html" />
+    <link rel="prev" title="slimta.http.wsgi" href="slimta.http.wsgi.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.bounce.html" title="slimta.bounce"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.http.wsgi.html" title="slimta.http.wsgi"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.envelope">
+<span id="slimta-envelope"></span><h1>slimta.envelope<a class="headerlink" href="#module-slimta.envelope" title="Permalink to this headline">¶</a></h1>
+<p>Module defining <a class="reference internal" href="#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> for holding message data along with
+metadata.</p>
+<dl class="class">
+<dt id="slimta.envelope.Envelope">
+<em class="property">class </em><tt class="descclassname">slimta.envelope.</tt><tt class="descname">Envelope</tt><big>(</big><em>sender=None</em>, <em>recipients=None</em>, <em>headers=None</em>, <em>message=None</em><big>)</big><a class="headerlink" href="#slimta.envelope.Envelope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Class containing message data and metadata. This class acts like an
+envelope with the sending address, recipient(s), and the actual message.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sender</strong> &#8211; The address that sent the message.</li>
+<li><strong>recipients</strong> &#8211; List of addresses to receive the message.</li>
+<li><strong>headers</strong> (<a class="reference external" href="http://docs.python.org/library/email.message.html#email.message.Message" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">email.message.Message</span></tt></a>) &#8211; The message headers.</li>
+<li><strong>message</strong> &#8211; String containing the message contents after the headers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="slimta.envelope.Envelope.sender">
+<tt class="descname">sender</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sending address of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.envelope.Envelope.recipients">
+<tt class="descname">recipients</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.recipients" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of recipient addresses of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.envelope.Envelope.headers">
+<tt class="descname">headers</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="http://docs.python.org/library/email.message.html#email.message.Message" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">email.message.Message</span></tt></a> object for accessing and modifying
+message headers.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.envelope.Envelope.message">
+<tt class="descname">message</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>String of message data, not including headers.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.envelope.Envelope.client">
+<tt class="descname">client</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of information about the client that sent the message.
+Utilized keys include:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">ip</span></tt>: The IP of the client.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">host</span></tt>: The reverse-lookup of the client IP.</p>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">name</span></tt>: The client name, as given by its <tt class="docutils literal"><span class="pre">EHLO</span></tt> or</dt>
+<dd><p class="first last">alternative.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">protocol</span></tt>: The protocol used by the client, generally a variant</dt>
+<dd><p class="first last">of <tt class="docutils literal"><span class="pre">&quot;SMTP&quot;</span></tt>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">auth</span></tt>: The name the client successfully authenticated with, or</dt>
+<dd><p class="first last"><tt class="docutils literal"><span class="pre">None</span></tt>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.envelope.Envelope.receiver">
+<tt class="descname">receiver</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hostname of the <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><tt class="xref py py-mod docutils literal"><span class="pre">slimta</span></tt></a> server that received the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.envelope.Envelope.timestamp">
+<tt class="descname">timestamp</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timestamp when the message was received.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.envelope.Envelope.copy">
+<tt class="descname">copy</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.envelope.Envelope.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds and returns an exact copy if the current object. This method
+uses a deep-copying so internal datastructures are not shared.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An exact, deep copy of the current object.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.envelope.Envelope.flatten">
+<tt class="descname">flatten</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.envelope.Envelope.flatten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produces two strings representing the headers and message body.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Tuple of two strings: <tt class="docutils literal"><span class="pre">(header_data,</span> <span class="pre">message_data)</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.envelope.Envelope.encode_7bit">
+<tt class="descname">encode_7bit</tt><big>(</big><em>encoder=None</em><big>)</big><a class="headerlink" href="#slimta.envelope.Envelope.encode_7bit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forces the message into 7-bit encoding such that it can be sent to
+SMTP servers that do not support the <tt class="docutils literal"><span class="pre">8BITMIME</span></tt> extension.</p>
+<p>If the <tt class="docutils literal"><span class="pre">encoder</span></tt> function is not given, this function is relatively
+cheap and will just check the message body for 8-bit characters
+(raising <tt class="xref py py-exc docutils literal"><span class="pre">UnicodeDecodeError</span></tt> if any are found).  Otherwise,
+this method can be very expensive. It will parse the entire message
+into MIME parts in order to encode parts that are not 7-bit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>encoder</strong> &#8211; Optional function from <a class="reference external" href="http://docs.python.org/library/email.encoders.html#module-email.encoders" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">email.encoders</span></tt></a> used to
+encode MIME parts that are not 7-bit.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">UnicodeDecodeError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.envelope.Envelope.parse">
+<tt class="descname">parse</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#slimta.envelope.Envelope.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the given string or <a class="reference external" href="http://docs.python.org/library/email.message.html#email.message.Message" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Message</span></tt></a> to
+populate the <a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><tt class="xref py py-attr docutils literal"><span class="pre">headers</span></tt></a> and <a class="reference internal" href="#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><tt class="xref py py-attr docutils literal"><span class="pre">message</span></tt></a> attributes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a> or <a class="reference external" href="http://docs.python.org/library/email.message.html#email.message.Message" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Message</span></tt></a>) &#8211; The complete message, headers and message body.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.http.wsgi.html"
+                        title="previous chapter">slimta.http.wsgi</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.bounce.html"
+                        title="next chapter">slimta.bounce</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.bounce.html" title="slimta.bounce"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.http.wsgi.html" title="slimta.http.wsgi"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.smtp.auth.oauth &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta.smtp.auth" href="slimta.smtp.auth.html" />
+    <link rel="next" title="slimta.http" href="slimta.http.html" />
+    <link rel="prev" title="slimta.smtp.auth.standard" href="slimta.smtp.auth.standard.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.http.html" title="slimta.http"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.auth.standard.html" title="slimta.smtp.auth.standard"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li>
+          <li><a href="slimta.smtp.auth.html" accesskey="U">slimta.smtp.auth</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.smtp.auth.oauth">
+<span id="slimta-smtp-auth-oauth"></span><h1>slimta.smtp.auth.oauth<a class="headerlink" href="#module-slimta.smtp.auth.oauth" title="Permalink to this headline">¶</a></h1>
+<p>Module containing the definition of the SASL <a class="reference external" href="https://developers.google.com/gmail/xoauth2_protocol">XOAUTH2</a>, used by <a class="reference external" href="http://tools.ietf.org/html/draft-ietf-oauth-v2-22">OAuth
+2.0</a> systems to authenticate using access tokens.</p>
+<dl class="class">
+<dt id="slimta.smtp.auth.oauth.OAuth2">
+<em class="property">class </em><tt class="descclassname">slimta.smtp.auth.oauth.</tt><tt class="descname">OAuth2</tt><a class="headerlink" href="#slimta.smtp.auth.oauth.OAuth2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.ClientMechanism" title="slimta.smtp.auth.ClientMechanism"><tt class="xref py py-class docutils literal"><span class="pre">slimta.smtp.auth.ClientMechanism</span></tt></a></p>
+<p><tt class="docutils literal"><span class="pre">XOAUTH2</span></tt> authentication mechanism. Used by email servers that provide
+OAuth 2.0 authentication, such as Gmail. Using their credentials, clients
+will receive a temporary access token string from the identity service.
+This token string is then used by <tt class="docutils literal"><span class="pre">XOAUTH2</span></tt> to authenticate the SMTP
+session.</p>
+<p>This mechanism is only available for client-side authentication.</p>
+<dl class="attribute">
+<dt id="slimta.smtp.auth.oauth.OAuth2.name">
+<tt class="descname">name</tt><em class="property"> = 'XOAUTH2'</em><a class="headerlink" href="#slimta.smtp.auth.oauth.OAuth2.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This mechanism identifies itself as <tt class="docutils literal"><span class="pre">XOAUTH2</span></tt>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.smtp.auth.standard.html"
+                        title="previous chapter">slimta.smtp.auth.standard</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.http.html"
+                        title="next chapter">slimta.http</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.http.html" title="slimta.http"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.auth.standard.html" title="slimta.smtp.auth.standard"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li>
+          <li><a href="slimta.smtp.auth.html" >slimta.smtp.auth</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

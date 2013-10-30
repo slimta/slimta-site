@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.logging.socket &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta.logging" href="slimta.logging.html" />
+    <link rel="next" title="slimta.logging.http" href="slimta.logging.http.html" />
+    <link rel="prev" title="slimta.logging" href="slimta.logging.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.http.html" title="slimta.logging.http"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.html" title="slimta.logging"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.logging.html" accesskey="U">slimta.logging</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.logging.socket">
+<span id="slimta-logging-socket"></span><h1>slimta.logging.socket<a class="headerlink" href="#module-slimta.logging.socket" title="Permalink to this headline">¶</a></h1>
+<p>Utilities to make logging consistent and easy for any socket interaction.</p>
+<dl class="class">
+<dt id="slimta.logging.socket.SocketLogger">
+<em class="property">class </em><tt class="descclassname">slimta.logging.socket.</tt><tt class="descname">SocketLogger</tt><big>(</big><em>log</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Provides a limited set of log methods that <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><tt class="xref py py-mod docutils literal"><span class="pre">slimta</span></tt></a> packages may
+use. This prevents free-form logs from mixing in with standard, machine-
+parseable logs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>log</strong> &#8211; <a class="reference external" href="http://docs.python.org/library/logging.html#logging.Logger" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">logging.Logger</span></tt></a> object to log through.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.send">
+<tt class="descname">send</tt><big>(</big><em>socket</em>, <em>data</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="http://docs.python.org/library/socket.html#socket.socket.send" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">send()</span></tt></a> operation along with the
+peer the socket is connected to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> &#8211; The socket that has sent data.</li>
+<li><strong>data</strong> &#8211; The data that was sent.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.recv">
+<tt class="descname">recv</tt><big>(</big><em>socket</em>, <em>data</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="http://docs.python.org/library/socket.html#socket.socket.recv" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">recv()</span></tt></a> operation along with the
+peer the socket is connected to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> &#8211; The socket that has received data.</li>
+<li><strong>data</strong> &#8211; The data that was received.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.accept">
+<tt class="descname">accept</tt><big>(</big><em>server</em>, <em>client</em>, <em>address=None</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="http://docs.python.org/library/socket.html#socket.socket.accept" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">accept()</span></tt></a> operation along with
+the server that received it and the peer that initiated it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> &#8211; The server socket that received the connection.</li>
+<li><strong>client</strong> &#8211; The client socket that was accepted.</li>
+<li><strong>address</strong> &#8211; If known, the peer address of the client socket.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.connect">
+<tt class="descname">connect</tt><big>(</big><em>socket</em>, <em>address=None</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="http://docs.python.org/library/socket.html#socket.socket.connect" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">connect()</span></tt></a> operation along with
+the peer the socket is connected to. Logged at the <tt class="docutils literal"><span class="pre">DEBUG</span></tt> level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> &#8211; The socket that was connected.</li>
+<li><strong>address</strong> &#8211; If known, the peer address the socket connected to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.encrypt">
+<tt class="descname">encrypt</tt><big>(</big><em>socket</em>, <em>tls_args</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger.encrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket encryption operation along with the certificate and
+key files used and whether the socket is acting as the client or the
+server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> &#8211; The socket that was shutdown.</li>
+<li><strong>tls_args</strong> &#8211; Keyword rguments passed to the encryption operation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.shutdown">
+<tt class="descname">shutdown</tt><big>(</big><em>socket</em>, <em>how</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="http://docs.python.org/library/socket.html#socket.socket.shutdown" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">shutdown()</span></tt></a> operation along
+with which part of the socket was shut down. Logged at the
+<tt class="docutils literal"><span class="pre">DEBUG</span></tt> level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> &#8211; The socket that was shutdown.</li>
+<li><strong>how</strong> &#8211; The <tt class="docutils literal"><span class="pre">how</span></tt> parameter, as passed to <tt class="docutils literal"><span class="pre">shutdown()</span></tt>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.close">
+<tt class="descname">close</tt><big>(</big><em>socket</em><big>)</big><a class="headerlink" href="#slimta.logging.socket.SocketLogger.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="http://docs.python.org/library/socket.html#socket.socket.close" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">close()</span></tt></a> operation along with
+the peer the socket was connected to. Logged at the <tt class="docutils literal"><span class="pre">DEBUG</span></tt> level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>socket</strong> &#8211; The socket that was closed.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.logging.html"
+                        title="previous chapter">slimta.logging</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.logging.http.html"
+                        title="next chapter">slimta.logging.http</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.http.html" title="slimta.logging.http"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.html" title="slimta.logging"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.logging.html" >slimta.logging</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

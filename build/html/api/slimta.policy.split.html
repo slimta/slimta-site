@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.policy.split &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta.policy" href="slimta.policy.html" />
+    <link rel="next" title="slimta.policy.spamassassin" href="slimta.policy.spamassassin.html" />
+    <link rel="prev" title="slimta.policy.forward" href="slimta.policy.forward.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.spamassassin.html" title="slimta.policy.spamassassin"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.forward.html" title="slimta.policy.forward"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.policy.html" accesskey="U">slimta.policy</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.policy.split">
+<span id="slimta-policy-split"></span><h1>slimta.policy.split<a class="headerlink" href="#module-slimta.policy.split" title="Permalink to this headline">¶</a></h1>
+<p>Implements a policy to break down envelopes with multiple recipients into
+logical groups. This is useful for relayers that may not handle multi-recipient
+messages well, such as <a class="reference internal" href="slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">MxSmtpRelay</span></tt></a>.</p>
+<dl class="class">
+<dt id="slimta.policy.split.RecipientSplit">
+<em class="property">class </em><tt class="descclassname">slimta.policy.split.</tt><tt class="descname">RecipientSplit</tt><a class="headerlink" href="#slimta.policy.split.RecipientSplit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
+<p>If a given <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> has more than one recipient, this policy splits
+it, generating a list of new <tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt> object copies where each has
+only one recipient. Each new object has its own copy of
+<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><tt class="xref py py-attr docutils literal"><span class="pre">headers</span></tt></a>, but other attributes may be
+shared between each new instance.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.policy.split.RecipientDomainSplit">
+<em class="property">class </em><tt class="descclassname">slimta.policy.split.</tt><tt class="descname">RecipientDomainSplit</tt><a class="headerlink" href="#slimta.policy.split.RecipientDomainSplit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
+<p>If a given <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> recipients of more than one unique domain (case-
+insensitive), this policy splits it generating a list of new
+<tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt> object copies where each has only one recipient. Each new
+object has its own copy of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><tt class="xref py py-attr docutils literal"><span class="pre">headers</span></tt></a>, but
+other attributes may be shared between each new instance.</p>
+<p>Any recipient in the original <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> that does not have a domain (and
+thus is not a valid email address) will be given an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> of its own.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.policy.forward.html"
+                        title="previous chapter">slimta.policy.forward</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.policy.spamassassin.html"
+                        title="next chapter">slimta.policy.spamassassin</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.spamassassin.html" title="slimta.policy.spamassassin"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.forward.html" title="slimta.policy.forward"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.policy.html" >slimta.policy</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

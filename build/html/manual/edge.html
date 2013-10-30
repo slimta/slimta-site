@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Edge Services &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="Usage Manual" href="../manual.html" />
+    <link rel="next" title="Queue Services" href="queue.html" />
+    <link rel="prev" title="Envelope Objects" href="envelopes.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="queue.html" title="Queue Services"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="envelopes.html" title="Envelope Objects"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" accesskey="U">Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="edge-services">
+<h1>Edge Services<a class="headerlink" href="#edge-services" title="Permalink to this headline">¶</a></h1>
+<p>The term <em>edge</em> is not necessarily common among other <em>MTAs</em>. It was adapted
+loosely by <a class="reference external" href="http://slimta.org/">slimta</a> from the <a class="reference external" href="http://technet.microsoft.com/en-us/library/bb124701.aspx">Edge Transport Server Role</a> in Microsoft
+Exchange, but the name is about where the similarities end.</p>
+<p>In <a class="reference external" href="http://slimta.org/">slimta</a>, an edge service are those that are listening for new messages
+entering the system. The protocol does not matter, an edge service produces an
+<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> object and hands it off to the next stage of delivery.</p>
+<p>Edge services (usually) send their requests to and receive their responses from
+a <em>queue</em> service. That means the response delivered to the client does not
+signify whether the message was successfully delivered, but rather that the
+<em>queue</em> service has taken responsibility for its delivery.</p>
+<div class="section" id="smtp-edge-services">
+<span id="edge-smtp"></span><h2>SMTP Edge Services<a class="headerlink" href="#smtp-edge-services" title="Permalink to this headline">¶</a></h2>
+<p>Traditionally, email <em>MTAs</em> receive messages from other <em>MTAs</em> or user email
+clients using the SMTP protocol (<a class="reference external" href="http://tools.ietf.org/html/rfc5321">RFC 5321</a>, <a class="reference external" href="http://tools.ietf.org/html/rfc2821">RFC 2821</a>, <a class="reference external" href="http://tools.ietf.org/html/rfc821">RFC 821</a>). An SMTP
+session delivering a message from a client to a server might look like this,
+with server (edge) replies back to the client bolded:</p>
+<pre class="literal-block">
+<strong>220 slimta.org ESMTP Mail Gateway</strong>
+EHLO client.example.com
+<strong>250-Hello client.example.com</strong>
+<strong>250-8BITMIME</strong>
+<strong>250-PIPELINING</strong>
+<strong>250-STARTTLS</strong>
+<strong>250 ENHANCEDSTATUSCODES</strong>
+MAIL FROM:&lt;<a class="reference external" href="mailto:sender&#37;&#52;&#48;client&#46;example&#46;com">sender<span>&#64;</span>client<span>&#46;</span>example<span>&#46;</span>com</a>&gt;
+<strong>250 2.1.0 &lt;sender&#64;client.example.com&gt; Ok</strong>
+RCPT TO:&lt;<a class="reference external" href="mailto:recipient&#37;&#52;&#48;server&#46;example&#46;com">recipient<span>&#64;</span>server<span>&#46;</span>example<span>&#46;</span>com</a>&gt;
+<strong>250 2.1.5 &lt;recipient&#64;server.example.com&gt; Ok</strong>
+DATA
+<strong>354 Start mail input; end with &lt;CRLF&gt;.&lt;CRLF&gt;</strong>
+... email data ...
+.
+<strong>250 2.6.0 Message queued as e64820855322425486542d1bd59ba6cd</strong>
+QUIT
+<strong>221 2.0.0 Bye</strong>
+</pre>
+<p>SMTP edge services are somewhat unique in that they control not just the receipt
+of and response to the message, but also a lot of interim requests. A server may
+respond negatively to any command sent to it by the client, and often, crucial
+policies are implemented that way. For example, if you are sure you don&#8217;t want
+to accept messages from a certain IP (e.g. known spammers) you would want to
+limit the amount of memory and CPU cycles they consume by rejecting before the
+before <tt class="docutils literal"><span class="pre">DATA</span></tt>.</p>
+<div class="section" id="creating-smtp-edge-objects">
+<h3>Creating SMTP Edge Objects<a class="headerlink" href="#creating-smtp-edge-objects" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
+
+<span class="n">smtp</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
+<span class="n">smtp</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="http-edge-services">
+<span id="edge-http"></span><h2>HTTP Edge Services<a class="headerlink" href="#http-edge-services" title="Permalink to this headline">¶</a></h2>
+<p>A very common desire these days is to be able to submit emails to an MTA using
+HTTP or HTTPS protocols, due to the simplicity and ubiquity of these protocols.
+Unfortunately, no standards have been settled on, so HTTP mail reception and
+delivery can only really be used within controlled environments.</p>
+<p>An HTTP session delivering a message from a client to a server might look like
+this, with server (edge) replies back to the client bolded:</p>
+<pre class="literal-block">
+POST / HTTP/1.1
+User-Agent: curl/7.29.0
+Host: localhost:8080
+Accept: */*
+Content-Type: message/rfc822
+X-Envelope-Sender: c2VuZGVyQGV4YW1wbGUuY29t
+X-Envelope-Recipient: cmVjaXBpZW50QGV4YW1wbGUuY29t
+Content-Length: 101
+
+From: sender&#64;example.com
+To: recipient&#64;example.com
+Subject: HTTP mail delivery
+
+Test message!
+
+<strong>HTTP/1.1 200 OK
+X-Smtp-Reply: 250; message=&quot;2.6.0 Message accepted for delivery&quot;
+Date: Mon, 29 Jul 2013 20:11:55 GMT
+Content-Length: 0</strong>
+</pre>
+<div class="section" id="creating-http-edge-objects">
+<h3>Creating HTTP Edge Objects<a class="headerlink" href="#creating-http-edge-objects" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.edge.wsgi</span> <span class="kn">import</span> <span class="n">WsgiEdge</span>
+
+<span class="n">wsgi</span> <span class="o">=</span> <span class="n">WsgiEdge</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+<span class="n">http</span> <span class="o">=</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">build_server</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">8025</span><span class="p">))</span>
+<span class="n">http</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxlocaltoc">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Edge Services</a><ul>
+<li><a class="reference internal" href="#smtp-edge-services">SMTP Edge Services</a><ul>
+<li><a class="reference internal" href="#creating-smtp-edge-objects">Creating SMTP Edge Objects</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#http-edge-services">HTTP Edge Services</a><ul>
+<li><a class="reference internal" href="#creating-http-edge-objects">Creating HTTP Edge Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="envelopes.html"
+                        title="previous chapter">Envelope Objects</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="queue.html"
+                        title="next chapter">Queue Services</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="queue.html" title="Queue Services"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="envelopes.html" title="Envelope Objects"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

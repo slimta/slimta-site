@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.relay.pool &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta.relay" href="slimta.relay.html" />
+    <link rel="next" title="slimta.relay.blackhole" href="slimta.relay.blackhole.html" />
+    <link rel="prev" title="slimta.relay" href="slimta.relay.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.blackhole.html" title="slimta.relay.blackhole"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.html" title="slimta.relay"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.relay.html" accesskey="U">slimta.relay</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.relay.pool">
+<span id="slimta-relay-pool"></span><h1>slimta.relay.pool<a class="headerlink" href="#module-slimta.relay.pool" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="slimta.relay.pool.RelayPool">
+<em class="property">class </em><tt class="descclassname">slimta.relay.pool.</tt><tt class="descname">RelayPool</tt><big>(</big><em>pool_size=None</em><big>)</big><a class="headerlink" href="#slimta.relay.pool.RelayPool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.relay.Relay</span></tt></a></p>
+<p>Base class that inherits <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> to add the ability to create bounded,
+cached pools of outbound clients. It maintains a queue of messages to be
+delivered such that idle clients in the pool pick them up.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pool_size</strong> &#8211; At most this many simultaneous connections will be open
+to a destination. If this limit is reached and no
+connections are idle, new attempts will block.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="slimta.relay.pool.RelayPool.queue">
+<tt class="descname">queue</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.relay.pool.RelayPool.queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>This attribute holds the queue object for providing delivery
+requests to idle clients in the pool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.relay.pool.RelayPool.add_client">
+<tt class="descname">add_client</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.relay.pool.RelayPool.add_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-classes must override this method to create and return a new
+<a class="reference internal" href="#slimta.relay.pool.RelayPoolClient" title="slimta.relay.pool.RelayPoolClient"><tt class="xref py py-class docutils literal"><span class="pre">RelayPoolClient</span></tt></a> object that will poll for delivery requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#slimta.relay.pool.RelayPoolClient" title="slimta.relay.pool.RelayPoolClient"><tt class="xref py py-class docutils literal"><span class="pre">RelayPoolClient</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.relay.pool.RelayPoolClient">
+<em class="property">class </em><tt class="descclassname">slimta.relay.pool.</tt><tt class="descname">RelayPoolClient</tt><big>(</big><em>queue</em>, <em>idle_timeout=None</em><big>)</big><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">gevent.greenlet.Greenlet</span></tt></p>
+<p>Base class for implementing clients for handling delivery requests in a
+<a class="reference internal" href="#slimta.relay.pool.RelayPool" title="slimta.relay.pool.RelayPool"><tt class="xref py py-class docutils literal"><span class="pre">RelayPool</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>queue</strong> &#8211; The queue on which delivery requests will be received.</li>
+<li><strong>idle_timeout</strong> &#8211; If the client can handle multiple, pipelined delivery
+requests, this is the timeout in seconds that a client
+will wait for subsequent requests.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="slimta.relay.pool.RelayPoolClient.idle_timeout">
+<tt class="descname">idle_timeout</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient.idle_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>This attribute holds the idle timeout for handling multiple delivery
+requests on the client.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.relay.pool.RelayPoolClient.poll">
+<tt class="descname">poll</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient.poll" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method can be used by clients to receive new delivery requests
+from the client pool. This method will block until a delivery request
+is received.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple containing the <a class="reference external" href="http://gevent.org/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">AsyncResult</span></tt></a> and
+the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> that make up a
+delivery request. If no delivery requests are received before
+the <a class="reference internal" href="#slimta.relay.pool.RelayPoolClient.idle_timeout" title="slimta.relay.pool.RelayPoolClient.idle_timeout"><tt class="xref py py-attr docutils literal"><span class="pre">idle_timeout</span></tt></a> timeout, <tt class="docutils literal"><span class="pre">(None,</span> <span class="pre">None)</span></tt> is
+returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.relay.pool.RelayPoolClient._run">
+<tt class="descname">_run</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient._run" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method must be overriden by sub-classes to handle processing of
+delivery requests. It should call <a class="reference internal" href="#slimta.relay.pool.RelayPoolClient.poll" title="slimta.relay.pool.RelayPoolClient.poll"><tt class="xref py py-meth docutils literal"><span class="pre">poll()</span></tt></a> when it is ready for new
+delivery requests. The result of the delivery attempt should be written
+to the <a class="reference external" href="http://gevent.org/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">AsyncResult</span></tt></a> object provided in the
+request.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.relay.html"
+                        title="previous chapter">slimta.relay</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.relay.blackhole.html"
+                        title="next chapter">slimta.relay.blackhole</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.blackhole.html" title="slimta.relay.blackhole"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.html" title="slimta.relay"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li><a href="slimta.relay.html" >slimta.relay</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

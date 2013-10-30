@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.bounce &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta" href="slimta.html" />
+    <link rel="next" title="slimta.policy" href="slimta.policy.html" />
+    <link rel="prev" title="slimta.envelope" href="slimta.envelope.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.html" title="slimta.policy"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.envelope.html" title="slimta.envelope"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.bounce">
+<span id="slimta-bounce"></span><h1>slimta.bounce<a class="headerlink" href="#module-slimta.bounce" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="slimta.bounce.Bounce">
+<em class="property">class </em><tt class="descclassname">slimta.bounce.</tt><tt class="descname">Bounce</tt><big>(</big><em>envelope</em>, <em>reply</em>, <em>headers_only=False</em><big>)</big><a class="headerlink" href="#slimta.bounce.Bounce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">slimta.envelope.Envelope</span></tt></a></p>
+<p>Class that inherits <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> to implement a bounce message, which is
+then delivered back to the original sender to say the message failed to
+deliver.  The original message body is attached to the bounce message.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>envelope</strong> &#8211; The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> object of the original failed message.</li>
+<li><strong>reply</strong> &#8211; The <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> object that caused the failure.</li>
+<li><strong>headers_only</strong> &#8211; If given <tt class="docutils literal"><span class="pre">True</span></tt>, the bounce will include only the
+only the original message&#8217;s headers, not the entire
+message body.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="slimta.bounce.Bounce.sender">
+<tt class="descname">sender</tt><em class="property"> = ''</em><a class="headerlink" href="#slimta.bounce.Bounce.sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>The address to use as the sender of new bounce messages. Per SMTP RFCs,
+this should usually be an empty string.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.bounce.Bounce.header_template">
+<tt class="descname">header_template</tt><em class="property"> = 'From: MAILER-DAEMON\r\nTo: {sender}\r\nSubject: Undelivered Mail Returned to Sender\r\nAuto-Submitted: auto-replied\r\nMIME-Version: 1.0\r\nContent-Type: multipart/report; report-type=delivery-status;\r\n    boundary=&quot;{boundary}&quot;\r\nContent-Transfer-Encoding: 7bit\r\n\r\nThis is a multi-part message in MIME format.\r\n\r\n--{boundary}\r\nContent-Type: text/plain\r\n\r\nDelivery failed.\r\n\r\nDestination host responded:\r\n{code} {message}\r\n\r\n--{boundary}\r\nContent-Type: message/delivery-status\r\n\r\nRemote-MTA: dns; {client_name} [{client_ip}]\r\nDiagnostic-Code: {protocol}; {code} {message}\r\n\r\n--{boundary}\r\nContent-Type: message/rfc822\r\n\r\n'</em><a class="headerlink" href="#slimta.bounce.Bounce.header_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to use for the bounce message data, inserted directly before
+the original message data. The template is processed with
+<a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">str.format()</span></tt></a> with the following keys:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">boundary</span></tt> &#8211; A randomly generated MIME boundary string.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">sender</span></tt> &#8211; The sender of the original message.</p>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">client_name</span></tt> &#8211; The hostname of the original message sending</dt>
+<dd><p class="first last">client.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><tt class="docutils literal"><span class="pre">client_ip</span></tt> &#8211; The IP address of the original message sending</dt>
+<dd><p class="first last">client.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">protocol</span></tt> &#8211; The protocol used to deliver the original message.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">code</span></tt> &#8211; The SMTP reply code that caused the message failure.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">message</span></tt> &#8211; The SMTP reply message that caused the message failure.</p>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.bounce.Bounce.footer_template">
+<tt class="descname">footer_template</tt><em class="property"> = '\r\n--{boundary}--\r\n'</em><a class="headerlink" href="#slimta.bounce.Bounce.footer_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template used to add text below the original message data. This template
+is processed the same way as <tt class="docutils literal"><span class="pre">header_template</span></tt>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.bounce.Bounce.client">
+<tt class="descname">client</tt><em class="property"> = {'ip': '127.0.0.1', 'host': 'localhost', 'name': 'postmaster'}</em><a class="headerlink" href="#slimta.bounce.Bounce.client" title="Permalink to this definition">¶</a></dt>
+<dd><p>The client information used when sending bounce messages. Injected as
+the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.client" title="slimta.envelope.Envelope.client"><tt class="xref py py-attr docutils literal"><span class="pre">client</span></tt></a> attribute of bounce
+messages.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.bounce.Bounce.receiver">
+<tt class="descname">receiver</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.bounce.Bounce.receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>String injected as the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.receiver" title="slimta.envelope.Envelope.receiver"><tt class="xref py py-attr docutils literal"><span class="pre">receiver</span></tt></a>
+attribute of bounce messages. By default, this value is copied from the
+<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> itself.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.envelope.html"
+                        title="previous chapter">slimta.envelope</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.policy.html"
+                        title="next chapter">slimta.policy</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.html" title="slimta.policy"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.envelope.html" title="slimta.envelope"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

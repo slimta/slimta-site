@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring the Relays &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="Application Usage" href="slimta.html" />
+    <link rel="prev" title="Configuring the Queues" href="slimta.queues.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queues.html" title="Configuring the Queues"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">Application Usage</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-the-relays">
+<h1>Configuring the Relays<a class="headerlink" href="#configuring-the-relays" title="Permalink to this headline">¶</a></h1>
+<p>The last major section in <tt class="docutils literal"><span class="pre">slimta.conf</span></tt> is <tt class="docutils literal"><span class="pre">relay</span></tt>, where you set up the
+<a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> options for outbound message delivery. In the <tt class="docutils literal"><span class="pre">relay</span></tt> section, each
+key  provides an arbitrary, free-form name for the relay, and the value is a
+mapping with one required key:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">type</span></tt>: String</p>
+<p>Defines the type of relay. A known type must be given or an error will be
+thrown. The other keys in this mapping depend on the value of <tt class="docutils literal"><span class="pre">type</span></tt>.</p>
+</li>
+</ul>
+<div class="section" id="mx-and-static-relays">
+<h2><tt class="docutils literal"><span class="pre">mx</span></tt> and <tt class="docutils literal"><span class="pre">static</span></tt> Relays<a class="headerlink" href="#mx-and-static-relays" title="Permalink to this headline">¶</a></h2>
+<p>When configuring an <a class="reference external" href="http://en.wikipedia.org/wiki/Mail_submission_agent">MSA</a>, you generally want to accept all mail from
+authorized senders for delivery to the intended target. The fundamental design
+of email uses DNS MX records to allow domains to advertize the servers that will
+accept mail on its behalf. Other times, you might want to delivery <em>all</em> mail to
+a particular host, perhaps for spam or abuse prevention. Using the <tt class="docutils literal"><span class="pre">&quot;mx&quot;</span></tt> and
+<tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay types provide this behavior.</p>
+<p>Using the <tt class="docutils literal"><span class="pre">&quot;mx&quot;</span></tt> type produces an <a class="reference internal" href="../api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">MxSmtpRelay</span></tt></a>
+and the <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> type produces a
+<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></tt></a>. Both share several config
+options that can customize their behavior:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">connect_timeout</span></tt>: Integer</p>
+<p>Defines the time, in seconds, that the relay will allow for connection before
+failing. The default is 30 seconds.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">command_timeout</span></tt>: Integer</p>
+<p>Defines the time, in seconds, that the relay will wait for a response to each
+SMTP command before failing and disconnecting. The default is 30 seconds.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">data_timeout</span></tt>: Integer</p>
+<p>Defines the time, in seconds, that the relay will wait for message data to be
+accepted. This delay may be longer than most other commands, as the remote
+host will likely need time to spool the message. The default is 60 seconds.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">idle_timeout</span></tt>: Integer</p>
+<p>Unlike the other timeouts, this is the amount of time an outbound connection
+is left open <em>after</em> a message has been delivered. If a new message is to be
+delivered to the same host, the connection can be recycled. The default is
+10 seconds.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">concurrent_connections</span></tt>: Integer</p>
+<p>The maximum number of simultaneous connections to any given remote host. If
+this limit is reached, delivery of messages to that host will block until a
+space is freed. The default is 5 connections.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">ehlo_as</span></tt>: String</p>
+<p>This string is used as the <tt class="docutils literal"><span class="pre">EHLO</span></tt>/<tt class="docutils literal"><span class="pre">HELO</span></tt> string when handshaking with
+remote hosts. This setting should <em>never</em> be an IP address, <tt class="docutils literal"><span class="pre">&quot;localhost&quot;</span></tt>,
+or <tt class="docutils literal"><span class="pre">&quot;localdomain&quot;</span></tt>, as many email services will block these and list your
+IP on DNS blocklists. By default, the FQDN of the local machine is used.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tls</span></tt>: Dictionary</p>
+<p>This mapping, which takes the same keys as the keyword parameters to
+<a class="reference external" href="http://docs.python.org/library/ssl.html#ssl.wrap_socket" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">wrap_socket()</span></tt></a>, both enables and configures TLS encryption on this
+SMTP relay. By default, TLS is not enabled.</p>
+</li>
+</ul>
+<p>There are some additional options that apply <em>only</em> to <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay types.
+These options specify the permanent delivery address for all mail, and are as
+follows:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">host</span></tt>: String, required</p>
+<p>The host name or IP address of the destination for outbound mail delivery on
+the <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay type.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">port</span></tt>: Integer</p>
+<p>The port number to connect to on the destination server for outbound mail
+delivery on the <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay type.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="pipe-relays">
+<h2><tt class="docutils literal"><span class="pre">pipe</span></tt> Relays<a class="headerlink" href="#pipe-relays" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">&quot;pipe&quot;</span></tt> relay type mimcs the postfix <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe</a> daemon, which is a useful
+delivery mechanism for handing off a message to an external process by piping
+the message data to the process&#8217;s <em>stdin</em> stream. This relay type has the
+following configuration keys:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">args</span></tt>: List</p>
+<p>These are the arguments for the subprocess, similar to the <tt class="docutils literal"><span class="pre">args</span></tt> parameter
+to the <a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Popen</span></tt></a> constructor. This list may contain
+several macros, see the <a class="reference internal" href="../api/extra.piperelay.html#slimta.piperelay.PipeRelay" title="slimta.piperelay.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></tt></a> class constructor
+for more information.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">error_pattern</span></tt>: String</p>
+<p>This string defines a regular expression that parses an error message from the
+subprocess&#8217;s <em>stdout</em> or <em>stderr</em>, whichever matches.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="maildrop-relays">
+<h2><tt class="docutils literal"><span class="pre">maildrop</span></tt> Relays<a class="headerlink" href="#maildrop-relays" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">&quot;maildrop&quot;</span></tt> relay type enables message delivery to the local machine,
+using the <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier maildrop</a> application. The behavior of this relay is mostly
+configured externally using <tt class="docutils literal"><span class="pre">.mailfilter</span></tt> files, though it allows for one
+configuration key:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">path</span></tt>: String</p>
+<p>The path to the <tt class="docutils literal"><span class="pre">maildrop</span></tt> executable. By default, the <tt class="docutils literal"><span class="pre">$PATH</span></tt> environment
+variable is searched.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="dovecot-relays">
+<h2><tt class="docutils literal"><span class="pre">dovecot</span></tt> Relays<a class="headerlink" href="#dovecot-relays" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">&quot;dovecot&quot;</span></tt> relay type enables message delivery to the local machine,
+using the <a class="reference external" href="http://wiki.dovecot.org/LDA">LDA</a> agent included with <a class="reference external" href="http://www.dovecot.org/">dovecot</a>. The behavior of this relay is
+mostly configured within dovecot using Sieve or similar, though it allows for
+one configuration key:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">path</span></tt>: String</p>
+<p>The path to the <tt class="docutils literal"><span class="pre">dovecot-lda</span></tt> executable. By default, the <tt class="docutils literal"><span class="pre">$PATH</span></tt>
+environment variable is searched.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="http-relays">
+<h2><tt class="docutils literal"><span class="pre">http</span></tt> Relays<a class="headerlink" href="#http-relays" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">&quot;http&quot;</span></tt> relay type uses request headers to specify the information
+about the session and envelope normally given in SMTP commands, and the
+response code and headers to determine whether delivery was successful, or if
+it permanently or transiently failed.</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">url</span></tt>: String</p>
+<p>The URL string to POST messages to. This string determines the hostname,
+port, and path for the request. The <tt class="docutils literal"><span class="pre">http:</span></tt> or <tt class="docutils literal"><span class="pre">https:</span></tt> scheme is ignored
+in favor of the <tt class="docutils literal"><span class="pre">tls</span></tt> option below.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">ehlo_as</span></tt>: String</p>
+<p>Optional string passed as the <tt class="docutils literal"><span class="pre">X-Ehlo</span></tt> header in the request. If not given,
+the system FQDN is used.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">timeout</span></tt>: Number</p>
+<p>Timeout in seconds for the entire request and response, including connection
+time, before the delivery attempt transiently fails. Default is 60 seconds.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">idle_timeout</span></tt>: Number</p>
+<p>If given, connections are left open after a response is received, and another
+delivery is attempted before this timeout, the connection is recycled. By
+default, connections are closed immediately.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tls</span></tt>: Dictionary</p>
+<p>This mapping, which takes the same keys as the keyword parameters to
+<a class="reference external" href="http://docs.python.org/library/ssl.html#ssl.wrap_socket" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">wrap_socket()</span></tt></a>, both enables and configures TLS encryption on this
+HTTP relay. This means the server must be configured for HTTPS. By default,
+TLS is not enabled.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="blackhole-relays">
+<h2><tt class="docutils literal"><span class="pre">blackhole</span></tt> Relays<a class="headerlink" href="#blackhole-relays" title="Permalink to this headline">¶</a></h2>
+<p>This relay type considers every message delivered to it a successful delivery,
+but will take no actual action. This is really only useful for testing. No
+additional options are associated with this relay type.</p>
+</div>
+<div class="section" id="custom-relays">
+<h2><tt class="docutils literal"><span class="pre">custom</span></tt> Relays<a class="headerlink" href="#custom-relays" title="Permalink to this headline">¶</a></h2>
+<p>Only one additional key is required by the <tt class="docutils literal"><span class="pre">&quot;custom&quot;</span></tt> relay type:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">factory</span></tt>: String, required</p>
+<p>This is a string of the form <tt class="docutils literal"><span class="pre">package.module:symbol</span></tt>. The package and
+module portion are imported with <a class="reference external" href="http://docs.python.org/library/importlib.html#importlib.import_module" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">importlib.import_module()</span></tt></a>, and then
+the symbol is fetched from the loaded module with <a class="reference external" href="http://docs.python.org/library/functions.html#getattr" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">getattr()</span></tt></a>.</p>
+<p>The result of loading the symbol must be a function that takes one argument,
+the options object (that contains the <tt class="docutils literal"><span class="pre">type</span></tt> and <tt class="docutils literal"><span class="pre">factory</span></tt> keys as well
+as any others as necessary):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">relay_factory</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s">&#39;foo&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FooRelay</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">stuff</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">BarRelay</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">baz</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxlocaltoc">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring the Relays</a><ul>
+<li><a class="reference internal" href="#mx-and-static-relays"><tt class="docutils literal"><span class="pre">mx</span></tt> and <tt class="docutils literal"><span class="pre">static</span></tt> Relays</a></li>
+<li><a class="reference internal" href="#pipe-relays"><tt class="docutils literal"><span class="pre">pipe</span></tt> Relays</a></li>
+<li><a class="reference internal" href="#maildrop-relays"><tt class="docutils literal"><span class="pre">maildrop</span></tt> Relays</a></li>
+<li><a class="reference internal" href="#dovecot-relays"><tt class="docutils literal"><span class="pre">dovecot</span></tt> Relays</a></li>
+<li><a class="reference internal" href="#http-relays"><tt class="docutils literal"><span class="pre">http</span></tt> Relays</a></li>
+<li><a class="reference internal" href="#blackhole-relays"><tt class="docutils literal"><span class="pre">blackhole</span></tt> Relays</a></li>
+<li><a class="reference internal" href="#custom-relays"><tt class="docutils literal"><span class="pre">custom</span></tt> Relays</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.queues.html"
+                        title="previous chapter">Configuring the Queues</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queues.html" title="Configuring the Queues"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li><a href="slimta.html" >Application Usage</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

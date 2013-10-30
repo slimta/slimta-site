@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>slimta.logging &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="slimta" href="slimta.html" />
+    <link rel="next" title="slimta.logging.socket" href="slimta.logging.socket.html" />
+    <link rel="prev" title="slimta.policy.spamassassin" href="slimta.policy.spamassassin.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.socket.html" title="slimta.logging.socket"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.spamassassin.html" title="slimta.policy.spamassassin"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-slimta.logging">
+<span id="slimta-logging"></span><h1>slimta.logging<a class="headerlink" href="#module-slimta.logging" title="Permalink to this headline">¶</a></h1>
+<p>Utilities to make logging consistent and easy in <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><tt class="xref py py-mod docutils literal"><span class="pre">slimta</span></tt></a> packages.</p>
+<dl class="function">
+<dt id="slimta.logging.getSocketLogger">
+<tt class="descclassname">slimta.logging.</tt><tt class="descname">getSocketLogger</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#slimta.logging.getSocketLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the result of <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a> in a
+<tt class="xref py py-class docutils literal"><span class="pre">SocketLogger</span></tt> object to provide limited and consistent logging
+output for socket operations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; <tt class="docutils literal"><span class="pre">name</span></tt> as passed in to <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="slimta.logging.socket.html#slimta.logging.socket.SocketLogger" title="slimta.logging.socket.SocketLogger"><tt class="xref py py-class docutils literal"><span class="pre">SocketLogger</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="slimta.logging.getSubprocessLogger">
+<tt class="descclassname">slimta.logging.</tt><tt class="descname">getSubprocessLogger</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#slimta.logging.getSubprocessLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the result of <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a> in a
+<tt class="xref py py-class docutils literal"><span class="pre">SubprocessLogger</span></tt> object to provide limited and consistent
+logging output for subprocess operations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; <tt class="docutils literal"><span class="pre">name</span></tt> as passed in to <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="slimta.logging.subprocess.html#slimta.logging.subprocess.SubprocessLogger" title="slimta.logging.subprocess.SubprocessLogger"><tt class="xref py py-class docutils literal"><span class="pre">SubprocessLogger</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="slimta.logging.getQueueStorageLogger">
+<tt class="descclassname">slimta.logging.</tt><tt class="descname">getQueueStorageLogger</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#slimta.logging.getQueueStorageLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the result of <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a> in a
+<tt class="xref py py-class docutils literal"><span class="pre">QueueStorageLogger</span></tt> object to provide limited and consistent
+logging output for <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> operations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; <tt class="docutils literal"><span class="pre">name</span></tt> as passed in to <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="slimta.logging.queuestorage.html#slimta.logging.queuestorage.QueueStorageLogger" title="slimta.logging.queuestorage.QueueStorageLogger"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorageLogger</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="slimta.logging.getHttpLogger">
+<tt class="descclassname">slimta.logging.</tt><tt class="descname">getHttpLogger</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#slimta.logging.getHttpLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps the result of <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a> in a
+<tt class="xref py py-class docutils literal"><span class="pre">HttpLogger</span></tt> object to provide limited and consistent logging output
+for WSGI-style requests and responses and other HTTP-related logs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; <tt class="docutils literal"><span class="pre">name</span></tt> as passed in to <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="slimta.logging.http.html#slimta.logging.http.HttpLogger" title="slimta.logging.http.HttpLogger"><tt class="xref py py-class docutils literal"><span class="pre">HttpLogger</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="slimta.logging.log_exception">
+<tt class="descclassname">slimta.logging.</tt><tt class="descname">log_exception</tt><big>(</big><em>name</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#slimta.logging.log_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs an exception, along with relevant information such as message,
+traceback, and anything provided pertinent to the situation. This function
+does nothing unless called while an exception is being handled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; <tt class="docutils literal"><span class="pre">name</span></tt> as passed in to <a class="reference external" href="http://docs.python.org/library/logging.html#logging.getLogger" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">logging.getLogger()</span></tt></a>.</li>
+<li><strong>kwargs</strong> &#8211; Other keywords may be passed in and will be included in the
+produced log line.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<hr class="docutils" />
+<p><strong>Sub-Modules:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slimta.logging.socket.html">slimta.logging.socket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.logging.http.html">slimta.logging.http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.logging.subprocess.html">slimta.logging.subprocess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.logging.queuestorage.html">slimta.logging.queuestorage</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.policy.spamassassin.html"
+                        title="previous chapter">slimta.policy.spamassassin</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.logging.socket.html"
+                        title="next chapter">slimta.logging.socket</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.socket.html" title="slimta.logging.socket"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.spamassassin.html" title="slimta.policy.spamassassin"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li><a href="slimta.html" >slimta</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>

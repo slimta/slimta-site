@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring the Queues &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="Application Usage" href="slimta.html" />
+    <link rel="next" title="Configuring the Relays" href="slimta.relays.html" />
+    <link rel="prev" title="Configuring the Edges" href="slimta.edges.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relays.html" title="Configuring the Relays"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edges.html" title="Configuring the Edges"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li><a href="slimta.html" accesskey="U">Application Usage</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-the-queues">
+<h1>Configuring the Queues<a class="headerlink" href="#configuring-the-queues" title="Permalink to this headline">¶</a></h1>
+<p>With the mail queue being the heart of an MTA, the <tt class="docutils literal"><span class="pre">queue</span></tt> section of
+<tt class="docutils literal"><span class="pre">slimta.conf</span></tt> is both important and highly customizable. It also introduces
+the possibility of using the <tt class="docutils literal"><span class="pre">slimta-worker</span></tt> executable for some queue types.
+In the <tt class="docutils literal"><span class="pre">queue</span></tt> section, each key provides an arbitrary, free-form name for
+the queue. The sub-section for each key has two required settings:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">type</span></tt>: String, required</p>
+<p>Defines the type of queue. A known type must be given or an error will be
+thrown. The other keys in this mapping depend on the value of <tt class="docutils literal"><span class="pre">type</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">relay</span></tt>: String, required</p>
+<p>Delivery attempts of messages in the queue are passed to this relay. The value
+is a name, which must correspond to a key in the top-level <tt class="docutils literal"><span class="pre">relay</span></tt> section.</p>
+</li>
+</ul>
+<div class="section" id="queue-policy-settings">
+<h2>Queue Policy Settings<a class="headerlink" href="#queue-policy-settings" title="Permalink to this headline">¶</a></h2>
+<p>On entry into the queue, there are several <a class="reference internal" href="policies.html"><em>Policy Implementation</em></a> that can be applied
+to a message. To configure them, there is an additional, optional key available
+in a <tt class="docutils literal"><span class="pre">queue</span></tt> sub-section:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">policies</span></tt>: List</p>
+<p>Each entry in this list is a dictionary with a <tt class="docutils literal"><span class="pre">type</span></tt> field. Check out the
+<a class="reference internal" href="policies.html"><em>Policy Implementation</em></a> page for more information about each type:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">add_date_header</span></tt>: Adds the <tt class="docutils literal"><span class="pre">Date:</span></tt> header to the message.</li>
+<li><tt class="docutils literal"><span class="pre">add_message_id_header</span></tt>: Adds the <tt class="docutils literal"><span class="pre">Message-Id:</span></tt> header to the message.</li>
+<li><tt class="docutils literal"><span class="pre">add_received_header</span></tt>: Adds a <tt class="docutils literal"><span class="pre">Received:</span></tt> header to the message.</li>
+<li><tt class="docutils literal"><span class="pre">recipient_split</span></tt>: Forks the message so that for each recipient there is
+a deep copy of the original message.</li>
+<li><tt class="docutils literal"><span class="pre">recipient_domain_split</span></tt>: Forks the message so that for each unique domain
+in the message recipients there is a deep copy of the original message with
+the recipients for that domain.</li>
+<li><tt class="docutils literal"><span class="pre">forward</span></tt>: Rewrites recipients using regular expressions. Along with the
+<tt class="docutils literal"><span class="pre">type</span></tt> key, there is a <tt class="docutils literal"><span class="pre">mapping</span></tt> key which is a dictionary of
+replacement rules where each key is a regular expression pattern and the
+value is string to replace the pattern match with.</li>
+<li><tt class="docutils literal"><span class="pre">spamassassin</span></tt>: Queries a SpamAssassin server to check if the message is
+considered spam, adding headers to the message with the results.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="delivery-retry-behavior">
+<h2>Delivery Retry Behavior<a class="headerlink" href="#delivery-retry-behavior" title="Permalink to this headline">¶</a></h2>
+<p>Additionally, every <tt class="docutils literal"><span class="pre">queue</span></tt> type (<em>except</em> for <tt class="docutils literal"><span class="pre">&quot;custom&quot;</span></tt> and <tt class="docutils literal"><span class="pre">&quot;proxy&quot;</span></tt>)
+honors the ability to configure message retrying with the following
+configuration settings:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">retry</span></tt>: Dictionary</p>
+<p>If this dictionary is <em>not</em> given, messages are never retried. This dictionary
+has two keys, <tt class="docutils literal"><span class="pre">delay</span></tt> and <tt class="docutils literal"><span class="pre">maximum</span></tt>:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">delay</span></tt>: String</p>
+<p>Defines an mathematic expression whose result is used as the number of
+seconds to delay between each delivery attempt of a message.  The string
+allows arithmetic operators and the use of any functions in the <a class="reference external" href="http://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
+module (without the <tt class="docutils literal"><span class="pre">math.</span></tt> prefix). The variable <tt class="docutils literal"><span class="pre">x</span></tt> may be used in the
+expression, and will be replaced with the number of delivery attempts the
+message has undergone.</p>
+<p>For example, passing the string <tt class="docutils literal"><span class="pre">&quot;300*x&quot;</span></tt> will start the delay at five
+minutes, and increase the delay by an additional five minutes for each
+attempt on the message.</p>
+<p>The default value of this setting is <tt class="docutils literal"><span class="pre">&quot;300&quot;</span></tt>, which results in messages
+being retried every five minutes until the maximum number of attempts has
+been reached.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">maximum</span></tt>: Integer</p>
+<p>Defines the maximum number of retries before a message is failed. If this
+value is not given, messages are never retried.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="memory-queues">
+<h2><tt class="docutils literal"><span class="pre">memory</span></tt> Queues<a class="headerlink" href="#memory-queues" title="Permalink to this headline">¶</a></h2>
+<p>With this queue type, all queued messages and their metadata reside in memory.
+While this is fast and easy to setup, it is <em>not</em> safe for production usage, and
+can easily result in loss of mail. The <tt class="docutils literal"><span class="pre">&quot;memory&quot;</span></tt> queue type does not have any
+additional settings.</p>
+</div>
+<div class="section" id="disk-queues">
+<h2><tt class="docutils literal"><span class="pre">disk</span></tt> Queues<a class="headerlink" href="#disk-queues" title="Permalink to this headline">¶</a></h2>
+<p>With this queue type, messages and their metadata are spooled to disk before
+acceptance. This queue type requires three directories, which are configured
+with the following keys:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tmp_dir</span></tt>: String</p>
+<p>This directory is used as scratch space so that files can be created and
+written before being moved to their final destination. This allows for the use
+of the atomic <a class="reference external" href="http://docs.python.org/library/os.html#os.rename" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">os.rename()</span></tt></a> operation, to help prevent data corruption. By
+default, the OS-specific temporary directory is used.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">envelope_dir</span></tt>: String, required</p>
+<p>In this directory, the message contents and envelope information are written
+to files that use the <tt class="docutils literal"><span class="pre">.env</span></tt> suffix in a Python <a class="reference external" href="http://docs.python.org/library/pickle.html#module-pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> format.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">meta_dir</span></tt>: String, required</p>
+<p>In this directory, the message metadata is kept in files that end in
+<tt class="docutils literal"><span class="pre">.meta</span></tt>. This information is primarily related to the delivery of the
+message, including how many attempts it has undergone, and is kept separately
+so that it can be written to often.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="redis-queues">
+<h2><tt class="docutils literal"><span class="pre">redis</span></tt> Queues<a class="headerlink" href="#redis-queues" title="Permalink to this headline">¶</a></h2>
+<p>With this queue type, messages and their metadata are stored as a hash in a
+local or remote redis instance. Additionally, a queue is maintained in redis of
+pending new message IDs, meaning this mechanism can receive and deliver messages
+across processes. This queue type is configured with the following keys:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">host</span></tt>: String</p>
+<p>This is the hostname of the redis instance to connect to and use as queue
+storage. By default, <tt class="docutils literal"><span class="pre">localhost</span></tt> is used.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">port</span></tt>: Integer</p>
+<p>This is the port to connect to on the redis instance. By default, <tt class="docutils literal"><span class="pre">6379</span></tt> is
+used.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">db</span></tt>: Integer</p>
+<p>Upon connection, this is the database number to <a class="reference external" href="http://redis.io/commands/select">SELECT</a> before doing anything
+else. By default, <tt class="docutils literal"><span class="pre">0</span></tt> is used.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">password</span></tt>: String</p>
+<p>If given, the <a class="reference external" href="http://redis.io/commands/auth">AUTH</a> command is called with this string before doing anything
+else with the connection.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">prefix</span></tt>: String</p>
+<p>This string is prefixed to every key created by the redis storage engine. This
+can be used to isolate keys from others in the system, to allow for multiple
+redis storage engines to run in the same database, or just to make keys more
+recognizable. By default, <tt class="docutils literal"><span class="pre">slimta:</span></tt> is used.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="proxy-queues">
+<h2><tt class="docutils literal"><span class="pre">proxy</span></tt> Queues<a class="headerlink" href="#proxy-queues" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">&quot;proxy&quot;</span></tt> queue type is not a queue at all, but rather a method of
+bypassing the queue step and immediately attempting message delivery. If
+delivery fails, the client gets immediate feedback from the edge service. There
+are no additional configuration settings for this queue type.</p>
+</div>
+<div class="section" id="celery-queues">
+<h2><tt class="docutils literal"><span class="pre">celery</span></tt> Queues<a class="headerlink" href="#celery-queues" title="Permalink to this headline">¶</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queue type takes advantage of the <a class="reference external" href="http://celeryproject.org/">Celery Project</a> to offload
+most queuing logic. Essentially, on reception, a message is written to a
+broker such as RabbitMQ or Redis, and the client is immediately notified that
+the message was accepted. A separate process is configured to pull messages from
+the broker when they are ready for delivery.</p>
+<p>Unlike other queue types, the <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queue type requires you to run
+a separate process alongside <tt class="docutils literal"><span class="pre">slimta</span></tt>:</p>
+<div class="highlight-python"><pre>$ slimta
+$ slimta-worker</pre>
+</div>
+<p>However, as long as these two processes are configured the same and consume the
+same broker service, you now have the advantage of being able to receive
+messages (with an edge service) and delivery them (with a relay service) on two
+totally different machines.</p>
+<p>No additional config settings are necessary inside the <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queue sub-
+section. However, there is a required, top-level section that is shared among
+all <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queues:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">celery_app</span></tt>: Dictionary</p>
+<p>This section contains all the key-value pairs normally placed in a
+<tt class="docutils literal"><span class="pre">celeryconfig.py</span></tt> module. For example, to specify the broker and backend
+URLs:</p>
+<div class="highlight-python"><pre>celery_app: {
+  BROKER_URL: 'redis://'
+  BACKEND_URL: 'redis://'
+}</pre>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="custom-queues">
+<h2><tt class="docutils literal"><span class="pre">custom</span></tt> Queues<a class="headerlink" href="#custom-queues" title="Permalink to this headline">¶</a></h2>
+<p>Only one additional key is required by the <tt class="docutils literal"><span class="pre">&quot;custom&quot;</span></tt> queue type:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">factory</span></tt>: String, required</p>
+<p>This is a string of the form <tt class="docutils literal"><span class="pre">package.module:symbol</span></tt>. The package and
+module portion are imported with <a class="reference external" href="http://docs.python.org/library/importlib.html#importlib.import_module" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">importlib.import_module()</span></tt></a>, and then
+the symbol is fetched from the loaded module with <a class="reference external" href="http://docs.python.org/library/functions.html#getattr" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">getattr()</span></tt></a>.</p>
+<p>The result of loading the symbol must be a function that takes two arguments,
+the options object (that contains the <tt class="docutils literal"><span class="pre">type</span></tt>, <tt class="docutils literal"><span class="pre">relay</span></tt>, and <tt class="docutils literal"><span class="pre">factory</span></tt>
+keys as well as any others as necessary) and the <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> object that the queue
+should use for message delivery:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">queue_factory</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">relay</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s">&#39;foo&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FooQueue</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">stuff</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">BarQueue</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">baz</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxlocaltoc">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring the Queues</a><ul>
+<li><a class="reference internal" href="#queue-policy-settings">Queue Policy Settings</a></li>
+<li><a class="reference internal" href="#delivery-retry-behavior">Delivery Retry Behavior</a></li>
+<li><a class="reference internal" href="#memory-queues"><tt class="docutils literal"><span class="pre">memory</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#disk-queues"><tt class="docutils literal"><span class="pre">disk</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#redis-queues"><tt class="docutils literal"><span class="pre">redis</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#proxy-queues"><tt class="docutils literal"><span class="pre">proxy</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#celery-queues"><tt class="docutils literal"><span class="pre">celery</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#custom-queues"><tt class="docutils literal"><span class="pre">custom</span></tt> Queues</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slimta.edges.html"
+                        title="previous chapter">Configuring the Edges</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slimta.relays.html"
+                        title="next chapter">Configuring the Relays</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relays.html" title="Configuring the Relays"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edges.html" title="Configuring the Edges"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li><a href="slimta.html" >Application Usage</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
