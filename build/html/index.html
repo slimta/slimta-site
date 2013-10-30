@@ -29,7 +29,7 @@
     <script type="text/javascript" src="_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
     <link rel="top" title="slimta 0.3.15 documentation" href="#" />
-    <link rel="next" title="API Reference" href="api.html" /> 
+    <link rel="next" title="MIT License" href="license.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -45,7 +45,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="api.html" title="API Reference"
+          <a href="license.html" title="MIT License"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
     <li><a href="#">slimta 0.3.15 documentation</a> &raquo;</li>
  
@@ -63,12 +63,131 @@
 <h1>slimta: Mail Transfer Library<a class="headerlink" href="#slimta-mail-transfer-library" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="api-reference">
-<h2><a class="reference internal" href="api.html"><em>API Reference</em></a><a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<p>The <em>slimta</em> suite was created to be provide MTA that takes advantage of new
+technologies and methodologies to scale horizontally in a virtualized
+environment. Along with that, <em>slimta</em> is designed to work either as a
+traditional application or as a software platform that is developed on top of.</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="license.html"><em>MIT License</em></a></li>
+<li><a class="reference internal" href="manual.html"><em>Usage Manual</em></a></li>
+<li><a class="reference external" href="http://ci.slimta.org/">Continuous Integration</a> <img alt="buildstatus" src="http://ci.slimta.org/job/python-slimta/badge/icon" /></li>
+<li>IRC Channel: <a class="reference external" href="http://webchat.freenode.net/?channels=%23slimta">#slimta</a> on Freenode.</li>
+</ol>
+<div class="html-toggle section" id="python-library">
+<h2>Python Library<a class="headerlink" href="#python-library" title="Permalink to this headline">¶</a></h2>
+<p>The <em>python-slimta</em> project is a Python library offering the building blocks
+necessary to create a full-featured <a class="reference external" href="http://en.wikipedia.org/wiki/Message_transfer_agent">MTA</a>. Most MTAs must be configured, but an
+MTA built with <em>python-slimta</em> is coded. An MTA built with <em>python-slimta</em> can
+incorporate any protocol or policy &#8211; custom or built-in. An MTA built with
+<em>python-slimta</em> can integrate with other Python libraries and take advantage of
+Python&#8217;s great community.</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://github.com/slimta/python-slimta/blob/master/README.md">README</a></li>
+<li><a class="reference external" href="https://github.com/slimta/python-slimta/tags">Download</a> [<a class="reference external" href="https://github.com/slimta/python-slimta">Repository</a>]</li>
+<li><a class="reference external" href="https://github.com/slimta/python-slimta/issues">Bug Reports</a></li>
+<li><a class="reference external" href="https://github.com/slimta/python-slimta/blob/master/README.md#getting-started">Installation</a></li>
+<li><a class="reference internal" href="api.html"><em>Complete API Reference</em></a></li>
+<li><a class="reference internal" href="api/extra.html"><em>Extensions</em></a></li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">shelve</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
+<span class="kn">from</span> <span class="nn">slimta.queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+<span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="kn">import</span> <span class="n">DictStorage</span>
+<span class="kn">from</span> <span class="nn">slimta.relay.smtp.mx</span> <span class="kn">import</span> <span class="n">MxSmtpRelay</span>
+<span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">slimta.policy.split</span> <span class="kn">import</span> <span class="n">RecipientDomainSplit</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="c"># Set up outbound delivery by MX lookup.</span>
+<span class="n">relay</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">()</span>
+
+<span class="c"># Set up local queue storage to berkeley database files.</span>
+<span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;envelope.db&#39;</span><span class="p">)</span>
+<span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;meta.db&#39;</span><span class="p">)</span>
+<span class="n">queue_storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">(</span><span class="n">env_db</span><span class="p">,</span> <span class="n">meta_db</span><span class="p">)</span>
+<span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">(</span><span class="n">queue_storage</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c"># Ensure necessary headers are added.</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddDateHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddReceivedHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">RecipientDomainSplit</span><span class="p">())</span>
+
+<span class="c"># Listen for messages on port 25.</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
+<span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">edge</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">print</span>
+</pre></div>
 </div>
-<div class="section" id="usage-manual">
-<h2><a class="reference internal" href="manual.html"><em>Usage Manual</em></a><a class="headerlink" href="#usage-manual" title="Permalink to this headline">¶</a></h2>
-<br/><br/></div>
+</div>
+<div class="html-toggle section" id="traditional-application">
+<h2>Traditional Application<a class="headerlink" href="#traditional-application" title="Permalink to this headline">¶</a></h2>
+<p>The <em>slimta</em> project is a traditional application built on top of the
+<em>python-slimta</em> library. It allows a more &#8220;out-of-the-box&#8221; <a class="reference external" href="http://en.wikipedia.org/wiki/Message_transfer_agent">MTA</a> that offers all
+the useful, built-in features needed for a normal mail system setup.</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://github.com/slimta/slimta/blob/master/README.md">README</a></li>
+<li><a class="reference external" href="https://github.com/slimta/slimta/tags">Download</a> [<a class="reference external" href="https://github.com/slimta/slimta">Repository</a>]</li>
+<li><a class="reference external" href="https://github.com/slimta/slimta/issues">Bug Reports</a></li>
+<li><a class="reference internal" href="manual/slimta.html"><em>Configuration and Setup Guide</em></a></li>
+</ol>
+<div class="highlight-none"><div class="highlight"><pre>process: {
+  slimta: {
+    daemon: False
+  }
+}
+
+tls: {
+  main: {
+    certfile: &#39;/path/to/cert.pem&#39;
+    keyfile: &#39;/path/to/key.pem&#39;
+  }
+}
+
+rules: @&quot;rules.conf&quot;
+
+edge: {
+  outbound: {
+    type: smtp
+    queue: outbound
+    listener: {
+      interface: &#39;127.0.0.1&#39;
+      port: 587
+    }
+    tls: $tls.main
+    rules: $rules.outbound
+  }
+}
+
+queue: {
+  outbound: {
+    type: memory
+    relay: outbound
+    policies: [
+      { type: add_date_header }
+      { type: add_messageid_header }
+      { type: add_received_header }
+      { type: recipient_domain_split }
+    ]
+  }
+}
+
+relay: {
+  outbound: {
+    type: mx
+    tls: $tls.main
+  }
+}
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -84,16 +203,16 @@
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">slimta: Mail Transfer Library</a><ul>
-<li><a class="reference internal" href="#api-reference"><tt class="docutils literal"><span class="pre">API</span> <span class="pre">Reference</span></tt></a></li>
-<li><a class="reference internal" href="#usage-manual"><tt class="docutils literal"><span class="pre">Usage</span> <span class="pre">Manual</span></tt></a></li>
+<li><a class="reference internal" href="#python-library">Python Library</a></li>
+<li><a class="reference internal" href="#traditional-application">Traditional Application</a></li>
 </ul>
 </li>
 </ul>
 
   </div>
   <h4>Next topic</h4>
-  <p class="topless"><a href="api.html"
-                        title="next chapter">API Reference</a></p>
+  <p class="topless"><a href="license.html"
+                        title="next chapter">MIT License</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -123,7 +242,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="api.html" title="API Reference"
+          <a href="license.html" title="MIT License"
              >next</a> &nbsp; &nbsp;</li>
     <li><a href="#">slimta 0.3.15 documentation</a> &raquo;</li>
  
