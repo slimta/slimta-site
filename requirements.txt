@@ -1,0 +1,10 @@
+sphinx
+cloud_sptheme
+-e git+git@github.com:slimta/python-slimta.git@master#egg=python_slimta-dev
+-e git+git@github.com:slimta/python-slimta-celeryqueue.git@master#egg=python_slimta_celeryqueue-dev
+-e git+git@github.com:slimta/python-slimta-diskstorage.git@master#egg=python_slimta_diskstorage-dev
+-e git+git@github.com:slimta/python-slimta-piperelay.git@master#egg=python_slimta_piperelay-dev
+-e git+git@github.com:slimta/python-slimta-spf.git@master#egg=python_slimta_spf-dev
+-e git+git@github.com:slimta/python-slimta-redisstorage.git@master#egg=python_slimta_redisstorage-dev
+-e git+git@github.com:slimta/python-slimta-lists.git@master#egg=python_slimta_lists-dev
+-e git+git@github.com:slimta/slimta.git@master#egg=slimta-dev
