@@ -1,8 +1,8 @@
 
 .. include:: /global.rst
 
-slimta Terminology
-==================
+Terminology
+===========
 
 To get started working with |slimta|, there are a few terms to know. Someone
 familiar with SMTP and email servers will recognize many of them.

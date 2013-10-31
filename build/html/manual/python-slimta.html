@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Python Library Usage &mdash; slimta 0.3.15 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.3.15',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="top" title="slimta 0.3.15 documentation" href="../index.html" />
+    <link rel="up" title="Usage Manual" href="../manual.html" />
+    <link rel="next" title="Terminology" href="terminology.html" />
+    <link rel="prev" title="Terminology" href="terminology.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="relbar-top">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="terminology.html" title="Terminology"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="terminology.html" title="Terminology"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" accesskey="U">Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="python-library-usage">
+<h1>Python Library Usage<a class="headerlink" href="#python-library-usage" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The <a class="reference internal" href="../api.html"><em>API Reference</em></a> provides great information on how to use each piece of the
+<em>python-slimta</em> library, but it rarely helps decide when and how to put the
+pieces together. These pages describe the components of a <em>python-slimta</em>
+application, with examples, to help construct your own personalized MTA.</p>
+<p>For example, once you&#8217;ve read about the <a class="reference internal" href="edge.html#edge-smtp"><em>SMTP edge service</em></a>
+and decided it&#8217;s what you want, you can use the
+<a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><tt class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></tt></a> reference page for details on exactly what
+arguments it takes and what they mean.</p>
+<ul class="simple">
+<li><a class="reference internal" href="system.html"><em>System Helpers</em></a></li>
+<li><a class="reference internal" href="envelopes.html"><em>Envelope Objects</em></a><ul>
+<li><a class="reference internal" href="envelopes.html#envelope-bounces"><em>Bounces</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="edge.html"><em>Edge Services</em></a><ul>
+<li><a class="reference internal" href="edge.html#edge-smtp"><em>SMTP</em></a></li>
+<li><a class="reference internal" href="edge.html#edge-http"><em>HTTP</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="queue.html"><em>Queue Services</em></a></li>
+<li><a class="reference internal" href="relay.html"><em>Relay Services</em></a><ul>
+<li><a class="reference internal" href="relay.html#relay-smtp-smarthost"><em>SMTP Smart-Hosting</em></a></li>
+<li><a class="reference internal" href="relay.html#relay-smtp-mx"><em>SMTP MX</em></a></li>
+<li><a class="reference internal" href="relay.html#relay-maildrop"><em>Maildrop</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="policies.html"><em>Policy Implementation</em></a><ul>
+<li><a class="reference internal" href="policies.html#policy-add-date-header"><em>Date Header</em></a></li>
+<li><a class="reference internal" href="policies.html#policy-add-message-id-header"><em>Message-Id Header</em></a></li>
+<li><a class="reference internal" href="policies.html#policy-add-received-header"><em>Received Header</em></a></li>
+<li><a class="reference internal" href="policies.html#policy-forwarding"><em>Recipient Forwarding</em></a></li>
+<li><a class="reference internal" href="policies.html#policy-spamassassin"><em>SpamAssassin</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="integrating.html"><em>Integrating Everything</em></a><ul>
+<li><a class="reference internal" href="mda.html"><em>Mail Delivery Agent</em></a></li>
+<li><a class="reference internal" href="msa.html"><em>Mail Submission Agent</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="extensions.html"><em>Extensions</em></a><ul>
+<li><a class="reference internal" href="extensions.html#pipe-relay"><em>External Process Delivery</em></a></li>
+<li><a class="reference internal" href="extensions.html#disk-storage"><em>Disk Storage</em></a></li>
+<li><a class="reference internal" href="extensions.html#redis-storage"><em>Redis Storage</em></a></li>
+<li><a class="reference internal" href="extensions.html#celery-queue"><em>Celery Queuing</em></a></li>
+<li><a class="reference internal" href="extensions.html#enforce-spf"><em>Sender Policy Framework (SPF)</em></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="terminology.html"
+                        title="previous chapter">Terminology</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="terminology.html"
+                        title="next chapter">Terminology</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="terminology.html" title="Terminology"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="terminology.html" title="Terminology"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 0.3.15 documentation</a> &raquo;</li>
+
+          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+  </body>
+</html>
