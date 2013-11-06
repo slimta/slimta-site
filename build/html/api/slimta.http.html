@@ -75,46 +75,48 @@ re-implementation that ships in <a class="reference external" href="http://geven
 similar interface to other slimta libraries that use SSL/TLS.</p>
 <dl class="class">
 <dt id="slimta.http.HTTPConnection">
-<em class="property">class </em><tt class="descclassname">slimta.http.</tt><tt class="descname">HTTPConnection</tt><big>(</big><em>...</em><big>)</big><a class="headerlink" href="#slimta.http.HTTPConnection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.http.</tt><tt class="descname">HTTPConnection</tt><big>(</big><em>host</em><span class="optional">[</span>, <em>port</em><span class="optional">[</span>, <em>strict</em><span class="optional">[</span>, <em>timeout</em><span class="optional">[</span>, <em>source_address</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.http.HTTPConnection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modified version of the <a class="reference external" href="http://docs.python.org/library/httplib.html#httplib.HTTPConnection" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">httplib.HTTPConnection</span></tt></a> class that
 uses gevent sockets. This attempts to avoid the complete re-implementation
 that ships in <a class="reference external" href="http://gevent.org/gevent.httplib.html#module-gevent.httplib" title="(in gevent v0.13.8)"><tt class="xref py py-mod docutils literal"><span class="pre">gevent.httplib</span></tt></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>...</strong> &#8211; Arguments as passed in to <a class="reference external" href="http://docs.python.org/library/httplib.html#httplib.HTTPConnection" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">HTTPConnection</span></tt></a>.</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="class">
 <dt id="slimta.http.HTTPSConnection">
-<em class="property">class </em><tt class="descclassname">slimta.http.</tt><tt class="descname">HTTPSConnection</tt><big>(</big><em>...</em><span class="optional">[</span>, <em>tls</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.http.HTTPSConnection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.http.</tt><tt class="descname">HTTPSConnection</tt><big>(</big><em>host</em><span class="optional">[</span>, <em>port</em><span class="optional">[</span>, <em>tls</em><span class="optional">[</span>, <em>strict</em><span class="optional">[</span>, <em>timeout</em><span class="optional">[</span>, <em>source_address</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.http.HTTPSConnection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modified version of the <a class="reference external" href="http://docs.python.org/library/httplib.html#httplib.HTTPSConnection" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">httplib.HTTPSConnection</span></tt></a> class that
 uses gevent sockets and the more functional <tt class="docutils literal"><span class="pre">tls</span></tt> parameter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>...</strong> &#8211; Arguments as passed in to <a class="reference external" href="http://docs.python.org/library/httplib.html#httplib.HTTPConnection" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">HTTPConnection</span></tt></a>.</li>
-<li><strong>tls</strong> &#8211; This keyword argument contains the keyword arguments passed
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tls</strong> &#8211; This keyword argument contains the keyword arguments passed
 into <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">SSLSocket</span></tt></a> when the connection is
-encrypted.</li>
-</ul>
-</td>
+encrypted.</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<dl class="exception">
-<dt id="slimta.http.HttpError">
-<em class="property">exception </em><tt class="descclassname">slimta.http.</tt><tt class="descname">HttpError</tt><a class="headerlink" href="#slimta.http.HttpError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">slimta.core.SlimtaError</span></tt></p>
-<p>Base exception for all custom HTTP exceptions.</p>
+<dl class="function">
+<dt id="slimta.http.get_connection">
+<tt class="descclassname">slimta.http.</tt><tt class="descname">get_connection</tt><big>(</big><em>url</em>, <em>tls=None</em><big>)</big><a class="headerlink" href="#slimta.http.get_connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>This convenience functions returns a <a class="reference internal" href="#slimta.http.HTTPConnection" title="slimta.http.HTTPConnection"><tt class="xref py py-class docutils literal"><span class="pre">HTTPConnection</span></tt></a> or
+<a class="reference internal" href="#slimta.http.HTTPSConnection" title="slimta.http.HTTPSConnection"><tt class="xref py py-class docutils literal"><span class="pre">HTTPSConnection</span></tt></a> based on the information contained in URL.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>url</strong> &#8211; URL string to create a connection for. Alternatively, passing in
+the results of <a class="reference external" href="http://docs.python.org/library/urlparse.html#urlparse.urlsplit" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">urlparse.urlsplit()</span></tt></a> works as well.</li>
+<li><strong>tls</strong> &#8211; When the URL scheme is <tt class="docutils literal"><span class="pre">https</span></tt>, this is passed in as the
+<tt class="docutils literal"><span class="pre">tls</span></tt> parameter to <a class="reference internal" href="#slimta.http.HTTPSConnection" title="slimta.http.HTTPSConnection"><tt class="xref py py-class docutils literal"><span class="pre">HTTPSConnection</span></tt></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <hr class="docutils" />
