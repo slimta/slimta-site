@@ -9,8 +9,8 @@ slimta.http
    :show-inheritance:
    :exclude-members: HTTPConnection, HTTPSConnection
 
-   .. autoclass:: HTTPConnection(...)
-   .. autoclass:: HTTPSConnection(...[, tls])
+   .. autoclass:: HTTPConnection(host[, port[, strict[, timeout[, source_address]]]])
+   .. autoclass:: HTTPSConnection(host[, port[, tls[, strict[, timeout[, source_address]]]]])
 
 -------------------
 
