@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.redisstorage &mdash; slimta 0.3.18 documentation</title>
+    <title>slimta.cloudstorage &mdash; slimta 0.3.18 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="top" title="slimta 0.3.18 documentation" href="../index.html" />
     <link rel="up" title="Available Extensions" href="extra.html" />
-    <link rel="next" title="slimta.piperelay" href="extra.piperelay.html" />
-    <link rel="prev" title="slimta.cloudstorage.aws" href="extra.cloudstorage.aws.html" /> 
+    <link rel="next" title="slimta.cloudstorage.rackspace" href="extra.cloudstorage.rackspace.html" />
+    <link rel="prev" title="slimta.diskstorage" href="extra.diskstorage.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -47,10 +47,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.piperelay.html" title="slimta.piperelay"
+          <a href="extra.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.aws.html" title="slimta.cloudstorage.aws"
+          <a href="extra.diskstorage.html" title="slimta.diskstorage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
 
@@ -66,30 +66,39 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="slimta-redisstorage">
-<h1>slimta.redisstorage<a class="headerlink" href="#slimta-redisstorage" title="Permalink to this headline">¶</a></h1>
-<p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-redisstorage</span></tt> extension
+  <div class="section" id="slimta-cloudstorage">
+<h1>slimta.cloudstorage<a class="headerlink" href="#slimta-cloudstorage" title="Permalink to this headline">¶</a></h1>
+<p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-cloudstorage</span></tt> extension
 package.</p>
-<span class="target" id="module-slimta.redisstorage"></span><p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><tt class="xref py py-mod docutils literal"><span class="pre">queue</span></tt></a> storage system using <a class="reference external" href="http://redis.io/">redis</a>.</p>
+<span class="target" id="module-slimta.cloudstorage"></span><p>Package containing a module for the different cloud service providers along
+with any necessary helper modules.</p>
+<dl class="exception">
+<dt id="slimta.cloudstorage.CloudStorageError">
+<em class="property">exception </em><tt class="descclassname">slimta.cloudstorage.</tt><tt class="descname">CloudStorageError</tt><a class="headerlink" href="#slimta.cloudstorage.CloudStorageError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueError" title="slimta.queue.QueueError"><tt class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueError</span></tt></a></p>
+<p>Base exception for all exceptions in the package.</p>
+</dd></dl>
+
 <dl class="class">
-<dt id="slimta.redisstorage.RedisStorage">
-<em class="property">class </em><tt class="descclassname">slimta.redisstorage.</tt><tt class="descname">RedisStorage</tt><big>(</big><em>host='localhost'</em>, <em>port=6379</em>, <em>db=0</em>, <em>password=None</em>, <em>socket_timeout=None</em>, <em>prefix='slimta:'</em><big>)</big><a class="headerlink" href="#slimta.redisstorage.RedisStorage" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage">
+<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.</tt><tt class="descname">CloudStorage</tt><big>(</big><em>object_store</em>, <em>message_queue=None</em><big>)</big><a class="headerlink" href="#slimta.cloudstorage.CloudStorage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></tt></a></p>
-<p><a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> mechanism that stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and queue metadata in
-redis hashes.</p>
+<p>This class implements a <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> backend that
+uses cloud services to store messages. It coordinates the storage of
+messages and metadata (using <a class="reference external" href="http://www.rackspace.com/cloud/files/">Cloud Files</a> or <a class="reference external" href="http://aws.amazon.com/s3/">S3</a>) with the optional
+message queue mechanisms (using <a class="reference external" href="http://www.rackspace.com/cloud/queues/">Cloud Queues</a> or <a class="reference external" href="http://aws.amazon.com/sqs/">SQS</a>) that can alert
+other <em>slimta</em> processes that a new message is available in the object
+store.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>host</strong> &#8211; Hostname of the redis server to connect to.</li>
-<li><strong>port</strong> &#8211; Port to connect to.</li>
-<li><strong>db</strong> &#8211; Database number to create keys in.</li>
-<li><strong>password</strong> &#8211; Optional password to authenticate with.</li>
-<li><strong>socket_timeout</strong> &#8211; Timeout, in seconds, for socket operations. If the
-timeout is hit, <a class="reference external" href="http://docs.python.org/library/socket.html#socket.timeout" title="(in Python v2.7)"><tt class="xref py py-exc docutils literal"><span class="pre">socket.timeout</span></tt></a> is raised.
-<tt class="docutils literal"><span class="pre">None</span></tt> disables the timeout.</li>
-<li><strong>prefix</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Any key created is prefixed with this string.</li>
+<li><strong>object_store</strong> &#8211; The <tt class="xref py py-class docutils literal"><span class="pre">StorageDriver</span></tt> object used as the backend
+for storing message contents and metadata in the cloud.</li>
+<li><strong>message_queue</strong> &#8211; The optional <tt class="xref py py-class docutils literal"><span class="pre">MessageQueueDriver</span></tt> object used
+as the backend for alerting other processes that a new
+message is in the object store.</li>
 </ul>
 </td>
 </tr>
@@ -97,6 +106,14 @@ timeout is hit, <a class="reference external" href="http://docs.python.org/libra
 </table>
 </dd></dl>
 
+<hr class="docutils" />
+<p><strong>Sub-Modules:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="extra.cloudstorage.rackspace.html">slimta.cloudstorage.rackspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra.cloudstorage.aws.html">slimta.cloudstorage.aws</a></li>
+</ul>
+</div>
 </div>
 
 
@@ -109,11 +126,11 @@ timeout is hit, <a class="reference external" href="http://docs.python.org/libra
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
         </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="extra.cloudstorage.aws.html"
-                        title="previous chapter">slimta.cloudstorage.aws</a></p>
+  <p class="topless"><a href="extra.diskstorage.html"
+                        title="previous chapter">slimta.diskstorage</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="extra.piperelay.html"
-                        title="next chapter">slimta.piperelay</a></p>
+  <p class="topless"><a href="extra.cloudstorage.rackspace.html"
+                        title="next chapter">slimta.cloudstorage.rackspace</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -143,10 +160,10 @@ timeout is hit, <a class="reference external" href="http://docs.python.org/libra
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.piperelay.html" title="slimta.piperelay"
+          <a href="extra.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.aws.html" title="slimta.cloudstorage.aws"
+          <a href="extra.diskstorage.html" title="slimta.diskstorage"
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
 

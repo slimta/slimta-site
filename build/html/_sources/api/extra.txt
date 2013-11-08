@@ -13,6 +13,7 @@ own set of additional dependencies. These modules can be installed alongside
 .. toctree::
 
    extra.diskstorage
+   extra.cloudstorage
    extra.redisstorage
    extra.piperelay
    extra.celeryqueue
