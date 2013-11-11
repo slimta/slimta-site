@@ -44,6 +44,71 @@ instance::
 For more information, the :doc:`mda` tutorial and :mod:`~slimta.piperelay`
 module documentation may be useful.
 
+.. _cloud-storage:
+
+Cloud Storage
+"""""""""""""
+
+.. _Rackspace Cloud: http://www.rackspace.com/cloud/
+.. _AWS: http://aws.amazon.com/
+
+This module makes available connectors to two cloud service providers,
+`Rackspace Cloud`_ and `AWS`_. |Envelope| data and queue metadata are written to
+a cloud object store. Optionally, a reference to their location in the object
+store is then written to a cloud message queue, which can alert relayers in
+other processes of the availability of a new message in the object store.
+
+Install this extension with the following command::
+
+    $ pip install python-slimta-cloudstorage
+
+To use the `Rackspace Cloud`_ services available in the extension, you need
+instances of the :class:`~slimta.cloudstorage.rackspace.RackspaceCloudAuth`,
+:class:`~slimta.cloudstorage.rackspace.RackspaceCloudFiles`, and optionally
+:class:`~slimta.cloudstorage.rackspace.RackspaceCloudQueues`::
+
+    auth = RackspaceCloudAuth({'username': 'slimta', 'api_key': 'XXXXXXXXXXXX'},
+                              region='IAD')
+    cloud_files = RackspaceCloudFiles(auth)
+    cloud_queues = RackspaceCloudQueues(auth)
+
+Using `AWS`_ services is a bit different. First, it requires installation and
+configuration of the :mod:`boto` library::
+
+    $ pip install boto
+
+Using the :mod:`boto` library, we need to come up with references to a
+:class:`~boto.s3.bucket.Bucket` and optionally a
+:class:`~boto.sqs.queue.Queue`. Then, use them to create
+:class:`~slimta.cloudstorage.aws.SimpleStorageService` and
+:class:`~slimta.cloudstorage.aws.SimpleQueueService` objects::
+
+    from boto.s3.connection import S3Connection
+    s3_conn = S3Connection('1A2B3C4D5E', 'XXXXXXXXXXXX')
+    s3_bucket = s3_conn.get_bucket('slimta-queue')
+
+    import boto.sqs
+    sqs_conn = boto.sqs.connect_to_region('us-west-2',
+            aws_access_key_id='1A2B3C4D5E',
+            aws_secret_access_key='XXXXXXXXXXXX')
+    sqs_queue = sqs_conn.create_queue('slimta-queue')
+
+    from slimta.cloudstorage.aws import SimpleStorageService, SimpleQueueService
+    s3 = SimpleStorageService(s3_bucket)
+    sqs = SimpleQueueService(sqs_queue)
+
+Once you have these objects created for your cloud service, link them together
+into a queue storage driver using :class:`~slimta.cloudstorage.CloudStorage`::
+
+    from slimta.cloudstorage import CloudStorage
+
+    storage = CloudStorage(cloud_files, cloud_queues)
+    # or...
+    storage = CloudStorage(s3, sqs)
+
+This object can then be used anywhere a :class:`~slimta.queue.QueueStorage`
+object is required.
+
 .. _disk-storage:
 
 Disk Storage

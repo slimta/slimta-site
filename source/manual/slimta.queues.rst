@@ -153,6 +153,87 @@ across processes. This queue type is configured with the following keys:
   redis storage engines to run in the same database, or just to make keys more
   recognizable. By default, ``slimta:`` is used.
 
+``rackspace`` Queues
+""""""""""""""""""""
+
+.. _Rackspace Cloud: http://www.rackspace.com/cloud/
+
+This queue type stores messages and their metadata in `Rackspace Cloud`_
+services. To do so, it needs the following information:
+
+* ``endoint``: String
+
+  The authentication endpoint used to create an access token and lookup the
+  service catalog. This must be the *v2.0* auth API. The default endpoint is
+  ``https://identity.api.rackspacecloud.com/v2.0/`` which normally is what you
+  want to use.
+
+* ``username``: String, required
+
+  The username to pass in to the Rackspace Cloud Auth API.
+
+* ``api_key``: String
+
+  If given, the API key is combined with the username to serve as credentials
+  when creating an access token. Either an API key or a password are required.
+
+* ``password``: String
+
+  If given, the password is combined with the username to serve as credentials
+  when creating an access token. Either a password or an API key are required.
+
+* ``region``: String
+
+  Used as the default `region
+  <http://www.rackspace.com/knowledge_center/article/about-regions>`_ when
+  processing the service catalog.
+
+* ``tls``: Dictionary
+
+  This mapping, which takes the same keys as the keyword parameters to
+  :func:`~ssl.wrap_socket`, configures TLS encryption to the Rackspace Cloud API
+  endpoints. By default, standard TLS settings are used only when endpoints
+  begin with ``https://``.
+
+* ``container_name``: String, required
+
+  The *Rackspace Cloud Files* container name to create storage objects
+  containing the |Envelope| and queue metadata.
+
+* ``queue_name``: String
+
+  The *Rackspace Cloud Queues* queue name used by the storage engine. If this
+  value is not given, *Rackspace Cloud QUeues* will not be used.
+
+``aws`` Queues
+""""""""""""""
+
+.. _AWS: http://aws.amazon.com/
+
+This queue type stores messages and their metadata in `AWS`_ services. The
+:mod:`boto` library must be installed from *PyPI* to use this queue type. It
+takes the following keys:
+
+* ``access_key_id``: String
+
+  Your AWS Access Key ID. If this is not given, the :mod:`boto` library attempts
+  to fetch this value from environment variables.
+
+* ``secret_access_key``: String
+
+  Your AWS Secret Access Key. If this is not given, the :mod:`boto` library
+  attempts to fetch this value from environment variables.
+
+* ``bucket_name``: String, required
+
+  The *S3* bucket name used to create storage objects containing the |Envelope|
+  and queue metadata.
+
+* ``queue_name``: String
+
+  The *SQS* queue name used by the storage engine. If this value is not given,
+  *SQS* will not be used.
+
 ``proxy`` Queues
 """"""""""""""""
 
