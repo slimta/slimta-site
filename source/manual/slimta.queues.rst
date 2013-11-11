@@ -203,7 +203,7 @@ services. To do so, it needs the following information:
 * ``queue_name``: String
 
   The *Rackspace Cloud Queues* queue name used by the storage engine. If this
-  value is not given, *Rackspace Cloud QUeues* will not be used.
+  value is not given, *Rackspace Cloud Queues* will not be used.
 
 ``aws`` Queues
 """"""""""""""
