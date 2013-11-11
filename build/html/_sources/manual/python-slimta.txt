@@ -60,6 +60,7 @@ arguments it takes and what they mean.
 * :doc:`extensions`
 
   * :ref:`External Process Delivery <pipe-relay>`
+  * :ref:`Cloud Storage <cloud-storage>`
   * :ref:`Disk Storage <disk-storage>`
   * :ref:`Redis Storage <redis-storage>`
   * :ref:`Celery Queuing <celery-queue>`
