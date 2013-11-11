@@ -91,8 +91,64 @@ instance:</p>
 <p>For more information, the <a class="reference internal" href="mda.html"><em>Mail Delivery Agent</em></a> tutorial and <a class="reference internal" href="../api/extra.piperelay.html#module-slimta.piperelay" title="slimta.piperelay"><tt class="xref py py-mod docutils literal"><span class="pre">piperelay</span></tt></a>
 module documentation may be useful.</p>
 </div>
+<div class="section" id="cloud-storage">
+<span id="id1"></span><h2>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Permalink to this headline">¶</a></h2>
+<p>This module makes available connectors to two cloud service providers,
+<a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a> and <a class="reference external" href="http://aws.amazon.com/">AWS</a>. <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> data and queue metadata are written to
+a cloud object store. Optionally, a reference to their location in the object
+store is then written to a cloud message queue, which can alert relayers in
+other processes of the availability of a new message in the object store.</p>
+<p>Install this extension with the following command:</p>
+<div class="highlight-python"><pre>$ pip install python-slimta-cloudstorage</pre>
+</div>
+<p>To use the <a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a> services available in the extension, you need
+instances of the <a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudAuth</span></tt></a>,
+<a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></tt></a>, and optionally
+<a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">auth</span> <span class="o">=</span> <span class="n">RackspaceCloudAuth</span><span class="p">({</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;slimta&#39;</span><span class="p">,</span> <span class="s">&#39;api_key&#39;</span><span class="p">:</span> <span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">},</span>
+                          <span class="n">region</span><span class="o">=</span><span class="s">&#39;IAD&#39;</span><span class="p">)</span>
+<span class="n">cloud_files</span> <span class="o">=</span> <span class="n">RackspaceCloudFiles</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+<span class="n">cloud_queues</span> <span class="o">=</span> <span class="n">RackspaceCloudQueues</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using <a class="reference external" href="http://aws.amazon.com/">AWS</a> services is a bit different. First, it requires installation and
+configuration of the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.16.0)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library:</p>
+<div class="highlight-python"><pre>$ pip install boto</pre>
+</div>
+<p>Using the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.16.0)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library, we need to come up with references to a
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.16.0)"><tt class="xref py py-class docutils literal"><span class="pre">Bucket</span></tt></a> and optionally a
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/sqs.html#boto.sqs.queue.Queue" title="(in boto v2.16.0)"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>. Then, use them to create
+<a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleStorageService</span></tt></a> and
+<a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleQueueService</span></tt></a> objects:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">boto.s3.connection</span> <span class="kn">import</span> <span class="n">S3Connection</span>
+<span class="n">s3_conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="s">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span> <span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
+<span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">s3_conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="s">&#39;slimta-queue&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">boto.sqs</span>
+<span class="n">sqs_conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">sqs</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s">&#39;us-west-2&#39;</span><span class="p">,</span>
+        <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span>
+        <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
+<span class="n">sqs_queue</span> <span class="o">=</span> <span class="n">sqs_conn</span><span class="o">.</span><span class="n">create_queue</span><span class="p">(</span><span class="s">&#39;slimta-queue&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">slimta.cloudstorage.aws</span> <span class="kn">import</span> <span class="n">SimpleStorageService</span><span class="p">,</span> <span class="n">SimpleQueueService</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">SimpleStorageService</span><span class="p">(</span><span class="n">s3_bucket</span><span class="p">)</span>
+<span class="n">sqs</span> <span class="o">=</span> <span class="n">SimpleQueueService</span><span class="p">(</span><span class="n">sqs_queue</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once you have these objects created for your cloud service, link them together
+into a queue storage driver using <a class="reference internal" href="../api/extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><tt class="xref py py-class docutils literal"><span class="pre">CloudStorage</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.cloudstorage</span> <span class="kn">import</span> <span class="n">CloudStorage</span>
+
+<span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">cloud_files</span><span class="p">,</span> <span class="n">cloud_queues</span><span class="p">)</span>
+<span class="c"># or...</span>
+<span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="n">sqs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This object can then be used anywhere a <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a>
+object is required.</p>
+</div>
 <div class="section" id="disk-storage">
-<span id="id1"></span><h2>Disk Storage<a class="headerlink" href="#disk-storage" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Disk Storage<a class="headerlink" href="#disk-storage" title="Permalink to this headline">¶</a></h2>
 <p>In the fashion of traditional MTAs, the <a class="reference internal" href="../api/extra.diskstorage.html#module-slimta.diskstorage" title="slimta.diskstorage"><tt class="xref py py-mod docutils literal"><span class="pre">diskstorage</span></tt></a> extension
 writes <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> data and queue metadata directly to disk to configurable
 directories. This extension relies on <a class="reference external" href="https://github.com/felipecruz/pyaio">pyaio</a> to asynchronously write and read
@@ -121,7 +177,7 @@ by the same uuid string as its corresponding envelope file, but with the suffix
 </div>
 </div>
 <div class="section" id="redis-storage">
-<span id="id2"></span><h2>Redis Storage<a class="headerlink" href="#redis-storage" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Redis Storage<a class="headerlink" href="#redis-storage" title="Permalink to this headline">¶</a></h2>
 <p>Taking advantage of the advanced data structures and ease of use of the <a class="reference external" href="http://redis.io/">redis</a>
 database, the <a class="reference internal" href="../api/extra.redisstorage.html#module-slimta.redisstorage" title="slimta.redisstorage"><tt class="xref py py-mod docutils literal"><span class="pre">redisstorage</span></tt></a> extension simply creates a hash key
 for each queued message, containing its delivery metadata and a pickled version
@@ -284,6 +340,7 @@ want to act upon. These results are:</p>
   <ul>
 <li><a class="reference internal" href="#">Extensions</a><ul>
 <li><a class="reference internal" href="#external-process-delivery">External Process Delivery</a></li>
+<li><a class="reference internal" href="#cloud-storage">Cloud Storage</a></li>
 <li><a class="reference internal" href="#disk-storage">Disk Storage</a></li>
 <li><a class="reference internal" href="#redis-storage">Redis Storage</a></li>
 <li><a class="reference internal" href="#celery-distributed-queuing">Celery Distributed Queuing</a><ul>

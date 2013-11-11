@@ -205,6 +205,72 @@ recognizable. By default, <tt class="docutils literal"><span class="pre">slimta:
 </li>
 </ul>
 </div>
+<div class="section" id="rackspace-queues">
+<h2><tt class="docutils literal"><span class="pre">rackspace</span></tt> Queues<a class="headerlink" href="#rackspace-queues" title="Permalink to this headline">¶</a></h2>
+<p>This queue type stores messages and their metadata in <a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a>
+services. To do so, it needs the following information:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">endoint</span></tt>: String</p>
+<p>The authentication endpoint used to create an access token and lookup the
+service catalog. This must be the <em>v2.0</em> auth API. The default endpoint is
+<tt class="docutils literal"><span class="pre">https://identity.api.rackspacecloud.com/v2.0/</span></tt> which normally is what you
+want to use.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">username</span></tt>: String, required</p>
+<p>The username to pass in to the Rackspace Cloud Auth API.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">api_key</span></tt>: String</p>
+<p>If given, the API key is combined with the username to serve as credentials
+when creating an access token. Either an API key or a password are required.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">password</span></tt>: String</p>
+<p>If given, the password is combined with the username to serve as credentials
+when creating an access token. Either a password or an API key are required.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">region</span></tt>: String</p>
+<p>Used as the default <a class="reference external" href="http://www.rackspace.com/knowledge_center/article/about-regions">region</a> when
+processing the service catalog.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">tls</span></tt>: Dictionary</p>
+<p>This mapping, which takes the same keys as the keyword parameters to
+<a class="reference external" href="http://docs.python.org/library/ssl.html#ssl.wrap_socket" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">wrap_socket()</span></tt></a>, configures TLS encryption to the Rackspace Cloud API
+endpoints. By default, standard TLS settings are used only when endpoints
+begin with <tt class="docutils literal"><span class="pre">https://</span></tt>.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">container_name</span></tt>: String, required</p>
+<p>The <em>Rackspace Cloud Files</em> container name to create storage objects
+containing the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and queue metadata.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">queue_name</span></tt>: String</p>
+<p>The <em>Rackspace Cloud Queues</em> queue name used by the storage engine. If this
+value is not given, <em>Rackspace Cloud QUeues</em> will not be used.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="aws-queues">
+<h2><tt class="docutils literal"><span class="pre">aws</span></tt> Queues<a class="headerlink" href="#aws-queues" title="Permalink to this headline">¶</a></h2>
+<p>This queue type stores messages and their metadata in <a class="reference external" href="http://aws.amazon.com/">AWS</a> services. The
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.16.0)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library must be installed from <em>PyPI</em> to use this queue type. It
+takes the following keys:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">access_key_id</span></tt>: String</p>
+<p>Your AWS Access Key ID. If this is not given, the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.16.0)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library attempts
+to fetch this value from environment variables.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">secret_access_key</span></tt>: String</p>
+<p>Your AWS Secret Access Key. If this is not given, the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.16.0)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library
+attempts to fetch this value from environment variables.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">bucket_name</span></tt>: String, required</p>
+<p>The <em>S3</em> bucket name used to create storage objects containing the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a>
+and queue metadata.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">queue_name</span></tt>: String</p>
+<p>The <em>SQS</em> queue name used by the storage engine. If this value is not given,
+<em>SQS</em> will not be used.</p>
+</li>
+</ul>
+</div>
 <div class="section" id="proxy-queues">
 <h2><tt class="docutils literal"><span class="pre">proxy</span></tt> Queues<a class="headerlink" href="#proxy-queues" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="docutils literal"><span class="pre">&quot;proxy&quot;</span></tt> queue type is not a queue at all, but rather a method of
@@ -286,6 +352,8 @@ should use for message delivery:</p>
 <li><a class="reference internal" href="#memory-queues"><tt class="docutils literal"><span class="pre">memory</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#disk-queues"><tt class="docutils literal"><span class="pre">disk</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#redis-queues"><tt class="docutils literal"><span class="pre">redis</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#rackspace-queues"><tt class="docutils literal"><span class="pre">rackspace</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#aws-queues"><tt class="docutils literal"><span class="pre">aws</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#proxy-queues"><tt class="docutils literal"><span class="pre">proxy</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#celery-queues"><tt class="docutils literal"><span class="pre">celery</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#custom-queues"><tt class="docutils literal"><span class="pre">custom</span></tt> Queues</a></li>
