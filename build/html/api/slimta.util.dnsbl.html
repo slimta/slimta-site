@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.util.dnsbl &mdash; slimta 0.3.18 documentation</title>
+    <title>slimta.util.dnsbl &mdash; slimta 0.3.19 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.18',
+        VERSION:     '0.3.19',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.18 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.19 documentation" href="../index.html" />
     <link rel="up" title="slimta.util" href="slimta.util.html" />
     <link rel="next" title="slimta.system" href="slimta.system.html" />
     <link rel="prev" title="slimta.util" href="slimta.util.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.util.html" title="slimta.util"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -94,7 +94,7 @@ will never raise a <tt class="xref py py-class docutils literal"><span class="pr
 </table>
 <dl class="method">
 <dt id="slimta.util.dnsbl.DnsBlocklist.get">
-<tt class="descname">get</tt><big>(</big><em>ip</em>, <em>timeout=None</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get</tt><big>(</big><em>ip</em>, <em>timeout=None</em>, <em>strict=True</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks this DNSBL for the given IP address. This method does not
 check the answer, only that the response was not <tt class="docutils literal"><span class="pre">NXDOMAIN</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -104,6 +104,8 @@ check the answer, only that the response was not <tt class="docutils literal"><s
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>ip</strong> &#8211; The IP address string to check.</li>
 <li><strong>timeout</strong> &#8211; A timeout in seconds before <tt class="docutils literal"><span class="pre">False</span></tt> is returned.</li>
+<li><strong>strict</strong> &#8211; If <tt class="docutils literal"><span class="pre">True</span></tt>, DNS exceptions that are not <tt class="docutils literal"><span class="pre">NXDOMAIN</span></tt>
+will result in a <tt class="docutils literal"><span class="pre">False</span></tt> return.</li>
 </ul>
 </td>
 </tr>
@@ -284,7 +286,7 @@ code to this string.</li>
         <li class="right" >
           <a href="slimta.util.html" title="slimta.util"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.celeryqueue &mdash; slimta 0.3.18 documentation</title>
+    <title>slimta.celeryqueue &mdash; slimta 0.3.19 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.18',
+        VERSION:     '0.3.19',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.18 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.19 documentation" href="../index.html" />
     <link rel="up" title="Available Extensions" href="extra.html" />
     <link rel="next" title="slimta.spf" href="extra.spf.html" />
     <link rel="prev" title="slimta.piperelay" href="extra.piperelay.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="extra.piperelay.html" title="slimta.piperelay"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
@@ -73,7 +73,7 @@
 queue system. When a message is enqueued, a delivery task is queued up in
 celery. Celery workers will then pick up the task and attempt delivery, retrying
 and bouncing in the same manner as <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>.</p>
-<p>A <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.0)"><tt class="xref py py-class docutils literal"><span class="pre">celery.Celery</span></tt></a> object must be given to <a class="reference internal" href="#slimta.celeryqueue.CeleryQueue" title="slimta.celeryqueue.CeleryQueue"><tt class="xref py py-class docutils literal"><span class="pre">CeleryQueue</span></tt></a>, and a
+<p>A <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.1)"><tt class="xref py py-class docutils literal"><span class="pre">celery.Celery</span></tt></a> object must be given to <a class="reference internal" href="#slimta.celeryqueue.CeleryQueue" title="slimta.celeryqueue.CeleryQueue"><tt class="xref py py-class docutils literal"><span class="pre">CeleryQueue</span></tt></a>, and a
 task will be registered to attempt delivery of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> objects. It may be
 desirable to configure celery workers to <a class="reference external" href="http://docs.celeryproject.org/en/latest/configuration.html#celeryd-pool">use gevent</a>, since <tt class="docutils literal"><span class="pre">slimta</span></tt> <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a>
 objects are expected to support it.</p>
@@ -88,9 +88,9 @@ expected.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>celery</strong> &#8211; <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.0)"><tt class="xref py py-class docutils literal"><span class="pre">celery.Celery</span></tt></a> object to register delivery task with.</li>
+<li><strong>celery</strong> &#8211; <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.1)"><tt class="xref py py-class docutils literal"><span class="pre">celery.Celery</span></tt></a> object to register delivery task with.</li>
 <li><strong>relay</strong> &#8211; <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> instance to attempt delivery with.</li>
-<li><strong>suffix</strong> &#8211; If given, the task registered in the <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.0)"><tt class="xref py py-class docutils literal"><span class="pre">Celery</span></tt></a>
+<li><strong>suffix</strong> &#8211; If given, the task registered in the <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.1)"><tt class="xref py py-class docutils literal"><span class="pre">Celery</span></tt></a>
 object will have its name suffixed wih an underscore and this
 string.</li>
 <li><strong>backoff</strong> &#8211; Function that, given an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and number of delivery
@@ -191,7 +191,7 @@ available to <a class="reference internal" href="#slimta.celeryqueue.CeleryQueue
         <li class="right" >
           <a href="extra.piperelay.html" title="slimta.piperelay"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="extra.html" >Available Extensions</a> &raquo;</li> 

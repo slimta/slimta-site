@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.cloudstorage &mdash; slimta 0.3.18 documentation</title>
+    <title>slimta.cloudstorage &mdash; slimta 0.3.19 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.18',
+        VERSION:     '0.3.19',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.18 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.19 documentation" href="../index.html" />
     <link rel="up" title="Available Extensions" href="extra.html" />
     <link rel="next" title="slimta.cloudstorage.rackspace" href="extra.cloudstorage.rackspace.html" />
     <link rel="prev" title="slimta.diskstorage" href="extra.diskstorage.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="extra.diskstorage.html" title="slimta.diskstorage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
@@ -94,11 +94,17 @@ store.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>object_store</strong> &#8211; The <tt class="xref py py-class docutils literal"><span class="pre">StorageDriver</span></tt> object used as the backend
-for storing message contents and metadata in the cloud.</li>
-<li><strong>message_queue</strong> &#8211; The optional <tt class="xref py py-class docutils literal"><span class="pre">MessageQueueDriver</span></tt> object used
+<li><strong>object_store</strong> &#8211; The object used as the backend for storing message
+contents and metadata in the cloud. Currently this can
+be an instance of
+<a class="reference internal" href="extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></tt></a> or
+<a class="reference internal" href="extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleStorageService</span></tt></a>.</li>
+<li><strong>message_queue</strong> &#8211; The optional object used
 as the backend for alerting other processes that a new
-message is in the object store.</li>
+message is in the object store. Currently this can be
+an instance of
+<a class="reference internal" href="extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></tt></a> or
+<a class="reference internal" href="extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleQueueService</span></tt></a>.</li>
 </ul>
 </td>
 </tr>
@@ -165,7 +171,7 @@ message is in the object store.</li>
         <li class="right" >
           <a href="extra.diskstorage.html" title="slimta.diskstorage"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.18 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="extra.html" >Available Extensions</a> &raquo;</li> 
