@@ -234,6 +234,10 @@ takes the following keys:
   The *SQS* queue name used by the storage engine. If this value is not given,
   *SQS* will not be used.
 
+* ``queue_region``: String
+
+  The *SQS* queue region. By default, ``us-west-2`` is used.
+
 ``proxy`` Queues
 """"""""""""""""
 
