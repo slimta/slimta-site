@@ -277,3 +277,53 @@ intersphinx_mapping = {'py': ('http://docs.python.org/', None),
 autodoc_member_order = 'bysource'
 autodoc_docstring_signature = True
 
+# {{{ reformat_signatures()
+def reformat_signatures(app, what, name, obj, options, signature,
+        return_annotation):
+    import inspect
+    import repr
+
+    if what == 'attribute':
+        return None, 'derp'
+    if what not in ('class', 'exception', 'method', 'function'):
+        return
+    if what in ('class', 'exception'):
+        obj = getattr(obj, '__init__')
+    try:
+        args, varargs, keywords, defaults = inspect.getargspec(obj)
+    except TypeError:
+        return
+    if args and args[0] == 'self':
+        del args[0]
+    doc_repr = repr.Repr()
+    doc_repr.maxstring = 40
+    with_defaults = []
+    without_defaults = []
+    if defaults:
+        num_without_defaults = len(args) - len(defaults)
+        for name in args[:num_without_defaults]:
+            without_defaults.append(name)
+        for i, value in enumerate(defaults):
+            name = args[num_without_defaults+i]
+            value_str = doc_repr.repr(value)
+            with_defaults.append('{0}={1}'.format(name, value_str))
+    else:
+        without_defaults = args
+    if varargs is not None:
+        with_defaults.append('*{0}'.format(varargs))
+    if keywords is not None:
+        with_defaults.append('**{0}'.format(keywords))
+    result = ', '.join(without_defaults)
+    if with_defaults:
+        if result:
+            result += ', '
+        result += ', '.join(['['+piece for piece in with_defaults])
+        result += ']'*len(with_defaults)
+    result = '({0})'.format(result)
+    return result, return_annotation
+# }}}
+
+def setup(app):
+    app.connect('autodoc-process-signature', reformat_signatures)
+
+# vim:sw=4:ts=4:sts=4:fdm=marker:et:
