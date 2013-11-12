@@ -94,7 +94,7 @@ will never raise a <tt class="xref py py-class docutils literal"><span class="pr
 </table>
 <dl class="method">
 <dt id="slimta.util.dnsbl.DnsBlocklist.get">
-<tt class="descname">get</tt><big>(</big><em>ip</em>, <em>timeout=None</em>, <em>strict=False</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get</tt><big>(</big><em>ip</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>strict=False</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks this DNSBL for the given IP address. This method does not
 check the answer, only that the response was not <tt class="docutils literal"><span class="pre">NXDOMAIN</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -120,7 +120,7 @@ return value.</li>
 
 <dl class="method">
 <dt id="slimta.util.dnsbl.DnsBlocklist.get_reason">
-<tt class="descname">get_reason</tt><big>(</big><em>ip</em>, <em>timeout=None</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get_reason" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_reason</tt><big>(</big><em>ip</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get_reason" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the TXT record for the IP address on this DNSBL. This is
 usually a reason for why the IP address matched. As such, this function
 should only be called after <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get" title="slimta.util.dnsbl.DnsBlocklist.get"><tt class="xref py py-meth docutils literal"><span class="pre">get()</span></tt></a> returns <tt class="docutils literal"><span class="pre">True</span></tt>.</p>
@@ -145,7 +145,7 @@ should only be called after <a class="reference internal" href="#slimta.util.dns
 
 <dl class="class">
 <dt id="slimta.util.dnsbl.DnsBlocklistGroup">
-<em class="property">class </em><tt class="descclassname">slimta.util.dnsbl.</tt><tt class="descname">DnsBlocklistGroup</tt><big>(</big><em>pool=None</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.util.dnsbl.</tt><tt class="descname">DnsBlocklistGroup</tt><big>(</big><span class="optional">[</span><em>pool=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Allows a group of DNSBLs to be queried simultaneously.</p>
 <dl class="method">
@@ -164,7 +164,7 @@ should only be called after <a class="reference internal" href="#slimta.util.dns
 
 <dl class="method">
 <dt id="slimta.util.dnsbl.DnsBlocklistGroup.get">
-<tt class="descname">get</tt><big>(</big><em>ip</em>, <em>timeout=None</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup.get" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get</tt><big>(</big><em>ip</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queries all DNSBLs in the group for matches.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -186,7 +186,7 @@ matched a record for the IP address.</p>
 
 <dl class="method">
 <dt id="slimta.util.dnsbl.DnsBlocklistGroup.get_reasons">
-<tt class="descname">get_reasons</tt><big>(</big><em>matches</em>, <em>ip</em>, <em>timeout=None</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup.get_reasons" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_reasons</tt><big>(</big><em>matches</em>, <em>ip</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup.get_reasons" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the reasons for each matching DNSBL for the IP address.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -212,7 +212,7 @@ each DNSBL matched or <tt class="docutils literal"><span class="pre">None</span>
 
 <dl class="function">
 <dt id="slimta.util.dnsbl.check_dnsbl">
-<tt class="descclassname">slimta.util.dnsbl.</tt><tt class="descname">check_dnsbl</tt><big>(</big><em>address</em>, <em>match_code='550'</em>, <em>match_message='5.7.1 Access denied'</em>, <em>timeout=10.0</em><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.check_dnsbl" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">slimta.util.dnsbl.</tt><tt class="descname">check_dnsbl</tt><big>(</big><em>address</em><span class="optional">[</span>, <em>match_code='550'</em><span class="optional">[</span>, <em>match_message='5.7.1 Access denied'</em><span class="optional">[</span>, <em>timeout=10.0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.dnsbl.check_dnsbl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decorator for <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><tt class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></tt></a> methods that are
 given a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> object. It will check the current SMTP session&#8217;s connecting
 IP address against the DNSBL provided at domain name <tt class="docutils literal"><span class="pre">address</span></tt>. If the IP

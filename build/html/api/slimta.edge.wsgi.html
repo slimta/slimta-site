@@ -100,7 +100,7 @@ application.</p>
 </div>
 <dl class="exception">
 <dt id="slimta.edge.wsgi.WsgiResponse">
-<em class="property">exception </em><tt class="descclassname">slimta.edge.wsgi.</tt><tt class="descname">WsgiResponse</tt><big>(</big><em>status</em>, <em>headers=None</em>, <em>data=None</em><big>)</big><a class="headerlink" href="#slimta.edge.wsgi.WsgiResponse" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><tt class="descclassname">slimta.edge.wsgi.</tt><tt class="descname">WsgiResponse</tt><big>(</big><em>status</em><span class="optional">[</span>, <em>headers=None</em><span class="optional">[</span>, <em>data=None</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.edge.wsgi.WsgiResponse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
 <p>This exception can be explicitly raised to end the WSGI request and
 return the given response.</p>
@@ -121,7 +121,7 @@ return the given response.</p>
 
 <dl class="class">
 <dt id="slimta.edge.wsgi.WsgiEdge">
-<em class="property">class </em><tt class="descclassname">slimta.edge.wsgi.</tt><tt class="descname">WsgiEdge</tt><big>(</big><em>queue</em>, <em>hostname=None</em>, <em>validator_class=None</em>, <em>uri_pattern=None</em><big>)</big><a class="headerlink" href="#slimta.edge.wsgi.WsgiEdge" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.edge.wsgi.</tt><tt class="descname">WsgiEdge</tt><big>(</big><em>queue</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">[</span>, <em>validator_class=None</em><span class="optional">[</span>, <em>uri_pattern=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.edge.wsgi.WsgiEdge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">slimta.edge.Edge</span></tt></a>, <a class="reference internal" href="slimta.http.wsgi.html#slimta.http.wsgi.WsgiServer" title="slimta.http.wsgi.WsgiServer"><tt class="xref py py-class docutils literal"><span class="pre">slimta.http.wsgi.WsgiServer</span></tt></a></p>
 <p>This class is intended to be instantiated and used as an app on top of a
 WSGI server engine such as <a class="reference external" href="http://gevent.org/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.pywsgi.WSGIServer</span></tt></a>. It will only

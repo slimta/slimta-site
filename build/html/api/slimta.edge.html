@@ -72,7 +72,7 @@
 a listening socket under various protocols.</p>
 <dl class="class">
 <dt id="slimta.edge.Edge">
-<em class="property">class </em><tt class="descclassname">slimta.edge.</tt><tt class="descname">Edge</tt><big>(</big><em>queue</em>, <em>hostname=None</em><big>)</big><a class="headerlink" href="#slimta.edge.Edge" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.edge.</tt><tt class="descname">Edge</tt><big>(</big><em>queue</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.edge.Edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>This class should be used as the base for all <em>edge</em> services. Most will
 directly inherit <a class="reference internal" href="#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><tt class="xref py py-class docutils literal"><span class="pre">EdgeServer</span></tt></a> and thus indirectly inherit
@@ -130,7 +130,7 @@ threads) and close resources.</p>
 
 <dl class="class">
 <dt id="slimta.edge.EdgeServer">
-<em class="property">class </em><tt class="descclassname">slimta.edge.</tt><tt class="descname">EdgeServer</tt><big>(</big><em>listener</em>, <em>queue</em>, <em>pool=None</em>, <em>hostname=None</em><big>)</big><a class="headerlink" href="#slimta.edge.EdgeServer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.edge.</tt><tt class="descname">EdgeServer</tt><big>(</big><em>listener</em>, <em>queue</em><span class="optional">[</span>, <em>pool=None</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.edge.EdgeServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">slimta.edge.Edge</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">gevent.greenlet.Greenlet</span></tt></p>
 <p>This class implements a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">Greenlet</span></tt></a> serving a
 <a class="reference external" href="http://gevent.org/gevent.server.html#gevent.server.StreamServer" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">StreamServer</span></tt></a> until killed. Connections are accepted

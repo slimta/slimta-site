@@ -73,7 +73,7 @@
 code and a message, as well as a few pre-defined standard replies.</p>
 <dl class="class">
 <dt id="slimta.smtp.reply.Reply">
-<em class="property">class </em><tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">Reply</tt><big>(</big><em>code=None</em>, <em>message=None</em>, <em>command=None</em><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">Reply</tt><big>(</big><span class="optional">[</span><em>code=None</em><span class="optional">[</span>, <em>message=None</em><span class="optional">[</span>, <em>command=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Defines a standard SMTP reply, which can be made up of a code, an
 intelligent <a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string, and a free-form message. This
@@ -181,7 +181,7 @@ session.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.send">
-<tt class="descname">send</tt><big>(</big><em>io</em>, <em>flush=False</em><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.send" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">send</tt><big>(</big><em>io</em><span class="optional">[</span>, <em>flush=False</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the reply to the session.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

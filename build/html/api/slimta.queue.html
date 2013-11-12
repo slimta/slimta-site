@@ -229,7 +229,7 @@ simply called again.</td>
 
 <dl class="class">
 <dt id="slimta.queue.Queue">
-<em class="property">class </em><tt class="descclassname">slimta.queue.</tt><tt class="descname">Queue</tt><big>(</big><em>store</em>, <em>relay=None</em>, <em>backoff=None</em>, <em>bounce_factory=None</em>, <em>store_pool=None</em>, <em>relay_pool=None</em><big>)</big><a class="headerlink" href="#slimta.queue.Queue" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.queue.</tt><tt class="descname">Queue</tt><big>(</big><em>store</em><span class="optional">[</span>, <em>relay=None</em><span class="optional">[</span>, <em>backoff=None</em><span class="optional">[</span>, <em>bounce_factory=None</em><span class="optional">[</span>, <em>store_pool=None</em><span class="optional">[</span>, <em>relay_pool=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.queue.Queue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">gevent.greenlet.Greenlet</span></tt></p>
 <p>Manages the queue of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> objects waiting for delivery. This is
 not a standard FIFO queue, a message&#8217;s place in the queue depends entirely

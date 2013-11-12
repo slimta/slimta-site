@@ -87,7 +87,7 @@ This function does not affect standard input, output, or error.</p>
 
 <dl class="function">
 <dt id="slimta.system.redirect_stdio">
-<tt class="descclassname">slimta.system.</tt><tt class="descname">redirect_stdio</tt><big>(</big><em>stdout=None</em>, <em>stderr=None</em>, <em>stdin=None</em><big>)</big><a class="headerlink" href="#slimta.system.redirect_stdio" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">slimta.system.</tt><tt class="descname">redirect_stdio</tt><big>(</big><span class="optional">[</span><em>stdout=None</em><span class="optional">[</span>, <em>stderr=None</em><span class="optional">[</span>, <em>stdin=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.system.redirect_stdio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Redirects standard output, error, and input to the given
 filenames. Standard output and error are opened in append-mode, and
 standard input is opened in read-only mode. Leaving any parameter
@@ -109,7 +109,7 @@ blank leaves that stream alone.</p>
 
 <dl class="function">
 <dt id="slimta.system.drop_privileges">
-<tt class="descclassname">slimta.system.</tt><tt class="descname">drop_privileges</tt><big>(</big><em>user=None</em>, <em>group=None</em><big>)</big><a class="headerlink" href="#slimta.system.drop_privileges" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">slimta.system.</tt><tt class="descname">drop_privileges</tt><big>(</big><span class="optional">[</span><em>user=None</em><span class="optional">[</span>, <em>group=None</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.system.drop_privileges" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses the system calls <a class="reference external" href="http://docs.python.org/library/os.html#os.setuid" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">setuid()</span></tt></a> and <a class="reference external" href="http://docs.python.org/library/os.html#os.setgid" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">setgid()</span></tt></a> to drop
 root privileges to the given user and group. This is useful for security
 purposes, once root-only ports like 25 are opened.</p>
@@ -129,7 +129,7 @@ purposes, once root-only ports like 25 are opened.</p>
 
 <dl class="class">
 <dt id="slimta.system.PidFile">
-<em class="property">class </em><tt class="descclassname">slimta.system.</tt><tt class="descname">PidFile</tt><big>(</big><em>filename=None</em><big>)</big><a class="headerlink" href="#slimta.system.PidFile" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.system.</tt><tt class="descname">PidFile</tt><big>(</big><span class="optional">[</span><em>filename=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.system.PidFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Context manager which creates a PID file containing the current process
 id, runs the context, and then removes the PID file.</p>

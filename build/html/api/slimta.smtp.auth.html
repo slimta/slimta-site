@@ -100,7 +100,7 @@ This class should be inherited with its methods overridden as necessary.</p>
 </table>
 <dl class="method">
 <dt id="slimta.smtp.auth.Auth.verify_secret">
-<tt class="descname">verify_secret</tt><big>(</big><em>authcid</em>, <em>secret</em>, <em>authzid=None</em><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.verify_secret" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">verify_secret</tt><big>(</big><em>authcid</em>, <em>secret</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.verify_secret" title="Permalink to this definition">¶</a></dt>
 <dd><p>For SMTP server authentication, this method should be overriden
 to verify the given secret for mechanisms that have access to it.
 If <tt class="docutils literal"><span class="pre">secret</span></tt> is invalid for the given identities,
@@ -131,7 +131,7 @@ of both, or any alternative.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.auth.Auth.get_secret">
-<tt class="descname">get_secret</tt><big>(</big><em>authcid</em>, <em>authzid=None</em><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.get_secret" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_secret</tt><big>(</big><em>authcid</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.get_secret" title="Permalink to this definition">¶</a></dt>
 <dd><p>For SMTP server authentication mechanisms such as <tt class="docutils literal"><span class="pre">CRAM-MD5</span></tt>, the
 client provides a hash of their secret credentials, and thus the server
 must also have access to the secret credentials in plain-text. This
@@ -164,7 +164,7 @@ desired alternative.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.auth.Auth.get_available_mechanisms">
-<tt class="descname">get_available_mechanisms</tt><big>(</big><em>connection_secure=False</em><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.get_available_mechanisms" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_available_mechanisms</tt><big>(</big><span class="optional">[</span><em>connection_secure=False</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.get_available_mechanisms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of mechanism classes that inherit
 <a class="reference internal" href="#slimta.smtp.auth.ServerMechanism" title="slimta.smtp.auth.ServerMechanism"><tt class="xref py py-class docutils literal"><span class="pre">ServerMechanism</span></tt></a> that are available on
 the session. This usually depends on whether the connection is
@@ -310,7 +310,7 @@ the SMTP session. Custom mechanisms should be prefixed with <tt class="docutils 
 
 <dl class="classmethod">
 <dt id="slimta.smtp.auth.ClientMechanism.send_response_get_challenge">
-<em class="property">classmethod </em><tt class="descname">send_response_get_challenge</tt><big>(</big><em>io</em>, <em>response_str=''</em>, <em>first=False</em><big>)</big><a class="headerlink" href="#slimta.smtp.auth.ClientMechanism.send_response_get_challenge" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">send_response_get_challenge</tt><big>(</big><em>cls</em>, <em>io</em><span class="optional">[</span>, <em>response_str=''</em><span class="optional">[</span>, <em>first=False</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.ClientMechanism.send_response_get_challenge" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method can be used in <a class="reference internal" href="#slimta.smtp.auth.ClientMechanism.client_attempt" title="slimta.smtp.auth.ClientMechanism.client_attempt"><tt class="xref py py-meth docutils literal"><span class="pre">client_attempt()</span></tt></a> implementations to
 send response strings to the server and wait for its challenge. It is
 up to the implementation to check if this challenge is <tt class="docutils literal"><span class="pre">334</span></tt> (and
@@ -338,7 +338,7 @@ the response.</p>
 
 <dl class="classmethod">
 <dt id="slimta.smtp.auth.ClientMechanism.client_attempt">
-<em class="property">classmethod </em><tt class="descname">client_attempt</tt><big>(</big><em>io</em>, <em>authcid</em>, <em>secret</em>, <em>authzid</em><big>)</big><a class="headerlink" href="#slimta.smtp.auth.ClientMechanism.client_attempt" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><tt class="descname">client_attempt</tt><big>(</big><em>cls</em>, <em>io</em>, <em>authcid</em>, <em>secret</em>, <em>authzid</em><big>)</big><a class="headerlink" href="#slimta.smtp.auth.ClientMechanism.client_attempt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Communicates back-and-forth with a server to negotiate
 authentication, based on the desired credentials. This class method
 must be overidden by sub-classes to be used by client-side SMTP

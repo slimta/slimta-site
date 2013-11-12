@@ -99,7 +99,7 @@ convert into date string.</td>
 
 <dl class="class">
 <dt id="slimta.policy.headers.AddMessageIdHeader">
-<em class="property">class </em><tt class="descclassname">slimta.policy.headers.</tt><tt class="descname">AddMessageIdHeader</tt><big>(</big><em>hostname=None</em><big>)</big><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.policy.headers.</tt><tt class="descname">AddMessageIdHeader</tt><big>(</big><span class="optional">[</span><em>hostname=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
 <p>Checks for the existence of the RFC-specified <tt class="docutils literal"><span class="pre">Message-Id</span></tt> header,
 adding it if it does not exist.</p>
@@ -116,7 +116,7 @@ adding it if it does not exist.</p>
 
 <dl class="class">
 <dt id="slimta.policy.headers.AddReceivedHeader">
-<em class="property">class </em><tt class="descclassname">slimta.policy.headers.</tt><tt class="descname">AddReceivedHeader</tt><big>(</big><em>date_format='%a</em>, <em>%d %b %Y %H:%M:%S +0000'</em><big>)</big><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.policy.headers.</tt><tt class="descname">AddReceivedHeader</tt><big>(</big><span class="optional">[</span><em>date_format='%a</em>, <em>%d %b %Y %H:%M:%S +0000'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
 <p>Adds the RFC-specified <tt class="docutils literal"><span class="pre">Received</span></tt> header to the message. This header
 should be added for every hop from a message&#8217;s origination to its

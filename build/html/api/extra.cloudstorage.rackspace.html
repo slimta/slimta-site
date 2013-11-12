@@ -103,7 +103,7 @@ exception.</p>
 
 <dl class="class">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudAuth">
-<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudAuth</tt><big>(</big><em>credentials</em>, <em>endpoint='https://identity.api.rackspacecloud.com/v2.0/'</em>, <em>region=None</em>, <em>timeout=None</em>, <em>tls=None</em><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudAuth</tt><big>(</big><em>credentials</em><span class="optional">[</span>, <em>endpoint='https://identity....acecloud.com/v2.0/'</em><span class="optional">[</span>, <em>region=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>This class implements and manages the creation of authentication tokens
 when <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></tt></a> or <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></tt></a> objects
@@ -176,7 +176,7 @@ token is stored in the <a class="reference internal" href="#slimta.cloudstorage.
 
 <dl class="class">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudFiles">
-<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudFiles</tt><big>(</big><em>auth</em>, <em>container='slimta-queue'</em>, <em>timeout=None</em>, <em>tls=None</em><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudFiles</tt><big>(</big><em>auth</em><span class="optional">[</span>, <em>container='slimta-queue'</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Instances of this class may be passed in to the
 <a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><tt class="xref py py-class docutils literal"><span class="pre">CloudStorage</span></tt></a> constructor for the <tt class="docutils literal"><span class="pre">storage</span></tt>
@@ -204,7 +204,7 @@ for URLs with the <tt class="docutils literal"><span class="pre">https</span></t
 
 <dl class="class">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudQueues">
-<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudQueues</tt><big>(</big><em>auth</em>, <em>queue_name='slimta-queue'</em>, <em>client_id=None</em>, <em>timeout=None</em>, <em>poll_pause=1.0</em>, <em>tls=None</em><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudQueues</tt><big>(</big><em>auth</em><span class="optional">[</span>, <em>queue_name='slimta-queue'</em><span class="optional">[</span>, <em>client_id=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>poll_pause=1.0</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Instances of this class may be passed in to the
 <a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><tt class="xref py py-class docutils literal"><span class="pre">CloudStorage</span></tt></a> constructor for the

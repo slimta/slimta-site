@@ -73,7 +73,7 @@
 modeled closely off the <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe</a> daemon in postfix.</p>
 <dl class="class">
 <dt id="slimta.piperelay.PipeRelay">
-<em class="property">class </em><tt class="descclassname">slimta.piperelay.</tt><tt class="descname">PipeRelay</tt><big>(</big><em>args</em>, <em>timeout=None</em>, <em>**popen_kwargs</em><big>)</big><a class="headerlink" href="#slimta.piperelay.PipeRelay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.piperelay.</tt><tt class="descname">PipeRelay</tt><big>(</big><em>args</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>**popen_kwargs</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.piperelay.PipeRelay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.relay.Relay</span></tt></a></p>
 <p>When delivery attempts are made on this object, it will create a new sub-
 process and pipe envelope data to it. Delivery success or failure depends on
@@ -144,7 +144,7 @@ status.</p>
 
 <dl class="class">
 <dt id="slimta.piperelay.MaildropRelay">
-<em class="property">class </em><tt class="descclassname">slimta.piperelay.</tt><tt class="descname">MaildropRelay</tt><big>(</big><em>path=None</em>, <em>timeout=None</em>, <em>extra_args=None</em><big>)</big><a class="headerlink" href="#slimta.piperelay.MaildropRelay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.piperelay.</tt><tt class="descname">MaildropRelay</tt><big>(</big><span class="optional">[</span><em>path=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>extra_args=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.piperelay.MaildropRelay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.piperelay.PipeRelay" title="slimta.piperelay.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.piperelay.PipeRelay</span></tt></a></p>
 <p>Variation of <a class="reference internal" href="#slimta.piperelay.PipeRelay" title="slimta.piperelay.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></tt></a> that is specifically tailored for calling
 <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> for local mail delivery.</p>
@@ -168,7 +168,7 @@ By default, only the sender is passed in with <tt class="docutils literal"><span
 
 <dl class="class">
 <dt id="slimta.piperelay.DovecotLdaRelay">
-<em class="property">class </em><tt class="descclassname">slimta.piperelay.</tt><tt class="descname">DovecotLdaRelay</tt><big>(</big><em>path=None</em>, <em>timeout=None</em>, <em>extra_args=None</em><big>)</big><a class="headerlink" href="#slimta.piperelay.DovecotLdaRelay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.piperelay.</tt><tt class="descname">DovecotLdaRelay</tt><big>(</big><span class="optional">[</span><em>path=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>extra_args=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.piperelay.DovecotLdaRelay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.piperelay.PipeRelay" title="slimta.piperelay.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.piperelay.PipeRelay</span></tt></a></p>
 <p>Variation of <a class="reference internal" href="#slimta.piperelay.PipeRelay" title="slimta.piperelay.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></tt></a> that is specifically tailored for calling
 dovecot&#8217;s <a class="reference external" href="http://wiki.dovecot.org/LDA">LDA</a> for local mail delivery.</p>

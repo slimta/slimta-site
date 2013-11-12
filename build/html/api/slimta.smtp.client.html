@@ -72,7 +72,7 @@
 <p>An SMTP client library that supports PIPELINING commands.</p>
 <dl class="class">
 <dt id="slimta.smtp.client.Client">
-<em class="property">class </em><tt class="descclassname">slimta.smtp.client.</tt><tt class="descname">Client</tt><big>(</big><em>socket</em>, <em>tls_wrapper=None</em><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.smtp.client.</tt><tt class="descname">Client</tt><big>(</big><em>socket</em><span class="optional">[</span>, <em>tls_wrapper=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Class whose methods perform various SMTP commands on a given socket. The
 return value from each command is a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> object. Commands that are
@@ -119,7 +119,7 @@ which means a reply is waiting to be read.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.get_reply">
-<tt class="descname">get_reply</tt><big>(</big><em>command='[TIMEOUT]'</em><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.get_reply" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">get_reply</tt><big>(</big><span class="optional">[</span><em>command='[TIMEOUT]'</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.get_reply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a reply from the server that was not triggered by the client
 sending a command. This is most useful for receiving timeout
 notifications.</p>
@@ -151,7 +151,7 @@ notifications.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.custom_command">
-<tt class="descname">custom_command</tt><big>(</big><em>command</em>, <em>arg=None</em><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.custom_command" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">custom_command</tt><big>(</big><em>command</em><span class="optional">[</span>, <em>arg=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.custom_command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a custom command to the SMTP server and waits for the reply.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -245,7 +245,7 @@ another call to <a class="reference internal" href="#slimta.smtp.client.Client.e
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.auth">
-<tt class="descname">auth</tt><big>(</big><em>authcid</em>, <em>secret</em>, <em>authzid=None</em>, <em>mechanism=None</em><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.auth" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">auth</tt><big>(</big><em>authcid</em>, <em>secret</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">[</span>, <em>mechanism=None</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.auth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Negotiates authentication for the current SMTP session. This
 transaction may involve several back-and-forth packets to the server,
 depending on the SASL mechanism used, and this function will only
@@ -274,7 +274,7 @@ available is used.</li>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.mailfrom">
-<tt class="descname">mailfrom</tt><big>(</big><em>address</em>, <em>data_size=None</em><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.mailfrom" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">mailfrom</tt><big>(</big><em>address</em><span class="optional">[</span>, <em>data_size=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.mailfrom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the MAIL command with the <tt class="docutils literal"><span class="pre">address</span></tt> and possibly the message
 size. The message size is sent if the server supports the SIZE
 extension. If the server does <em>not</em> support PIPELINING, the returned
@@ -341,7 +341,7 @@ should be sent <a class="reference internal" href="#slimta.smtp.client.Client.se
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.send_data">
-<tt class="descname">send_data</tt><big>(</big><em>*data</em><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.send_data" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">send_data</tt><big>(</big><span class="optional">[</span><em>*data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.client.Client.send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Processes and sends message data. At the end of the message data,
 the client will send a line with a single <tt class="docutils literal"><span class="pre">.</span></tt> to indicate the end of
 the message.  If the server does <em>not</em> support PIPELINING, the returned

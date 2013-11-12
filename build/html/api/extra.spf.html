@@ -73,7 +73,7 @@
 client address.</p>
 <dl class="class">
 <dt id="slimta.spf.EnforceSpf">
-<em class="property">class </em><tt class="descclassname">slimta.spf.</tt><tt class="descname">EnforceSpf</tt><big>(</big><em>timeout=10.0</em><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.spf.</tt><tt class="descname">EnforceSpf</tt><big>(</big><span class="optional">[</span><em>timeout=10.0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Class used to check SPF records and enforce a policy against the results.
 By default, results are logged but not acted upon.</p>
@@ -88,7 +88,7 @@ that times out is equivalent to a <tt class="docutils literal"><span class="pre"
 </table>
 <dl class="method">
 <dt id="slimta.spf.EnforceSpf.set_enforcement">
-<tt class="descname">set_enforcement</tt><big>(</big><em>result</em>, <em>match_code='550'</em>, <em>match_message='5.7.1 Access denied'</em><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf.set_enforcement" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">set_enforcement</tt><big>(</big><em>result</em><span class="optional">[</span>, <em>match_code='550'</em><span class="optional">[</span>, <em>match_message='5.7.1 Access denied'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf.set_enforcement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an enforcement policy to a particular SPF result. If the given
 result is seen, the <tt class="docutils literal"><span class="pre">MAIL</span> <span class="pre">FROM</span></tt> reply is set accordingly.</p>
 <table class="docutils field-list" frame="void" rules="none">

@@ -75,7 +75,7 @@ connection is available, it is re-used by subsequent connections until it times
 out.</p>
 <dl class="class">
 <dt id="slimta.relay.smtp.static.StaticSmtpRelay">
-<em class="property">class </em><tt class="descclassname">slimta.relay.smtp.static.</tt><tt class="descname">StaticSmtpRelay</tt><big>(</big><em>host</em>, <em>port=25</em>, <em>pool_size=None</em>, <em>client_class=None</em>, <em>**client_kwargs</em><big>)</big><a class="headerlink" href="#slimta.relay.smtp.static.StaticSmtpRelay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.relay.smtp.static.</tt><tt class="descname">StaticSmtpRelay</tt><big>(</big><em>host</em><span class="optional">[</span>, <em>port=25</em><span class="optional">[</span>, <em>pool_size=None</em><span class="optional">[</span>, <em>client_class=None</em><span class="optional">[</span>, <em>**client_kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.relay.smtp.static.StaticSmtpRelay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.relay.pool.html#slimta.relay.pool.RelayPool" title="slimta.relay.pool.RelayPool"><tt class="xref py py-class docutils literal"><span class="pre">slimta.relay.pool.RelayPool</span></tt></a></p>
 <p>Manages the relaying of messages to a specific <tt class="docutils literal"><span class="pre">host:port</span></tt>.
 Connections may be recycled when possible, to send multiple messages over a
