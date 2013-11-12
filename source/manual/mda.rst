@@ -4,7 +4,9 @@
 Mail Delivery Agent
 ===================
 
-*Note:* This example requires the ``python-slimta-piperelay`` package.
+.. note::
+
+   This example requires the ``python-slimta-piperelay`` package.
 
 Step 1: Create the Relay
 ------------------------
