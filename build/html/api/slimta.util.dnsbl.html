@@ -81,9 +81,12 @@ These lists can be hugely helpful and inexpensive ways of filtering spam.</p>
     <span class="n">reason</span> <span class="o">=</span> <span class="n">dnsbl</span><span class="p">[</span><span class="s">&#39;123.4.56.7&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p><em>Note:</em> Because <tt class="docutils literal"><span class="pre">__getitem__</span></tt> simply calls <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get_reason" title="slimta.util.dnsbl.DnsBlocklist.get_reason"><tt class="xref py py-meth docutils literal"><span class="pre">get_reason()</span></tt></a>, it
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because <tt class="docutils literal"><span class="pre">__getitem__</span></tt> simply calls <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get_reason" title="slimta.util.dnsbl.DnsBlocklist.get_reason"><tt class="xref py py-meth docutils literal"><span class="pre">get_reason()</span></tt></a>, it
 will never raise a <tt class="xref py py-class docutils literal"><span class="pre">KeyError</span></tt> and should only be used after using
 <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get" title="slimta.util.dnsbl.DnsBlocklist.get"><tt class="xref py py-meth docutils literal"><span class="pre">get()</span></tt></a> or <tt class="docutils literal"><span class="pre">__contains__</span></tt>.</p>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

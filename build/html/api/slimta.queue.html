@@ -301,7 +301,10 @@ thrown <a class="reference internal" href="#slimta.queue.QueueError" title="slim
 <tt class="descname">flush</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.queue.Queue.flush" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to immediately flush all messages waiting in the queue,
 regardless of their retry timers.</p>
-<p><strong>*Note:*</strong> This can be a very expensive operation, use with care.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This can be a very expensive operation, use with care.</p>
+</div>
 </dd></dl>
 
 <dl class="method">
