@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.queue &mdash; slimta 0.3.19 documentation</title>
+    <title>slimta.queue &mdash; slimta 0.3.20 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.19',
+        VERSION:     '0.3.20',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.19 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.20 documentation" href="../index.html" />
     <link rel="up" title="slimta" href="slimta.html" />
     <link rel="next" title="slimta.queue.dict" href="slimta.queue.dict.html" />
     <link rel="prev" title="slimta.edge.wsgi" href="slimta.edge.wsgi.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.edge.wsgi.html" title="slimta.edge.wsgi"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
@@ -225,6 +225,27 @@ simply called again.</td>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="slimta.queue.QueueStorage.get_info">
+<tt class="descname">get_info</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.queue.QueueStorage.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the storage backend for relevant information about the
+contents of the queue. The result is a <a class="reference internal" href="slimta.queue.dict.html#module-slimta.queue.dict" title="slimta.queue.dict"><tt class="xref py py-func docutils literal"><span class="pre">dict()</span></tt></a> containing required
+keys along with any other custom keys dependent on the particular
+backend.</p>
+<p>Only one key is required in the result:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">size</span></tt>: The number of messages currently in the queue.</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="slimta.queue.dict.html#module-slimta.queue.dict" title="slimta.queue.dict"><tt class="xref py py-func docutils literal"><span class="pre">dict()</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -311,7 +332,7 @@ regardless of their retry timers.</p>
 <dt id="slimta.queue.Queue.kill">
 <tt class="descname">kill</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.queue.Queue.kill" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is used by <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> and <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>-like objects to properly
-end any associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">Greenlet</span></tt></a>
+end any associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Greenlet</span></tt></a>
 threads) and close resources.</p>
 </dd></dl>
 
@@ -376,7 +397,7 @@ threads) and close resources.</p>
         <li class="right" >
           <a href="slimta.edge.wsgi.html" title="slimta.edge.wsgi"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li> 

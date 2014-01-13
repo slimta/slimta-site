@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Mail Delivery Agent &mdash; slimta 0.3.19 documentation</title>
+    <title>Mail Delivery Agent &mdash; slimta 0.3.20 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.19',
+        VERSION:     '0.3.20',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.19 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.20 documentation" href="../index.html" />
     <link rel="up" title="Python Library Usage" href="python-slimta.html" />
     <link rel="next" title="Mail Submission Agent" href="msa.html" />
     <link rel="prev" title="Integrating Everything" href="integrating.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="integrating.html" title="Integrating Everything"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
           <li><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
@@ -111,7 +111,7 @@ our <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Qu
 <span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Because queue objects inherit <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.Greenlet</span></tt></a>, they must call their
+<p>Because queue objects inherit <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.Greenlet</span></tt></a>, they must call their
 <tt class="docutils literal"><span class="pre">.start()</span></tt> method to function properly.</p>
 </div>
 <div class="section" id="step-3-add-queue-policies">
@@ -201,7 +201,7 @@ Their usage is relatively simple:</p>
 <p>The <a class="reference internal" href="../api/slimta.system.html#slimta.system.drop_privileges" title="slimta.system.drop_privileges"><tt class="xref py py-func docutils literal"><span class="pre">drop_privileges()</span></tt></a> command is only necessary if you
 ran your MTA as <tt class="docutils literal"><span class="pre">root</span></tt>, which is necessary to create servers listening on
 privileged ports such as 25, 587 or 465.</p>
-<p>The <a class="reference external" href="http://gevent.org/gevent.html#gevent.sleep" title="(in gevent v0.13.8)"><tt class="xref py py-func docutils literal"><span class="pre">gevent.sleep()</span></tt></a> call is not always necessary, but sometimes gevent
+<p>The <a class="reference external" href="http://gevent.org/gevent.html#gevent.sleep" title="(in gevent v1.0)"><tt class="xref py py-func docutils literal"><span class="pre">gevent.sleep()</span></tt></a> call is not always necessary, but sometimes gevent
 will not have opened the ports by the time you drop privileges and then it will
 fail, so calling a short sleep will make sure everything is ready.</p>
 </div>
@@ -281,7 +281,7 @@ fail, so calling a short sleep will make sure everything is ready.</p>
         <li class="right" >
           <a href="integrating.html" title="Integrating Everything"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
           <li><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 

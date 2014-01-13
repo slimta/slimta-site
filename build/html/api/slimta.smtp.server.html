@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.smtp.server &mdash; slimta 0.3.19 documentation</title>
+    <title>slimta.smtp.server &mdash; slimta 0.3.20 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.19',
+        VERSION:     '0.3.20',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.19 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.20 documentation" href="../index.html" />
     <link rel="up" title="slimta.smtp" href="slimta.smtp.html" />
     <link rel="next" title="slimta.smtp.extensions" href="slimta.smtp.extensions.html" />
     <link rel="prev" title="slimta.smtp.client" href="slimta.smtp.client.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.smtp.client.html" title="slimta.smtp.client"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -84,20 +84,20 @@ contains the SMTP extensions the server supports.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>socket</strong> (<a class="reference external" href="http://gevent.org/gevent.socket.html#gevent.socket.socket" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.socket.socket</span></tt></a>) &#8211; Connected socket for the session.</li>
+<li><strong>socket</strong> (<a class="reference external" href="http://gevent.org/gevent.socket.html#gevent.socket.socket" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.socket.socket</span></tt></a>) &#8211; Connected socket for the session.</li>
 <li><strong>handlers</strong> &#8211; Object with methods that will be called when
 corresponding SMTP commands are received. These methods
 can modify the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> before the command response is
 sent.</li>
 <li><strong>auth_class</strong> &#8211; Optional <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><tt class="xref py py-class docutils literal"><span class="pre">Auth</span></tt></a> sub-class to enable authentication.</li>
 <li><strong>tls</strong> &#8211; Optional dictionary of TLS settings passed directly as
-keyword arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>.</li>
+keyword arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>.</li>
 <li><strong>tls_immediately</strong> (<em>True or False</em>) &#8211; If True, the socket will be encrypted
 immediately.</li>
 <li><strong>tls_wrapper</strong> &#8211; Optional function that takes a socket and the <tt class="docutils literal"><span class="pre">tls</span></tt>
 dictionary, creates a new encrypted socket, performs
 the TLS handshake, and returns it. The default uses
-<a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">SSLSocket</span></tt></a>.</li>
+<a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">SSLSocket</span></tt></a>.</li>
 <li><strong>command_timeout</strong> &#8211; Optional timeout waiting for a command to be
 sent from the client.</li>
 <li><strong>data_timeout</strong> &#8211; Optional timeout waiting for data to be sent from
@@ -175,7 +175,7 @@ and sending responses.</p>
         <li class="right" >
           <a href="slimta.smtp.client.html" title="slimta.smtp.client"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.cloudstorage.rackspace &mdash; slimta 0.3.19 documentation</title>
+    <title>slimta.cloudstorage.rackspace &mdash; slimta 0.3.20 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.19',
+        VERSION:     '0.3.20',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.19 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.20 documentation" href="../index.html" />
     <link rel="up" title="slimta.cloudstorage" href="extra.cloudstorage.html" />
     <link rel="next" title="slimta.cloudstorage.aws" href="extra.cloudstorage.aws.html" />
     <link rel="prev" title="slimta.cloudstorage" href="extra.cloudstorage.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="extra.cloudstorage.html" title="slimta.cloudstorage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="extra.html" >Available Extensions</a> &raquo;</li>
@@ -137,7 +137,7 @@ not given, the first region returned is used.</li>
 <li><strong>timeout</strong> &#8211; Timeout, in seconds, for requests to the Cloud Auth API to
 create a new token for the session.</li>
 <li><strong>tls</strong> &#8211; Optional dictionary of TLS settings passed directly as keyword
-arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>. This is only used
+arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>. This is only used
 for URLs with the <tt class="docutils literal"><span class="pre">https</span></tt> scheme.</li>
 </ul>
 </td>
@@ -176,11 +176,13 @@ token is stored in the <a class="reference internal" href="#slimta.cloudstorage.
 
 <dl class="class">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudFiles">
-<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudFiles</tt><big>(</big><em>auth</em><span class="optional">[</span>, <em>container='slimta-queue'</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.rackspace.</tt><tt class="descname">RackspaceCloudFiles</tt><big>(</big><em>auth</em><span class="optional">[</span>, <em>container='slimta-queue'</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">[</span>, <em>prefix=''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Instances of this class may be passed in to the
 <a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><tt class="xref py py-class docutils literal"><span class="pre">CloudStorage</span></tt></a> constructor for the <tt class="docutils literal"><span class="pre">storage</span></tt>
 parameter to use <a class="reference external" href="http://www.rackspace.com/cloud/files/">Cloud Files</a> as the storage backend.</p>
+<p>Keys added to the container are generated with
+<tt class="docutils literal"><span class="pre">prefix</span> <span class="pre">+</span> <span class="pre">str(uuid.uuid4())</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -193,8 +195,9 @@ container will be named with random UUID strings.</li>
 <li><strong>timeout</strong> &#8211; Timeout, in seconds, for all requests to the Cloud Files API
 to return before an exception is thrown.</li>
 <li><strong>tls</strong> &#8211; Optional dictionary of TLS settings passed directly as keyword
-arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>. This is only used
+arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>. This is only used
 for URLs with the <tt class="docutils literal"><span class="pre">https</span></tt> scheme.</li>
+<li><strong>prefix</strong> &#8211; The string prefixed to every key added to the bucket.</li>
 </ul>
 </td>
 </tr>
@@ -227,7 +230,7 @@ API.</li>
 <li><strong>poll_pause</strong> &#8211; The time, in seconds, to idle between attempts to poll
 the queue for new messages.</li>
 <li><strong>tls</strong> &#8211; Optional dictionary of TLS settings passed directly as keyword
-arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v0.13.8)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>. This is only used
+arguments to <a class="reference external" href="http://gevent.org/gevent.ssl.html#gevent.ssl.SSLSocket" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></tt></a>. This is only used
 for URLs with the <tt class="docutils literal"><span class="pre">https</span></tt> scheme.</li>
 </ul>
 </td>
@@ -287,7 +290,7 @@ for URLs with the <tt class="docutils literal"><span class="pre">https</span></t
         <li class="right" >
           <a href="extra.cloudstorage.html" title="slimta.cloudstorage"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.19 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="extra.html" >Available Extensions</a> &raquo;</li>
