@@ -1,4 +1,3 @@
-
 #############################
 slimta: Mail Transfer Library
 #############################
@@ -12,10 +11,10 @@ slimta: Mail Transfer Library
 
 .. _MTA: http://en.wikipedia.org/wiki/Message_transfer_agent
 
-The *slimta* suite was created to be provide MTA that takes advantage of new
+The *slimta* suite was created to provide an MTA (Mail Transfer Agent) taking advantage of new
 technologies and methodologies to scale horizontally in a virtualized
 environment. Along with that, *slimta* is designed to work either as a
-traditional application or as a software platform that is developed on top of.
+traditional application or as a software library.
 
 .. |buildstatus| image:: http://ci.slimta.org/job/python-slimta/badge/icon
 
