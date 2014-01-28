@@ -22,10 +22,10 @@ mapping with one required key:
 
 When configuring an `MSA`_, you generally want to accept all mail from
 authorized senders for delivery to the intended target. The fundamental design
-of email uses DNS MX records to allow domains to advertize the servers that will
-accept mail on its behalf. Other times, you might want to delivery *all* mail to
-a particular host, perhaps for spam or abuse prevention. Using the ``"mx"`` and
-``"static"`` relay types provide this behavior.
+of email uses DNS MX records to allow domains to advertize the servers that
+will accept mail on its behalf. Other times, you might want to delivery *all*
+mail to a particular host, perhaps for spam or abuse prevention. Using the
+``"mx"`` and ``"static"`` relay types provide this behavior.
 
 Using the ``"mx"`` type produces an :class:`~slimta.relay.smtp.mx.MxSmtpRelay`
 and the ``"static"`` type produces a
@@ -74,9 +74,9 @@ options that can customize their behavior:
   :func:`~ssl.wrap_socket`, both enables and configures TLS encryption on this
   SMTP relay. By default, TLS is not enabled.
 
-There are some additional options that apply *only* to ``"static"`` relay types.
-These options specify the permanent delivery address for all mail, and are as
-follows:
+There are some additional options that apply *only* to ``"static"`` relay
+types.  These options specify the permanent delivery address for all mail, and
+are as follows:
 
 * ``host``: String, required
 
@@ -102,13 +102,13 @@ following configuration keys:
 
   These are the arguments for the subprocess, similar to the ``args`` parameter
   to the :py:class:`~subprocess.Popen` constructor. This list may contain
-  several macros, see the :class:`~slimta.piperelay.PipeRelay` class constructor
-  for more information.
+  several macros, see the :class:`~slimta.relay.pipe.PipeRelay` class
+  constructor for more information.
 
 * ``error_pattern``: String
 
-  This string defines a regular expression that parses an error message from the
-  subprocess's *stdout* or *stderr*, whichever matches.
+  This string defines a regular expression that parses an error message from
+  the subprocess's *stdout* or *stderr*, whichever matches.
 
 ``maildrop`` Relays
 """""""""""""""""""
@@ -122,8 +122,8 @@ configuration key:
 
 * ``path``: String
 
-  The path to the ``maildrop`` executable. By default, the ``$PATH`` environment
-  variable is searched.
+  The path to the ``maildrop`` executable. By default, the ``$PATH``
+  environment variable is searched.
 
 ``dovecot`` Relays
 """"""""""""""""""

@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -69,17 +69,18 @@
   <div class="section" id="configuring-the-processes">
 <h1>Configuring the Processes<a class="headerlink" href="#configuring-the-processes" title="Permalink to this headline">¶</a></h1>
 <p>The first section in <tt class="docutils literal"><span class="pre">slimta.conf</span></tt> is <tt class="docutils literal"><span class="pre">process</span></tt>:</p>
-<div class="highlight-python"><pre>process: {
+<div class="highlight-python"><div class="highlight"><pre>process: {
   slimta: {
     daemon: False
-    logging: @"logging.conf"
+    logging: @&quot;logging.conf&quot;
   }
 
   worker: {
     daemon: False
-    logging: @"logging.conf"
+    logging: @&quot;logging.conf&quot;
   }
-}</pre>
+}
+</pre></div>
 </div>
 <p>It has two sub-sections, <tt class="docutils literal"><span class="pre">slimta</span></tt> and <tt class="docutils literal"><span class="pre">worker</span></tt>, which manage settings for
 the <tt class="docutils literal"><span class="pre">slimta</span></tt> and <tt class="docutils literal"><span class="pre">slimta-worker</span></tt> executables, respectively. Each sub-section
@@ -124,29 +125,29 @@ is compatible with the <a class="reference external" href="http://docs.python.or
 <a class="reference external" href="https://github.com/slimta/slimta/blob/master/etc/logging.conf.sample">logging.conf</a> sample config has a good starting point.</p>
 <p>A more advanced, logging config that produces log files ready for rotation in a
 readable and parseable format might look like this:</p>
-<div class="highlight-python"><pre>version: 1
+<div class="highlight-python"><div class="highlight"><pre>version: 1
 
 formatters: {
   console: {
-    format: '%(levelname)-8s %(name)-15s %(message)s'
+    format: &#39;%(levelname)-8s %(name)-15s %(message)s&#39;
   }
   default: {
-    format: '%(asctime)s %(levelname)s %(name)s %(message)s'
+    format: &#39;%(asctime)s %(levelname)s %(name)s %(message)s&#39;
   }
 }
 
 handlers: {
   console: {
-    class: 'logging.StreamHandler'
+    class: &#39;logging.StreamHandler&#39;
     level: DEBUG
     formatter: console
-    stream: 'ext://sys.stdout'
+    stream: &#39;ext://sys.stdout&#39;
   }
   file: {
-    class: 'logging.handlers.WatchedFileHandler'
+    class: &#39;logging.handlers.WatchedFileHandler&#39;
     level: DEBUG
     formatter: default
-    filename: '/var/log/slimta/slimta.log'
+    filename: &#39;/var/log/slimta/slimta.log&#39;
   }
 }
 
@@ -166,7 +167,8 @@ root: {
   handlers: [file]
 }
 
-# vim:sw=2:ts=2:sts=2:et:ai:</pre>
+# vim:sw=2:ts=2:sts=2:et:ai:
+</pre></div>
 </div>
 </div>
 </div>
@@ -177,12 +179,11 @@ root: {
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html">
+        <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
-  <div class="sphinxlocaltoc">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Configuring the Processes</a><ul>
 <li><a class="reference internal" href="#logging-configuration">Logging Configuration</a></li>
 </ul>
@@ -190,12 +191,16 @@ root: {
 </ul>
 
   </div>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="slimta.html"
-                        title="previous chapter">Application Usage</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="slimta.edges.html"
-                        title="next chapter">Configuring the Edges</a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.html"
+                          title="Previous page">&larr; Application Usage</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.edges.html"
+                          title="Next page">&rarr; Configuring the Edges</a></p>
+  </div>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">

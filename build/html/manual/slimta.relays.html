@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -82,10 +82,10 @@ thrown. The other keys in this mapping depend on the value of <tt class="docutil
 <h2><tt class="docutils literal"><span class="pre">mx</span></tt> and <tt class="docutils literal"><span class="pre">static</span></tt> Relays<a class="headerlink" href="#mx-and-static-relays" title="Permalink to this headline">¶</a></h2>
 <p>When configuring an <a class="reference external" href="http://en.wikipedia.org/wiki/Mail_submission_agent">MSA</a>, you generally want to accept all mail from
 authorized senders for delivery to the intended target. The fundamental design
-of email uses DNS MX records to allow domains to advertize the servers that will
-accept mail on its behalf. Other times, you might want to delivery <em>all</em> mail to
-a particular host, perhaps for spam or abuse prevention. Using the <tt class="docutils literal"><span class="pre">&quot;mx&quot;</span></tt> and
-<tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay types provide this behavior.</p>
+of email uses DNS MX records to allow domains to advertize the servers that
+will accept mail on its behalf. Other times, you might want to delivery <em>all</em>
+mail to a particular host, perhaps for spam or abuse prevention. Using the
+<tt class="docutils literal"><span class="pre">&quot;mx&quot;</span></tt> and <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay types provide this behavior.</p>
 <p>Using the <tt class="docutils literal"><span class="pre">&quot;mx&quot;</span></tt> type produces an <a class="reference internal" href="../api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">MxSmtpRelay</span></tt></a>
 and the <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> type produces a
 <a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></tt></a>. Both share several config
@@ -127,9 +127,9 @@ IP on DNS blocklists. By default, the FQDN of the local machine is used.</p>
 SMTP relay. By default, TLS is not enabled.</p>
 </li>
 </ul>
-<p>There are some additional options that apply <em>only</em> to <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay types.
-These options specify the permanent delivery address for all mail, and are as
-follows:</p>
+<p>There are some additional options that apply <em>only</em> to <tt class="docutils literal"><span class="pre">&quot;static&quot;</span></tt> relay
+types.  These options specify the permanent delivery address for all mail, and
+are as follows:</p>
 <ul>
 <li><p class="first"><tt class="docutils literal"><span class="pre">host</span></tt>: String, required</p>
 <p>The host name or IP address of the destination for outbound mail delivery on
@@ -151,12 +151,12 @@ following configuration keys:</p>
 <li><p class="first"><tt class="docutils literal"><span class="pre">args</span></tt>: List</p>
 <p>These are the arguments for the subprocess, similar to the <tt class="docutils literal"><span class="pre">args</span></tt> parameter
 to the <a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Popen</span></tt></a> constructor. This list may contain
-several macros, see the <a class="reference internal" href="../api/extra.piperelay.html#slimta.piperelay.PipeRelay" title="slimta.piperelay.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></tt></a> class constructor
-for more information.</p>
+several macros, see the <a class="reference internal" href="../api/slimta.relay.pipe.html#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></tt></a> class
+constructor for more information.</p>
 </li>
 <li><p class="first"><tt class="docutils literal"><span class="pre">error_pattern</span></tt>: String</p>
-<p>This string defines a regular expression that parses an error message from the
-subprocess&#8217;s <em>stdout</em> or <em>stderr</em>, whichever matches.</p>
+<p>This string defines a regular expression that parses an error message from
+the subprocess&#8217;s <em>stdout</em> or <em>stderr</em>, whichever matches.</p>
 </li>
 </ul>
 </div>
@@ -168,8 +168,8 @@ configured externally using <tt class="docutils literal"><span class="pre">.mail
 configuration key:</p>
 <ul>
 <li><p class="first"><tt class="docutils literal"><span class="pre">path</span></tt>: String</p>
-<p>The path to the <tt class="docutils literal"><span class="pre">maildrop</span></tt> executable. By default, the <tt class="docutils literal"><span class="pre">$PATH</span></tt> environment
-variable is searched.</p>
+<p>The path to the <tt class="docutils literal"><span class="pre">maildrop</span></tt> executable. By default, the <tt class="docutils literal"><span class="pre">$PATH</span></tt>
+environment variable is searched.</p>
 </li>
 </ul>
 </div>
@@ -254,12 +254,11 @@ as any others as necessary):</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html">
+        <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
-  <div class="sphinxlocaltoc">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Configuring the Relays</a><ul>
 <li><a class="reference internal" href="#mx-and-static-relays"><tt class="docutils literal"><span class="pre">mx</span></tt> and <tt class="docutils literal"><span class="pre">static</span></tt> Relays</a></li>
 <li><a class="reference internal" href="#pipe-relays"><tt class="docutils literal"><span class="pre">pipe</span></tt> Relays</a></li>
@@ -273,12 +272,16 @@ as any others as necessary):</p>
 </ul>
 
   </div>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="slimta.queues.html"
-                        title="previous chapter">Configuring the Queues</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../license.html"
-                        title="next chapter">MIT License</a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.queues.html"
+                          title="Previous page">&larr; Configuring the Queues</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="../license.html"
+                          title="Next page">&rarr; MIT License</a></p>
+  </div>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
