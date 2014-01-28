@@ -25,7 +25,7 @@ here.
 External Process Delivery
 """""""""""""""""""""""""
 
-.. note::
+.. caution::
 
    This extension was deprecated in python-slimta version 0.3.21 in favor of
    the :mod:`slimta.relay.pipe` module.
