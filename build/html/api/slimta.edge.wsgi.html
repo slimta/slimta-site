@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -73,10 +73,10 @@
 a Python specification for defining communication between web servers and the
 application.</p>
 <p>The resulting edge can be used by any HTTP client, like curl:</p>
-<div class="highlight-python"><pre>$ curl -v -X POST -H 'Content-Type: message/rfc822' \
+<div class="highlight-python"><div class="highlight"><pre>$ curl -v -X POST -H &#39;Content-Type: message/rfc822&#39; \
        --data-binary @test.eml \
-       -H 'X-Envelope-Sender: c2VuZGVyQGV4YW1wbGUuY29t' \
-       -H 'X-Envelope-Recipient: cmVjaXBpZW50QGV4YW1wbGUuY29t' \
+       -H &#39;X-Envelope-Sender: c2VuZGVyQGV4YW1wbGUuY29t&#39; \
+       -H &#39;X-Envelope-Recipient: cmVjaXBpZW50QGV4YW1wbGUuY29t&#39; \
        http://localhost:8080/
 * About to connect() to localhost port 8080 (#0)
 *   Trying 127.0.0.1...
@@ -92,16 +92,17 @@ application.</p>
 &gt;
 * upload completely sent off: 99 out of 99 bytes
 &lt; HTTP/1.1 200 OK
-&lt; X-Smtp-Reply: 250; message="2.6.0 Message accepted for delivery"
+&lt; X-Smtp-Reply: 250; message=&quot;2.6.0 Message accepted for delivery&quot;
 &lt; Date: Mon, 29 Jul 2013 20:11:55 GMT
 &lt; Content-Length: 0
 &lt;
-* Connection #0 to host localhost left intact</pre>
+* Connection #0 to host localhost left intact
+</pre></div>
 </div>
 <dl class="exception">
 <dt id="slimta.edge.wsgi.WsgiResponse">
 <em class="property">exception </em><tt class="descclassname">slimta.edge.wsgi.</tt><tt class="descname">WsgiResponse</tt><big>(</big><em>status</em><span class="optional">[</span>, <em>headers=None</em><span class="optional">[</span>, <em>data=None</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.edge.wsgi.WsgiResponse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.Exception" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></a></p>
 <p>This exception can be explicitly raised to end the WSGI request and
 return the given response.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -275,15 +276,19 @@ did not provide the header.</li>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html">
+        <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
         </a></p>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="slimta.edge.smtp.html"
-                        title="previous chapter">slimta.edge.smtp</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="slimta.queue.html"
-                        title="next chapter">slimta.queue</a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.edge.smtp.html"
+                          title="Previous page">&larr; slimta.edge.smtp</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.queue.html"
+                          title="Next page">&rarr; slimta.queue</a></p>
+  </div>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">

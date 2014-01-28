@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -290,8 +290,9 @@ the message was accepted. A separate process is configured to pull messages from
 the broker when they are ready for delivery.</p>
 <p>Unlike other queue types, the <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queue type requires you to run
 a separate process alongside <tt class="docutils literal"><span class="pre">slimta</span></tt>:</p>
-<div class="highlight-python"><pre>$ slimta
-$ slimta-worker</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ slimta
+$ slimta-worker
+</pre></div>
 </div>
 <p>However, as long as these two processes are configured the same and consume the
 same broker service, you now have the advantage of being able to receive
@@ -305,10 +306,11 @@ all <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt
 <p>This section contains all the key-value pairs normally placed in a
 <tt class="docutils literal"><span class="pre">celeryconfig.py</span></tt> module. For example, to specify the broker and backend
 URLs:</p>
-<div class="highlight-python"><pre>celery_app: {
-  BROKER_URL: 'redis://'
-  BACKEND_URL: 'redis://'
-}</pre>
+<div class="highlight-python"><div class="highlight"><pre>celery_app: {
+  BROKER_URL: &#39;redis://&#39;
+  BACKEND_URL: &#39;redis://&#39;
+}
+</pre></div>
 </div>
 </li>
 </ul>
@@ -343,12 +345,11 @@ should use for message delivery:</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html">
+        <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
-  <div class="sphinxlocaltoc">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Configuring the Queues</a><ul>
 <li><a class="reference internal" href="#queue-policy-settings">Queue Policy Settings</a></li>
 <li><a class="reference internal" href="#delivery-retry-behavior">Delivery Retry Behavior</a></li>
@@ -365,12 +366,16 @@ should use for message delivery:</p>
 </ul>
 
   </div>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="slimta.edges.html"
-                        title="previous chapter">Configuring the Edges</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="slimta.relays.html"
-                        title="next chapter">Configuring the Relays</a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.edges.html"
+                          title="Previous page">&larr; Configuring the Edges</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.relays.html"
+                          title="Next page">&rarr; Configuring the Relays</a></p>
+  </div>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">

@@ -109,6 +109,6 @@ module documentation may be useful.
 .. note::
 
    Prior to version 0.3.21, this functionality was provided by the
-   python-slimta-piperelay extension.
+   `python-slimta-piperelay <pipe-relay-extension>`_ extension.
 
 

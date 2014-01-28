@@ -12,7 +12,7 @@
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -83,7 +83,8 @@ the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-sli
 delivery an external process. This simple mechanism is then used to support
 delivery to applications such as <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> and <a class="reference external" href="http://wiki.dovecot.org/LDA">dovecot-deliver</a>.</p>
 <p>Installation of this extension is as simple as:</p>
-<div class="highlight-python"><pre>$ pip install python-slimta-piperelay</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install python-slimta-piperelay
+</pre></div>
 </div>
 <p>Take <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> as an example. With a normal system configuration, the
 following should be plenty to create a <tt class="docutils literal"><span class="pre">slimta.piperelay.MaildropRelay</span></tt>
@@ -102,7 +103,8 @@ a cloud object store. Optionally, a reference to their location in the object
 store is then written to a cloud message queue, which can alert relayers in
 other processes of the availability of a new message in the object store.</p>
 <p>Install this extension with the following command:</p>
-<div class="highlight-python"><pre>$ pip install python-slimta-cloudstorage</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install python-slimta-cloudstorage
+</pre></div>
 </div>
 <p>To use the <a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a> services available in the extension, you need
 instances of the <a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudAuth</span></tt></a>,
@@ -116,7 +118,8 @@ instances of the <a class="reference internal" href="../api/extra.cloudstorage.r
 </div>
 <p>Using <a class="reference external" href="http://aws.amazon.com/">AWS</a> services is a bit different. First, it requires installation and
 configuration of the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.23.0)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library:</p>
-<div class="highlight-python"><pre>$ pip install boto</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install boto
+</pre></div>
 </div>
 <p>Using the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.23.0)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library, we need to come up with references to a
 <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.23.0)"><tt class="xref py py-class docutils literal"><span class="pre">Bucket</span></tt></a> and optionally a
@@ -169,7 +172,8 @@ by the same uuid string as its corresponding envelope file, but with the suffix
 <tt class="docutils literal"><span class="pre">.meta</span></tt>. The envelope and meta directories can be the same, but two
 <a class="reference internal" href="../api/extra.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><tt class="xref py py-class docutils literal"><span class="pre">DiskStorage</span></tt></a> should not share directories.</p>
 <p>To install this extension:</p>
-<div class="highlight-python"><pre>$ pip install python-slimta-diskstorage</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install python-slimta-diskstorage
+</pre></div>
 </div>
 <p>And to initialize a new <a class="reference internal" href="../api/extra.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><tt class="xref py py-class docutils literal"><span class="pre">DiskStorage</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.diskstorage</span> <span class="kn">import</span> <span class="n">DiskStorage</span>
@@ -186,26 +190,29 @@ database, the <a class="reference internal" href="../api/extra.redisstorage.html
 for each queued message, containing its delivery metadata and a pickled version
 of the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a>.</p>
 <p>The keys created in redis will look like the following:</p>
-<div class="highlight-python"><pre>redis 127.0.0.1:6379&gt; KEYS *
-1) "slimta:28195d3b0a5847f9853e5b0173c85151"
-2) "slimta:5ebb94976cd94b418d6063a2ca4cbf8f"
-3) "slimta:d33879cf66244472b983770ba762e07b"
-redis 127.0.0.1:6379&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>redis 127.0.0.1:6379&gt; KEYS *
+1) &quot;slimta:28195d3b0a5847f9853e5b0173c85151&quot;
+2) &quot;slimta:5ebb94976cd94b418d6063a2ca4cbf8f&quot;
+3) &quot;slimta:d33879cf66244472b983770ba762e07b&quot;
+redis 127.0.0.1:6379&gt;
+</pre></div>
 </div>
 <p>Each key is a hash that will look something like:</p>
-<div class="highlight-python"><pre>redis 127.0.0.1:6379&gt; HGETALL slimta:d33879cf66244472b983770ba762e07b
-1) "attempts"
-2) "2"
-3) "timestamp"
-4) "1377121655"
-5) "envelope"
-6) "..."
-redis 127.0.0.1:6379&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>redis 127.0.0.1:6379&gt; HGETALL slimta:d33879cf66244472b983770ba762e07b
+1) &quot;attempts&quot;
+2) &quot;2&quot;
+3) &quot;timestamp&quot;
+4) &quot;1377121655&quot;
+5) &quot;envelope&quot;
+6) &quot;...&quot;
+redis 127.0.0.1:6379&gt;
+</pre></div>
 </div>
 <p>On startup, the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> will scan the keyspace (using the customizable prefix
 <tt class="docutils literal"><span class="pre">slimta:</span></tt>) and populate the queue with existing messages for delivery.</p>
 <p>To install this extension:</p>
-<div class="highlight-python"><pre>$ pip install python-slimta-redisstorage</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install python-slimta-redisstorage
+</pre></div>
 </div>
 <p>And to initialize a new <a class="reference internal" href="../api/extra.redisstorage.html#slimta.redisstorage.RedisStorage" title="slimta.redisstorage.RedisStorage"><tt class="xref py py-class docutils literal"><span class="pre">RedisStorage</span></tt></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.redisstorage</span> <span class="kn">import</span> <span class="n">RedisStorage</span>
@@ -284,7 +291,8 @@ from this file, add your policies, and create your <a class="reference internal"
 </div>
 <p>Finally, in a new terminal start your task worker, using <a class="reference external" href="http://gevent.org/gevent.html#module-gevent" title="(in gevent v1.0)"><tt class="xref py py-mod docutils literal"><span class="pre">gevent</span></tt></a> as the
 worker thread pool:</p>
-<div class="highlight-python"><pre>$ celery worker -A mytasks -l debug -P gevent</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ celery worker -A mytasks -l debug -P gevent
+</pre></div>
 </div>
 <p>Now you are all set up with a distributed Celery queue! You&#8217;re now free to
 scale your <em>edge</em> by adding more machines running <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><tt class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></tt></a> to the a <tt class="docutils literal"><span class="pre">queue</span></tt>
@@ -335,12 +343,11 @@ want to act upon. These results are:</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html">
+        <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
-  <div class="sphinxlocaltoc">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+        </a></p><div class="sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Extensions</a><ul>
 <li><a class="reference internal" href="#external-process-delivery">External Process Delivery</a></li>
 <li><a class="reference internal" href="#cloud-storage">Cloud Storage</a></li>
@@ -357,12 +364,16 @@ want to act upon. These results are:</p>
 </ul>
 
   </div>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="msa.html"
-                        title="previous chapter">Mail Submission Agent</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="slimta.html"
-                        title="next chapter">Application Usage</a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="msa.html"
+                          title="Previous page">&larr; Mail Submission Agent</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.html"
+                          title="Next page">&rarr; Application Usage</a></p>
+  </div>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
