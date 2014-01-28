@@ -15,7 +15,6 @@ own set of additional dependencies. These modules can be installed alongside
    extra.diskstorage
    extra.cloudstorage
    extra.redisstorage
-   extra.piperelay
    extra.celeryqueue
    extra.spf
 
