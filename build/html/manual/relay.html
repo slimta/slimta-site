@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Relay Services &mdash; slimta 0.3.20 documentation</title>
+    <title>Relay Services &mdash; slimta 0.3.21 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.20',
+        VERSION:     '0.3.21',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.20 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.21 documentation" href="../index.html" />
     <link rel="up" title="Python Library Usage" href="python-slimta.html" />
     <link rel="next" title="Policy Implementation" href="policies.html" />
     <link rel="prev" title="Queue Services" href="queue.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="queue.html" title="Queue Services"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.21 documentation</a> &raquo;</li>
 
           <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
           <li><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
@@ -136,19 +136,24 @@ object:</p>
 </div>
 </div>
 <div class="section" id="external-process-relaying">
-<span id="relay-maildrop"></span><h2>External Process Relaying<a class="headerlink" href="#external-process-relaying" title="Permalink to this headline">¶</a></h2>
+<span id="relay-pipe"></span><h2>External Process Relaying<a class="headerlink" href="#external-process-relaying" title="Permalink to this headline">¶</a></h2>
 <p>When <a class="reference external" href="http://slimta.org/">slimta</a> is configured to be the final destination for the email message,
 it can stream a message to an external process to locally deliver the message.
 This is how applications like <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> and <a class="reference external" href="http://wiki.dovecot.org/LDA">dovecot-lda</a> are given
 messages. This method is modeled off the <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe daemon</a> from postfix.  This
-type of relay is provided in the <a class="reference internal" href="../api/extra.piperelay.html#module-slimta.piperelay" title="slimta.piperelay"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.piperelay</span></tt></a> module. Here&#8217;s an
+type of relay is provided in the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.relay.pipe</span></tt></a> module. Here&#8217;s an
 example of delivery to the <tt class="docutils literal"><span class="pre">maildrop</span></tt> command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.piperelay</span> <span class="kn">import</span> <span class="n">MaildropRelay</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.pipe</span> <span class="kn">import</span> <span class="n">MaildropRelay</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MaildropRelay</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <a class="reference internal" href="../api/extra.piperelay.html#module-slimta.piperelay" title="slimta.piperelay"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.piperelay</span></tt></a> module is packaged separately as an extension as
-described in <a class="reference internal" href="extensions.html#pipe-relay"><em>External Process Delivery</em></a>.</p>
+<p>For more information, the <a class="reference internal" href="mda.html"><em>Mail Delivery Agent</em></a> tutorial and <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><tt class="xref py py-mod docutils literal"><span class="pre">pipe</span></tt></a>
+module documentation may be useful.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Prior to version 0.3.21, this functionality was provided by the
+python-slimta-piperelay extension.</p>
+</div>
 </div>
 </div>
 
@@ -214,7 +219,7 @@ described in <a class="reference internal" href="extensions.html#pipe-relay"><em
         <li class="right" >
           <a href="queue.html" title="Queue Services"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.21 documentation</a> &raquo;</li>
 
           <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
           <li><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 

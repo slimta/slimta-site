@@ -16,6 +16,7 @@ slimta.relay
 
    slimta.relay.pool
    slimta.relay.blackhole
+   slimta.relay.pipe
    slimta.relay.smtp
    slimta.relay.http
 

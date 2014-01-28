@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Extensions &mdash; slimta 0.3.20 documentation</title>
+    <title>Extensions &mdash; slimta 0.3.21 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.20',
+        VERSION:     '0.3.21',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 0.3.20 documentation" href="../index.html" />
+    <link rel="top" title="slimta 0.3.21 documentation" href="../index.html" />
     <link rel="up" title="Python Library Usage" href="python-slimta.html" />
     <link rel="next" title="Application Usage" href="slimta.html" />
     <link rel="prev" title="Mail Submission Agent" href="msa.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="msa.html" title="Mail Submission Agent"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.21 documentation</a> &raquo;</li>
 
           <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
           <li><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
@@ -73,7 +73,12 @@
 separately. These extensions, and where and how to use them, are discussed
 here.</p>
 <div class="section" id="external-process-delivery">
-<span id="pipe-relay"></span><h2>External Process Delivery<a class="headerlink" href="#external-process-delivery" title="Permalink to this headline">¶</a></h2>
+<span id="pipe-relay-extension"></span><h2>External Process Delivery<a class="headerlink" href="#external-process-delivery" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This extension was deprecated in python-slimta version 0.3.21 in favor of
+the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.relay.pipe</span></tt></a> module.</p>
+</div>
 <p>This simple extension uses the <a class="reference external" href="https://github.com/bombela/gevent_subprocess">gevent_subprocess</a> library to initiate local
 delivery an external process. This simple mechanism is then used to support
 delivery to applications such as <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> and <a class="reference external" href="http://wiki.dovecot.org/LDA">dovecot-deliver</a>.</p>
@@ -81,15 +86,13 @@ delivery to applications such as <a class="reference external" href="http://www.
 <div class="highlight-python"><pre>$ pip install python-slimta-piperelay</pre>
 </div>
 <p>Take <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> as an example. With a normal system configuration, the
-following should be plenty to create a <a class="reference internal" href="../api/extra.piperelay.html#slimta.piperelay.MaildropRelay" title="slimta.piperelay.MaildropRelay"><tt class="xref py py-class docutils literal"><span class="pre">MaildropRelay</span></tt></a>
+following should be plenty to create a <tt class="docutils literal"><span class="pre">slimta.piperelay.MaildropRelay</span></tt>
 instance:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.piperelay</span> <span class="kn">import</span> <span class="n">MaildropRelay</span>
 
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MaildropRelay</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>For more information, the <a class="reference internal" href="mda.html"><em>Mail Delivery Agent</em></a> tutorial and <a class="reference internal" href="../api/extra.piperelay.html#module-slimta.piperelay" title="slimta.piperelay"><tt class="xref py py-mod docutils literal"><span class="pre">piperelay</span></tt></a>
-module documentation may be useful.</p>
 </div>
 <div class="section" id="cloud-storage">
 <span id="id1"></span><h2>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Permalink to this headline">¶</a></h2>
@@ -394,7 +397,7 @@ want to act upon. These results are:</p>
         <li class="right" >
           <a href="msa.html" title="Mail Submission Agent"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 0.3.20 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 0.3.21 documentation</a> &raquo;</li>
 
           <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
           <li><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 

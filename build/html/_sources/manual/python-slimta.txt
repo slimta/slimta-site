@@ -42,7 +42,7 @@ arguments it takes and what they mean.
 
   * :ref:`SMTP Smart-Hosting <relay-smtp-smarthost>`
   * :ref:`SMTP MX <relay-smtp-mx>`
-  * :ref:`Maildrop <relay-maildrop>`
+  * :ref:`External Processes <relay-pipe>`
 
 * :doc:`policies`
 
@@ -59,7 +59,7 @@ arguments it takes and what they mean.
 
 * :doc:`extensions`
 
-  * :ref:`External Process Delivery <pipe-relay>`
+  * :ref:`External Process Delivery <pipe-relay-extension>`
   * :ref:`Cloud Storage <cloud-storage>`
   * :ref:`Disk Storage <disk-storage>`
   * :ref:`Redis Storage <redis-storage>`
