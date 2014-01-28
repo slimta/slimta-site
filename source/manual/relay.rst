@@ -88,7 +88,7 @@ object::
     from slimta.relay.http import HttpRelay
     relay = HttpRelay('http://example.com:8025/messages/')
 
-.. _relay-maildrop:
+.. _relay-pipe:
 
 External Process Relaying
 """""""""""""""""""""""""
@@ -97,12 +97,18 @@ When |slimta| is configured to be the final destination for the email message,
 it can stream a message to an external process to locally deliver the message.
 This is how applications like `courier-maildrop`_ and `dovecot-lda`_ are given
 messages. This method is modeled off the `pipe daemon`_ from postfix.  This
-type of relay is provided in the :mod:`slimta.piperelay` module. Here's an
+type of relay is provided in the :mod:`slimta.relay.pipe` module. Here's an
 example of delivery to the ``maildrop`` command::
 
-    from slimta.piperelay import MaildropRelay
+    from slimta.relay.pipe import MaildropRelay
     relay = MaildropRelay(timeout=10.0)
 
-The :mod:`slimta.piperelay` module is packaged separately as an extension as
-described in :ref:`External Process Delivery <pipe-relay>`. 
+For more information, the :doc:`mda` tutorial and :mod:`~slimta.relay.pipe`
+module documentation may be useful.
+
+.. note::
+
+   Prior to version 0.3.21, this functionality was provided by the
+   python-slimta-piperelay extension.
+
 

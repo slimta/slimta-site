@@ -20,10 +20,15 @@ In an effort to keep a small number of dependencies and avoid a reputation for
 separately. These extensions, and where and how to use them, are discussed
 here.
 
-.. _pipe-relay:
+.. _pipe-relay-extension:
 
 External Process Delivery
 """""""""""""""""""""""""
+
+.. note::
+
+   This extension was deprecated in python-slimta version 0.3.21 in favor of
+   the :mod:`slimta.relay.pipe` module.
 
 This simple extension uses the `gevent_subprocess`_ library to initiate local
 delivery an external process. This simple mechanism is then used to support
@@ -34,15 +39,12 @@ Installation of this extension is as simple as::
     $ pip install python-slimta-piperelay
 
 Take `courier-maildrop`_ as an example. With a normal system configuration, the
-following should be plenty to create a :class:`~slimta.piperelay.MaildropRelay`
+following should be plenty to create a ``slimta.piperelay.MaildropRelay``
 instance::
 
     from slimta.piperelay import MaildropRelay
 
     relay = MaildropRelay()
-
-For more information, the :doc:`mda` tutorial and :mod:`~slimta.piperelay`
-module documentation may be useful.
 
 .. _cloud-storage:
 
