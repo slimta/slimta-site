@@ -143,6 +143,8 @@ port number from <a class="reference external" href="http://docs.python.org/libr
 <tt class="descname">finish</tt><big>(</big><span class="optional">[</span><em>runtime=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.finish" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to get the results of the PTR lookup. If the results are
 not available, <tt class="docutils literal"><span class="pre">None</span></tt> is returned instead.</p>
+<p>When this method returns, the <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Greenlet</span></tt></a> executing the
+lookup is killed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
