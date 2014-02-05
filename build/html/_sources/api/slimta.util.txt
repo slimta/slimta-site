@@ -15,4 +15,5 @@ slimta.util
 .. toctree::
 
    slimta.util.dnsbl
+   slimta.util.ptrlookup
 
