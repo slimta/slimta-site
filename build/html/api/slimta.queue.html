@@ -228,7 +228,10 @@ simply called again.</td>
 <dl class="method">
 <dt id="slimta.queue.QueueStorage.get_info">
 <tt class="descname">get_info</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.queue.QueueStorage.get_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Queries the storage backend for relevant information about the
+<dd><div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.20.</span></p>
+</div>
+<p>Queries the storage backend for relevant information about the
 contents of the queue. The result is a <a class="reference internal" href="slimta.queue.dict.html#module-slimta.queue.dict" title="slimta.queue.dict"><tt class="xref py py-func docutils literal"><span class="pre">dict()</span></tt></a> containing required
 keys along with any other custom keys dependent on the particular
 backend.</p>
@@ -244,9 +247,6 @@ backend.</p>
 </tr>
 </tbody>
 </table>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 0.3.20.</span></p>
-</div>
 </dd></dl>
 
 </dd></dl>
