@@ -69,6 +69,9 @@
             
   <div class="section" id="module-slimta.util.ptrlookup">
 <span id="slimta-util-ptrlookup"></span><h1>slimta.util.ptrlookup<a class="headerlink" href="#module-slimta.util.ptrlookup" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.21.</span></p>
+</div>
 <p>When a client connects to the server, it is useful to know who they claim to
 be. One such method is looking up the PTR records for the client&#8217;s IP address
 in DNS. If it exists, a PTR record will map an IP address to an arbitrary
@@ -78,9 +81,6 @@ their PTR record lookup has not yet finished. This module implements a
 <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.0)"><tt class="xref py py-class docutils literal"><span class="pre">Greenlet</span></tt></a> thread that will look up a client&#8217;s PTR record will
 its request is being processed. If the request finishes before the PTR record
 lookup, the lookup is stopped</p>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 0.3.21.</span></p>
-</div>
 <dl class="class">
 <dt id="slimta.util.ptrlookup.PtrLookup">
 <em class="property">class </em><tt class="descclassname">slimta.util.ptrlookup.</tt><tt class="descname">PtrLookup</tt><big>(</big><em>ip</em><big>)</big><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup" title="Permalink to this definition">¶</a></dt>
