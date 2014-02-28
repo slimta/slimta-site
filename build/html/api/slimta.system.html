@@ -131,8 +131,11 @@ purposes, once root-only ports like 25 are opened.</p>
 <dt id="slimta.system.PidFile">
 <em class="property">class </em><tt class="descclassname">slimta.system.</tt><tt class="descname">PidFile</tt><big>(</big><span class="optional">[</span><em>filename=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.system.PidFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>Context manager which creates a PID file containing the current process
-id, runs the context, and then removes the PID file.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.13.</span></p>
+</div>
+<p>Context manager which creates a PID file containing the current process id,
+runs the context, and then removes the PID file.</p>
 <p>An <tt class="xref py py-exc docutils literal"><span class="pre">OSError</span></tt> exceptions when creating the PID file will be
 propogated without executing the context.</p>
 <table class="docutils field-list" frame="void" rules="none">

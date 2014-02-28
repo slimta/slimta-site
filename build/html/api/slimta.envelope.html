@@ -190,8 +190,11 @@ uses a deep-copying so internal datastructures are not shared.</p>
 <dl class="method">
 <dt id="slimta.envelope.Envelope.encode_7bit">
 <tt class="descname">encode_7bit</tt><big>(</big><span class="optional">[</span><em>encoder=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.envelope.Envelope.encode_7bit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Forces the message into 7-bit encoding such that it can be sent to
-SMTP servers that do not support the <tt class="docutils literal"><span class="pre">8BITMIME</span></tt> extension.</p>
+<dd><div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.12.</span></p>
+</div>
+<p>Forces the message into 7-bit encoding such that it can be sent to SMTP
+servers that do not support the <tt class="docutils literal"><span class="pre">8BITMIME</span></tt> extension.</p>
 <p>If the <tt class="docutils literal"><span class="pre">encoder</span></tt> function is not given, this function is relatively
 cheap and will just check the message body for 8-bit characters
 (raising <tt class="xref py py-exc docutils literal"><span class="pre">UnicodeDecodeError</span></tt> if any are found).  Otherwise,
