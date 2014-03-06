@@ -71,12 +71,12 @@
 <p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-celeryqueue</span></tt> extension package.</p>
 <span class="target" id="module-slimta.celeryqueue"></span><p>Implements the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> interface on top of <a class="reference external" href="http://www.celeryproject.org/">celery</a>, a distributed task
 queue system. When a message is enqueued, a delivery task is queued up in
-celery. Celery workers will then pick up the task and attempt delivery, retrying
-and bouncing in the same manner as <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>.</p>
+celery. Celery workers will then pick up the task and attempt delivery,
+retrying and bouncing in the same manner as <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>.</p>
 <p>A <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.1)"><tt class="xref py py-class docutils literal"><span class="pre">celery.Celery</span></tt></a> object must be given to <a class="reference internal" href="#slimta.celeryqueue.CeleryQueue" title="slimta.celeryqueue.CeleryQueue"><tt class="xref py py-class docutils literal"><span class="pre">CeleryQueue</span></tt></a>, and a
 task will be registered to attempt delivery of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> objects. It may be
-desirable to configure celery workers to <a class="reference external" href="http://docs.celeryproject.org/en/latest/configuration.html#celeryd-pool">use gevent</a>, since <tt class="docutils literal"><span class="pre">slimta</span></tt> <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a>
-objects are expected to support it.</p>
+desirable to configure celery workers to <a class="reference external" href="http://docs.celeryproject.org/en/latest/configuration.html#celeryd-pool">use gevent</a>, since <tt class="docutils literal"><span class="pre">slimta</span></tt>
+<a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> objects are expected to support it.</p>
 <dl class="class">
 <dt id="slimta.celeryqueue.CeleryQueue">
 <em class="property">class </em><tt class="descclassname">slimta.celeryqueue.</tt><tt class="descname">CeleryQueue</tt><big>(</big><em>celery</em>, <em>relay</em><span class="optional">[</span>, <em>suffix=None</em><span class="optional">[</span>, <em>backoff=None</em><span class="optional">[</span>, <em>bounce_factory=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.celeryqueue.CeleryQueue" title="Permalink to this definition">¶</a></dt>
@@ -88,11 +88,12 @@ expected.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>celery</strong> &#8211; <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.1)"><tt class="xref py py-class docutils literal"><span class="pre">celery.Celery</span></tt></a> object to register delivery task with.</li>
+<li><strong>celery</strong> &#8211; <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.1)"><tt class="xref py py-class docutils literal"><span class="pre">celery.Celery</span></tt></a> object to register delivery task
+with.</li>
 <li><strong>relay</strong> &#8211; <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> instance to attempt delivery with.</li>
 <li><strong>suffix</strong> &#8211; If given, the task registered in the <a class="reference external" href="http://docs.celeryproject.org/en/latest/reference/celery.html#celery.Celery" title="(in Celery v3.1)"><tt class="xref py py-class docutils literal"><span class="pre">Celery</span></tt></a>
-object will have its name suffixed wih an underscore and this
-string.</li>
+object will have its name suffixed wih an underscore and
+this string.</li>
 <li><strong>backoff</strong> &#8211; Function that, given an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and number of delivery
 attempts, will return the number of seconds before the next
 attempt. If it returns <tt class="docutils literal"><span class="pre">None</span></tt>, the message will be
