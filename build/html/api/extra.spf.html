@@ -75,8 +75,8 @@ client address.</p>
 <dt id="slimta.spf.EnforceSpf">
 <em class="property">class </em><tt class="descclassname">slimta.spf.</tt><tt class="descname">EnforceSpf</tt><big>(</big><span class="optional">[</span><em>timeout=10.0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>Class used to check SPF records and enforce a policy against the results.
-By default, results are logged but not acted upon.</p>
+<p>Class used to check SPF records and enforce a policy against the
+results.  By default, results are logged but not acted upon.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -99,8 +99,8 @@ result is seen, the <tt class="docutils literal"><span class="pre">MAIL</span> <
 <li><strong>result</strong> &#8211; The result code, one of <tt class="docutils literal"><span class="pre">'pass'</span></tt>, <tt class="docutils literal"><span class="pre">'permerror'</span></tt>,
 <tt class="docutils literal"><span class="pre">'fail'</span></tt>, <tt class="docutils literal"><span class="pre">'temperror'</span></tt>, <tt class="docutils literal"><span class="pre">'softfail'</span></tt>, <tt class="docutils literal"><span class="pre">'none'</span></tt>,
 <tt class="docutils literal"><span class="pre">'neutral'</span></tt>.</li>
-<li><strong>match_code</strong> &#8211; When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> code to
-this string.</li>
+<li><strong>match_code</strong> &#8211; When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> code
+to this string.</li>
 <li><strong>match_message</strong> &#8211; When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a>
 message to this string. You can use the
 <tt class="docutils literal"><span class="pre">{reason}</span></tt> template in your string.</li>
@@ -142,8 +142,8 @@ given a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.r
 connecting IP address and EHLO string against the given sender address.
 If enforcement policies are set for the result, the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> is modified
 before calling the validator method.</p>
-<p>This decorator can only be used on <tt class="docutils literal"><span class="pre">handle_mail()</span></tt>, <tt class="docutils literal"><span class="pre">handle_rcpt()</span></tt>,
-and <tt class="docutils literal"><span class="pre">handle_data()</span></tt>.</p>
+<p>This decorator can only be used on <tt class="docutils literal"><span class="pre">handle_mail()</span></tt>,
+<tt class="docutils literal"><span class="pre">handle_rcpt()</span></tt>, and <tt class="docutils literal"><span class="pre">handle_data()</span></tt>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
