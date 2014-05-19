@@ -4,7 +4,8 @@
 Application Usage
 =================
 
-.. _config package: http://www.red-dove.com/config-doc/
+.. _YAML: http://www.yaml.org/
+.. _PyYAML: http://pyyaml.org/
 
 .. toctree::
    :hidden:
@@ -19,11 +20,11 @@ it's not for everyone. This guide walks you through setting up and configuring
 the ``slimta`` application, which glues together all the pieces with easy-to-use
 configuration files.
 
-The configuration files are interpreted using the `config package`_, which
-provides a great combination of convenience and readability. Config data is
-organized with keys (mappings) and lists, similar to JSON, with extra features
-like key references and file inclusion. The included sample configs use some of
-these features, as a reference.
+The configuration files are `YAML`_ files interpreted with the `PyYAML`_
+library, which provides a great combination of convenience and readability.
+Config data is organized with keys (mappings) and lists, with extra features
+like file inclusion. The included sample configs use this feature, as a
+reference.
 
 * `Getting Started <https://github.com/slimta/slimta#getting-started>`_
 * :doc:`slimta.processes`

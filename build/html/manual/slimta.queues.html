@@ -281,40 +281,6 @@ bypassing the queue step and immediately attempting message delivery. If
 delivery fails, the client gets immediate feedback from the edge service. There
 are no additional configuration settings for this queue type.</p>
 </div>
-<div class="section" id="celery-queues">
-<h2><tt class="docutils literal"><span class="pre">celery</span></tt> Queues<a class="headerlink" href="#celery-queues" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queue type takes advantage of the <a class="reference external" href="http://celeryproject.org/">Celery Project</a> to offload
-most queuing logic. Essentially, on reception, a message is written to a
-broker such as RabbitMQ or Redis, and the client is immediately notified that
-the message was accepted. A separate process is configured to pull messages from
-the broker when they are ready for delivery.</p>
-<p>Unlike other queue types, the <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queue type requires you to run
-a separate process alongside <tt class="docutils literal"><span class="pre">slimta</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ slimta
-$ slimta-worker
-</pre></div>
-</div>
-<p>However, as long as these two processes are configured the same and consume the
-same broker service, you now have the advantage of being able to receive
-messages (with an edge service) and delivery them (with a relay service) on two
-totally different machines.</p>
-<p>No additional config settings are necessary inside the <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queue sub-
-section. However, there is a required, top-level section that is shared among
-all <tt class="docutils literal"><span class="pre">&quot;celery&quot;</span></tt> queues:</p>
-<ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">celery_app</span></tt>: Dictionary</p>
-<p>This section contains all the key-value pairs normally placed in a
-<tt class="docutils literal"><span class="pre">celeryconfig.py</span></tt> module. For example, to specify the broker and backend
-URLs:</p>
-<div class="highlight-python"><div class="highlight"><pre>celery_app: {
-  BROKER_URL: &#39;redis://&#39;
-  BACKEND_URL: &#39;redis://&#39;
-}
-</pre></div>
-</div>
-</li>
-</ul>
-</div>
 <div class="section" id="custom-queues">
 <h2><tt class="docutils literal"><span class="pre">custom</span></tt> Queues<a class="headerlink" href="#custom-queues" title="Permalink to this headline">¶</a></h2>
 <p>Only one additional key is required by the <tt class="docutils literal"><span class="pre">&quot;custom&quot;</span></tt> queue type:</p>
@@ -359,7 +325,6 @@ should use for message delivery:</p>
 <li><a class="reference internal" href="#rackspace-queues"><tt class="docutils literal"><span class="pre">rackspace</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#aws-queues"><tt class="docutils literal"><span class="pre">aws</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#proxy-queues"><tt class="docutils literal"><span class="pre">proxy</span></tt> Queues</a></li>
-<li><a class="reference internal" href="#celery-queues"><tt class="docutils literal"><span class="pre">celery</span></tt> Queues</a></li>
 <li><a class="reference internal" href="#custom-queues"><tt class="docutils literal"><span class="pre">custom</span></tt> Queues</a></li>
 </ul>
 </li>

@@ -73,11 +73,11 @@
 it&#8217;s not for everyone. This guide walks you through setting up and configuring
 the <tt class="docutils literal"><span class="pre">slimta</span></tt> application, which glues together all the pieces with easy-to-use
 configuration files.</p>
-<p>The configuration files are interpreted using the <a class="reference external" href="http://www.red-dove.com/config-doc/">config package</a>, which
-provides a great combination of convenience and readability. Config data is
-organized with keys (mappings) and lists, similar to JSON, with extra features
-like key references and file inclusion. The included sample configs use some of
-these features, as a reference.</p>
+<p>The configuration files are <a class="reference external" href="http://www.yaml.org/">YAML</a> files interpreted with the <a class="reference external" href="http://pyyaml.org/">PyYAML</a>
+library, which provides a great combination of convenience and readability.
+Config data is organized with keys (mappings) and lists, with extra features
+like file inclusion. The included sample configs use this feature, as a
+reference.</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/slimta/slimta#getting-started">Getting Started</a></li>
 <li><a class="reference internal" href="slimta.processes.html"><em>Configuring the Processes</em></a></li>

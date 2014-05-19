@@ -69,22 +69,15 @@
   <div class="section" id="configuring-the-processes">
 <h1>Configuring the Processes<a class="headerlink" href="#configuring-the-processes" title="Permalink to this headline">¶</a></h1>
 <p>The first section in <tt class="docutils literal"><span class="pre">slimta.conf</span></tt> is <tt class="docutils literal"><span class="pre">process</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre>process: {
-  slimta: {
-    daemon: False
-    logging: @&quot;logging.conf&quot;
-  }
-
-  worker: {
-    daemon: False
-    logging: @&quot;logging.conf&quot;
-  }
-}
+<div class="highlight-python"><div class="highlight"><pre>process:
+  slimta:
+    daemon: false
+    logging: !include logging.yaml
 </pre></div>
 </div>
-<p>It has two sub-sections, <tt class="docutils literal"><span class="pre">slimta</span></tt> and <tt class="docutils literal"><span class="pre">worker</span></tt>, which manage settings for
-the <tt class="docutils literal"><span class="pre">slimta</span></tt> and <tt class="docutils literal"><span class="pre">slimta-worker</span></tt> executables, respectively. Each sub-section
-shares the same possible settings:</p>
+<p>It has a single sub-section, <tt class="docutils literal"><span class="pre">slimta</span></tt>, which manage settings for the
+<tt class="docutils literal"><span class="pre">slimta</span></tt> executables. You can use the <tt class="docutils literal"><span class="pre">--process-name</span></tt> command-line option
+to control this behavior. Each sub-section shares the same possible settings:</p>
 <ul>
 <li><p class="first"><tt class="docutils literal"><span class="pre">daemon</span></tt>: Boolean</p>
 <p>Whether or not the executables should daemonize on startup. This option can be
@@ -127,47 +120,35 @@ is compatible with the <a class="reference external" href="http://docs.python.or
 readable and parseable format might look like this:</p>
 <div class="highlight-python"><div class="highlight"><pre>version: 1
 
-formatters: {
-  console: {
+formatters:
+  console:
     format: &#39;%(levelname)-8s %(name)-15s %(message)s&#39;
-  }
-  default: {
+  default:
     format: &#39;%(asctime)s %(levelname)s %(name)s %(message)s&#39;
-  }
-}
 
-handlers: {
-  console: {
-    class: &#39;logging.StreamHandler&#39;
+handlers:
+  console:
+    class: logging.StreamHandler
     level: DEBUG
     formatter: console
-    stream: &#39;ext://sys.stdout&#39;
-  }
-  file: {
-    class: &#39;logging.handlers.WatchedFileHandler&#39;
+    stream: !!python/name:sys.stdout
+  file:
+    class: logging.handlers.WatchedFileHandler
     level: DEBUG
     formatter: default
     filename: &#39;/var/log/slimta/slimta.log&#39;
-  }
-}
 
-loggers: {
-  celery: {
+loggers:
+  celery:
     level: WARNING
-    propagate: True
-  }
-  slimta: {
+    propagate: true
+  slimta:
     level: DEBUG
-    propagate: True
-  }
-}
+    propagate: true
 
-root: {
+root:
   level: DEBUG
   handlers: [file]
-}
-
-# vim:sw=2:ts=2:sts=2:et:ai:
 </pre></div>
 </div>
 </div>
