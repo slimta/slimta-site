@@ -6,7 +6,7 @@ Configuring the Processes
 
 The first section in ``slimta.conf`` is ``process``:
 
-.. highlight:: yaml
+.. code-block:: yaml
 
    process:
      slimta:
@@ -67,7 +67,7 @@ is compatible with the :func:`logging.config.dictConfig` function. The
 A more advanced, logging config that produces log files ready for rotation in a
 readable and parseable format might look like this:
 
-.. highlight:: yaml
+.. code-block:: yaml
 
    version: 1
 
