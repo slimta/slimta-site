@@ -60,5 +60,5 @@ the useful, built-in features needed for a normal mail system setup.
 #. :doc:`Configuration and Setup Guide <manual/slimta>`
 
 .. literalinclude:: slimta-config-sample.txt
-   :language: none
+   :language: yaml
 

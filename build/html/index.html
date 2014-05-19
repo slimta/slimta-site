@@ -138,53 +138,39 @@ the useful, built-in features needed for a normal mail system setup.</p>
 <li><a class="reference external" href="https://github.com/slimta/slimta/issues">Bug Reports</a></li>
 <li><a class="reference internal" href="manual/slimta.html"><em>Configuration and Setup Guide</em></a></li>
 </ol>
-<div class="highlight-none"><div class="highlight"><pre>process: {
-  slimta: {
-    daemon: False
-  }
-}
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">process</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">slimta</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">daemon</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
 
-tls: {
-  main: {
-    certfile: &#39;/path/to/cert.pem&#39;
-    keyfile: &#39;/path/to/key.pem&#39;
-  }
-}
+<span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">main</span><span class="p-Indicator">:</span> <span class="nl">&amp;tls_main</span>
+    <span class="l-Scalar-Plain">certfile</span><span class="p-Indicator">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span>
+    <span class="l-Scalar-Plain">keyfile</span><span class="p-Indicator">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span>
 
-rules: @&quot;rules.conf&quot;
+<span class="l-Scalar-Plain">edge</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">outbound</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">smtp</span>
+    <span class="l-Scalar-Plain">queue</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">outbound</span>
+    <span class="l-Scalar-Plain">listener</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">interface</span><span class="p-Indicator">:</span> <span class="s">&#39;127.0.0.1&#39;</span>
+      <span class="l-Scalar-Plain">port</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">587</span>
+    <span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span> <span class="nv">*tls_main</span>
+    <span class="l-Scalar-Plain">rules</span><span class="p-Indicator">:</span> <span class="kt">!include</span> <span class="l-Scalar-Plain">rules.yaml</span>
 
-edge: {
-  outbound: {
-    type: smtp
-    queue: outbound
-    listener: {
-      interface: &#39;127.0.0.1&#39;
-      port: 587
-    }
-    tls: $tls.main
-    rules: $rules.outbound
-  }
-}
+<span class="l-Scalar-Plain">queue</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">outbound</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">memory</span>
+    <span class="l-Scalar-Plain">relay</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">outbound</span>
+    <span class="l-Scalar-Plain">policies</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">add_date_header</span> <span class="p-Indicator">}</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">add_messageid_header</span> <span class="p-Indicator">}</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">add_received_header</span> <span class="p-Indicator">}</span>
+      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">recipient_domain_split</span> <span class="p-Indicator">}</span>
 
-queue: {
-  outbound: {
-    type: memory
-    relay: outbound
-    policies: [
-      { type: add_date_header }
-      { type: add_messageid_header }
-      { type: add_received_header }
-      { type: recipient_domain_split }
-    ]
-  }
-}
-
-relay: {
-  outbound: {
-    type: mx
-    tls: $tls.main
-  }
-}
+<span class="l-Scalar-Plain">relay</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">outbound</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">mx</span>
+    <span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span> <span class="nv">*tls_main</span>
 </pre></div>
 </div>
 </div>
