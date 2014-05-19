@@ -6,21 +6,14 @@ Configuring the Processes
 
 The first section in ``slimta.conf`` is ``process``::
 
-    process: {
-      slimta: {
-        daemon: False
-        logging: @"logging.conf"
-      }
+    process:
+      slimta:
+        daemon: false
+        logging: !include logging.yaml
 
-      worker: {
-        daemon: False
-        logging: @"logging.conf"
-      }
-    }
-
-It has two sub-sections, ``slimta`` and ``worker``, which manage settings for
-the ``slimta`` and ``slimta-worker`` executables, respectively. Each sub-section
-shares the same possible settings:
+It has a single sub-section, ``slimta``, which manage settings for the
+``slimta`` executables. You can use the ``--process-name`` command-line option
+to control this behavior. Each sub-section shares the same possible settings:
 
 * ``daemon``: Boolean
 
@@ -74,45 +67,33 @@ readable and parseable format might look like this::
 
     version: 1
 
-    formatters: {
-      console: {
+    formatters:
+      console:
         format: '%(levelname)-8s %(name)-15s %(message)s'
-      }
-      default: {
+      default:
         format: '%(asctime)s %(levelname)s %(name)s %(message)s'
-      }
-    }
 
-    handlers: {
-      console: {
-        class: 'logging.StreamHandler'
+    handlers:
+      console:
+        class: logging.StreamHandler
         level: DEBUG
         formatter: console
-        stream: 'ext://sys.stdout'
-      }
-      file: {
-        class: 'logging.handlers.WatchedFileHandler'
+        stream: !!python/name:sys.stdout
+      file:
+        class: logging.handlers.WatchedFileHandler
         level: DEBUG
         formatter: default
         filename: '/var/log/slimta/slimta.log'
-      }
-    }
 
-    loggers: {
-      celery: {
+    loggers:
+      celery:
         level: WARNING
-        propagate: True
-      }
-      slimta: {
+        propagate: true
+      slimta:
         level: DEBUG
-        propagate: True
-      }
-    }
+        propagate: true
 
-    root: {
+    root:
       level: DEBUG
       handlers: [file]
-    }
-
-    # vim:sw=2:ts=2:sts=2:et:ai:
 

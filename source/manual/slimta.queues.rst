@@ -246,44 +246,6 @@ bypassing the queue step and immediately attempting message delivery. If
 delivery fails, the client gets immediate feedback from the edge service. There
 are no additional configuration settings for this queue type.
 
-``celery`` Queues
-"""""""""""""""""
-
-.. _Celery Project: http://celeryproject.org/
-.. _Celery Configuration: http://docs.celeryproject.org/en/latest/configuration.html
-
-The ``"celery"`` queue type takes advantage of the `Celery Project`_ to offload
-most queuing logic. Essentially, on reception, a message is written to a
-broker such as RabbitMQ or Redis, and the client is immediately notified that
-the message was accepted. A separate process is configured to pull messages from
-the broker when they are ready for delivery.
-
-Unlike other queue types, the ``"celery"`` queue type requires you to run
-a separate process alongside ``slimta``::
-
-    $ slimta
-    $ slimta-worker
-
-However, as long as these two processes are configured the same and consume the
-same broker service, you now have the advantage of being able to receive
-messages (with an edge service) and delivery them (with a relay service) on two
-totally different machines.
-
-No additional config settings are necessary inside the ``"celery"`` queue sub-
-section. However, there is a required, top-level section that is shared among
-all ``"celery"`` queues:
-
-* ``celery_app``: Dictionary
-
-  This section contains all the key-value pairs normally placed in a
-  ``celeryconfig.py`` module. For example, to specify the broker and backend
-  URLs::
-
-    celery_app: {
-      BROKER_URL: 'redis://'
-      BACKEND_URL: 'redis://'
-    }
-
 ``custom`` Queues
 """""""""""""""""
 
