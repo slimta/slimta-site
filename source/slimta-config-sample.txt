@@ -1,48 +1,34 @@
-process: {
-  slimta: {
-    daemon: False
-  }
-}
+process:
+  slimta:
+    daemon: false
 
-tls: {
-  main: {
+tls:
+  main: &tls_main
     certfile: '/path/to/cert.pem'
     keyfile: '/path/to/key.pem'
-  }
-}
 
-rules: @"rules.conf"
-
-edge: {
-  outbound: {
+edge:
+  outbound:
     type: smtp
     queue: outbound
-    listener: {
+    listener:
       interface: '127.0.0.1'
       port: 587
-    }
-    tls: $tls.main
-    rules: $rules.outbound
-  }
-}
+    tls: *tls_main
+    rules: !include rules.yaml
 
-queue: {
-  outbound: {
+queue:
+  outbound:
     type: memory
     relay: outbound
-    policies: [
-      { type: add_date_header }
-      { type: add_messageid_header }
-      { type: add_received_header }
-      { type: recipient_domain_split }
-    ]
-  }
-}
+    policies:
+      - { type: add_date_header }
+      - { type: add_messageid_header }
+      - { type: add_received_header }
+      - { type: recipient_domain_split }
 
-relay: {
-  outbound: {
+relay:
+  outbound:
     type: mx
-    tls: $tls.main
-  }
-}
+    tls: *tls_main
 
