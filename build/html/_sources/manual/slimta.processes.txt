@@ -4,12 +4,14 @@
 Configuring the Processes
 =========================
 
-The first section in ``slimta.conf`` is ``process``::
+The first section in ``slimta.conf`` is ``process``:
 
-    process:
-      slimta:
-        daemon: false
-        logging: !include logging.yaml
+.. highlight:: yaml
+
+   process:
+     slimta:
+       daemon: false
+       logging: !include logging.yaml
 
 It has a single sub-section, ``slimta``, which manage settings for the
 ``slimta`` executables. You can use the ``--process-name`` command-line option
@@ -63,37 +65,39 @@ is compatible with the :func:`logging.config.dictConfig` function. The
 `logging.conf`_ sample config has a good starting point.
 
 A more advanced, logging config that produces log files ready for rotation in a
-readable and parseable format might look like this::
+readable and parseable format might look like this:
 
-    version: 1
+.. highlight:: yaml
 
-    formatters:
-      console:
-        format: '%(levelname)-8s %(name)-15s %(message)s'
-      default:
-        format: '%(asctime)s %(levelname)s %(name)s %(message)s'
+   version: 1
 
-    handlers:
-      console:
-        class: logging.StreamHandler
-        level: DEBUG
-        formatter: console
-        stream: !!python/name:sys.stdout
-      file:
-        class: logging.handlers.WatchedFileHandler
-        level: DEBUG
-        formatter: default
-        filename: '/var/log/slimta/slimta.log'
+   formatters:
+     console:
+       format: '%(levelname)-8s %(name)-15s %(message)s'
+     default:
+       format: '%(asctime)s %(levelname)s %(name)s %(message)s'
 
-    loggers:
-      celery:
-        level: WARNING
-        propagate: true
-      slimta:
-        level: DEBUG
-        propagate: true
+   handlers:
+     console:
+       class: logging.StreamHandler
+       level: DEBUG
+       formatter: console
+       stream: !!python/name:sys.stdout
+     file:
+       class: logging.handlers.WatchedFileHandler
+       level: DEBUG
+       formatter: default
+       filename: '/var/log/slimta/slimta.log'
 
-    root:
-      level: DEBUG
-      handlers: [file]
+   loggers:
+     celery:
+       level: WARNING
+       propagate: true
+     slimta:
+       level: DEBUG
+       propagate: true
+
+   root:
+     level: DEBUG
+     handlers: [file]
 

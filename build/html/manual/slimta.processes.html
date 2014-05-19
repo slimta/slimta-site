@@ -69,12 +69,6 @@
   <div class="section" id="configuring-the-processes">
 <h1>Configuring the Processes<a class="headerlink" href="#configuring-the-processes" title="Permalink to this headline">¶</a></h1>
 <p>The first section in <tt class="docutils literal"><span class="pre">slimta.conf</span></tt> is <tt class="docutils literal"><span class="pre">process</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre>process:
-  slimta:
-    daemon: false
-    logging: !include logging.yaml
-</pre></div>
-</div>
 <p>It has a single sub-section, <tt class="docutils literal"><span class="pre">slimta</span></tt>, which manage settings for the
 <tt class="docutils literal"><span class="pre">slimta</span></tt> executables. You can use the <tt class="docutils literal"><span class="pre">--process-name</span></tt> command-line option
 to control this behavior. Each sub-section shares the same possible settings:</p>
@@ -118,39 +112,6 @@ is compatible with the <a class="reference external" href="http://docs.python.or
 <a class="reference external" href="https://github.com/slimta/slimta/blob/master/etc/logging.conf.sample">logging.conf</a> sample config has a good starting point.</p>
 <p>A more advanced, logging config that produces log files ready for rotation in a
 readable and parseable format might look like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>version: 1
-
-formatters:
-  console:
-    format: &#39;%(levelname)-8s %(name)-15s %(message)s&#39;
-  default:
-    format: &#39;%(asctime)s %(levelname)s %(name)s %(message)s&#39;
-
-handlers:
-  console:
-    class: logging.StreamHandler
-    level: DEBUG
-    formatter: console
-    stream: !!python/name:sys.stdout
-  file:
-    class: logging.handlers.WatchedFileHandler
-    level: DEBUG
-    formatter: default
-    filename: &#39;/var/log/slimta/slimta.log&#39;
-
-loggers:
-  celery:
-    level: WARNING
-    propagate: true
-  slimta:
-    level: DEBUG
-    propagate: true
-
-root:
-  level: DEBUG
-  handlers: [file]
-</pre></div>
-</div>
 </div>
 </div>
 
