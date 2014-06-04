@@ -1,6 +1,6 @@
 
-Stable Versions
-===============
+Versions
+========
 
 .. _Semantic Versioning: http://semver.org/
 
