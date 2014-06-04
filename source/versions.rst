@@ -18,10 +18,8 @@ considered in active development. For the most part, the MINOR version
 component will still be used to enforce backwards-compatibility, but until the
 project reaches ``1.0.0`` the API should be considered volatile.
 
-.. important::
-
-   Use of the word "stable" in this document is referring to how modifications
-   are made to the API, not to the application's ability to serve production
-   traffic. That being said, we believe that *python-slimta* is stable in that
-   regard as well.
+Use of the word "stable" has so far been referring to how modifications are
+made to the API. The ``1.0.0`` releases of *slimta* projects also try to carry
+with it a commitment to application stability, particularly that production
+traffic may be served with confidence.
 
