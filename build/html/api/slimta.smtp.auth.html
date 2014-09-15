@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.smtp.auth &mdash; slimta 1.0.0 documentation</title>
+    <title>slimta.smtp.auth &mdash; slimta 1.0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.0',
+        VERSION:     '1.0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.0.0 documentation" href="../index.html" />
+    <link rel="top" title="slimta 1.0.2 documentation" href="../index.html" />
     <link rel="up" title="slimta.smtp" href="slimta.smtp.html" />
     <link rel="next" title="slimta.smtp.auth.standard" href="slimta.smtp.auth.standard.html" />
     <link rel="prev" title="slimta.smtp.reply" href="slimta.smtp.reply.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.smtp.reply.html" title="slimta.smtp.reply"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.0.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 1.0.2 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -72,7 +72,7 @@
 <p>Package implementing the ability for client and server SMTP sessions to
 authenticate.</p>
 <p>For servers, use <a class="reference internal" href="#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><tt class="xref py py-class docutils literal"><span class="pre">Auth</span></tt></a> as a base class and override the
-<a class="reference internal" href="#slimta.smtp.auth.Auth.verify_secret" title="slimta.smtp.auth.Auth.verify_secret"><tt class="xref py py-meth docutils literal"><span class="pre">verify_secret()</span></tt></a> and <a class="reference internal" href="#slimta.smtp.auth.Auth.get_secret" title="slimta.smtp.auth.Auth.get_secret"><tt class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></tt></a> methods as needed.
+<tt class="xref py py-meth docutils literal"><span class="pre">verify_secret()</span></tt> and <tt class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></tt> methods as needed.
 To modify which auth mechanisms are advertised in clear- and encrypted
 channels, you can override the <a class="reference internal" href="#slimta.smtp.auth.Auth.get_available_mechanisms" title="slimta.smtp.auth.Auth.get_available_mechanisms"><tt class="xref py py-meth docutils literal"><span class="pre">get_available_mechanisms()</span></tt></a> method
 as well. Your <a class="reference internal" href="#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><tt class="xref py py-class docutils literal"><span class="pre">Auth</span></tt></a> sub-class may be passed in to your
@@ -86,82 +86,19 @@ as well. Your <a class="reference internal" href="#slimta.smtp.auth.Auth" title=
 
 <dl class="class">
 <dt id="slimta.smtp.auth.Auth">
-<em class="property">class </em><tt class="descclassname">slimta.smtp.auth.</tt><tt class="descname">Auth</tt><big>(</big><em>session</em><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">slimta.smtp.auth.</tt><tt class="descname">Auth</tt><big>(</big><span class="optional">[</span><em>session=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Base class that handles the authentication for an SMTP server session.
-This class should be inherited with its methods overridden as necessary.</p>
+This class must be inherited to define either or both of the
+<tt class="docutils literal"><span class="pre">verify_secret</span></tt> or <tt class="docutils literal"><span class="pre">get_secret</span></tt> methods.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<a class="reference internal" href="slimta.smtp.server.html#slimta.smtp.server.Server" title="slimta.smtp.server.Server"><tt class="xref py py-class docutils literal"><span class="pre">Server</span></tt></a>) &#8211; An active server session object.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> (<em>unused</em>) &#8211; This argument is maintained for backwards-compatibility.</td>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="slimta.smtp.auth.Auth.verify_secret">
-<tt class="descname">verify_secret</tt><big>(</big><em>authcid</em>, <em>secret</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.verify_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>For SMTP server authentication, this method should be overriden
-to verify the given secret for mechanisms that have access to it.
-If <tt class="docutils literal"><span class="pre">secret</span></tt> is invalid for the given identities,
-<a class="reference internal" href="#slimta.smtp.auth.CredentialsInvalidError" title="slimta.smtp.auth.CredentialsInvalidError"><tt class="xref py py-class docutils literal"><span class="pre">CredentialsInvalidError</span></tt></a> should be thrown.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>authcid</strong> &#8211; The authentication identity, usually the username.</li>
-<li><strong>secret</strong> &#8211; The secret (i.e. password) string to verify for the
-given authentication and authorization identities.</li>
-<li><strong>authzid</strong> &#8211; The authorization identity, if applicable.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A representation of the identity that was successfully
-authenticated. This may be <tt class="docutils literal"><span class="pre">authcid</span></tt>, <tt class="docutils literal"><span class="pre">authzid</span></tt>, a tuple
-of both, or any alternative.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#slimta.smtp.auth.CredentialsInvalidError" title="slimta.smtp.auth.CredentialsInvalidError"><tt class="xref py py-class docutils literal"><span class="pre">CredentialsInvalidError</span></tt></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="slimta.smtp.auth.Auth.get_secret">
-<tt class="descname">get_secret</tt><big>(</big><em>authcid</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.get_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>For SMTP server authentication mechanisms such as <tt class="docutils literal"><span class="pre">CRAM-MD5</span></tt>, the
-client provides a hash of their secret credentials, and thus the server
-must also have access to the secret credentials in plain-text. This
-method should retrieve and return the secret string assocated with the
-given identities. This method should raise
-<a class="reference internal" href="#slimta.smtp.auth.CredentialsInvalidError" title="slimta.smtp.auth.CredentialsInvalidError"><tt class="xref py py-class docutils literal"><span class="pre">CredentialsInvalidError</span></tt></a> only if the given identities did not
-exist.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>authcid</strong> &#8211; The authentication identity, usually the username.</li>
-<li><strong>authzid</strong> &#8211; The authorization identity, if applicable.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A tuple of the retrieved secret string followed by a
-representation of the identity that was authenticated. This
-may be <tt class="docutils literal"><span class="pre">authcid</span></tt>, <tt class="docutils literal"><span class="pre">authzid</span></tt>, a tuple of both, or any
-desired alternative.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#slimta.smtp.auth.CredentialsInvalidError" title="slimta.smtp.auth.CredentialsInvalidError"><tt class="xref py py-class docutils literal"><span class="pre">CredentialsInvalidError</span></tt></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="method">
 <dt id="slimta.smtp.auth.Auth.get_available_mechanisms">
 <tt class="descname">get_available_mechanisms</tt><big>(</big><span class="optional">[</span><em>connection_secure=False</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.auth.Auth.get_available_mechanisms" title="Permalink to this definition">¶</a></dt>
@@ -231,7 +168,7 @@ the SMTP session. Custom mechanisms should be prefixed with <tt class="docutils 
 mechanism requires direct access to the original password, such as
 <a class="reference internal" href="slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.CramMd5" title="slimta.smtp.auth.standard.CramMd5"><tt class="xref py py-class docutils literal"><span class="pre">CramMd5</span></tt></a>.</p>
 <p>If an <a class="reference internal" href="#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><tt class="xref py py-class docutils literal"><span class="pre">Auth</span></tt></a> sub-class does not override
-<a class="reference internal" href="#slimta.smtp.auth.Auth.get_secret" title="slimta.smtp.auth.Auth.get_secret"><tt class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></tt></a>, mechanisms that have set this
+<tt class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></tt>, mechanisms that have set this
 flag to <tt class="docutils literal"><span class="pre">True</span></tt> will be automatically removed.</p>
 </dd></dl>
 
@@ -429,7 +366,7 @@ negotiation response from the server.</p>
         <li class="right" >
           <a href="slimta.smtp.reply.html" title="slimta.smtp.reply"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.0.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 1.0.2 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li>
