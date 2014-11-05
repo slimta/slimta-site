@@ -42,6 +42,8 @@ arguments it takes and what they mean.
 
   * :ref:`SMTP Smart-Hosting <relay-smtp-smarthost>`
   * :ref:`SMTP MX <relay-smtp-mx>`
+  * :ref:`LMTP <relay-lmtp>`
+  * :ref:`HTTP <relay-http>`
   * :ref:`External Processes <relay-pipe>`
 
 * :doc:`policies`
