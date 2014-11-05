@@ -4,26 +4,21 @@
 Mail Delivery Agent
 ===================
 
-.. note::
-
-   This example requires the ``python-slimta-piperelay`` package.
-
 Step 1: Create the Relay
 ------------------------
 
 To get started, we create a |Relay| object. This is first because |Edge| depends
 on |Queue| and |Queue| depends on |Relay|. For this example, we'll be using
-:class:`~slimta.piperelay.MaildropRelay`, though you could just as easily
-substitute one of the other classes in :mod:`slimta.piperelay`::
+:class:`~slimta.relay.pipe.DovecotLdaRelay`, though you could just as easily
+substitute one of the other classes in :mod:`slimta.relay`::
 
-    from slimta.piperelay import MaildropRelay
+    from slimta.relay.pipe import DovecotLdaRelay
 
-    relay = MaildropRelay(timeout=10.0)
+    relay = DovecotLdaRelay('/usr/lib/dovecot/dovecot-lda', timeout=10.0)
 
 The result is a variable ``relay`` that can be passed in to the |Queue|
 constructor. The ``relay`` will produce transient errors if the command takes
-too long to reply. An unhandled exception will be raised if the ``maildrop``
-command does not exist in the system path.
+too long to finish.
 
 Step 2: Create the Queue
 ------------------------

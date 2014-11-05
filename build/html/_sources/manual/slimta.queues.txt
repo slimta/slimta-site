@@ -20,6 +20,14 @@ the queue. The sub-section for each key has two required settings:
   Delivery attempts of messages in the queue are passed to this relay. The value
   is a name, which must correspond to a key in the top-level ``relay`` section.
 
+* ``bounce_queue``: String
+
+  Often when mail is to be relayed locally, the relay is incapable of delivering
+  bounce messages to arbitrary sender addresses hosted elsewhere. You may also
+  want to apply different retry behavior to bounce messages. This option allows
+  you to specify the name of another queue in the top-level ``queue`` section,
+  which will be used to deliver bounce messages instead of the current queue.
+
 Queue Policy Settings
 """""""""""""""""""""
 

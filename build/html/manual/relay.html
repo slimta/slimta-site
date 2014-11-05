@@ -115,6 +115,19 @@ deliver to a certain hostname using the
 </pre></div>
 </div>
 </div>
+<div class="section" id="lmtp-relaying">
+<span id="relay-lmtp"></span><h2>LMTP Relaying<a class="headerlink" href="#lmtp-relaying" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol">LMTP protocol</a> is designed for delivering a message to its final
+destination. It&#8217;s greatest strength in this regard over SMTP is that it can
+report success or failure on a per-recipient basis.</p>
+<p>LMTP relaying is available with the
+<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticLmtpRelay" title="slimta.relay.smtp.static.StaticLmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticLmtpRelay</span></tt></a> class, which is behaves very
+similarly to static SMTP relaying:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.smtp.static</span> <span class="kn">import</span> <span class="n">StaticLmtpRelay</span>
+<span class="n">relay</span> <span class="o">=</span> <span class="n">StaticLmtpRelay</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="http-relaying">
 <span id="relay-http"></span><h2>HTTP Relaying<a class="headerlink" href="#http-relaying" title="Permalink to this headline">¶</a></h2>
 <p>Similar to the <a class="reference internal" href="edge.html#edge-http"><em>HTTP Edge</em></a>, HTTP can be used to relay messages
@@ -171,6 +184,7 @@ module documentation may be useful.</p>
 <li><a class="reference internal" href="#">Relay Services</a><ul>
 <li><a class="reference internal" href="#smtp-smart-host-relaying">SMTP Smart-Host Relaying</a></li>
 <li><a class="reference internal" href="#smtp-mx-relaying">SMTP MX Relaying</a></li>
+<li><a class="reference internal" href="#lmtp-relaying">LMTP Relaying</a></li>
 <li><a class="reference internal" href="#http-relaying">HTTP Relaying</a></li>
 <li><a class="reference internal" href="#external-process-relaying">External Process Relaying</a></li>
 </ul>

@@ -2,6 +2,7 @@
 .. include:: /global.rst
 
 .. _courier-maildrop: http://www.courier-mta.org/maildrop/
+.. _LMTP protocol: http://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol
 .. _dovecot-lda: http://wiki.dovecot.org/LDA
 .. _pipe daemon: http://www.postfix.org/pipe.8.html
 .. _Smart-Hosting: http://en.wikipedia.org/wiki/Smart_host
@@ -63,6 +64,22 @@ deliver to a certain hostname using the
 :meth:`~slimta.relay.smtp.mx.MxSmtpRelay.force_mx` method::
 
     relay.force_mx('example.com', 'smarthost.example.com')
+
+.. _relay-lmtp:
+
+LMTP Relaying
+"""""""""""""
+
+The `LMTP protocol`_ is designed for delivering a message to its final
+destination. It's greatest strength in this regard over SMTP is that it can
+report success or failure on a per-recipient basis.
+
+LMTP relaying is available with the
+:class:`~slimta.relay.smtp.static.StaticLmtpRelay` class, which is behaves very
+similarly to static SMTP relaying::
+
+    from slimta.relay.smtp.static import StaticLmtpRelay
+    relay = StaticLmtpRelay()
 
 .. _relay-http:
 

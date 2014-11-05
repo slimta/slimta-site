@@ -82,6 +82,13 @@ thrown. The other keys in this mapping depend on the value of <tt class="docutil
 <p>Delivery attempts of messages in the queue are passed to this relay. The value
 is a name, which must correspond to a key in the top-level <tt class="docutils literal"><span class="pre">relay</span></tt> section.</p>
 </li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">bounce_queue</span></tt>: String</p>
+<p>Often when mail is to be relayed locally, the relay is incapable of delivering
+bounce messages to arbitrary sender addresses hosted elsewhere. You may also
+want to apply different retry behavior to bounce messages. This option allows
+you to specify the name of another queue in the top-level <tt class="docutils literal"><span class="pre">queue</span></tt> section,
+which will be used to deliver bounce messages instead of the current queue.</p>
+</li>
 </ul>
 <div class="section" id="queue-policy-settings">
 <h2>Queue Policy Settings<a class="headerlink" href="#queue-policy-settings" title="Permalink to this headline">¶</a></h2>

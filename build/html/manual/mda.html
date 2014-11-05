@@ -68,25 +68,20 @@
             
   <div class="section" id="mail-delivery-agent">
 <h1>Mail Delivery Agent<a class="headerlink" href="#mail-delivery-agent" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This example requires the <tt class="docutils literal"><span class="pre">python-slimta-piperelay</span></tt> package.</p>
-</div>
 <div class="section" id="step-1-create-the-relay">
 <h2>Step 1: Create the Relay<a class="headerlink" href="#step-1-create-the-relay" title="Permalink to this headline">¶</a></h2>
 <p>To get started, we create a <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> object. This is first because <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a> depends
 on <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> and <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> depends on <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a>. For this example, we&#8217;ll be using
-<tt class="xref py py-class docutils literal"><span class="pre">MaildropRelay</span></tt>, though you could just as easily
-substitute one of the other classes in <tt class="xref py py-mod docutils literal"><span class="pre">slimta.piperelay</span></tt>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.piperelay</span> <span class="kn">import</span> <span class="n">MaildropRelay</span>
+<a class="reference internal" href="../api/slimta.relay.pipe.html#slimta.relay.pipe.DovecotLdaRelay" title="slimta.relay.pipe.DovecotLdaRelay"><tt class="xref py py-class docutils literal"><span class="pre">DovecotLdaRelay</span></tt></a>, though you could just as easily
+substitute one of the other classes in <a class="reference internal" href="../api/slimta.relay.html#module-slimta.relay" title="slimta.relay"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.relay</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.pipe</span> <span class="kn">import</span> <span class="n">DovecotLdaRelay</span>
 
-<span class="n">relay</span> <span class="o">=</span> <span class="n">MaildropRelay</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+<span class="n">relay</span> <span class="o">=</span> <span class="n">DovecotLdaRelay</span><span class="p">(</span><span class="s">&#39;/usr/lib/dovecot/dovecot-lda&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The result is a variable <tt class="docutils literal"><span class="pre">relay</span></tt> that can be passed in to the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>
 constructor. The <tt class="docutils literal"><span class="pre">relay</span></tt> will produce transient errors if the command takes
-too long to reply. An unhandled exception will be raised if the <tt class="docutils literal"><span class="pre">maildrop</span></tt>
-command does not exist in the system path.</p>
+too long to finish.</p>
 </div>
 <div class="section" id="step-2-create-the-queue">
 <h2>Step 2: Create the Queue<a class="headerlink" href="#step-2-create-the-queue" title="Permalink to this headline">¶</a></h2>

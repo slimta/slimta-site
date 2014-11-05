@@ -141,6 +141,13 @@ delivery on the <tt class="docutils literal"><span class="pre">&quot;static&quot
 </li>
 </ul>
 </div>
+<div class="section" id="lmtp-relays">
+<h2><tt class="docutils literal"><span class="pre">lmtp</span></tt> Relays<a class="headerlink" href="#lmtp-relays" title="Permalink to this headline">¶</a></h2>
+<p>This relay type is configured exactly like the <tt class="docutils literal"><span class="pre">static</span></tt> relay type, except the
+<tt class="docutils literal"><span class="pre">host</span></tt> option defaults to <tt class="docutils literal"><span class="pre">&quot;localhost&quot;</span></tt>. This option will produce a
+<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticLmtpRelay" title="slimta.relay.smtp.static.StaticLmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticLmtpRelay</span></tt></a> object to deliver messages,
+such as when configured as an <a class="reference external" href="http://en.wikipedia.org/wiki/Mail_delivery_agent">MDA</a>.</p>
+</div>
 <div class="section" id="pipe-relays">
 <h2><tt class="docutils literal"><span class="pre">pipe</span></tt> Relays<a class="headerlink" href="#pipe-relays" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="docutils literal"><span class="pre">&quot;pipe&quot;</span></tt> relay type mimcs the postfix <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe</a> daemon, which is a useful
@@ -261,6 +268,7 @@ as any others as necessary):</p>
     <ul>
 <li><a class="reference internal" href="#">Configuring the Relays</a><ul>
 <li><a class="reference internal" href="#mx-and-static-relays"><tt class="docutils literal"><span class="pre">mx</span></tt> and <tt class="docutils literal"><span class="pre">static</span></tt> Relays</a></li>
+<li><a class="reference internal" href="#lmtp-relays"><tt class="docutils literal"><span class="pre">lmtp</span></tt> Relays</a></li>
 <li><a class="reference internal" href="#pipe-relays"><tt class="docutils literal"><span class="pre">pipe</span></tt> Relays</a></li>
 <li><a class="reference internal" href="#maildrop-relays"><tt class="docutils literal"><span class="pre">maildrop</span></tt> Relays</a></li>
 <li><a class="reference internal" href="#dovecot-relays"><tt class="docutils literal"><span class="pre">dovecot</span></tt> Relays</a></li>

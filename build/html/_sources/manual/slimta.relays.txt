@@ -14,7 +14,6 @@ mapping with one required key:
   Defines the type of relay. A known type must be given or an error will be
   thrown. The other keys in this mapping depend on the value of ``type``.
 
-
 ``mx`` and ``static`` Relays
 """"""""""""""""""""""""""""
 
@@ -87,6 +86,16 @@ are as follows:
 
   The port number to connect to on the destination server for outbound mail
   delivery on the ``"static"`` relay type.
+
+``lmtp`` Relays
+"""""""""""""""
+
+.. _MDA: http://en.wikipedia.org/wiki/Mail_delivery_agent
+
+This relay type is configured exactly like the ``static`` relay type, except the
+``host`` option defaults to ``"localhost"``. This option will produce a
+:class:`~slimta.relay.smtp.static.StaticLmtpRelay` object to deliver messages,
+such as when configured as an MDA_.
 
 ``pipe`` Relays
 """""""""""""""

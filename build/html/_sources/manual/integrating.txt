@@ -4,8 +4,8 @@
 Integrating Everything
 ======================
 
-.. figure:: http://slimta.org/images/diagrams/reception-to-delivery.png
-   :target: http://slimta.org/images/diagrams/reception-to-delivery.png
+.. figure:: http://slimta.org/latest/_static/reception-to-delivery.png
+   :target: http://slimta.org/latest/_static/reception-to-delivery.png
    :width: 100%
    :figwidth: 400px
    :align: right
