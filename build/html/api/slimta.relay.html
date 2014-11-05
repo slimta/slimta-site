@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.relay &mdash; slimta 1.0.2 documentation</title>
+    <title>slimta.relay &mdash; slimta 1.1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0.2',
+        VERSION:     '1.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.0.2 documentation" href="../index.html" />
+    <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
     <link rel="up" title="slimta" href="slimta.html" />
     <link rel="next" title="slimta.relay.pool" href="slimta.relay.pool.html" />
     <link rel="prev" title="slimta.queue.proxy" href="slimta.queue.proxy.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.queue.proxy.html" title="slimta.queue.proxy"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.0.2 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
@@ -89,7 +89,7 @@ successful if tried again later.</p>
 <dl class="class">
 <dt id="slimta.relay.Relay">
 <em class="property">class </em><tt class="descclassname">slimta.relay.</tt><tt class="descname">Relay</tt><a class="headerlink" href="#slimta.relay.Relay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
 <p>Base class for objects that implement the relaying pattern. Included
 implementations are <a class="reference internal" href="slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">MxSmtpRelay</span></tt></a> and
 <a class="reference internal" href="slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></tt></a>.</p>
@@ -113,6 +113,12 @@ delivery for a message.</p>
 <tt class="descname">attempt</tt><big>(</big><em>envelope</em>, <em>attempts</em><big>)</big><a class="headerlink" href="#slimta.relay.Relay.attempt" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method must be overriden by sub-classes in order to be passed
 in to the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> constructor.</p>
+<p>Implementations may return <tt class="docutils literal"><span class="pre">None</span></tt> or raise a <tt class="xref py py-class docutils literal"><span class="pre">RelayError</span></tt> to
+apply the result to all recipients in the envelope. Alternatively, they
+may return an iterable where each item corresponds to
+<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><tt class="xref py py-attr docutils literal"><span class="pre">recipients</span></tt></a> and is <tt class="docutils literal"><span class="pre">None</span></tt> on
+successful delivery, or an instance of <a class="reference internal" href="#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><tt class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></tt></a> or
+<a class="reference internal" href="#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><tt class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></tt></a> on failure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -210,7 +216,7 @@ threads) and close resources.</p>
         <li class="right" >
           <a href="slimta.queue.proxy.html" title="slimta.queue.proxy"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.0.2 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
           <li><a href="../api.html" >API Reference</a> &raquo;</li>
           <li><a href="slimta.html" >slimta</a> &raquo;</li> 
