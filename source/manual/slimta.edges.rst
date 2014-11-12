@@ -219,6 +219,20 @@ configured to receive mail. It supports the following options:
     ``X-Envelope-Recipient`` headers from the client. By default, all
     recipients are accepted.
 
+  * ``lookup_senders``: Dictionary
+
+    This section follows the :ref:`lookup section <lookup-section>`
+    requirements. It will limit the allowed addresses in the
+    ``X-Envelope-Sender`` header to those with records in the external data
+    source.
+
+  * ``lookup_recipients``: Dictionary
+
+    This section follows the :ref:`lookup section <lookup-section>`
+    requirements. It will limit the allowed addresses in the
+    ``X-Envelope-Recipient`` header to those with records in the external data
+    source.
+
 ``custom`` Edges
 """"""""""""""""
 
