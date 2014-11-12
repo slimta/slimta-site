@@ -169,8 +169,8 @@ sub-section. These keys are:
     requirements. The SMTP ``AUTH`` extension will check the external data
     source for the authenticating username, and look for the ``password``
     attribute. That password is verified against that field using
-    :passlib:attr:`passlib.apps.ldap_context`, meaning it supports the
-    ``{SCHEME}HASH`` format.
+    :obj:`passlib.apps.ldap_context`, meaning it supports the ``{SCHEME}HASH``
+    format.
 
 ``http`` Edges
 """"""""""""""

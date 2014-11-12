@@ -26,21 +26,21 @@ slimta.lookup.drivers
 slimta.lookup.drivers.redis
 """""""""""""""""""""""""""
 
-.. automodule:: slimta.lookup.redis
+.. automodule:: slimta.lookup.drivers.redis
    :members:
    :show-inheritance:
 
 slimta.lookup.drivers.sqlite3
 """""""""""""""""""""""""""""
 
-.. automodule:: slimta.lookup.sqlite3
+.. automodule:: slimta.lookup.drivers.sqlite3
    :members:
    :show-inheritance:
 
 slimta.lookup.drivers.dict
 """"""""""""""""""""""""""
 
-.. automodule:: slimta.lookup.dict
+.. automodule:: slimta.lookup.drivers.dict
    :members:
    :show-inheritance:
 
