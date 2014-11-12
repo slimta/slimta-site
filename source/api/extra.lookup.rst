@@ -20,6 +20,8 @@ slimta.lookup.policy
    :members:
    :show-inheritance:
 
+.. _slimta-lookup-drivers:
+
 slimta.lookup.drivers
 ---------------------
 
