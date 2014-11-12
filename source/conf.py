@@ -271,6 +271,7 @@ texinfo_documents = [
 intersphinx_mapping = {'py': ('http://docs.python.org/', None),
                        'gevent': ('http://gevent.org/', None),
                        'redis': ('http://redis-py.readthedocs.org/en/latest/', None),
+                       'passlib': ('https://pythonhosted.org/passlib/', None),
                        'celery': ('http://docs.celeryproject.org/en/latest/', None),
                        'boto': ('http://boto.readthedocs.org/en/latest/', None)}
 

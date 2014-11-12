@@ -12,6 +12,7 @@ own set of additional dependencies. These modules can be installed alongside
 
 .. toctree::
 
+   extra.lookup
    extra.diskstorage
    extra.cloudstorage
    extra.redisstorage

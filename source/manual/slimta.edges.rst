@@ -4,6 +4,8 @@
 Configuring the Edges
 =====================
 
+.. _python-slimta-lookup: https://github.com/slimta/python-slimta-lookup
+
 The next big section in ``slimta.conf`` is ``edge``, which allows you to setup
 as many different inbound edge listeners as you need. In the ``edge`` section,
 each key provides an arbitrary, free-form name for the edge, and the value is
@@ -56,6 +58,20 @@ consistent options. This sub-section is defined as:
     For ``tcp`` and ``unix`` types, this setting defines the size of the
     backlog of unaccepted connections. See the :meth:`~socket.socket.listen`
     method for more information. The default is ``256``.
+
+.. _lookup-section:
+
+Some options can use `python-slimta-lookup`_ to query an external source for
+its data. These sections must have the following option:
+
+* ``type``: String, required
+
+  Defines the type of external data source. Valid values are ``redis``,
+  ``sqlite3``, and ``config``.
+
+Additional optional and required options depend on ``type``. See the class
+definitions in :mod:`slimta.lookup.drivers` for more information on these
+options.
 
 ``smtp`` Edges
 """"""""""""""
@@ -135,11 +151,26 @@ sub-section. These keys are:
     ``RCPT TO:<>`` commands from the client. By default, all recipients are
     accepted.
 
-  * ``require_credentials``: Dictionary
+  * ``lookup_senders``: Dictionary
 
-    If this option is given, clients are required to authenticate before mail
-    can be accepted. The keys and values in this dictionary are the usernames
-    and passwords, respectively, of the valid authentication credentials.
+    This section follows the :ref:`lookup section <lookup-section>`
+    requirements. It will limit the allowed addresses to the ``MAIL FROM:<>``
+    command to those with records in the external data source.
+
+  * ``lookup_recipients``: Dictionary
+
+    This section follows the :ref:`lookup section <lookup-section>`
+    requirements. It will limit the allowed addresses to the ``RCPT TO:<>``
+    command to those with records in the external data source.
+
+  * ``lookup_credentials``: Dictionary
+
+    This section follows the :ref:`lookup section <lookup-section>`
+    requirements. The SMTP ``AUTH`` extension will check the external data
+    source for the authenticating username, and look for the ``password``
+    attribute. That password is verified against that field using
+    :attr:`passlib.apps.ldap_context`, meaning it supports the ``{SCHEME}HASH``
+    format.
 
 ``http`` Edges
 """"""""""""""
