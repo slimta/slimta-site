@@ -30,10 +30,10 @@ slimta.lookup.drivers.redis
    :members:
    :show-inheritance:
 
-slimta.lookup.drivers.sqlite3
+slimta.lookup.drivers.dbapi2
 """""""""""""""""""""""""""""
 
-.. automodule:: slimta.lookup.drivers.sqlite3
+.. automodule:: slimta.lookup.drivers.dbapi2
    :members:
    :show-inheritance:
 
