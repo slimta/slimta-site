@@ -115,6 +115,17 @@ method for more information. The default is <tt class="docutils literal"><span c
 </ul>
 </li>
 </ul>
+<p id="lookup-section">Some options can use <a class="reference external" href="https://github.com/slimta/python-slimta-lookup">python-slimta-lookup</a> to query an external source for
+its data. These sections must have the following option:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">type</span></tt>: String, required</p>
+<p>Defines the type of external data source. Valid values are <tt class="docutils literal"><span class="pre">redis</span></tt>,
+<tt class="docutils literal"><span class="pre">sqlite3</span></tt>, and <tt class="docutils literal"><span class="pre">config</span></tt>.</p>
+</li>
+</ul>
+<p>Additional optional and required options depend on <tt class="docutils literal"><span class="pre">type</span></tt>. See the class
+definitions in <tt class="xref py py-mod docutils literal"><span class="pre">slimta.lookup.drivers</span></tt> for more information on these
+options.</p>
 <div class="section" id="smtp-edges">
 <h2><tt class="docutils literal"><span class="pre">smtp</span></tt> Edges<a class="headerlink" href="#smtp-edges" title="Permalink to this headline">¶</a></h2>
 <p>SMTP Edges produce an <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><tt class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></tt></a> object from the extra keys given in the edge
@@ -180,10 +191,23 @@ accepted.</p>
 <tt class="docutils literal"><span class="pre">RCPT</span> <span class="pre">TO:&lt;&gt;</span></tt> commands from the client. By default, all recipients are
 accepted.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">require_credentials</span></tt>: Dictionary</p>
-<p>If this option is given, clients are required to authenticate before mail
-can be accepted. The keys and values in this dictionary are the usernames
-and passwords, respectively, of the valid authentication credentials.</p>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lookup_senders</span></tt>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><em>lookup section</em></a>
+requirements. It will limit the allowed addresses to the <tt class="docutils literal"><span class="pre">MAIL</span> <span class="pre">FROM:&lt;&gt;</span></tt>
+command to those with records in the external data source.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lookup_recipients</span></tt>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><em>lookup section</em></a>
+requirements. It will limit the allowed addresses to the <tt class="docutils literal"><span class="pre">RCPT</span> <span class="pre">TO:&lt;&gt;</span></tt>
+command to those with records in the external data source.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lookup_credentials</span></tt>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><em>lookup section</em></a>
+requirements. The SMTP <tt class="docutils literal"><span class="pre">AUTH</span></tt> extension will check the external data
+source for the authenticating username, and look for the <tt class="docutils literal"><span class="pre">password</span></tt>
+attribute. That password is verified against that field using
+<tt class="xref py py-attr docutils literal"><span class="pre">passlib.apps.ldap_context</span></tt>, meaning it supports the <tt class="docutils literal"><span class="pre">{SCHEME}HASH</span></tt>
+format.</p>
 </li>
 </ul>
 </li>

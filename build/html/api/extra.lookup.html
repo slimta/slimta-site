@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.diskstorage &mdash; slimta 1.1.0 documentation</title>
+    <title>slimta.lookup &mdash; slimta 1.1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
     <link rel="up" title="Available Extensions" href="extra.html" />
-    <link rel="next" title="slimta.cloudstorage" href="extra.cloudstorage.html" />
-    <link rel="prev" title="slimta.lookup" href="extra.lookup.html" /> 
+    <link rel="next" title="slimta.diskstorage" href="extra.diskstorage.html" />
+    <link rel="prev" title="Available Extensions" href="extra.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -47,10 +47,10 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.html" title="slimta.cloudstorage"
+          <a href="extra.diskstorage.html" title="slimta.diskstorage"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.lookup.html" title="slimta.lookup"
+          <a href="extra.html" title="Available Extensions"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
@@ -66,39 +66,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="slimta-diskstorage">
-<h1>slimta.diskstorage<a class="headerlink" href="#slimta-diskstorage" title="Permalink to this headline">¶</a></h1>
-<p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-diskstorage</span></tt> extension package.</p>
-<span class="target" id="module-slimta.diskstorage"></span><p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><tt class="xref py py-mod docutils literal"><span class="pre">queue</span></tt></a> storage system on disk. Disk
-reads and writes are built using the <a class="reference external" href="http://www.kernel.org/doc/man-pages/online/pages/man7/aio.7.html">aio</a> interface, provided in python by the
-<a class="reference external" href="https://github.com/felipecruz/pyaio">pyaio</a> project.</p>
-<dl class="class">
-<dt id="slimta.diskstorage.DiskStorage">
-<em class="property">class </em><tt class="descclassname">slimta.diskstorage.</tt><tt class="descname">DiskStorage</tt><big>(</big><em>env_dir</em>, <em>meta_dir</em><span class="optional">[</span>, <em>tmp_dir=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.diskstorage.DiskStorage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></tt></a></p>
-<p><a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> mechanism that stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and queue metadata in
-two separate files on disk.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>env_dir</strong> &#8211; Directory where queue envelope files are stored. These
-files may be large and will not be modified after initial
-writing.</li>
-<li><strong>meta_dir</strong> &#8211; Directory where queue meta files are stored. These files
-will be small and volatile.</li>
-<li><strong>tmp_dir</strong> &#8211; Directory that may be used as scratch space. New files are
-written here and then moved to their final destination.
-System temp directories are used by default.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
+  <div class="section" id="slimta-lookup">
+<h1>slimta.lookup<a class="headerlink" href="#slimta-lookup" title="Permalink to this headline">¶</a></h1>
+<p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-lookup</span></tt> extension package.</p>
+<span class="target" id="module-slimta.lookup"></span></div>
 
 
           </div>
@@ -111,13 +82,13 @@ System temp directories are used by default.</li>
         </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="extra.lookup.html"
-                          title="Previous page">&larr; slimta.lookup</a></p>
+    <p class="topless"><a href="extra.html"
+                          title="Previous page">&larr; Available Extensions</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="extra.cloudstorage.html"
-                          title="Next page">&rarr; slimta.cloudstorage</a></p>
+    <p class="topless"><a href="extra.diskstorage.html"
+                          title="Next page">&rarr; slimta.diskstorage</a></p>
   </div>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
@@ -148,10 +119,10 @@ System temp directories are used by default.</li>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.html" title="slimta.cloudstorage"
+          <a href="extra.diskstorage.html" title="slimta.diskstorage"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.lookup.html" title="slimta.lookup"
+          <a href="extra.html" title="Available Extensions"
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
