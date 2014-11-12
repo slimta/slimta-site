@@ -252,6 +252,18 @@ accepted.</p>
 <tt class="docutils literal"><span class="pre">X-Envelope-Recipient</span></tt> headers from the client. By default, all
 recipients are accepted.</p>
 </li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lookup_senders</span></tt>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><em>lookup section</em></a>
+requirements. It will limit the allowed addresses in the
+<tt class="docutils literal"><span class="pre">X-Envelope-Sender</span></tt> header to those with records in the external data
+source.</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">lookup_recipients</span></tt>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><em>lookup section</em></a>
+requirements. It will limit the allowed addresses in the
+<tt class="docutils literal"><span class="pre">X-Envelope-Recipient</span></tt> header to those with records in the external data
+source.</p>
+</li>
 </ul>
 </li>
 </ul>
