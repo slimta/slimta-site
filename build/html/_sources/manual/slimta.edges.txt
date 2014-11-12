@@ -70,8 +70,8 @@ its data. These sections must have the following option:
   ``sqlite3``, and ``config``.
 
 Additional optional and required options depend on ``type``. See the class
-definitions in :mod:`slimta.lookup.drivers` for more information on these
-options.
+definitions in :ref:`slimta.lookup.drivers <slimta-lookup-drivers>` for more
+information on these options.
 
 ``smtp`` Edges
 """"""""""""""
