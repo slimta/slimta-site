@@ -25,6 +25,10 @@ slimta.lookup.policy
 slimta.lookup.drivers
 ---------------------
 
+.. automodule:: slimta.lookup.drivers
+   :members:
+   :show-inheritance:
+
 slimta.lookup.drivers.redis
 """""""""""""""""""""""""""
 
