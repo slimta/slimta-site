@@ -89,7 +89,7 @@ that require plain text passwords.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lookup</strong> &#8211; The slimta lookup driver, implementing the
-<tt class="xref py py-class docutils literal"><span class="pre">LookupBase</span></tt> interface.</td>
+<a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><tt class="xref py py-class docutils literal"><span class="pre">LookupBase</span></tt></a> interface.</td>
 </tr>
 </tbody>
 </table>
@@ -122,7 +122,7 @@ queued using <a class="reference internal" href="slimta.queue.html#slimta.queue.
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>lookup</strong> &#8211; The slimta lookup driver, implementing the
-<tt class="xref py py-class docutils literal"><span class="pre">LookupBase</span></tt> interface.</li>
+<a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><tt class="xref py py-class docutils literal"><span class="pre">LookupBase</span></tt></a> interface.</li>
 <li><strong>on_sender</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; If <tt class="docutils literal"><span class="pre">True</span></tt>, the envelope sender is looked up and has
 policies applied.</li>
 <li><strong>on_rcpts</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; If <tt class="docutils literal"><span class="pre">True</span></tt>, the envelope recipients are looked up, each
@@ -135,8 +135,83 @@ one applying any policies found in the record.</li>
 </dd></dl>
 
 </div>
-<div class="section" id="slimta-lookup-drivers">
-<span id="id1"></span><h2>slimta.lookup.drivers<a class="headerlink" href="#slimta-lookup-drivers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-slimta.lookup.drivers">
+<span id="id1"></span><span id="slimta-lookup-drivers"></span><h2>slimta.lookup.drivers<a class="headerlink" href="#module-slimta.lookup.drivers" title="Permalink to this headline">¶</a></h2>
+<p>This package contains several implementations of the slimta lookup
+mechanism, which provides a simple interface to control actions and policies
+with external lookups. Under normal circumstances, slimta lookup drivers do
+not modify their backend data source.</p>
+<dl class="class">
+<dt id="slimta.lookup.drivers.LookupBase">
+<em class="property">class </em><tt class="descclassname">slimta.lookup.drivers.</tt><tt class="descname">LookupBase</tt><a class="headerlink" href="#slimta.lookup.drivers.LookupBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<p>Inherit this class to implement a slimta lookup driver. Only the
+<a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a> method must be overridden.</p>
+<dl class="method">
+<dt id="slimta.lookup.drivers.LookupBase.lookup">
+<tt class="descname">lookup</tt><big>(</big><span class="optional">[</span><em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.LookupBase.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>The keyword arguments will be used by the lookup driver to return a
+dictionary-like object that will be used to affect actions or policy.
+For some drivers, these keywords may be used with a template to produce
+a lookup key. For SQL-style drivers, they might be used in a <tt class="docutils literal"><span class="pre">WHERE</span></tt>
+clause of a <tt class="docutils literal"><span class="pre">SELECT</span></tt> query.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>keyword arguments</em>) &#8211; Used by the driver to lookup records.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary if a record was found, <tt class="docutils literal"><span class="pre">None</span></tt> otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.lookup.drivers.LookupBase.lookup_address">
+<tt class="descname">lookup_address</tt><big>(</big><em>address</em><span class="optional">[</span>, <em>**extra</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.LookupBase.lookup_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience method where the given address is passed in as the
+<tt class="docutils literal"><span class="pre">address</span></tt> keyword to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>. If the address has domain part,
+it is substringed and passed in as the <tt class="docutils literal"><span class="pre">domain</span></tt> keyword a well.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>address</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; An address to lookup, either as the full address or as
+its domain part.</li>
+<li><strong>extra</strong> (<em>keyword arguments</em>) &#8211; Additional keyword arguments to pass in to
+<a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.lookup.drivers.LookupBase.log">
+<tt class="descname">log</tt><big>(</big><em>name</em>, <em>kwargs</em>, <em>ret</em><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.LookupBase.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementing drivers should call this method to log the lookup
+transaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The module name, e.g. <tt class="docutils literal"><span class="pre">__name__</span></tt>.</li>
+<li><strong>kwargs</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; The keyword arguments given to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</li>
+<li><strong>ret</strong> &#8211; The return value of the lookup, e.g. a dictionary or
+<tt class="docutils literal"><span class="pre">None</span></tt>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 <div class="section" id="module-slimta.lookup.drivers.redis">
 <span id="slimta-lookup-drivers-redis"></span><h3>slimta.lookup.drivers.redis<a class="headerlink" href="#module-slimta.lookup.drivers.redis" title="Permalink to this headline">¶</a></h3>
 <p>Implements slimta lookup against a redis data backend. By default, this
@@ -145,7 +220,7 @@ to use the <a class="reference external" href="http://redis.io/commands#hash">ha
 <dl class="class">
 <dt id="slimta.lookup.drivers.redis.RedisLookup">
 <em class="property">class </em><tt class="descclassname">slimta.lookup.drivers.redis.</tt><tt class="descname">RedisLookup</tt><big>(</big><em>key_template</em><span class="optional">[</span>, <em>host='localhost'</em><span class="optional">[</span>, <em>port=6379</em><span class="optional">[</span>, <em>db=0</em><span class="optional">[</span>, <em>password=None</em><span class="optional">[</span>, <em>socket_timeout=None</em><span class="optional">[</span>, <em>use_hash=False</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.redis.RedisLookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.LookupBase</span></tt></p>
+<dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><tt class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.LookupBase</span></tt></a></p>
 <p>Implements the slimta lookup interface using the redis key-value storage
 as the backend layer.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -156,7 +231,7 @@ as the backend layer.</p>
 <li><strong>key_template</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; This template string is used to determine the key
 string to lookup. :The <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">format()</span></tt></a> method
 is called with keyword arguments, given the keyword
-arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.redis.RedisLookup.lookup" title="slimta.lookup.drivers.redis.RedisLookup.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</li>
+arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</li>
 <li><strong>host</strong> &#8211; Hostname of the redis server to connect to.</li>
 <li><strong>port</strong> &#8211; Port to connect to.</li>
 <li><strong>db</strong> &#8211; Database number to create keys in.</li>
@@ -173,23 +248,6 @@ distinguish missing records from empty records.</li>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="slimta.lookup.drivers.redis.RedisLookup.lookup">
-<tt class="descname">lookup</tt><big>(</big><span class="optional">[</span><em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.redis.RedisLookup.lookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Using the keyword arguments as macros to produce a key string from
-<tt class="docutils literal"><span class="pre">key_template</span></tt>, the value associated with the key is returned.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>keyword arguments</em>) &#8211; Used to produce a key string from the template.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary if a record was found, <tt class="docutils literal"><span class="pre">None</span></tt> otherwise.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -203,7 +261,7 @@ monkey-patching) to ensure good performance.</p>
 <dl class="class">
 <dt id="slimta.lookup.drivers.dbapi2.DBAPI2Lookup">
 <em class="property">class </em><tt class="descclassname">slimta.lookup.drivers.dbapi2.</tt><tt class="descname">DBAPI2Lookup</tt><big>(</big><em>conn_ctxmgr</em>, <em>query</em><span class="optional">[</span>, <em>query_param_order=None</em><span class="optional">[</span>, <em>result_order=None</em><span class="optional">[</span>, <em>conn=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.LookupBase</span></tt></p>
+<dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><tt class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.LookupBase</span></tt></a></p>
 <p>Implements the slimta lookup interface using the generic <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0249/">DB API 2.0</a>
 specification.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -218,13 +276,13 @@ are managed or pooled.</li>
 <li><strong>query</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The query string used to lookup records in the database.</li>
 <li><strong>query_param_order</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; If <tt class="docutils literal"><span class="pre">query</span></tt> uses positional parameters, this
 must be a list of keywords from the
-<a class="reference internal" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup" title="slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a> to translate from keywords to
+<a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a> to translate from keywords to
 positional arguments.</li>
 <li><strong>result_order</strong> &#8211; Most database implementations return rows as a
 sequence instead of a mapping. In this case, this
 argument must be given to translate the sequence into
 a dictionary, <tt class="docutils literal"><span class="pre">TypeError</span></tt> may be raised in the
-<a class="reference internal" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup" title="slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a> method otherwise.</li>
+<a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a> method otherwise.</li>
 <li><strong>conn</strong> &#8211; If <tt class="docutils literal"><span class="pre">conn_ctxmgr</span></tt> is <tt class="docutils literal"><span class="pre">None</span></tt>, a simple one is generated that
 simply returns the value of this argument. Useful for
 databases that have a single, persistent connection object.</li>
@@ -233,23 +291,6 @@ databases that have a single, persistent connection object.</li>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup">
-<tt class="descname">lookup</tt><big>(</big><span class="optional">[</span><em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Using the keyword arguments as macros to produce a key string from
-<tt class="docutils literal"><span class="pre">key_template</span></tt>, the value associated with the key is returned.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>keyword arguments</em>) &#8211; Used to produce a key string from the template.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary if a record was found, <tt class="docutils literal"><span class="pre">None</span></tt> otherwise.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -258,7 +299,7 @@ databases that have a single, persistent connection object.</li>
 <dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup" title="slimta.lookup.drivers.dbapi2.DBAPI2Lookup"><tt class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.dbapi2.DBAPI2Lookup</span></tt></a></p>
 <p>Implements the slimta lookup interface using the <a class="reference external" href="http://docs.python.org/library/sqlite3.html#module-sqlite3" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">sqlite3</span></tt></a>
 module. The connection object is created immediately and kept open for all
-calls to <a class="reference internal" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup" title="slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</p>
+calls to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -285,7 +326,7 @@ a persistent backend like <a class="reference external" href="http://docs.python
 <dl class="class">
 <dt id="slimta.lookup.drivers.dict.DictLookup">
 <em class="property">class </em><tt class="descclassname">slimta.lookup.drivers.dict.</tt><tt class="descname">DictLookup</tt><big>(</big><em>backend</em>, <em>key_template</em><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.dict.DictLookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.LookupBase</span></tt></p>
+<dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><tt class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.LookupBase</span></tt></a></p>
 <p>Instantiate this class with a Python dictionary-like object and it may
 be used as a slimta lookup interface.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -299,29 +340,12 @@ dictionary-like objects.</li>
 <li><strong>key_template</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; This template string is used to determine the key
 string to lookup. :The <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">format()</span></tt></a> method
 is called with keyword arguments, given the keyword
-arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.dict.DictLookup.lookup" title="slimta.lookup.drivers.dict.DictLookup.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</li>
+arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<dl class="method">
-<dt id="slimta.lookup.drivers.dict.DictLookup.lookup">
-<tt class="descname">lookup</tt><big>(</big><span class="optional">[</span><em>**kwargs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.lookup.drivers.dict.DictLookup.lookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Using the keyword arguments as macros to produce a key string from
-<tt class="docutils literal"><span class="pre">key_template</span></tt>, the value associated with the key is returned.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>keyword arguments</em>) &#8211; Used to produce a key string from the template.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary if a record was found, <tt class="docutils literal"><span class="pre">None</span></tt> otherwise.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -342,7 +366,7 @@ arguments passed in to <a class="reference internal" href="#slimta.lookup.driver
 <li><a class="reference internal" href="#">slimta.lookup</a><ul>
 <li><a class="reference internal" href="#module-slimta.lookup.auth">slimta.lookup.auth</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.policy">slimta.lookup.policy</a></li>
-<li><a class="reference internal" href="#slimta-lookup-drivers">slimta.lookup.drivers</a><ul>
+<li><a class="reference internal" href="#module-slimta.lookup.drivers">slimta.lookup.drivers</a><ul>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.redis">slimta.lookup.drivers.redis</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.dbapi2">slimta.lookup.drivers.dbapi2</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.dict">slimta.lookup.drivers.dict</a></li>
