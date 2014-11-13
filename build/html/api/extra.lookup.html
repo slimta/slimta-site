@@ -338,8 +338,8 @@ be used as a slimta lookup interface.</p>
 data lookups. The values in this mapping <strong>must</strong> also be
 dictionary-like objects.</li>
 <li><strong>key_template</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; This template string is used to determine the key
-string to lookup. :The <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">format()</span></tt></a> method
-is called with keyword arguments, given the keyword
+string to lookup. The <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">str.format()</span></tt></a> method is
+called with keyword arguments, given the keyword
 arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><tt class="xref py py-meth docutils literal"><span class="pre">lookup()</span></tt></a>.</li>
 </ul>
 </td>
