@@ -12,11 +12,6 @@ slimta: Mail Transfer Library
 
 .. _MTA: http://en.wikipedia.org/wiki/Message_transfer_agent
 
-.. note::
-
-   The *python-slimta* project has reached version ``1.0.0``! Please refer to
-   the :doc:`versions` page for information on what this means.
-
 The *slimta* suite was created to provide an MTA (Mail Transfer Agent) taking advantage of new
 technologies and methodologies to scale horizontally in a virtualized
 environment. Along with that, *slimta* is designed to work either as a
