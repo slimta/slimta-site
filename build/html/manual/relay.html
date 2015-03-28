@@ -34,10 +34,10 @@
     <link rel="prev" title="Queue Services" href="queue.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,7 +64,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="relay-services">
 <h1>Relay Services<a class="headerlink" href="#relay-services" title="Permalink to this headline">¶</a></h1>
@@ -83,7 +83,7 @@ ISP mail servers, or it could be useful for a &#8220;front-line&#8221; of email 
 whose sole purpose is spam scanning before handing off for real processing and
 routing. This static delivery is generally called <a class="reference external" href="http://en.wikipedia.org/wiki/Smart_host">Smart-Hosting</a></p>
 <p>Smart-Host relaying can be done with the
-<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></tt></a> class, which will maintain
+<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></code></a> class, which will maintain
 a pool of connections to the destination that will be re-used if idle. For
 example, to ensure no more than one open connection to a destination is open at
 once:</p>
@@ -100,9 +100,9 @@ is a prioritized list of hostnames that should be considered the next hop for
 the message. The highest priority (given by the lowest MX preference number)
 hostname is tried first, and lower priority hostnames should be tried
 subsequently. MX relaying always uses port 25.</p>
-<p>MX relaying can be done with the <a class="reference internal" href="../api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">MxSmtpRelay</span></tt></a>
+<p>MX relaying can be done with the <a class="reference internal" href="../api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><code class="xref py py-class docutils literal"><span class="pre">MxSmtpRelay</span></code></a>
 class, which will automatically cache MX records until their TTL and will
-keep a <a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></tt></a> object for each
+keep a <a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></code></a> object for each
 destination, so that connections are re-used:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.smtp.mx</span> <span class="kn">import</span> <span class="n">MxSmtpRelay</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">()</span>
@@ -110,7 +110,7 @@ destination, so that connections are re-used:</p>
 </div>
 <p>Recipient domains can be configured to ignore MX records and permanently
 deliver to a certain hostname using the
-<a class="reference internal" href="../api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay.force_mx" title="slimta.relay.smtp.mx.MxSmtpRelay.force_mx"><tt class="xref py py-meth docutils literal"><span class="pre">force_mx()</span></tt></a> method:</p>
+<a class="reference internal" href="../api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay.force_mx" title="slimta.relay.smtp.mx.MxSmtpRelay.force_mx"><code class="xref py py-meth docutils literal"><span class="pre">force_mx()</span></code></a> method:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">relay</span><span class="o">.</span><span class="n">force_mx</span><span class="p">(</span><span class="s">&#39;example.com&#39;</span><span class="p">,</span> <span class="s">&#39;smarthost.example.com&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -121,7 +121,7 @@ deliver to a certain hostname using the
 destination. It&#8217;s greatest strength in this regard over SMTP is that it can
 report success or failure on a per-recipient basis.</p>
 <p>LMTP relaying is available with the
-<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticLmtpRelay" title="slimta.relay.smtp.static.StaticLmtpRelay"><tt class="xref py py-class docutils literal"><span class="pre">StaticLmtpRelay</span></tt></a> class, which is behaves very
+<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticLmtpRelay" title="slimta.relay.smtp.static.StaticLmtpRelay"><code class="xref py py-class docutils literal"><span class="pre">StaticLmtpRelay</span></code></a> class, which is behaves very
 similarly to static SMTP relaying:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.smtp.static</span> <span class="kn">import</span> <span class="n">StaticLmtpRelay</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">StaticLmtpRelay</span><span class="p">()</span>
@@ -130,18 +130,18 @@ similarly to static SMTP relaying:</p>
 </div>
 <div class="section" id="http-relaying">
 <span id="relay-http"></span><h2>HTTP Relaying<a class="headerlink" href="#http-relaying" title="Permalink to this headline">¶</a></h2>
-<p>Similar to the <a class="reference internal" href="edge.html#edge-http"><em>HTTP Edge</em></a>, HTTP can be used to relay messages
+<p>Similar to the <a class="reference internal" href="edge.html#edge-http"><span>HTTP Edge</span></a>, HTTP can be used to relay messages
 as the data payload of a request. The EHLO, sender, and recipients information
 usually transferred in the SMTP request are sent as headers in the request.
-Refer to the <a class="reference internal" href="../api/slimta.relay.http.html#module-slimta.relay.http" title="slimta.relay.http"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.relay.http</span></tt></a> module for more information on how this
+Refer to the <a class="reference internal" href="../api/slimta.relay.http.html#module-slimta.relay.http" title="slimta.relay.http"><code class="xref py py-mod docutils literal"><span class="pre">slimta.relay.http</span></code></a> module for more information on how this
 request is constructed.</p>
-<p>If the remote host is an <a class="reference internal" href="edge.html#edge-http"><em>HTTP Edge</em></a>, the response to the
-request will most likely have an <tt class="docutils literal"><span class="pre">X-Smtp-Reply</span></tt> header that is used as the
-message delivery <a class="reference internal" href="../api/slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> when returning to the queue. If the response does not
-have this header, then <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><tt class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></tt></a> is raised for
-<tt class="docutils literal"><span class="pre">4XX</span></tt> codes and <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><tt class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></tt></a> is raised for
-<tt class="docutils literal"><span class="pre">5XX</span></tt> codes.</p>
-<p>HTTP relays are set up by creating a <a class="reference internal" href="../api/slimta.relay.http.html#slimta.relay.http.HttpRelay" title="slimta.relay.http.HttpRelay"><tt class="xref py py-class docutils literal"><span class="pre">HttpRelay</span></tt></a>
+<p>If the remote host is an <a class="reference internal" href="edge.html#edge-http"><span>HTTP Edge</span></a>, the response to the
+request will most likely have an <code class="docutils literal"><span class="pre">X-Smtp-Reply</span></code> header that is used as the
+message delivery <a class="reference internal" href="../api/slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> when returning to the queue. If the response does not
+have this header, then <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a> is raised for
+<code class="docutils literal"><span class="pre">4XX</span></code> codes and <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a> is raised for
+<code class="docutils literal"><span class="pre">5XX</span></code> codes.</p>
+<p>HTTP relays are set up by creating a <a class="reference internal" href="../api/slimta.relay.http.html#slimta.relay.http.HttpRelay" title="slimta.relay.http.HttpRelay"><code class="xref py py-class docutils literal"><span class="pre">HttpRelay</span></code></a>
 object:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.http</span> <span class="kn">import</span> <span class="n">HttpRelay</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">HttpRelay</span><span class="p">(</span><span class="s">&#39;http://example.com:8025/messages/&#39;</span><span class="p">)</span>
@@ -154,18 +154,18 @@ object:</p>
 it can stream a message to an external process to locally deliver the message.
 This is how applications like <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> and <a class="reference external" href="http://wiki.dovecot.org/LDA">dovecot-lda</a> are given
 messages. This method is modeled off the <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe daemon</a> from postfix.  This
-type of relay is provided in the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.relay.pipe</span></tt></a> module. Here&#8217;s an
-example of delivery to the <tt class="docutils literal"><span class="pre">maildrop</span></tt> command:</p>
+type of relay is provided in the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><code class="xref py py-mod docutils literal"><span class="pre">slimta.relay.pipe</span></code></a> module. Here&#8217;s an
+example of delivery to the <code class="docutils literal"><span class="pre">maildrop</span></code> command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.pipe</span> <span class="kn">import</span> <span class="n">MaildropRelay</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MaildropRelay</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For more information, the <a class="reference internal" href="mda.html"><em>Mail Delivery Agent</em></a> tutorial and <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><tt class="xref py py-mod docutils literal"><span class="pre">pipe</span></tt></a>
+<p>For more information, the <a class="reference internal" href="mda.html"><em>Mail Delivery Agent</em></a> tutorial and <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><code class="xref py py-mod docutils literal"><span class="pre">pipe</span></code></a>
 module documentation may be useful.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Prior to version 0.3.21, this functionality was provided by the
-<a class="reference internal" href="extensions.html#pipe-relay-extension"><em>python-slimta-piperelay</em></a> extension.</p>
+<a class="reference internal" href="extensions.html#pipe-relay-extension"><span>python-slimta-piperelay</span></a> extension.</p>
 </div>
 </div>
 </div>
@@ -174,7 +174,7 @@ module documentation may be useful.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -202,7 +202,7 @@ module documentation may be useful.</p>
     <p class="topless"><a href="policies.html"
                           title="Next page">&rarr; Policy Implementation</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -221,7 +221,7 @@ module documentation may be useful.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -238,18 +238,27 @@ module documentation may be useful.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

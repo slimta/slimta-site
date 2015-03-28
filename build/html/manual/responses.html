@@ -31,10 +31,10 @@
     <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -53,26 +53,26 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="deciphering-message-delivery-responses">
 <h1>Deciphering Message Delivery Responses<a class="headerlink" href="#deciphering-message-delivery-responses" title="Permalink to this headline">¶</a></h1>
 <p>Because <a class="reference external" href="http://slimta.org/">slimta</a> is an email server, responses are always given as or translated
 to SMTP-style code and message. That is, a 3-digit code and a free-form message
-describing the success or what caused the failure. The <a class="reference internal" href="../api/slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> objects that
-represent the responses have <tt class="docutils literal"><span class="pre">code</span></tt> and <tt class="docutils literal"><span class="pre">message</span></tt> properties for accessing
+describing the success or what caused the failure. The <a class="reference internal" href="../api/slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> objects that
+represent the responses have <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">message</span></code> properties for accessing
 ad setting these values.</p>
 <p>The 3-digit code will start with <em>2</em> for responses indicating success, such as
 when a message was accepted by the destination. Codes that start with <em>4</em> or <em>5</em>
 indicate some sort of failure, <em>4</em> indicating a transient failure where retrying
 may resolve the issue, <em>5</em> indicating a permanent failure where a retry will not
 succeed.</p>
-<p>When using non-SMTP transports such as HTTP or <tt class="xref py py-mod docutils literal"><span class="pre">maildrop</span></tt>,
+<p>When using non-SMTP transports such as HTTP or <code class="xref py py-mod docutils literal"><span class="pre">maildrop</span></code>,
 responses will be translated to or from the expected format of the transport.
 HTTP, for example, uses <em>4xx</em> error codes for client errors (often permanent)
 and <em>5xx</em> error codes for server errors (often transient).</p>
 <p>If a response message begins with an <a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string, it is made
-available by the <tt class="docutils literal"><span class="pre">enhanced_status_code</span></tt> property. This value <em>can</em> be used
+available by the <code class="docutils literal"><span class="pre">enhanced_status_code</span></code> property. This value <em>can</em> be used
 programmatically, though <a class="reference external" href="http://slimta.org/">slimta</a> does not currently do so. No other part of the
 response message should be parsed programmatically.</p>
 </div>
@@ -81,12 +81,12 @@ response message should be parsed programmatically.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
         </a></p>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -105,7 +105,7 @@ response message should be parsed programmatically.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -121,11 +121,20 @@ response message should be parsed programmatically.</p>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

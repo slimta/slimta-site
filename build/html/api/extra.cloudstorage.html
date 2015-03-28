@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.diskstorage" href="extra.diskstorage.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,26 +64,26 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="slimta-cloudstorage">
 <h1>slimta.cloudstorage<a class="headerlink" href="#slimta-cloudstorage" title="Permalink to this headline">¶</a></h1>
-<p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-cloudstorage</span></tt> extension
+<p>This module is available in the <code class="docutils literal"><span class="pre">python-slimta-cloudstorage</span></code> extension
 package.</p>
 <span class="target" id="module-slimta.cloudstorage"></span><p>Package containing a module for the different cloud service providers along
 with any necessary helper modules.</p>
 <dl class="exception">
 <dt id="slimta.cloudstorage.CloudStorageError">
-<em class="property">exception </em><tt class="descclassname">slimta.cloudstorage.</tt><tt class="descname">CloudStorageError</tt><a class="headerlink" href="#slimta.cloudstorage.CloudStorageError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueError" title="slimta.queue.QueueError"><tt class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueError</span></tt></a></p>
+<em class="property">exception </em><code class="descclassname">slimta.cloudstorage.</code><code class="descname">CloudStorageError</code><a class="headerlink" href="#slimta.cloudstorage.CloudStorageError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueError</span></code></a></p>
 <p>Base exception for all exceptions in the package.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="slimta.cloudstorage.CloudStorage">
-<em class="property">class </em><tt class="descclassname">slimta.cloudstorage.</tt><tt class="descname">CloudStorage</tt><big>(</big><em>object_store</em><span class="optional">[</span>, <em>message_queue=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.cloudstorage.CloudStorage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></tt></a></p>
-<p>This class implements a <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> backend that
+<em class="property">class </em><code class="descclassname">slimta.cloudstorage.</code><code class="descname">CloudStorage</code><span class="sig-paren">(</span><em>object_store</em><span class="optional">[</span>, <em>message_queue=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></code></a></p>
+<p>This class implements a <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></code></a> backend that
 uses cloud services to store messages. It coordinates the storage of
 messages and metadata (using <a class="reference external" href="http://www.rackspace.com/cloud/files/">Cloud Files</a> or <a class="reference external" href="http://aws.amazon.com/s3/">S3</a>) with the optional
 message queue mechanisms (using <a class="reference external" href="http://www.rackspace.com/cloud/queues/">Cloud Queues</a> or <a class="reference external" href="http://aws.amazon.com/sqs/">SQS</a>) that can alert
@@ -97,14 +97,14 @@ store.</p>
 <li><strong>object_store</strong> &#8211; The object used as the backend for storing message
 contents and metadata in the cloud. Currently this can
 be an instance of
-<a class="reference internal" href="extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></tt></a> or
-<a class="reference internal" href="extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleStorageService</span></tt></a>.</li>
+<a class="reference internal" href="extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></code></a> or
+<a class="reference internal" href="extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><code class="xref py py-class docutils literal"><span class="pre">SimpleStorageService</span></code></a>.</li>
 <li><strong>message_queue</strong> &#8211; The optional object used
 as the backend for alerting other processes that a
 new message is in the object store. Currently this
 can be an instance of
-<a class="reference internal" href="extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></tt></a> or
-<a class="reference internal" href="extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleQueueService</span></tt></a>.</li>
+<a class="reference internal" href="extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></code></a> or
+<a class="reference internal" href="extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><code class="xref py py-class docutils literal"><span class="pre">SimpleQueueService</span></code></a>.</li>
 </ul>
 </td>
 </tr>
@@ -126,7 +126,7 @@ can be an instance of
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -141,7 +141,7 @@ can be an instance of
     <p class="topless"><a href="extra.cloudstorage.rackspace.html"
                           title="Next page">&rarr; slimta.cloudstorage.rackspace</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -160,7 +160,7 @@ can be an instance of
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -177,18 +177,27 @@ can be an instance of
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="extra.html" >Available Extensions</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

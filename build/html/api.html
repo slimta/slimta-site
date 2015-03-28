@@ -33,10 +33,10 @@
     <link rel="prev" title="slimta: Mail Transfer Library" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,14 +61,14 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
 <p>These pages are intended to serve as usage reference for the modules included
 in <em>python-slimta</em>.  The prototypes in these docs are generated directly from
 the source code, with docstrings used for descriptions and parameter
-information. Documentation for the <tt class="docutils literal"><span class="pre">latest/</span></tt> version are generated based on
+information. Documentation for the <code class="docutils literal"><span class="pre">latest/</span></code> version are generated based on
 the <a class="reference external" href="https://github.com/slimta/python-slimta/tree/master">master branch</a> upon commit using a <a class="reference external" href="http://ci.slimta.org/job/slimta-docs/">Jenkins job</a>.</p>
 <p><strong>Modules:</strong></p>
 <div class="toctree-wrapper compound">
@@ -167,7 +167,7 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="index.html" title="index">
           <img class="logo" src="_static/slimta.svg" alt="Logo"/>
@@ -182,7 +182,7 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
     <p class="topless"><a href="api/slimta.html"
                           title="Next page">&rarr; slimta</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -201,7 +201,7 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -223,11 +223,20 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

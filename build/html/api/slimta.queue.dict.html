@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.queue" href="slimta.queue.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,9 +54,9 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.queue.html" accesskey="U">slimta.queue</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.queue.html" accesskey="U">slimta.queue</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -65,28 +65,28 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-slimta.queue.dict">
 <span id="slimta-queue-dict"></span><h1>slimta.queue.dict<a class="headerlink" href="#module-slimta.queue.dict" title="Permalink to this headline">¶</a></h1>
-<p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.queue</span></tt></a> system on top of a
-<tt class="xref py py-func docutils literal"><span class="pre">dict()</span></tt> backend. This backend can be implemented as a <a class="reference external" href="http://docs.python.org/library/shelve.html#module-shelve" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">shelve</span></tt></a> to
+<p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><code class="xref py py-mod docutils literal"><span class="pre">slimta.queue</span></code></a> system on top of a
+<code class="xref py py-func docutils literal"><span class="pre">dict()</span></code> backend. This backend can be implemented as a <a class="reference external" href="http://docs.python.org/library/shelve.html#module-shelve" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">shelve</span></code></a> to
 provide basic persistence.</p>
 <dl class="class">
 <dt id="slimta.queue.dict.DictStorage">
-<em class="property">class </em><tt class="descclassname">slimta.queue.dict.</tt><tt class="descname">DictStorage</tt><big>(</big><span class="optional">[</span><em>envelope_db=None</em><span class="optional">[</span>, <em>meta_db=None</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.queue.dict.DictStorage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></tt></a></p>
-<p>Stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and queue metadata in two basic dictionary objects.</p>
+<em class="property">class </em><code class="descclassname">slimta.queue.dict.</code><code class="descname">DictStorage</code><span class="sig-paren">(</span><span class="optional">[</span><em>envelope_db=None</em><span class="optional">[</span>, <em>meta_db=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.dict.DictStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></code></a></p>
+<p>Stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> and queue metadata in two basic dictionary objects.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>envelope_db</strong> &#8211; The dictionary object to hold <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> objects, keyed
-by a unique string. Defaults to an empty <tt class="xref py py-func docutils literal"><span class="pre">dict()</span></tt>.</li>
+<li><strong>envelope_db</strong> &#8211; The dictionary object to hold <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> objects, keyed
+by a unique string. Defaults to an empty <code class="xref py py-func docutils literal"><span class="pre">dict()</span></code>.</li>
 <li><strong>meta_db</strong> &#8211; The dictionary object to hold envelope metadata, keyed by
-the same string as <tt class="docutils literal"><span class="pre">envelope_db</span></tt>. Defaults to an empty
-<tt class="xref py py-func docutils literal"><span class="pre">dict()</span></tt>.</li>
+the same string as <code class="docutils literal"><span class="pre">envelope_db</span></code>. Defaults to an empty
+<code class="xref py py-func docutils literal"><span class="pre">dict()</span></code>.</li>
 </ul>
 </td>
 </tr>
@@ -100,7 +100,7 @@ the same string as <tt class="docutils literal"><span class="pre">envelope_db</s
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -115,7 +115,7 @@ the same string as <tt class="docutils literal"><span class="pre">envelope_db</s
     <p class="topless"><a href="slimta.queue.proxy.html"
                           title="Next page">&rarr; slimta.queue.proxy</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -134,7 +134,7 @@ the same string as <tt class="docutils literal"><span class="pre">envelope_db</s
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -151,19 +151,28 @@ the same string as <tt class="docutils literal"><span class="pre">envelope_db</s
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.queue.html" >slimta.queue</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.queue.html" >slimta.queue</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

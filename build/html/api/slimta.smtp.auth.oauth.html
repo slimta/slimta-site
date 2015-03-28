@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.smtp.auth.standard" href="slimta.smtp.auth.standard.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,10 +54,10 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li>
-          <li><a href="slimta.smtp.auth.html" accesskey="U">slimta.smtp.auth</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li>
+          <li class="nav-item nav-item-4"><a href="slimta.smtp.auth.html" accesskey="U">slimta.smtp.auth</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -66,7 +66,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-slimta.smtp.auth.oauth">
 <span id="slimta-smtp-auth-oauth"></span><h1>slimta.smtp.auth.oauth<a class="headerlink" href="#module-slimta.smtp.auth.oauth" title="Permalink to this headline">¶</a></h1>
@@ -74,18 +74,18 @@
 2.0</a> systems to authenticate using access tokens.</p>
 <dl class="class">
 <dt id="slimta.smtp.auth.oauth.OAuth2">
-<em class="property">class </em><tt class="descclassname">slimta.smtp.auth.oauth.</tt><tt class="descname">OAuth2</tt><a class="headerlink" href="#slimta.smtp.auth.oauth.OAuth2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.ClientMechanism" title="slimta.smtp.auth.ClientMechanism"><tt class="xref py py-class docutils literal"><span class="pre">slimta.smtp.auth.ClientMechanism</span></tt></a></p>
-<p><tt class="docutils literal"><span class="pre">XOAUTH2</span></tt> authentication mechanism. Used by email servers that provide
+<em class="property">class </em><code class="descclassname">slimta.smtp.auth.oauth.</code><code class="descname">OAuth2</code><a class="headerlink" href="#slimta.smtp.auth.oauth.OAuth2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.ClientMechanism" title="slimta.smtp.auth.ClientMechanism"><code class="xref py py-class docutils literal"><span class="pre">slimta.smtp.auth.ClientMechanism</span></code></a></p>
+<p><code class="docutils literal"><span class="pre">XOAUTH2</span></code> authentication mechanism. Used by email servers that provide
 OAuth 2.0 authentication, such as Gmail. Using their credentials, clients
 will receive a temporary access token string from the identity service.
-This token string is then used by <tt class="docutils literal"><span class="pre">XOAUTH2</span></tt> to authenticate the SMTP
+This token string is then used by <code class="docutils literal"><span class="pre">XOAUTH2</span></code> to authenticate the SMTP
 session.</p>
 <p>This mechanism is only available for client-side authentication.</p>
 <dl class="attribute">
 <dt id="slimta.smtp.auth.oauth.OAuth2.name">
-<tt class="descname">name</tt><em class="property"> = 'XOAUTH2'</em><a class="headerlink" href="#slimta.smtp.auth.oauth.OAuth2.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism identifies itself as <tt class="docutils literal"><span class="pre">XOAUTH2</span></tt>.</p>
+<code class="descname">name</code><em class="property"> = 'XOAUTH2'</em><a class="headerlink" href="#slimta.smtp.auth.oauth.OAuth2.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This mechanism identifies itself as <code class="docutils literal"><span class="pre">XOAUTH2</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -96,7 +96,7 @@ session.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -111,7 +111,7 @@ session.</p>
     <p class="topless"><a href="slimta.http.html"
                           title="Next page">&rarr; slimta.http</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -130,7 +130,7 @@ session.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -147,20 +147,29 @@ session.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li>
-          <li><a href="slimta.smtp.auth.html" >slimta.smtp.auth</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li>
+          <li class="nav-item nav-item-4"><a href="slimta.smtp.auth.html" >slimta.smtp.auth</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

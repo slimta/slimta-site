@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.policy.headers" href="slimta.policy.headers.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,9 +54,9 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.policy.html" accesskey="U">slimta.policy</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.policy.html" accesskey="U">slimta.policy</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -65,7 +65,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-slimta.policy.forward">
 <span id="slimta-policy-forward"></span><h1>slimta.policy.forward<a class="headerlink" href="#module-slimta.policy.forward" title="Permalink to this headline">¶</a></h1>
@@ -73,24 +73,24 @@
 recipients.</p>
 <dl class="class">
 <dt id="slimta.policy.forward.Forward">
-<em class="property">class </em><tt class="descclassname">slimta.policy.forward.</tt><tt class="descname">Forward</tt><a class="headerlink" href="#slimta.policy.forward.Forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><tt class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></tt></a></p>
-<p>Each <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> recipient is run through <a class="reference external" href="http://docs.python.org/library/re.html#re.sub" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">re.sub()</span></tt></a> to see if it
+<em class="property">class </em><code class="descclassname">slimta.policy.forward.</code><code class="descname">Forward</code><a class="headerlink" href="#slimta.policy.forward.Forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
+<p>Each <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> recipient is run through <a class="reference external" href="http://docs.python.org/library/re.html#re.sub" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">re.sub()</span></code></a> to see if it
 is modified. If a recipient matches a mapping rule, no further mapping
 rules are processed. Mapping rules are checked in the order that they were
 added.</p>
 <dl class="method">
 <dt id="slimta.policy.forward.Forward.add_mapping">
-<tt class="descname">add_mapping</tt><big>(</big><em>pattern</em>, <em>repl</em><span class="optional">[</span>, <em>count=0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.policy.forward.Forward.add_mapping" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_mapping</code><span class="sig-paren">(</span><em>pattern</em>, <em>repl</em><span class="optional">[</span>, <em>count=0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.forward.Forward.add_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a mapping rule.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>pattern</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a> or <a class="reference external" href="http://docs.python.org/library/re.html#re.RegexObject" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">re.RegexObject</span></tt></a>) &#8211; Pattern to check recipient against.</li>
-<li><strong>repl</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a> or function) &#8211; Replacement for <tt class="docutils literal"><span class="pre">pattern</span></tt> matches, as described by
-<a class="reference external" href="http://docs.python.org/library/re.html#re.sub" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">re.sub()</span></tt></a>.</li>
+<li><strong>pattern</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> or <a class="reference external" href="http://docs.python.org/library/re.html#re.RegexObject" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">re.RegexObject</span></code></a>) &#8211; Pattern to check recipient against.</li>
+<li><strong>repl</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> or function) &#8211; Replacement for <code class="docutils literal"><span class="pre">pattern</span></code> matches, as described by
+<a class="reference external" href="http://docs.python.org/library/re.html#re.sub" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">re.sub()</span></code></a>.</li>
 <li><strong>count</strong> &#8211; Max number of replacements per recipient string.</li>
 </ul>
 </td>
@@ -107,7 +107,7 @@ added.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -122,7 +122,7 @@ added.</p>
     <p class="topless"><a href="slimta.policy.split.html"
                           title="Next page">&rarr; slimta.policy.split</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -141,7 +141,7 @@ added.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -158,19 +158,28 @@ added.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.policy.html" >slimta.policy</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.policy.html" >slimta.policy</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

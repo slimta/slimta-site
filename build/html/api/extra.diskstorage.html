@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.lookup" href="extra.lookup.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,19 +64,19 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="slimta-diskstorage">
 <h1>slimta.diskstorage<a class="headerlink" href="#slimta-diskstorage" title="Permalink to this headline">¶</a></h1>
-<p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-diskstorage</span></tt> extension package.</p>
-<span class="target" id="module-slimta.diskstorage"></span><p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><tt class="xref py py-mod docutils literal"><span class="pre">queue</span></tt></a> storage system on disk. Disk
+<p>This module is available in the <code class="docutils literal"><span class="pre">python-slimta-diskstorage</span></code> extension package.</p>
+<span class="target" id="module-slimta.diskstorage"></span><p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><code class="xref py py-mod docutils literal"><span class="pre">queue</span></code></a> storage system on disk. Disk
 reads and writes are built using the <a class="reference external" href="http://www.kernel.org/doc/man-pages/online/pages/man7/aio.7.html">aio</a> interface, provided in python by the
 <a class="reference external" href="https://github.com/felipecruz/pyaio">pyaio</a> project.</p>
 <dl class="class">
 <dt id="slimta.diskstorage.DiskStorage">
-<em class="property">class </em><tt class="descclassname">slimta.diskstorage.</tt><tt class="descname">DiskStorage</tt><big>(</big><em>env_dir</em>, <em>meta_dir</em><span class="optional">[</span>, <em>tmp_dir=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.diskstorage.DiskStorage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></tt></a></p>
-<p><a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a> mechanism that stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and queue metadata in
+<em class="property">class </em><code class="descclassname">slimta.diskstorage.</code><code class="descname">DiskStorage</code><span class="sig-paren">(</span><em>env_dir</em>, <em>meta_dir</em><span class="optional">[</span>, <em>tmp_dir=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">slimta.queue.QueueStorage</span></code></a></p>
+<p><a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></code></a> mechanism that stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> and queue metadata in
 two separate files on disk.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -104,7 +104,7 @@ System temp directories are used by default.</li>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -119,7 +119,7 @@ System temp directories are used by default.</li>
     <p class="topless"><a href="extra.cloudstorage.html"
                           title="Next page">&rarr; slimta.cloudstorage</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -138,7 +138,7 @@ System temp directories are used by default.</li>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -155,18 +155,27 @@ System temp directories are used by default.</li>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="extra.html" >Available Extensions</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

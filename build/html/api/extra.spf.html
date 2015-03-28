@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.celeryqueue" href="extra.celeryqueue.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" accesskey="U">Available Extensions</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,17 +64,17 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="slimta-spf">
 <h1>slimta.spf<a class="headerlink" href="#slimta-spf" title="Permalink to this headline">¶</a></h1>
-<p>This module is available in the <tt class="docutils literal"><span class="pre">python-slimta-spf</span></tt> extension package.</p>
+<p>This module is available in the <code class="docutils literal"><span class="pre">python-slimta-spf</span></code> extension package.</p>
 <span class="target" id="module-slimta.spf"></span><p>This module provides classes to check the <a class="reference external" href="http://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a> records of the sending
 client address.</p>
 <dl class="class">
 <dt id="slimta.spf.EnforceSpf">
-<em class="property">class </em><tt class="descclassname">slimta.spf.</tt><tt class="descname">EnforceSpf</tt><big>(</big><span class="optional">[</span><em>timeout=10.0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">slimta.spf.</code><code class="descname">EnforceSpf</code><span class="sig-paren">(</span><span class="optional">[</span><em>timeout=10.0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class used to check SPF records and enforce a policy against the
 results.  By default, results are logged but not acted upon.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -82,28 +82,28 @@ results.  By default, results are logged but not acted upon.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> &#8211; Timeout in seconds before giving up the check. An SPF check
-that times out is equivalent to a <tt class="docutils literal"><span class="pre">'temperror'</span></tt> result.</td>
+that times out is equivalent to a <code class="docutils literal"><span class="pre">'temperror'</span></code> result.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="slimta.spf.EnforceSpf.set_enforcement">
-<tt class="descname">set_enforcement</tt><big>(</big><em>result</em><span class="optional">[</span>, <em>match_code='550'</em><span class="optional">[</span>, <em>match_message='5.7.1 Access denied'</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf.set_enforcement" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_enforcement</code><span class="sig-paren">(</span><em>result</em><span class="optional">[</span>, <em>match_code='550'</em><span class="optional">[</span>, <em>match_message='5.7.1 Access denied'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.spf.EnforceSpf.set_enforcement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an enforcement policy to a particular SPF result. If the given
-result is seen, the <tt class="docutils literal"><span class="pre">MAIL</span> <span class="pre">FROM</span></tt> reply is set accordingly.</p>
+result is seen, the <code class="docutils literal"><span class="pre">MAIL</span> <span class="pre">FROM</span></code> reply is set accordingly.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>result</strong> &#8211; The result code, one of <tt class="docutils literal"><span class="pre">'pass'</span></tt>, <tt class="docutils literal"><span class="pre">'permerror'</span></tt>,
-<tt class="docutils literal"><span class="pre">'fail'</span></tt>, <tt class="docutils literal"><span class="pre">'temperror'</span></tt>, <tt class="docutils literal"><span class="pre">'softfail'</span></tt>, <tt class="docutils literal"><span class="pre">'none'</span></tt>,
-<tt class="docutils literal"><span class="pre">'neutral'</span></tt>.</li>
-<li><strong>match_code</strong> &#8211; When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> code
+<li><strong>result</strong> &#8211; The result code, one of <code class="docutils literal"><span class="pre">'pass'</span></code>, <code class="docutils literal"><span class="pre">'permerror'</span></code>,
+<code class="docutils literal"><span class="pre">'fail'</span></code>, <code class="docutils literal"><span class="pre">'temperror'</span></code>, <code class="docutils literal"><span class="pre">'softfail'</span></code>, <code class="docutils literal"><span class="pre">'none'</span></code>,
+<code class="docutils literal"><span class="pre">'neutral'</span></code>.</li>
+<li><strong>match_code</strong> &#8211; When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> code
 to this string.</li>
-<li><strong>match_message</strong> &#8211; When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a>
+<li><strong>match_message</strong> &#8211; When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a>
 message to this string. You can use the
-<tt class="docutils literal"><span class="pre">{reason}</span></tt> template in your string.</li>
+<code class="docutils literal"><span class="pre">{reason}</span></code> template in your string.</li>
 </ul>
 </td>
 </tr>
@@ -113,7 +113,7 @@ message to this string. You can use the
 
 <dl class="method">
 <dt id="slimta.spf.EnforceSpf.query">
-<tt class="descname">query</tt><big>(</big><em>sender</em>, <em>ip</em>, <em>ehlo_as</em><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf.query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">query</code><span class="sig-paren">(</span><em>sender</em>, <em>ip</em>, <em>ehlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.spf.EnforceSpf.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a direct query to check the sender&#8217;s domain to see if the
 given IP and EHLO string are authorized to send for that domain.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -136,19 +136,19 @@ given IP and EHLO string are authorized to send for that domain.</p>
 
 <dl class="method">
 <dt id="slimta.spf.EnforceSpf.check">
-<tt class="descname">check</tt><big>(</big><em>f</em><big>)</big><a class="headerlink" href="#slimta.spf.EnforceSpf.check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decorates <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><tt class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></tt></a> methods that are
-given a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> object. It will check the current SMTP session&#8217;s
+<code class="descname">check</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.spf.EnforceSpf.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorates <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></code></a> methods that are
+given a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> object. It will check the current SMTP session&#8217;s
 connecting IP address and EHLO string against the given sender address.
-If enforcement policies are set for the result, the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> is modified
+If enforcement policies are set for the result, the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> is modified
 before calling the validator method.</p>
-<p>This decorator can only be used on <tt class="docutils literal"><span class="pre">handle_mail()</span></tt>,
-<tt class="docutils literal"><span class="pre">handle_rcpt()</span></tt>, and <tt class="docutils literal"><span class="pre">handle_data()</span></tt>.</p>
+<p>This decorator can only be used on <code class="docutils literal"><span class="pre">handle_mail()</span></code>,
+<code class="docutils literal"><span class="pre">handle_rcpt()</span></code>, and <code class="docutils literal"><span class="pre">handle_data()</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> &#8211; The overloaded <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><tt class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></tt></a>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> &#8211; The overloaded <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></code></a>
 method to decorate.</td>
 </tr>
 </tbody>
@@ -163,7 +163,7 @@ method to decorate.</td>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -178,7 +178,7 @@ method to decorate.</td>
     <p class="topless"><a href="../manual.html"
                           title="Next page">&rarr; Usage Manual</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -197,7 +197,7 @@ method to decorate.</td>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -214,18 +214,27 @@ method to decorate.</td>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="extra.html" >Available Extensions</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

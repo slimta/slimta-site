@@ -34,10 +34,10 @@
     <link rel="prev" title="Mail Submission Agent" href="msa.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,7 +64,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="extensions">
 <h1>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h1>
@@ -77,7 +77,7 @@ here.</p>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
 <p class="last">This extension was deprecated in python-slimta version 0.3.21 in favor of
-the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><tt class="xref py py-mod docutils literal"><span class="pre">slimta.relay.pipe</span></tt></a> module.</p>
+the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><code class="xref py py-mod docutils literal"><span class="pre">slimta.relay.pipe</span></code></a> module.</p>
 </div>
 <p>This simple extension uses the <a class="reference external" href="https://github.com/bombela/gevent_subprocess">gevent_subprocess</a> library to initiate local
 delivery an external process. This simple mechanism is then used to support
@@ -87,7 +87,7 @@ delivery to applications such as <a class="reference external" href="http://www.
 </pre></div>
 </div>
 <p>Take <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> as an example. With a normal system configuration, the
-following should be plenty to create a <tt class="docutils literal"><span class="pre">slimta.piperelay.MaildropRelay</span></tt>
+following should be plenty to create a <code class="docutils literal"><span class="pre">slimta.piperelay.MaildropRelay</span></code>
 instance:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.piperelay</span> <span class="kn">import</span> <span class="n">MaildropRelay</span>
 
@@ -98,7 +98,7 @@ instance:</p>
 <div class="section" id="cloud-storage">
 <span id="id1"></span><h2>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Permalink to this headline">¶</a></h2>
 <p>This module makes available connectors to two cloud service providers,
-<a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a> and <a class="reference external" href="http://aws.amazon.com/">AWS</a>. <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> data and queue metadata are written to
+<a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a> and <a class="reference external" href="http://aws.amazon.com/">AWS</a>. <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> data and queue metadata are written to
 a cloud object store. Optionally, a reference to their location in the object
 store is then written to a cloud message queue, which can alert relayers in
 other processes of the availability of a new message in the object store.</p>
@@ -107,9 +107,9 @@ other processes of the availability of a new message in the object store.</p>
 </pre></div>
 </div>
 <p>To use the <a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a> services available in the extension, you need
-instances of the <a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudAuth</span></tt></a>,
-<a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></tt></a>, and optionally
-<a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><tt class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></tt></a>:</p>
+instances of the <a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudAuth</span></code></a>,
+<a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></code></a>, and optionally
+<a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">auth</span> <span class="o">=</span> <span class="n">RackspaceCloudAuth</span><span class="p">({</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;slimta&#39;</span><span class="p">,</span> <span class="s">&#39;api_key&#39;</span><span class="p">:</span> <span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">},</span>
                           <span class="n">region</span><span class="o">=</span><span class="s">&#39;IAD&#39;</span><span class="p">)</span>
 <span class="n">cloud_files</span> <span class="o">=</span> <span class="n">RackspaceCloudFiles</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
@@ -117,15 +117,15 @@ instances of the <a class="reference internal" href="../api/extra.cloudstorage.r
 </pre></div>
 </div>
 <p>Using <a class="reference external" href="http://aws.amazon.com/">AWS</a> services is a bit different. First, it requires installation and
-configuration of the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.35.2)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library:</p>
+configuration of the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.36.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ pip install boto
 </pre></div>
 </div>
-<p>Using the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.35.2)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library, we need to come up with references to a
-<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.35.2)"><tt class="xref py py-class docutils literal"><span class="pre">Bucket</span></tt></a> and optionally a
-<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/sqs.html#boto.sqs.queue.Queue" title="(in boto v2.35.2)"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a>. Then, use them to create
-<a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleStorageService</span></tt></a> and
-<a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><tt class="xref py py-class docutils literal"><span class="pre">SimpleQueueService</span></tt></a> objects:</p>
+<p>Using the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.36.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library, we need to come up with references to a
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.36.0)"><code class="xref py py-class docutils literal"><span class="pre">Bucket</span></code></a> and optionally a
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/sqs.html#boto.sqs.queue.Queue" title="(in boto v2.36.0)"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a>. Then, use them to create
+<a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><code class="xref py py-class docutils literal"><span class="pre">SimpleStorageService</span></code></a> and
+<a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><code class="xref py py-class docutils literal"><span class="pre">SimpleQueueService</span></code></a> objects:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">boto.s3.connection</span> <span class="kn">import</span> <span class="n">S3Connection</span>
 <span class="n">s3_conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="s">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span> <span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
 <span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">s3_conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="s">&#39;slimta-queue&#39;</span><span class="p">)</span>
@@ -142,7 +142,7 @@ configuration of the <a class="reference external" href="http://boto.readthedocs
 </pre></div>
 </div>
 <p>Once you have these objects created for your cloud service, link them together
-into a queue storage driver using <a class="reference internal" href="../api/extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><tt class="xref py py-class docutils literal"><span class="pre">CloudStorage</span></tt></a>:</p>
+into a queue storage driver using <a class="reference internal" href="../api/extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal"><span class="pre">CloudStorage</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.cloudstorage</span> <span class="kn">import</span> <span class="n">CloudStorage</span>
 
 <span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">cloud_files</span><span class="p">,</span> <span class="n">cloud_queues</span><span class="p">)</span>
@@ -150,32 +150,32 @@ into a queue storage driver using <a class="reference internal" href="../api/ext
 <span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="n">sqs</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This object can then be used anywhere a <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><tt class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></tt></a>
+<p>This object can then be used anywhere a <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></code></a>
 object is required.</p>
 </div>
 <div class="section" id="disk-storage">
 <span id="id2"></span><h2>Disk Storage<a class="headerlink" href="#disk-storage" title="Permalink to this headline">¶</a></h2>
-<p>In the fashion of traditional MTAs, the <a class="reference internal" href="../api/extra.diskstorage.html#module-slimta.diskstorage" title="slimta.diskstorage"><tt class="xref py py-mod docutils literal"><span class="pre">diskstorage</span></tt></a> extension
-writes <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> data and queue metadata directly to disk to configurable
+<p>In the fashion of traditional MTAs, the <a class="reference internal" href="../api/extra.diskstorage.html#module-slimta.diskstorage" title="slimta.diskstorage"><code class="xref py py-mod docutils literal"><span class="pre">diskstorage</span></code></a> extension
+writes <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> data and queue metadata directly to disk to configurable
 directories. This extension relies on <a class="reference external" href="https://github.com/felipecruz/pyaio">pyaio</a> to asynchronously write and read
 files on disk.</p>
 <p>To ensure file creation and modification is atomic, files are
-first written to a scratch directory and then <a class="reference external" href="http://docs.python.org/library/os.html#os.rename" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">os.rename()</span></tt></a> moves them to
+first written to a scratch directory and then <a class="reference external" href="http://docs.python.org/library/os.html#os.rename" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">os.rename()</span></code></a> moves them to
 their final destination. For this reason, it is important that the scratch
-directory (<tt class="docutils literal"><span class="pre">tmp_dir</span></tt> argument in the constructor) reside on the same
-filesystem as the envelope and meta directories (<tt class="docutils literal"><span class="pre">env_dir</span></tt> and <tt class="docutils literal"><span class="pre">meta_dir</span></tt>
+directory (<code class="docutils literal"><span class="pre">tmp_dir</span></code> argument in the constructor) reside on the same
+filesystem as the envelope and meta directories (<code class="docutils literal"><span class="pre">env_dir</span></code> and <code class="docutils literal"><span class="pre">meta_dir</span></code>
 arguments, respectively).</p>
 <p>The files created in the envelope directory will be identified by a
-<a class="reference external" href="http://docs.python.org/library/uuid.html#uuid.uuid4" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">uuid4()</span></tt></a> <a class="reference external" href="http://docs.python.org/library/uuid.html#uuid.UUID.hex" title="(in Python v2.7)"><tt class="xref py py-attr docutils literal"><span class="pre">hexadecimal</span> <span class="pre">string</span></tt></a> appended with
-the suffix <tt class="docutils literal"><span class="pre">.env</span></tt>. The files created in the meta directory will be identified
+<a class="reference external" href="http://docs.python.org/library/uuid.html#uuid.uuid4" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">uuid4()</span></code></a> <a class="reference external" href="http://docs.python.org/library/uuid.html#uuid.UUID.hex" title="(in Python v2.7)"><code class="xref py py-attr docutils literal"><span class="pre">hexadecimal</span> <span class="pre">string</span></code></a> appended with
+the suffix <code class="docutils literal"><span class="pre">.env</span></code>. The files created in the meta directory will be identified
 by the same uuid string as its corresponding envelope file, but with the suffix
-<tt class="docutils literal"><span class="pre">.meta</span></tt>. The envelope and meta directories can be the same, but two
-<a class="reference internal" href="../api/extra.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><tt class="xref py py-class docutils literal"><span class="pre">DiskStorage</span></tt></a> should not share directories.</p>
+<code class="docutils literal"><span class="pre">.meta</span></code>. The envelope and meta directories can be the same, but two
+<a class="reference internal" href="../api/extra.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><code class="xref py py-class docutils literal"><span class="pre">DiskStorage</span></code></a> should not share directories.</p>
 <p>To install this extension:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ pip install python-slimta-diskstorage
 </pre></div>
 </div>
-<p>And to initialize a new <a class="reference internal" href="../api/extra.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><tt class="xref py py-class docutils literal"><span class="pre">DiskStorage</span></tt></a>:</p>
+<p>And to initialize a new <a class="reference internal" href="../api/extra.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><code class="xref py py-class docutils literal"><span class="pre">DiskStorage</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.diskstorage</span> <span class="kn">import</span> <span class="n">DiskStorage</span>
 
 <span class="n">queue_dir</span> <span class="o">=</span> <span class="s">&#39;/var/spool/slimta/queue&#39;</span>
@@ -186,9 +186,9 @@ by the same uuid string as its corresponding envelope file, but with the suffix
 <div class="section" id="redis-storage">
 <span id="id3"></span><h2>Redis Storage<a class="headerlink" href="#redis-storage" title="Permalink to this headline">¶</a></h2>
 <p>Taking advantage of the advanced data structures and ease of use of the <a class="reference external" href="http://redis.io/">redis</a>
-database, the <a class="reference internal" href="../api/extra.redisstorage.html#module-slimta.redisstorage" title="slimta.redisstorage"><tt class="xref py py-mod docutils literal"><span class="pre">redisstorage</span></tt></a> extension simply creates a hash key
+database, the <a class="reference internal" href="../api/extra.redisstorage.html#module-slimta.redisstorage" title="slimta.redisstorage"><code class="xref py py-mod docutils literal"><span class="pre">redisstorage</span></code></a> extension simply creates a hash key
 for each queued message, containing its delivery metadata and a pickled version
-of the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a>.</p>
+of the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a>.</p>
 <p>The keys created in redis will look like the following:</p>
 <div class="highlight-python"><div class="highlight"><pre>redis 127.0.0.1:6379&gt; KEYS *
 1) &quot;slimta:28195d3b0a5847f9853e5b0173c85151&quot;
@@ -208,13 +208,13 @@ redis 127.0.0.1:6379&gt;
 redis 127.0.0.1:6379&gt;
 </pre></div>
 </div>
-<p>On startup, the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> will scan the keyspace (using the customizable prefix
-<tt class="docutils literal"><span class="pre">slimta:</span></tt>) and populate the queue with existing messages for delivery.</p>
+<p>On startup, the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a> will scan the keyspace (using the customizable prefix
+<code class="docutils literal"><span class="pre">slimta:</span></code>) and populate the queue with existing messages for delivery.</p>
 <p>To install this extension:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ pip install python-slimta-redisstorage
 </pre></div>
 </div>
-<p>And to initialize a new <a class="reference internal" href="../api/extra.redisstorage.html#slimta.redisstorage.RedisStorage" title="slimta.redisstorage.RedisStorage"><tt class="xref py py-class docutils literal"><span class="pre">RedisStorage</span></tt></a>:</p>
+<p>And to initialize a new <a class="reference internal" href="../api/extra.redisstorage.html#slimta.redisstorage.RedisStorage" title="slimta.redisstorage.RedisStorage"><code class="xref py py-class docutils literal"><span class="pre">RedisStorage</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.redisstorage</span> <span class="kn">import</span> <span class="n">RedisStorage</span>
 
 <span class="n">store</span> <span class="o">=</span> <span class="n">RedisStorage</span><span class="p">(</span><span class="s">&#39;redis.example.com&#39;</span><span class="p">)</span>
@@ -252,31 +252,31 @@ perfectly.</p>
 <p>Celery will actually take care of managing the <em>relay</em> and <em>queue</em> services,
 when all is said and done. The message broker and results backend of Celery
 act as the <em>queue</em>, and the task workers act as the <em>relay</em>.</p>
-<p>In a new file (I called mine <tt class="docutils literal"><span class="pre">mytasks.py</span></tt>), set up your <tt class="docutils literal"><span class="pre">celery</span></tt> object:</p>
+<p>In a new file (I called mine <code class="docutils literal"><span class="pre">mytasks.py</span></code>), set up your <code class="docutils literal"><span class="pre">celery</span></code> object:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 
 <span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">&#39;mytasks&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s">&#39;redis://localhost/0&#39;</span><span class="p">,</span>
                            <span class="n">backend</span><span class="o">=</span><span class="s">&#39;redis://localhost/0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We&#8217;ll also set up our <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> object now:</p>
+<p>We&#8217;ll also set up our <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> object now:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.smtp.mx</span> <span class="kn">import</span> <span class="n">MxSmtpRelay</span>
 
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Next, create a new <a class="reference internal" href="../api/extra.celeryqueue.html#slimta.celeryqueue.CeleryQueue" title="slimta.celeryqueue.CeleryQueue"><tt class="xref py py-class docutils literal"><span class="pre">CeleryQueue</span></tt></a> using both of these
+<p>Next, create a new <a class="reference internal" href="../api/extra.celeryqueue.html#slimta.celeryqueue.CeleryQueue" title="slimta.celeryqueue.CeleryQueue"><code class="xref py py-class docutils literal"><span class="pre">CeleryQueue</span></code></a> using both of these
 objects:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.celeryqueue</span> <span class="kn">import</span> <span class="n">CeleryQueue</span>
 
 <span class="n">queue</span> <span class="o">=</span> <span class="n">CeleryQueue</span><span class="p">(</span><span class="n">celery</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Simply creating a <a class="reference internal" href="../api/extra.celeryqueue.html#slimta.celeryqueue.CeleryQueue" title="slimta.celeryqueue.CeleryQueue"><tt class="xref py py-class docutils literal"><span class="pre">CeleryQueue</span></tt></a> instance will
-register a new celery task called <tt class="docutils literal"><span class="pre">attempt_delivery</span></tt>. Each delivery attempt
+<p>Simply creating a <a class="reference internal" href="../api/extra.celeryqueue.html#slimta.celeryqueue.CeleryQueue" title="slimta.celeryqueue.CeleryQueue"><code class="xref py py-class docutils literal"><span class="pre">CeleryQueue</span></code></a> instance will
+register a new celery task called <code class="docutils literal"><span class="pre">attempt_delivery</span></code>. Each delivery attempt
 and retry will call this task, including delivery of bounce messages.</p>
-<p>Now, back inside your <a class="reference external" href="http://slimta.org/">slimta</a> application code, you can import <tt class="docutils literal"><span class="pre">queue</span></tt>
-from this file, add your policies, and create your <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><tt class="xref py py-class docutils literal"><span class="pre">Edge</span></tt></a>:</p>
+<p>Now, back inside your <a class="reference external" href="http://slimta.org/">slimta</a> application code, you can import <code class="docutils literal"><span class="pre">queue</span></code>
+from this file, add your policies, and create your <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mytasks</span> <span class="kn">import</span> <span class="n">queue</span>
 <span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
@@ -289,13 +289,13 @@ from this file, add your policies, and create your <a class="reference internal"
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Finally, in a new terminal start your task worker, using <a class="reference external" href="http://gevent.org/gevent.html#module-gevent" title="(in gevent v1.0)"><tt class="xref py py-mod docutils literal"><span class="pre">gevent</span></tt></a> as the
+<p>Finally, in a new terminal start your task worker, using <a class="reference external" href="http://gevent.org/gevent.html#module-gevent" title="(in gevent v1.0)"><code class="xref py py-mod docutils literal"><span class="pre">gevent</span></code></a> as the
 worker thread pool:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ celery worker -A mytasks -l debug -P gevent
 </pre></div>
 </div>
 <p>Now you are all set up with a distributed Celery queue! You&#8217;re now free to
-scale your <em>edge</em> by adding more machines running <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><tt class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></tt></a> to the a <tt class="docutils literal"><span class="pre">queue</span></tt>
+scale your <em>edge</em> by adding more machines running <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></code></a> to the a <code class="docutils literal"><span class="pre">queue</span></code>
 with the same backend and broker. You&#8217;re now free to scale your <em>queue</em> by
 scaling your backend and broker (might be easier with RabbitMQ than Redis).
 And finally, you&#8217;re free to scale your <em>relay</em> by adding machines designated as
@@ -309,8 +309,8 @@ outbound hosts/IPs from which they are legitimately sending mail. Domains may
 set DNS records of special formats that email receivers query and compare
 against the information they know about the sending client.</p>
 <p>To set it up, you need to create rules for the different types of results. You
-do this by creating a <a class="reference internal" href="../api/extra.spf.html#slimta.spf.EnforceSpf" title="slimta.spf.EnforceSpf"><tt class="xref py py-class docutils literal"><span class="pre">EnforceSpf</span></tt></a> object and calling
-<a class="reference internal" href="../api/extra.spf.html#slimta.spf.EnforceSpf.set_enforcement" title="slimta.spf.EnforceSpf.set_enforcement"><tt class="xref py py-meth docutils literal"><span class="pre">set_enforcement()</span></tt></a> for each different results you
+do this by creating a <a class="reference internal" href="../api/extra.spf.html#slimta.spf.EnforceSpf" title="slimta.spf.EnforceSpf"><code class="xref py py-class docutils literal"><span class="pre">EnforceSpf</span></code></a> object and calling
+<a class="reference internal" href="../api/extra.spf.html#slimta.spf.EnforceSpf.set_enforcement" title="slimta.spf.EnforceSpf.set_enforcement"><code class="xref py py-meth docutils literal"><span class="pre">set_enforcement()</span></code></a> for each different results you
 want to act upon. These results are:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://tools.ietf.org/html/rfc4408#section-2.5.1">none</a></li>
@@ -327,8 +327,8 @@ want to act upon. These results are:</p>
 <span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s">&#39;softfail&#39;</span><span class="p">,</span> <span class="n">match_code</span><span class="o">=</span><span class="s">&#39;250&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s">&#39;2.0.0 Ok; {reason}&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And then in our <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><tt class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></tt></a> class, use the
-<a class="reference internal" href="../api/extra.spf.html#slimta.spf.EnforceSpf.check" title="slimta.spf.EnforceSpf.check"><tt class="xref py py-meth docutils literal"><span class="pre">check()</span></tt></a> decorator:</p>
+<p>And then in our <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></code></a> class, use the
+<a class="reference internal" href="../api/extra.spf.html#slimta.spf.EnforceSpf.check" title="slimta.spf.EnforceSpf.check"><code class="xref py py-meth docutils literal"><span class="pre">check()</span></code></a> decorator:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@spf.check</span>
 <span class="k">def</span> <span class="nf">validate_mail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">sender</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -341,7 +341,7 @@ want to act upon. These results are:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -374,7 +374,7 @@ want to act upon. These results are:</p>
     <p class="topless"><a href="slimta.html"
                           title="Next page">&rarr; Application Usage</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -393,7 +393,7 @@ want to act upon. These results are:</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -410,18 +410,27 @@ want to act upon. These results are:</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

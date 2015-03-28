@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.relay.blackhole" href="slimta.relay.blackhole.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,9 +54,9 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.relay.html" accesskey="U">slimta.relay</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.relay.html" accesskey="U">slimta.relay</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -65,35 +65,35 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-slimta.relay.pipe">
 <span id="slimta-relay-pipe"></span><h1>slimta.relay.pipe<a class="headerlink" href="#module-slimta.relay.pipe" title="Permalink to this headline">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 0.3.21.</span></p>
 </div>
-<p>Relays an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> locally to an external process. This functionality is
+<p>Relays an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> locally to an external process. This functionality is
 modeled closely off the <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe</a> daemon in postfix.</p>
 <dl class="class">
 <dt id="slimta.relay.pipe.PipeRelay">
-<em class="property">class </em><tt class="descclassname">slimta.relay.pipe.</tt><tt class="descname">PipeRelay</tt><big>(</big><em>args</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>**popen_kwargs</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.relay.pipe.PipeRelay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.relay.Relay</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">slimta.relay.pipe.</code><code class="descname">PipeRelay</code><span class="sig-paren">(</span><em>args</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>**popen_kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pipe.PipeRelay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">slimta.relay.Relay</span></code></a></p>
 <p>When delivery attempts are made on this object, it will create a new
 subprocess and pipe envelope data to it. Delivery success or failure
 depends on the return code of the sub-process and error messages are pulled
 from standard error output.</p>
-<p>To facilitate passing the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> metadata, the process&#8217;s command-line
-arguments can be populated with macros replaced using <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">str.format()</span></tt></a>
+<p>To facilitate passing the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> metadata, the process&#8217;s command-line
+arguments can be populated with macros replaced using <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><code class="xref py py-meth docutils literal"><span class="pre">str.format()</span></code></a>
 with corresponding keywords:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">{sender}</span></tt>: The sender address.</li>
-<li><tt class="docutils literal"><span class="pre">{recipient}</span></tt>: The first address in the recipient last.</li>
-<li><tt class="docutils literal"><span class="pre">{message_id}</span></tt>: The <tt class="docutils literal"><span class="pre">Message-Id</span></tt> header.</li>
-<li><tt class="docutils literal"><span class="pre">{client_ip}</span></tt>: The client IP address string.</li>
-<li><tt class="docutils literal"><span class="pre">{client_host}</span></tt>: The reverse-lookup hostname of the client IP.</li>
-<li><tt class="docutils literal"><span class="pre">{client_ehlo}</span></tt>: The EHLO string given by the client.</li>
-<li><tt class="docutils literal"><span class="pre">{client_protocol}</span></tt>: The protocol used by the client.</li>
-<li><tt class="docutils literal"><span class="pre">{client_auth}</span></tt>: The authentication identity used by the client.</li>
+<li><code class="docutils literal"><span class="pre">{sender}</span></code>: The sender address.</li>
+<li><code class="docutils literal"><span class="pre">{recipient}</span></code>: The first address in the recipient last.</li>
+<li><code class="docutils literal"><span class="pre">{message_id}</span></code>: The <code class="docutils literal"><span class="pre">Message-Id</span></code> header.</li>
+<li><code class="docutils literal"><span class="pre">{client_ip}</span></code>: The client IP address string.</li>
+<li><code class="docutils literal"><span class="pre">{client_host}</span></code>: The reverse-lookup hostname of the client IP.</li>
+<li><code class="docutils literal"><span class="pre">{client_ehlo}</span></code>: The EHLO string given by the client.</li>
+<li><code class="docutils literal"><span class="pre">{client_protocol}</span></code>: The protocol used by the client.</li>
+<li><code class="docutils literal"><span class="pre">{client_auth}</span></code>: The authentication identity used by the client.</li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -101,13 +101,13 @@ with corresponding keywords:</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>args</strong> &#8211; List of arguments used to spawn the external process, as you
-would provide them to the <a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Popen</span></tt></a>
-constructor. Each argument has <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">str.format()</span></tt></a> called on
+would provide them to the <a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">Popen</span></code></a>
+constructor. Each argument has <a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><code class="xref py py-meth docutils literal"><span class="pre">str.format()</span></code></a> called on
 it, as described above.</li>
 <li><strong>timeout</strong> &#8211; The length of time a delivery is allowed to run before it
 fails transiently, default unlimited.</li>
 <li><strong>popen_kwargs</strong> &#8211; Extra keyword arguments passed in to the
-<a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Popen</span></tt></a>.</li>
+<a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">Popen</span></code></a>.</li>
 </ul>
 </td>
 </tr>
@@ -115,11 +115,11 @@ fails transiently, default unlimited.</li>
 </table>
 <dl class="method">
 <dt id="slimta.relay.pipe.PipeRelay.raise_error">
-<tt class="descname">raise_error</tt><big>(</big><em>status</em>, <em>stdout</em>, <em>stderr</em><big>)</big><a class="headerlink" href="#slimta.relay.pipe.PipeRelay.raise_error" title="Permalink to this definition">¶</a></dt>
+<code class="descname">raise_error</code><span class="sig-paren">(</span><em>status</em>, <em>stdout</em>, <em>stderr</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pipe.PipeRelay.raise_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method may be over-ridden by sub-classes if you need to control
 how the relay error is generated. By default, the error raised is a
-<a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><tt class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></tt></a> unless the process output
-begins with a <tt class="docutils literal"><span class="pre">5.X.X</span></tt> enhanced status code. This behavior attempts to
+<a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a> unless the process output
+begins with a <code class="docutils literal"><span class="pre">5.X.X</span></code> enhanced status code. This behavior attempts to
 mimic the postfix <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe</a> daemon.</p>
 <p>This method is only called if the subprocess returns a non-zero exit
 status.</p>
@@ -130,14 +130,14 @@ status.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>status</strong> &#8211; The non-zero exit status of the subprocess.</li>
 <li><strong>stdout</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The subprocess&#8217;s standard output, as received by
-<a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen.communicate" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">communicate()</span></tt></a>.</li>
+<a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen.communicate" title="(in Python v2.7)"><code class="xref py py-meth docutils literal"><span class="pre">communicate()</span></code></a>.</li>
 <li><strong>stderr</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; The subprocess&#8217;s standard error output, as received by
-<a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen.communicate" title="(in Python v2.7)"><tt class="xref py py-meth docutils literal"><span class="pre">communicate()</span></tt></a>.</li>
+<a class="reference external" href="http://docs.python.org/library/subprocess.html#subprocess.Popen.communicate" title="(in Python v2.7)"><code class="xref py py-meth docutils literal"><span class="pre">communicate()</span></code></a>.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><tt class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></tt></a>,
-<a class="reference internal" href="slimta.relay.html#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><tt class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></tt></a></p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a>,
+<a class="reference internal" href="slimta.relay.html#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a></p>
 </td>
 </tr>
 </tbody>
@@ -148,22 +148,22 @@ status.</p>
 
 <dl class="class">
 <dt id="slimta.relay.pipe.MaildropRelay">
-<em class="property">class </em><tt class="descclassname">slimta.relay.pipe.</tt><tt class="descname">MaildropRelay</tt><big>(</big><span class="optional">[</span><em>path=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>extra_args=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.relay.pipe.MaildropRelay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.relay.pipe.PipeRelay</span></tt></a></p>
-<p>Variation of <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></tt></a> that is specifically tailored for
+<em class="property">class </em><code class="descclassname">slimta.relay.pipe.</code><code class="descname">MaildropRelay</code><span class="sig-paren">(</span><span class="optional">[</span><em>path=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>extra_args=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pipe.MaildropRelay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><code class="xref py py-class docutils literal"><span class="pre">slimta.relay.pipe.PipeRelay</span></code></a></p>
+<p>Variation of <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><code class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></code></a> that is specifically tailored for
 calling <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> for local mail delivery.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> &#8211; The path to the <tt class="docutils literal"><span class="pre">maildrop</span></tt> command on the system. By
-default, <tt class="docutils literal"><span class="pre">$PATH</span></tt> is searched.</li>
-<li><strong>timeout</strong> &#8211; The length of time <tt class="docutils literal"><span class="pre">maildrop</span></tt> is allowed to run before it
+<li><strong>path</strong> &#8211; The path to the <code class="docutils literal"><span class="pre">maildrop</span></code> command on the system. By
+default, <code class="docutils literal"><span class="pre">$PATH</span></code> is searched.</li>
+<li><strong>timeout</strong> &#8211; The length of time <code class="docutils literal"><span class="pre">maildrop</span></code> is allowed to run before it
 fails transiently, default unlimited.</li>
 <li><strong>extra_args</strong> &#8211; List of extra arguments, if any, to pass to
-<tt class="docutils literal"><span class="pre">maildrop</span></tt>. By default, only the sender is passed in
-with <tt class="docutils literal"><span class="pre">-f</span></tt>.</li>
+<code class="docutils literal"><span class="pre">maildrop</span></code>. By default, only the sender is passed in
+with <code class="docutils literal"><span class="pre">-f</span></code>.</li>
 </ul>
 </td>
 </tr>
@@ -173,22 +173,22 @@ with <tt class="docutils literal"><span class="pre">-f</span></tt>.</li>
 
 <dl class="class">
 <dt id="slimta.relay.pipe.DovecotLdaRelay">
-<em class="property">class </em><tt class="descclassname">slimta.relay.pipe.</tt><tt class="descname">DovecotLdaRelay</tt><big>(</big><span class="optional">[</span><em>path=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>extra_args=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.relay.pipe.DovecotLdaRelay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.relay.pipe.PipeRelay</span></tt></a></p>
-<p>Variation of <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><tt class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></tt></a> that is specifically tailored for
+<em class="property">class </em><code class="descclassname">slimta.relay.pipe.</code><code class="descname">DovecotLdaRelay</code><span class="sig-paren">(</span><span class="optional">[</span><em>path=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>extra_args=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pipe.DovecotLdaRelay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><code class="xref py py-class docutils literal"><span class="pre">slimta.relay.pipe.PipeRelay</span></code></a></p>
+<p>Variation of <a class="reference internal" href="#slimta.relay.pipe.PipeRelay" title="slimta.relay.pipe.PipeRelay"><code class="xref py py-class docutils literal"><span class="pre">PipeRelay</span></code></a> that is specifically tailored for
 calling dovecot&#8217;s <a class="reference external" href="http://wiki.dovecot.org/LDA">LDA</a> for local mail delivery.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>path</strong> &#8211; The path to the <tt class="docutils literal"><span class="pre">dovecot-lda</span></tt> command on the system. By
-default, <tt class="docutils literal"><span class="pre">$PATH</span></tt> is searched.</li>
-<li><strong>timeout</strong> &#8211; The length of time <tt class="docutils literal"><span class="pre">dovecot-lda</span></tt> is allowed to run before
+<li><strong>path</strong> &#8211; The path to the <code class="docutils literal"><span class="pre">dovecot-lda</span></code> command on the system. By
+default, <code class="docutils literal"><span class="pre">$PATH</span></code> is searched.</li>
+<li><strong>timeout</strong> &#8211; The length of time <code class="docutils literal"><span class="pre">dovecot-lda</span></code> is allowed to run before
 it fails transiently, default unlimited.</li>
 <li><strong>extra_args</strong> &#8211; List of extra arguments, if any, to pass to
-<tt class="docutils literal"><span class="pre">dovecot-lda</span></tt>.  By default, only the sender and
-recipient are passed in with <tt class="docutils literal"><span class="pre">-f</span></tt> and <tt class="docutils literal"><span class="pre">-d</span></tt>,
+<code class="docutils literal"><span class="pre">dovecot-lda</span></code>.  By default, only the sender and
+recipient are passed in with <code class="docutils literal"><span class="pre">-f</span></code> and <code class="docutils literal"><span class="pre">-d</span></code>,
 respectively.</li>
 </ul>
 </td>
@@ -203,7 +203,7 @@ respectively.</li>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -218,7 +218,7 @@ respectively.</li>
     <p class="topless"><a href="slimta.relay.smtp.html"
                           title="Next page">&rarr; slimta.relay.smtp</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -237,7 +237,7 @@ respectively.</li>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -254,19 +254,28 @@ respectively.</li>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.relay.html" >slimta.relay</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.relay.html" >slimta.relay</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

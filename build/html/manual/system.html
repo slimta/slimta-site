@@ -34,10 +34,10 @@
     <link rel="prev" title="Terminology" href="terminology.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,7 +64,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="system-helpers">
 <h1>System Helpers<a class="headerlink" href="#system-helpers" title="Permalink to this headline">¶</a></h1>
@@ -78,7 +78,7 @@ security.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">pid</span> <span class="o">=</span> <span class="n">slimta</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">daemonize</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../api/slimta.system.html#slimta.system.daemonize" title="slimta.system.daemonize"><tt class="xref py py-func docutils literal"><span class="pre">slimta.system.daemonize()</span></tt></a> can be described with the following
+<p><a class="reference internal" href="../api/slimta.system.html#slimta.system.daemonize" title="slimta.system.daemonize"><code class="xref py py-func docutils literal"><span class="pre">slimta.system.daemonize()</span></code></a> can be described with the following
 pseudo-code:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">fork</span><span class="p">()</span>
 <span class="n">setsid</span><span class="p">()</span>
@@ -90,15 +90,15 @@ pseudo-code:</p>
 </pre></div>
 </div>
 <p>Often it is not desired to leave standard I/O streams connected to the terminal.
-Before calling <a class="reference internal" href="../api/slimta.system.html#slimta.system.daemonize" title="slimta.system.daemonize"><tt class="xref py py-func docutils literal"><span class="pre">daemonize()</span></tt></a>, you should first call
-<a class="reference internal" href="../api/slimta.system.html#slimta.system.redirect_stdio" title="slimta.system.redirect_stdio"><tt class="xref py py-func docutils literal"><span class="pre">slimta.system.redirect_stdio()</span></tt></a>.</p>
+Before calling <a class="reference internal" href="../api/slimta.system.html#slimta.system.daemonize" title="slimta.system.daemonize"><code class="xref py py-func docutils literal"><span class="pre">daemonize()</span></code></a>, you should first call
+<a class="reference internal" href="../api/slimta.system.html#slimta.system.redirect_stdio" title="slimta.system.redirect_stdio"><code class="xref py py-func docutils literal"><span class="pre">slimta.system.redirect_stdio()</span></code></a>.</p>
 </div>
 <div class="section" id="dropping-system-privileges">
 <h2>Dropping System Privileges<a class="headerlink" href="#dropping-system-privileges" title="Permalink to this headline">¶</a></h2>
 <p>Most ports that <a class="reference external" href="http://slimta.org/">slimta</a> systems will often need to open require root
 privileges, such as port 25. However, once these sockets are open, there is
 little reason to retain those privileges.</p>
-<p>A call to <a class="reference internal" href="../api/slimta.system.html#slimta.system.drop_privileges" title="slimta.system.drop_privileges"><tt class="xref py py-func docutils literal"><span class="pre">slimta.system.drop_privileges()</span></tt></a> is <em>highly</em> recommended after
+<p>A call to <a class="reference internal" href="../api/slimta.system.html#slimta.system.drop_privileges" title="slimta.system.drop_privileges"><code class="xref py py-func docutils literal"><span class="pre">slimta.system.drop_privileges()</span></code></a> is <em>highly</em> recommended after
 opening all ports, if running <a class="reference external" href="http://slimta.org/">slimta</a> as root.</p>
 </div>
 </div>
@@ -107,7 +107,7 @@ opening all ports, if running <a class="reference external" href="http://slimta.
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -132,7 +132,7 @@ opening all ports, if running <a class="reference external" href="http://slimta.
     <p class="topless"><a href="envelopes.html"
                           title="Next page">&rarr; Envelope Objects</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -151,7 +151,7 @@ opening all ports, if running <a class="reference external" href="http://slimta.
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -168,18 +168,27 @@ opening all ports, if running <a class="reference external" href="http://slimta.
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

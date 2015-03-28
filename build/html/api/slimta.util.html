@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.logging.queuestorage" href="slimta.logging.queuestorage.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,7 +64,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-slimta.util">
 <span id="slimta-util"></span><h1>slimta.util<a class="headerlink" href="#module-slimta.util" title="Permalink to this headline">¶</a></h1>
@@ -72,7 +72,7 @@
 belong under any other module.</p>
 <dl class="function">
 <dt id="slimta.util.monkeypatch_all">
-<tt class="descclassname">slimta.util.</tt><tt class="descname">monkeypatch_all</tt><big>(</big><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwds</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.monkeypatch_all" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.util.</code><code class="descname">monkeypatch_all</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwds</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.monkeypatch_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a context manager that monkey-patches before execution and
 reverts after execution.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -81,9 +81,9 @@ reverts after execution.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>args</strong> &#8211; Positional arguments fed directly into
-<a class="reference external" href="http://gevent.org/gevent.monkey.html#gevent.monkey.patch_all" title="(in gevent v1.0)"><tt class="xref py py-func docutils literal"><span class="pre">gevent.monkey.patch_all()</span></tt></a>.</li>
+<a class="reference external" href="http://gevent.org/gevent.monkey.html#gevent.monkey.patch_all" title="(in gevent v1.0)"><code class="xref py py-func docutils literal"><span class="pre">gevent.monkey.patch_all()</span></code></a>.</li>
 <li><strong>kwds</strong> &#8211; Keyword arguments fed directly into
-<a class="reference external" href="http://gevent.org/gevent.monkey.html#gevent.monkey.patch_all" title="(in gevent v1.0)"><tt class="xref py py-func docutils literal"><span class="pre">gevent.monkey.patch_all()</span></tt></a>.</li>
+<a class="reference external" href="http://gevent.org/gevent.monkey.html#gevent.monkey.patch_all" title="(in gevent v1.0)"><code class="xref py py-func docutils literal"><span class="pre">gevent.monkey.patch_all()</span></code></a>.</li>
 </ul>
 </td>
 </tr>
@@ -93,22 +93,22 @@ reverts after execution.</p>
 
 <dl class="data">
 <dt id="slimta.util.dns_resolver">
-<tt class="descclassname">slimta.util.</tt><tt class="descname">dns_resolver</tt><em class="property"> = &lt;dns.resolver.Resolver object at 0x2b2198b5a190&gt;</em><a class="headerlink" href="#slimta.util.dns_resolver" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.util.</code><code class="descname">dns_resolver</code><em class="property"> = &lt;dns.resolver.Resolver object&gt;</em><a class="headerlink" href="#slimta.util.dns_resolver" title="Permalink to this definition">¶</a></dt>
 <dd><div class="versionadded">
 <p><span class="versionmodified">New in version 0.3.19.</span></p>
 </div>
 <p>This is an instance of <a class="reference external" href="http://www.dnspython.org/docs/1.11.1/dns.resolver.Resolver-class.html">dns.resolver.Resolver()</a>
-monkey-patched with <a class="reference external" href="http://gevent.org/gevent.html#module-gevent" title="(in gevent v1.0)"><tt class="xref py py-mod docutils literal"><span class="pre">gevent</span></tt></a>. Additionally it has its
-<tt class="docutils literal"><span class="pre">retry_servfail</span></tt> attribute set to <tt class="docutils literal"><span class="pre">True</span></tt>.</p>
+monkey-patched with <a class="reference external" href="http://gevent.org/gevent.html#module-gevent" title="(in gevent v1.0)"><code class="xref py py-mod docutils literal"><span class="pre">gevent</span></code></a>. Additionally it has its
+<code class="docutils literal"><span class="pre">retry_servfail</span></code> attribute set to <code class="docutils literal"><span class="pre">True</span></code>.</p>
 <p>Built-in slimta modules use this resolver for custom DNS queries, such as
-<em>MX</em> record lookup. You can modify attributes such as <tt class="docutils literal"><span class="pre">timeout</span></tt> or
-<tt class="docutils literal"><span class="pre">lifetime</span></tt> to control query behavior.</p>
+<em>MX</em> record lookup. You can modify attributes such as <code class="docutils literal"><span class="pre">timeout</span></code> or
+<code class="docutils literal"><span class="pre">lifetime</span></code> to control query behavior.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="slimta.util.build_auth_from_dict">
-<tt class="descclassname">slimta.util.</tt><tt class="descname">build_auth_from_dict</tt><big>(</big><em>dict</em><span class="optional">[</span>, <em>lower_case=False</em><span class="optional">[</span>, <em>only_verify=True</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.util.build_auth_from_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function that constructs an <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><tt class="xref py py-class docutils literal"><span class="pre">Auth</span></tt></a> class that authenticates a
+<code class="descclassname">slimta.util.</code><code class="descname">build_auth_from_dict</code><span class="sig-paren">(</span><em>dict</em><span class="optional">[</span>, <em>lower_case=False</em><span class="optional">[</span>, <em>only_verify=True</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.build_auth_from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function that constructs an <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a> class that authenticates a
 user by checking a dictionary with the username as the key and their
 password is the associated value.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -116,17 +116,17 @@ password is the associated value.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dict</strong> &#8211; A dictionary or object that implements <tt class="docutils literal"><span class="pre">__getitem__()</span></tt> that
+<li><strong>dict</strong> &#8211; A dictionary or object that implements <code class="docutils literal"><span class="pre">__getitem__()</span></code> that
 contains usernames mapping to passwords.</li>
-<li><strong>lower_case</strong> &#8211; If <tt class="docutils literal"><span class="pre">True</span></tt>, the username string will be lower-cased
+<li><strong>lower_case</strong> &#8211; If <code class="docutils literal"><span class="pre">True</span></code>, the username string will be lower-cased
 before checking for it in the dictionary.</li>
-<li><strong>only_verify</strong> &#8211; If <tt class="docutils literal"><span class="pre">True</span></tt>, the resulting sub-class will not implement
-<a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth.get_secret" title="slimta.smtp.auth.Auth.get_secret"><tt class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></tt></a> or support
-<tt class="docutils literal"><span class="pre">CRAM-MD5</span></tt>.</li>
+<li><strong>only_verify</strong> &#8211; If <code class="docutils literal"><span class="pre">True</span></code>, the resulting sub-class will not implement
+<a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth.get_secret" title="slimta.smtp.auth.Auth.get_secret"><code class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></code></a> or support
+<code class="docutils literal"><span class="pre">CRAM-MD5</span></code>.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Generated sub-class of <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><tt class="xref py py-class docutils literal"><span class="pre">Auth</span></tt></a>.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Generated sub-class of <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a>.</p>
 </td>
 </tr>
 </tbody>
@@ -147,7 +147,7 @@ before checking for it in the dictionary.</li>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -162,7 +162,7 @@ before checking for it in the dictionary.</li>
     <p class="topless"><a href="slimta.util.dnsbl.html"
                           title="Next page">&rarr; slimta.util.dnsbl</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -181,7 +181,7 @@ before checking for it in the dictionary.</li>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -198,18 +198,27 @@ before checking for it in the dictionary.</li>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

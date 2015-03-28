@@ -34,10 +34,10 @@
     <link rel="prev" title="Python Library Usage" href="python-slimta.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,7 +64,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="terminology">
 <h1>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h1>
@@ -109,7 +109,7 @@ to the sender describing why the message failed.</dd>
 <dt><em>TLS</em></dt>
 <dd>Encryption between an SMTP client and an SMTP server is done with <em>TLS</em>, a
 system for encryption and validation of a socket session. <em>TLS</em> usually
-starts when the client says <tt class="docutils literal"><span class="pre">STARTTLS</span></tt>, but it is still common for <em>MTAs</em>
+starts when the client says <code class="docutils literal"><span class="pre">STARTTLS</span></code>, but it is still common for <em>MTAs</em>
 to have special ports that encrypt the entire session.</dd>
 <dt><em>Authentication</em></dt>
 <dd>To prevent unauthorized message delivery, many <em>MSAs</em> allow (and often
@@ -130,7 +130,7 @@ smart forms of routing not based on <em>MX</em> records.</dd>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -145,7 +145,7 @@ smart forms of routing not based on <em>MX</em> records.</dd>
     <p class="topless"><a href="system.html"
                           title="Next page">&rarr; System Helpers</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -164,7 +164,7 @@ smart forms of routing not based on <em>MX</em> records.</dd>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -181,18 +181,27 @@ smart forms of routing not based on <em>MX</em> records.</dd>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

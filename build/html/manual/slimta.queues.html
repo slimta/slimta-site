@@ -34,10 +34,10 @@
     <link rel="prev" title="Configuring the Edges" href="slimta.edges.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,8 +54,8 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="slimta.html" accesskey="U">Application Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">Application Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -64,29 +64,29 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="configuring-the-queues">
 <h1>Configuring the Queues<a class="headerlink" href="#configuring-the-queues" title="Permalink to this headline">¶</a></h1>
-<p>With the mail queue being the heart of an MTA, the <tt class="docutils literal"><span class="pre">queue</span></tt> section of
-<tt class="docutils literal"><span class="pre">slimta.conf</span></tt> is both important and highly customizable. It also introduces
-the possibility of using the <tt class="docutils literal"><span class="pre">slimta-worker</span></tt> executable for some queue types.
-In the <tt class="docutils literal"><span class="pre">queue</span></tt> section, each key provides an arbitrary, free-form name for
+<p>With the mail queue being the heart of an MTA, the <code class="docutils literal"><span class="pre">queue</span></code> section of
+<code class="docutils literal"><span class="pre">slimta.conf</span></code> is both important and highly customizable. It also introduces
+the possibility of using the <code class="docutils literal"><span class="pre">slimta-worker</span></code> executable for some queue types.
+In the <code class="docutils literal"><span class="pre">queue</span></code> section, each key provides an arbitrary, free-form name for
 the queue. The sub-section for each key has two required settings:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">type</span></tt>: String, required</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">type</span></code>: String, required</p>
 <p>Defines the type of queue. A known type must be given or an error will be
-thrown. The other keys in this mapping depend on the value of <tt class="docutils literal"><span class="pre">type</span></tt>.</p>
+thrown. The other keys in this mapping depend on the value of <code class="docutils literal"><span class="pre">type</span></code>.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">relay</span></tt>: String, required</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">relay</span></code>: String, required</p>
 <p>Delivery attempts of messages in the queue are passed to this relay. The value
-is a name, which must correspond to a key in the top-level <tt class="docutils literal"><span class="pre">relay</span></tt> section.</p>
+is a name, which must correspond to a key in the top-level <code class="docutils literal"><span class="pre">relay</span></code> section.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">bounce_queue</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">bounce_queue</span></code>: String</p>
 <p>Often when mail is to be relayed locally, the relay is incapable of delivering
 bounce messages to arbitrary sender addresses hosted elsewhere. You may also
 want to apply different retry behavior to bounce messages. This option allows
-you to specify the name of another queue in the top-level <tt class="docutils literal"><span class="pre">queue</span></tt> section,
+you to specify the name of another queue in the top-level <code class="docutils literal"><span class="pre">queue</span></code> section,
 which will be used to deliver bounce messages instead of the current queue.</p>
 </li>
 </ul>
@@ -94,25 +94,25 @@ which will be used to deliver bounce messages instead of the current queue.</p>
 <h2>Queue Policy Settings<a class="headerlink" href="#queue-policy-settings" title="Permalink to this headline">¶</a></h2>
 <p>On entry into the queue, there are several <a class="reference internal" href="policies.html"><em>Policy Implementation</em></a> that can be applied
 to a message. To configure them, there is an additional, optional key available
-in a <tt class="docutils literal"><span class="pre">queue</span></tt> sub-section:</p>
+in a <code class="docutils literal"><span class="pre">queue</span></code> sub-section:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">policies</span></tt>: List</p>
-<p>Each entry in this list is a dictionary with a <tt class="docutils literal"><span class="pre">type</span></tt> field. Check out the
+<li><p class="first"><code class="docutils literal"><span class="pre">policies</span></code>: List</p>
+<p>Each entry in this list is a dictionary with a <code class="docutils literal"><span class="pre">type</span></code> field. Check out the
 <a class="reference internal" href="policies.html"><em>Policy Implementation</em></a> page for more information about each type:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">add_date_header</span></tt>: Adds the <tt class="docutils literal"><span class="pre">Date:</span></tt> header to the message.</li>
-<li><tt class="docutils literal"><span class="pre">add_message_id_header</span></tt>: Adds the <tt class="docutils literal"><span class="pre">Message-Id:</span></tt> header to the message.</li>
-<li><tt class="docutils literal"><span class="pre">add_received_header</span></tt>: Adds a <tt class="docutils literal"><span class="pre">Received:</span></tt> header to the message.</li>
-<li><tt class="docutils literal"><span class="pre">recipient_split</span></tt>: Forks the message so that for each recipient there is
+<li><code class="docutils literal"><span class="pre">add_date_header</span></code>: Adds the <code class="docutils literal"><span class="pre">Date:</span></code> header to the message.</li>
+<li><code class="docutils literal"><span class="pre">add_message_id_header</span></code>: Adds the <code class="docutils literal"><span class="pre">Message-Id:</span></code> header to the message.</li>
+<li><code class="docutils literal"><span class="pre">add_received_header</span></code>: Adds a <code class="docutils literal"><span class="pre">Received:</span></code> header to the message.</li>
+<li><code class="docutils literal"><span class="pre">recipient_split</span></code>: Forks the message so that for each recipient there is
 a deep copy of the original message.</li>
-<li><tt class="docutils literal"><span class="pre">recipient_domain_split</span></tt>: Forks the message so that for each unique domain
+<li><code class="docutils literal"><span class="pre">recipient_domain_split</span></code>: Forks the message so that for each unique domain
 in the message recipients there is a deep copy of the original message with
 the recipients for that domain.</li>
-<li><tt class="docutils literal"><span class="pre">forward</span></tt>: Rewrites recipients using regular expressions. Along with the
-<tt class="docutils literal"><span class="pre">type</span></tt> key, there is a <tt class="docutils literal"><span class="pre">mapping</span></tt> key which is a dictionary of
+<li><code class="docutils literal"><span class="pre">forward</span></code>: Rewrites recipients using regular expressions. Along with the
+<code class="docutils literal"><span class="pre">type</span></code> key, there is a <code class="docutils literal"><span class="pre">mapping</span></code> key which is a dictionary of
 replacement rules where each key is a regular expression pattern and the
 value is string to replace the pattern match with.</li>
-<li><tt class="docutils literal"><span class="pre">spamassassin</span></tt>: Queries a SpamAssassin server to check if the message is
+<li><code class="docutils literal"><span class="pre">spamassassin</span></code>: Queries a SpamAssassin server to check if the message is
 considered spam, adding headers to the message with the results.</li>
 </ul>
 </li>
@@ -120,29 +120,29 @@ considered spam, adding headers to the message with the results.</li>
 </div>
 <div class="section" id="delivery-retry-behavior">
 <h2>Delivery Retry Behavior<a class="headerlink" href="#delivery-retry-behavior" title="Permalink to this headline">¶</a></h2>
-<p>Additionally, every <tt class="docutils literal"><span class="pre">queue</span></tt> type (<em>except</em> for <tt class="docutils literal"><span class="pre">&quot;custom&quot;</span></tt> and <tt class="docutils literal"><span class="pre">&quot;proxy&quot;</span></tt>)
+<p>Additionally, every <code class="docutils literal"><span class="pre">queue</span></code> type (<em>except</em> for <code class="docutils literal"><span class="pre">&quot;custom&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;proxy&quot;</span></code>)
 honors the ability to configure message retrying with the following
 configuration settings:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">retry</span></tt>: Dictionary</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">retry</span></code>: Dictionary</p>
 <p>If this dictionary is <em>not</em> given, messages are never retried. This dictionary
-has two keys, <tt class="docutils literal"><span class="pre">delay</span></tt> and <tt class="docutils literal"><span class="pre">maximum</span></tt>:</p>
+has two keys, <code class="docutils literal"><span class="pre">delay</span></code> and <code class="docutils literal"><span class="pre">maximum</span></code>:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">delay</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">delay</span></code>: String</p>
 <p>Defines an mathematic expression whose result is used as the number of
 seconds to delay between each delivery attempt of a message.  The string
-allows arithmetic operators and the use of any functions in the <a class="reference external" href="http://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">math</span></tt></a>
-module (without the <tt class="docutils literal"><span class="pre">math.</span></tt> prefix). The variable <tt class="docutils literal"><span class="pre">x</span></tt> may be used in the
+allows arithmetic operators and the use of any functions in the <a class="reference external" href="http://docs.python.org/library/math.html#module-math" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">math</span></code></a>
+module (without the <code class="docutils literal"><span class="pre">math.</span></code> prefix). The variable <code class="docutils literal"><span class="pre">x</span></code> may be used in the
 expression, and will be replaced with the number of delivery attempts the
 message has undergone.</p>
-<p>For example, passing the string <tt class="docutils literal"><span class="pre">&quot;300*x&quot;</span></tt> will start the delay at five
+<p>For example, passing the string <code class="docutils literal"><span class="pre">&quot;300*x&quot;</span></code> will start the delay at five
 minutes, and increase the delay by an additional five minutes for each
 attempt on the message.</p>
-<p>The default value of this setting is <tt class="docutils literal"><span class="pre">&quot;300&quot;</span></tt>, which results in messages
+<p>The default value of this setting is <code class="docutils literal"><span class="pre">&quot;300&quot;</span></code>, which results in messages
 being retried every five minutes until the maximum number of attempts has
 been reached.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">maximum</span></tt>: Integer</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">maximum</span></code>: Integer</p>
 <p>Defines the maximum number of retries before a message is failed. If this
 value is not given, messages are never retried.</p>
 </li>
@@ -151,154 +151,154 @@ value is not given, messages are never retried.</p>
 </ul>
 </div>
 <div class="section" id="memory-queues">
-<h2><tt class="docutils literal"><span class="pre">memory</span></tt> Queues<a class="headerlink" href="#memory-queues" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">memory</span></code> Queues<a class="headerlink" href="#memory-queues" title="Permalink to this headline">¶</a></h2>
 <p>With this queue type, all queued messages and their metadata reside in memory.
 While this is fast and easy to setup, it is <em>not</em> safe for production usage, and
-can easily result in loss of mail. The <tt class="docutils literal"><span class="pre">&quot;memory&quot;</span></tt> queue type does not have any
+can easily result in loss of mail. The <code class="docutils literal"><span class="pre">&quot;memory&quot;</span></code> queue type does not have any
 additional settings.</p>
 </div>
 <div class="section" id="disk-queues">
-<h2><tt class="docutils literal"><span class="pre">disk</span></tt> Queues<a class="headerlink" href="#disk-queues" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">disk</span></code> Queues<a class="headerlink" href="#disk-queues" title="Permalink to this headline">¶</a></h2>
 <p>With this queue type, messages and their metadata are spooled to disk before
 acceptance. This queue type requires three directories, which are configured
 with the following keys:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">tmp_dir</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">tmp_dir</span></code>: String</p>
 <p>This directory is used as scratch space so that files can be created and
 written before being moved to their final destination. This allows for the use
-of the atomic <a class="reference external" href="http://docs.python.org/library/os.html#os.rename" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">os.rename()</span></tt></a> operation, to help prevent data corruption. By
+of the atomic <a class="reference external" href="http://docs.python.org/library/os.html#os.rename" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">os.rename()</span></code></a> operation, to help prevent data corruption. By
 default, the OS-specific temporary directory is used.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">envelope_dir</span></tt>: String, required</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">envelope_dir</span></code>: String, required</p>
 <p>In this directory, the message contents and envelope information are written
-to files that use the <tt class="docutils literal"><span class="pre">.env</span></tt> suffix in a Python <a class="reference external" href="http://docs.python.org/library/pickle.html#module-pickle" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pickle</span></tt></a> format.</p>
+to files that use the <code class="docutils literal"><span class="pre">.env</span></code> suffix in a Python <a class="reference external" href="http://docs.python.org/library/pickle.html#module-pickle" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">pickle</span></code></a> format.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">meta_dir</span></tt>: String, required</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">meta_dir</span></code>: String, required</p>
 <p>In this directory, the message metadata is kept in files that end in
-<tt class="docutils literal"><span class="pre">.meta</span></tt>. This information is primarily related to the delivery of the
+<code class="docutils literal"><span class="pre">.meta</span></code>. This information is primarily related to the delivery of the
 message, including how many attempts it has undergone, and is kept separately
 so that it can be written to often.</p>
 </li>
 </ul>
 </div>
 <div class="section" id="redis-queues">
-<h2><tt class="docutils literal"><span class="pre">redis</span></tt> Queues<a class="headerlink" href="#redis-queues" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">redis</span></code> Queues<a class="headerlink" href="#redis-queues" title="Permalink to this headline">¶</a></h2>
 <p>With this queue type, messages and their metadata are stored as a hash in a
 local or remote redis instance. Additionally, a queue is maintained in redis of
 pending new message IDs, meaning this mechanism can receive and deliver messages
 across processes. This queue type is configured with the following keys:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">host</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">host</span></code>: String</p>
 <p>This is the hostname of the redis instance to connect to and use as queue
-storage. By default, <tt class="docutils literal"><span class="pre">localhost</span></tt> is used.</p>
+storage. By default, <code class="docutils literal"><span class="pre">localhost</span></code> is used.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">port</span></tt>: Integer</p>
-<p>This is the port to connect to on the redis instance. By default, <tt class="docutils literal"><span class="pre">6379</span></tt> is
+<li><p class="first"><code class="docutils literal"><span class="pre">port</span></code>: Integer</p>
+<p>This is the port to connect to on the redis instance. By default, <code class="docutils literal"><span class="pre">6379</span></code> is
 used.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">db</span></tt>: Integer</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">db</span></code>: Integer</p>
 <p>Upon connection, this is the database number to <a class="reference external" href="http://redis.io/commands/select">SELECT</a> before doing anything
-else. By default, <tt class="docutils literal"><span class="pre">0</span></tt> is used.</p>
+else. By default, <code class="docutils literal"><span class="pre">0</span></code> is used.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">password</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">password</span></code>: String</p>
 <p>If given, the <a class="reference external" href="http://redis.io/commands/auth">AUTH</a> command is called with this string before doing anything
 else with the connection.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">prefix</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">prefix</span></code>: String</p>
 <p>This string is prefixed to every key created by the redis storage engine. This
 can be used to isolate keys from others in the system, to allow for multiple
 redis storage engines to run in the same database, or just to make keys more
-recognizable. By default, <tt class="docutils literal"><span class="pre">slimta:</span></tt> is used.</p>
+recognizable. By default, <code class="docutils literal"><span class="pre">slimta:</span></code> is used.</p>
 </li>
 </ul>
 </div>
 <div class="section" id="rackspace-queues">
-<h2><tt class="docutils literal"><span class="pre">rackspace</span></tt> Queues<a class="headerlink" href="#rackspace-queues" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">rackspace</span></code> Queues<a class="headerlink" href="#rackspace-queues" title="Permalink to this headline">¶</a></h2>
 <p>This queue type stores messages and their metadata in <a class="reference external" href="http://www.rackspace.com/cloud/">Rackspace Cloud</a>
 services. To do so, it needs the following information:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">endoint</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">endoint</span></code>: String</p>
 <p>The authentication endpoint used to create an access token and lookup the
 service catalog. This must be the <em>v2.0</em> auth API. The default endpoint is
-<tt class="docutils literal"><span class="pre">https://identity.api.rackspacecloud.com/v2.0/</span></tt> which normally is what you
+<code class="docutils literal"><span class="pre">https://identity.api.rackspacecloud.com/v2.0/</span></code> which normally is what you
 want to use.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">username</span></tt>: String, required</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code>: String, required</p>
 <p>The username to pass in to the Rackspace Cloud Auth API.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">api_key</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">api_key</span></code>: String</p>
 <p>If given, the API key is combined with the username to serve as credentials
 when creating an access token. Either an API key or a password are required.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">password</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">password</span></code>: String</p>
 <p>If given, the password is combined with the username to serve as credentials
 when creating an access token. Either a password or an API key are required.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">region</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">region</span></code>: String</p>
 <p>Used as the default <a class="reference external" href="http://www.rackspace.com/knowledge_center/article/about-regions">region</a> when
 processing the service catalog.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">tls</span></tt>: Dictionary</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">tls</span></code>: Dictionary</p>
 <p>This mapping, which takes the same keys as the keyword parameters to
-<a class="reference external" href="http://docs.python.org/library/ssl.html#ssl.wrap_socket" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">wrap_socket()</span></tt></a>, configures TLS encryption to the Rackspace Cloud API
+<a class="reference external" href="http://docs.python.org/library/ssl.html#ssl.wrap_socket" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">wrap_socket()</span></code></a>, configures TLS encryption to the Rackspace Cloud API
 endpoints. By default, standard TLS settings are used only when endpoints
-begin with <tt class="docutils literal"><span class="pre">https://</span></tt>.</p>
+begin with <code class="docutils literal"><span class="pre">https://</span></code>.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">container_name</span></tt>: String, required</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">container_name</span></code>: String, required</p>
 <p>The <em>Rackspace Cloud Files</em> container name to create storage objects
-containing the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> and queue metadata.</p>
+containing the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> and queue metadata.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">queue_name</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">queue_name</span></code>: String</p>
 <p>The <em>Rackspace Cloud Queues</em> queue name used by the storage engine. If this
 value is not given, <em>Rackspace Cloud Queues</em> will not be used.</p>
 </li>
 </ul>
 </div>
 <div class="section" id="aws-queues">
-<h2><tt class="docutils literal"><span class="pre">aws</span></tt> Queues<a class="headerlink" href="#aws-queues" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">aws</span></code> Queues<a class="headerlink" href="#aws-queues" title="Permalink to this headline">¶</a></h2>
 <p>This queue type stores messages and their metadata in <a class="reference external" href="http://aws.amazon.com/">AWS</a> services. The
-<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.35.2)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library must be installed from <em>PyPI</em> to use this queue type. It
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.36.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library must be installed from <em>PyPI</em> to use this queue type. It
 takes the following keys:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">access_key_id</span></tt>: String</p>
-<p>Your AWS Access Key ID. If this is not given, the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.35.2)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library attempts
+<li><p class="first"><code class="docutils literal"><span class="pre">access_key_id</span></code>: String</p>
+<p>Your AWS Access Key ID. If this is not given, the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.36.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library attempts
 to fetch this value from environment variables.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">secret_access_key</span></tt>: String</p>
-<p>Your AWS Secret Access Key. If this is not given, the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.35.2)"><tt class="xref py py-mod docutils literal"><span class="pre">boto</span></tt></a> library
+<li><p class="first"><code class="docutils literal"><span class="pre">secret_access_key</span></code>: String</p>
+<p>Your AWS Secret Access Key. If this is not given, the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.36.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library
 attempts to fetch this value from environment variables.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">bucket_name</span></tt>: String, required</p>
-<p>The <em>S3</em> bucket name used to create storage objects containing the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a>
+<li><p class="first"><code class="docutils literal"><span class="pre">bucket_name</span></code>: String, required</p>
+<p>The <em>S3</em> bucket name used to create storage objects containing the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a>
 and queue metadata.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">queue_name</span></tt>: String</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">queue_name</span></code>: String</p>
 <p>The <em>SQS</em> queue name used by the storage engine. If this value is not given,
 <em>SQS</em> will not be used.</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">queue_region</span></tt>: String</p>
-<p>The <em>SQS</em> queue region. By default, <tt class="docutils literal"><span class="pre">us-west-2</span></tt> is used.</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">queue_region</span></code>: String</p>
+<p>The <em>SQS</em> queue region. By default, <code class="docutils literal"><span class="pre">us-west-2</span></code> is used.</p>
 </li>
 </ul>
 </div>
 <div class="section" id="proxy-queues">
-<h2><tt class="docutils literal"><span class="pre">proxy</span></tt> Queues<a class="headerlink" href="#proxy-queues" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">&quot;proxy&quot;</span></tt> queue type is not a queue at all, but rather a method of
+<h2><code class="docutils literal"><span class="pre">proxy</span></code> Queues<a class="headerlink" href="#proxy-queues" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">&quot;proxy&quot;</span></code> queue type is not a queue at all, but rather a method of
 bypassing the queue step and immediately attempting message delivery. If
 delivery fails, the client gets immediate feedback from the edge service. There
 are no additional configuration settings for this queue type.</p>
 </div>
 <div class="section" id="custom-queues">
-<h2><tt class="docutils literal"><span class="pre">custom</span></tt> Queues<a class="headerlink" href="#custom-queues" title="Permalink to this headline">¶</a></h2>
-<p>Only one additional key is required by the <tt class="docutils literal"><span class="pre">&quot;custom&quot;</span></tt> queue type:</p>
+<h2><code class="docutils literal"><span class="pre">custom</span></code> Queues<a class="headerlink" href="#custom-queues" title="Permalink to this headline">¶</a></h2>
+<p>Only one additional key is required by the <code class="docutils literal"><span class="pre">&quot;custom&quot;</span></code> queue type:</p>
 <ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">factory</span></tt>: String, required</p>
-<p>This is a string of the form <tt class="docutils literal"><span class="pre">package.module:symbol</span></tt>. The package and
-module portion are imported with <a class="reference external" href="http://docs.python.org/library/importlib.html#importlib.import_module" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">importlib.import_module()</span></tt></a>, and then
-the symbol is fetched from the loaded module with <a class="reference external" href="http://docs.python.org/library/functions.html#getattr" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">getattr()</span></tt></a>.</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">factory</span></code>: String, required</p>
+<p>This is a string of the form <code class="docutils literal"><span class="pre">package.module:symbol</span></code>. The package and
+module portion are imported with <a class="reference external" href="http://docs.python.org/library/importlib.html#importlib.import_module" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">importlib.import_module()</span></code></a>, and then
+the symbol is fetched from the loaded module with <a class="reference external" href="http://docs.python.org/library/functions.html#getattr" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">getattr()</span></code></a>.</p>
 <p>The result of loading the symbol must be a function that takes two arguments,
-the options object (that contains the <tt class="docutils literal"><span class="pre">type</span></tt>, <tt class="docutils literal"><span class="pre">relay</span></tt>, and <tt class="docutils literal"><span class="pre">factory</span></tt>
-keys as well as any others as necessary) and the <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> object that the queue
+the options object (that contains the <code class="docutils literal"><span class="pre">type</span></code>, <code class="docutils literal"><span class="pre">relay</span></code>, and <code class="docutils literal"><span class="pre">factory</span></code>
+keys as well as any others as necessary) and the <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> object that the queue
 should use for message delivery:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">queue_factory</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">relay</span><span class="p">):</span>
     <span class="k">if</span> <span class="s">&#39;foo&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
@@ -316,7 +316,7 @@ should use for message delivery:</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -326,13 +326,13 @@ should use for message delivery:</p>
 <li><a class="reference internal" href="#">Configuring the Queues</a><ul>
 <li><a class="reference internal" href="#queue-policy-settings">Queue Policy Settings</a></li>
 <li><a class="reference internal" href="#delivery-retry-behavior">Delivery Retry Behavior</a></li>
-<li><a class="reference internal" href="#memory-queues"><tt class="docutils literal"><span class="pre">memory</span></tt> Queues</a></li>
-<li><a class="reference internal" href="#disk-queues"><tt class="docutils literal"><span class="pre">disk</span></tt> Queues</a></li>
-<li><a class="reference internal" href="#redis-queues"><tt class="docutils literal"><span class="pre">redis</span></tt> Queues</a></li>
-<li><a class="reference internal" href="#rackspace-queues"><tt class="docutils literal"><span class="pre">rackspace</span></tt> Queues</a></li>
-<li><a class="reference internal" href="#aws-queues"><tt class="docutils literal"><span class="pre">aws</span></tt> Queues</a></li>
-<li><a class="reference internal" href="#proxy-queues"><tt class="docutils literal"><span class="pre">proxy</span></tt> Queues</a></li>
-<li><a class="reference internal" href="#custom-queues"><tt class="docutils literal"><span class="pre">custom</span></tt> Queues</a></li>
+<li><a class="reference internal" href="#memory-queues"><code class="docutils literal"><span class="pre">memory</span></code> Queues</a></li>
+<li><a class="reference internal" href="#disk-queues"><code class="docutils literal"><span class="pre">disk</span></code> Queues</a></li>
+<li><a class="reference internal" href="#redis-queues"><code class="docutils literal"><span class="pre">redis</span></code> Queues</a></li>
+<li><a class="reference internal" href="#rackspace-queues"><code class="docutils literal"><span class="pre">rackspace</span></code> Queues</a></li>
+<li><a class="reference internal" href="#aws-queues"><code class="docutils literal"><span class="pre">aws</span></code> Queues</a></li>
+<li><a class="reference internal" href="#proxy-queues"><code class="docutils literal"><span class="pre">proxy</span></code> Queues</a></li>
+<li><a class="reference internal" href="#custom-queues"><code class="docutils literal"><span class="pre">custom</span></code> Queues</a></li>
 </ul>
 </li>
 </ul>
@@ -348,7 +348,7 @@ should use for message delivery:</p>
     <p class="topless"><a href="slimta.relays.html"
                           title="Next page">&rarr; Configuring the Relays</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -367,7 +367,7 @@ should use for message delivery:</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -384,18 +384,27 @@ should use for message delivery:</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../manual.html" >Usage Manual</a> &raquo;</li>
-          <li><a href="slimta.html" >Application Usage</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual.html" >Usage Manual</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >Application Usage</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

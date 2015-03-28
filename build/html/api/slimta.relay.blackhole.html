@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.relay.pool" href="slimta.relay.pool.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,9 +54,9 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.relay.html" accesskey="U">slimta.relay</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.relay.html" accesskey="U">slimta.relay</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -65,31 +65,31 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-slimta.relay.blackhole">
 <span id="slimta-relay-blackhole"></span><h1>slimta.relay.blackhole<a class="headerlink" href="#module-slimta.relay.blackhole" title="Permalink to this headline">¶</a></h1>
-<p>This module contains a simple <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> class that blackholes messages,
+<p>This module contains a simple <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> class that blackholes messages,
 usually most useful for testing.</p>
 <dl class="class">
 <dt id="slimta.relay.blackhole.BlackholeRelay">
-<em class="property">class </em><tt class="descclassname">slimta.relay.blackhole.</tt><tt class="descname">BlackholeRelay</tt><a class="headerlink" href="#slimta.relay.blackhole.BlackholeRelay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">slimta.relay.Relay</span></tt></a></p>
-<p>Implements a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> that simply blackholes messages. Relay policies may
-be added with <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay.add_policy" title="slimta.relay.Relay.add_policy"><tt class="xref py py-meth docutils literal"><span class="pre">add_policy()</span></tt></a>, but they will never
+<em class="property">class </em><code class="descclassname">slimta.relay.blackhole.</code><code class="descname">BlackholeRelay</code><a class="headerlink" href="#slimta.relay.blackhole.BlackholeRelay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">slimta.relay.Relay</span></code></a></p>
+<p>Implements a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> that simply blackholes messages. Relay policies may
+be added with <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay.add_policy" title="slimta.relay.Relay.add_policy"><code class="xref py py-meth docutils literal"><span class="pre">add_policy()</span></code></a>, but they will never
 be executed or applied for messages handled by this class.</p>
 <dl class="method">
 <dt id="slimta.relay.blackhole.BlackholeRelay.attempt">
-<tt class="descname">attempt</tt><big>(</big><em>envelope</em>, <em>attempts</em><big>)</big><a class="headerlink" href="#slimta.relay.blackhole.BlackholeRelay.attempt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Overrides the <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><tt class="xref py py-class docutils literal"><span class="pre">Relay</span></tt></a> <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay.attempt" title="slimta.relay.Relay.attempt"><tt class="xref py py-meth docutils literal"><span class="pre">attempt()</span></tt></a> method to
-silently discard attempted messages. The <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><tt class="xref py py-class docutils literal"><span class="pre">Queue</span></tt></a> will see the attempt
+<code class="descname">attempt</code><span class="sig-paren">(</span><em>envelope</em>, <em>attempts</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.blackhole.BlackholeRelay.attempt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay.attempt" title="slimta.relay.Relay.attempt"><code class="xref py py-meth docutils literal"><span class="pre">attempt()</span></code></a> method to
+silently discard attempted messages. The <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a> will see the attempt
 as a successful delivery.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>envelope</strong> &#8211; <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><tt class="xref py py-class docutils literal"><span class="pre">Envelope</span></tt></a> to attempt delivery for.</li>
+<li><strong>envelope</strong> &#8211; <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> to attempt delivery for.</li>
 <li><strong>attempts</strong> &#8211; Number of times the envelope has attempted delivery.</li>
 </ul>
 </td>
@@ -106,7 +106,7 @@ as a successful delivery.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -121,7 +121,7 @@ as a successful delivery.</p>
     <p class="topless"><a href="slimta.relay.pipe.html"
                           title="Next page">&rarr; slimta.relay.pipe</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -140,7 +140,7 @@ as a successful delivery.</p>
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -157,19 +157,28 @@ as a successful delivery.</p>
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.relay.html" >slimta.relay</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.relay.html" >slimta.relay</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>

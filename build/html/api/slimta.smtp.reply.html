@@ -34,10 +34,10 @@
     <link rel="prev" title="slimta.smtp.extensions" href="slimta.smtp.extensions.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -54,9 +54,9 @@
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.smtp.html" accesskey="U">slimta.smtp</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.smtp.html" accesskey="U">slimta.smtp</a> &raquo;</li> 
       </ul>
     </div>
     </div>
@@ -65,7 +65,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="module-slimta.smtp.reply">
 <span id="slimta-smtp-reply"></span><h1>slimta.smtp.reply<a class="headerlink" href="#module-slimta.smtp.reply" title="Permalink to this headline">¶</a></h1>
@@ -73,8 +73,8 @@
 code and a message, as well as a few pre-defined standard replies.</p>
 <dl class="class">
 <dt id="slimta.smtp.reply.Reply">
-<em class="property">class </em><tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">Reply</tt><big>(</big><span class="optional">[</span><em>code=None</em><span class="optional">[</span>, <em>message=None</em><span class="optional">[</span>, <em>command=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
+<em class="property">class </em><code class="descclassname">slimta.smtp.reply.</code><code class="descname">Reply</code><span class="sig-paren">(</span><span class="optional">[</span><em>code=None</em><span class="optional">[</span>, <em>message=None</em><span class="optional">[</span>, <em>command=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Defines a standard SMTP reply, which can be made up of a code, an
 intelligent <a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string, and a free-form message. This
 object may or may not be immediately populated with real data.</p>
@@ -95,21 +95,21 @@ logging or debugging.</li>
 </table>
 <dl class="attribute">
 <dt id="slimta.smtp.reply.Reply.newline_first">
-<tt class="descname">newline_first</tt><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.reply.Reply.newline_first" title="Permalink to this definition">¶</a></dt>
+<code class="descname">newline_first</code><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.reply.Reply.newline_first" title="Permalink to this definition">¶</a></dt>
 <dd><p>Boolean defining whether a newline should be sent before the reply,
 which is useful for asynchronous replies such as timeouts.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.__repr__">
-<tt class="descname">__repr__</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.__repr__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.__repr__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts the reply into a string that shows appropriate internals of
 the object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -117,7 +117,7 @@ the object.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.__str__">
-<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.__str__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts the reply into a single string.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -126,7 +126,7 @@ the object.</p>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The code, <a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string, and the message,
 separated by spaces.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)">str</a></td>
 </tr>
 </tbody>
 </table>
@@ -134,10 +134,10 @@ separated by spaces.</td>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.__nonzero__">
-<tt class="descname">__nonzero__</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.__nonzero__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Defines the truth-testing operation for <a class="reference internal" href="#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> objects. This will
-evaluate <tt class="docutils literal"><span class="pre">True</span></tt> if the object value set to its <tt class="docutils literal"><span class="pre">code</span></tt> attribute
-other than <tt class="docutils literal"><span class="pre">None</span></tt>. This is useful for checking replies that may be
+<code class="descname">__nonzero__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.__nonzero__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the truth-testing operation for <a class="reference internal" href="#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> objects. This will
+evaluate <code class="docutils literal"><span class="pre">True</span></code> if the object value set to its <code class="docutils literal"><span class="pre">code</span></code> attribute
+other than <code class="docutils literal"><span class="pre">None</span></code>. This is useful for checking replies that may be
 buffered and not yet populatd..</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -151,14 +151,14 @@ buffered and not yet populatd..</p>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.copy">
-<tt class="descname">copy</tt><big>(</big><em>reply</em><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><em>reply</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Direct-copies the given reply code and message into the current
 object. This is generally useful for sending pre-defined responses.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reply</strong> &#8211; A <a class="reference internal" href="#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><tt class="xref py py-class docutils literal"><span class="pre">Reply</span></tt></a> object to copy.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reply</strong> &#8211; A <a class="reference internal" href="#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> object to copy.</td>
 </tr>
 </tbody>
 </table>
@@ -166,14 +166,14 @@ object. This is generally useful for sending pre-defined responses.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.recv">
-<tt class="descname">recv</tt><big>(</big><em>io</em><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.recv" title="Permalink to this definition">¶</a></dt>
+<code class="descname">recv</code><span class="sig-paren">(</span><em>io</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.recv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Populates the object with the code and message received from the
 session.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>io</strong> &#8211; <tt class="xref py py-class docutils literal"><span class="pre">IO</span></tt> object to use to receive the reply.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>io</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">IO</span></code> object to use to receive the reply.</td>
 </tr>
 </tbody>
 </table>
@@ -181,15 +181,15 @@ session.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.send">
-<tt class="descname">send</tt><big>(</big><em>io</em><span class="optional">[</span>, <em>flush=False</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.send" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send</code><span class="sig-paren">(</span><em>io</em><span class="optional">[</span>, <em>flush=False</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the reply to the session.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>io</strong> &#8211; <tt class="xref py py-class docutils literal"><span class="pre">IO</span></tt> object to use to send the reply.</li>
-<li><strong>flush</strong> &#8211; If <tt class="docutils literal"><span class="pre">True</span></tt>, flush the send buffer after sending.</li>
+<li><strong>io</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">IO</span></code> object to use to send the reply.</li>
+<li><strong>flush</strong> &#8211; If <code class="docutils literal"><span class="pre">True</span></code>, flush the send buffer after sending.</li>
 </ul>
 </td>
 </tr>
@@ -199,9 +199,9 @@ session.</p>
 
 <dl class="method">
 <dt id="slimta.smtp.reply.Reply.is_error">
-<tt class="descname">is_error</tt><big>(</big><big>)</big><a class="headerlink" href="#slimta.smtp.reply.Reply.is_error" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.is_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the SMTP reply indicates an error, which will be True if
-the code begins with a <tt class="docutils literal"><span class="pre">4</span></tt> or <tt class="docutils literal"><span class="pre">5</span></tt>.</p>
+the code begins with a <code class="docutils literal"><span class="pre">4</span></code> or <code class="docutils literal"><span class="pre">5</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -214,29 +214,29 @@ the code begins with a <tt class="docutils literal"><span class="pre">4</span></
 
 <dl class="attribute">
 <dt id="slimta.smtp.reply.Reply.code">
-<tt class="descname">code</tt><a class="headerlink" href="#slimta.smtp.reply.Reply.code" title="Permalink to this definition">¶</a></dt>
+<code class="descname">code</code><a class="headerlink" href="#slimta.smtp.reply.Reply.code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Holds the reply code, which can only be set to a string containing
 three digits.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="slimta.smtp.reply.Reply.message">
-<tt class="descname">message</tt><a class="headerlink" href="#slimta.smtp.reply.Reply.message" title="Permalink to this definition">¶</a></dt>
+<code class="descname">message</code><a class="headerlink" href="#slimta.smtp.reply.Reply.message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets and sets the reply message. If you set this property with an
 <a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string prefixed, that string will be pulled out
-and set in the <tt class="docutils literal"><span class="pre">enhanced_status_code</span></tt>.</p>
+and set in the <code class="docutils literal"><span class="pre">enhanced_status_code</span></code>.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="slimta.smtp.reply.Reply.enhanced_status_code">
-<tt class="descname">enhanced_status_code</tt><a class="headerlink" href="#slimta.smtp.reply.Reply.enhanced_status_code" title="Permalink to this definition">¶</a></dt>
+<code class="descname">enhanced_status_code</code><a class="headerlink" href="#slimta.smtp.reply.Reply.enhanced_status_code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Holds the <a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string. This property is usually set
-automatically by the <tt class="docutils literal"><span class="pre">message</span></tt> property.</p>
+automatically by the <code class="docutils literal"><span class="pre">message</span></code> property.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="slimta.smtp.reply.Reply.__weakref__">
-<tt class="descname">__weakref__</tt><a class="headerlink" href="#slimta.smtp.reply.Reply.__weakref__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__weakref__</code><a class="headerlink" href="#slimta.smtp.reply.Reply.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
@@ -244,43 +244,43 @@ automatically by the <tt class="docutils literal"><span class="pre">message</spa
 
 <dl class="data">
 <dt id="slimta.smtp.reply.unknown_command">
-<tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">unknown_command</tt><em class="property"> = &lt;Reply code='500' message='5.5.2 Syntax error, command unrecognized'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.unknown_command" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.smtp.reply.</code><code class="descname">unknown_command</code><em class="property"> = &lt;Reply code='500' message='5.5.2 Syntax error, command unrecognized'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.unknown_command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reply sent when an unknown SMTP command is received by a server.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="slimta.smtp.reply.unknown_parameter">
-<tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">unknown_parameter</tt><em class="property"> = &lt;Reply code='504' message='5.5.4 Command parameter not implemented'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.unknown_parameter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.smtp.reply.</code><code class="descname">unknown_parameter</code><em class="property"> = &lt;Reply code='504' message='5.5.4 Command parameter not implemented'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.unknown_parameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reply sent when a parameter is sent that is not supported.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="slimta.smtp.reply.bad_sequence">
-<tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">bad_sequence</tt><em class="property"> = &lt;Reply code='503' message='5.5.1 Bad sequence of commands'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.bad_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.smtp.reply.</code><code class="descname">bad_sequence</code><em class="property"> = &lt;Reply code='503' message='5.5.1 Bad sequence of commands'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.bad_sequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reply sent when commands are sent out of standard SMTP sequence.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="slimta.smtp.reply.bad_arguments">
-<tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">bad_arguments</tt><em class="property"> = &lt;Reply code='501' message='5.5.4 Syntax error in parameters or arguments'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.bad_arguments" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.smtp.reply.</code><code class="descname">bad_arguments</code><em class="property"> = &lt;Reply code='501' message='5.5.4 Syntax error in parameters or arguments'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.bad_arguments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reply sent when an expected parameter is invalid.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="slimta.smtp.reply.unhandled_error">
-<tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">unhandled_error</tt><em class="property"> = &lt;Reply code='421' message='4.3.0 Unhandled system error'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.unhandled_error" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.smtp.reply.</code><code class="descname">unhandled_error</code><em class="property"> = &lt;Reply code='421' message='4.3.0 Unhandled system error'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.unhandled_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reply sent when an unhandled exception is raised in a command handler.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="slimta.smtp.reply.tls_failure">
-<tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">tls_failure</tt><em class="property"> = &lt;Reply code='421' message='4.7.0 TLS negotiation failed'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.tls_failure" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.smtp.reply.</code><code class="descname">tls_failure</code><em class="property"> = &lt;Reply code='421' message='4.7.0 TLS negotiation failed'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.tls_failure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reply sent when a TLS negotiation error occurs.</p>
 </dd></dl>
 
 <dl class="data">
 <dt id="slimta.smtp.reply.timed_out">
-<tt class="descclassname">slimta.smtp.reply.</tt><tt class="descname">timed_out</tt><em class="property"> = &lt;Reply code='421' message='4.4.2 Connection timed out'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.timed_out" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">slimta.smtp.reply.</code><code class="descname">timed_out</code><em class="property"> = &lt;Reply code='421' message='4.4.2 Connection timed out'&gt;</em><a class="headerlink" href="#slimta.smtp.reply.timed_out" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reply sent when the server times out waiting for data from the client.</p>
 </dd></dl>
 
@@ -290,7 +290,7 @@ automatically by the <tt class="docutils literal"><span class="pre">message</spa
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
         <p class="logo"><a href="../index.html" title="index">
           <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
@@ -305,7 +305,7 @@ automatically by the <tt class="docutils literal"><span class="pre">message</spa
     <p class="topless"><a href="slimta.smtp.auth.html"
                           title="Next page">&rarr; slimta.smtp.auth</a></p>
   </div>
-<div id="searchbox" style="display: none">
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -324,7 +324,7 @@ automatically by the <tt class="docutils literal"><span class="pre">message</spa
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -341,19 +341,28 @@ automatically by the <tt class="docutils literal"><span class="pre">message</spa
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
 
-          <li><a href="../api.html" >API Reference</a> &raquo;</li>
-          <li><a href="slimta.html" >slimta</a> &raquo;</li>
-          <li><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.smtp.html" >slimta.smtp</a> &raquo;</li> 
       </ul>
     </div>
     </div>
 
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
-<script src="/analogue.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60327323-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </body>
 </html>
