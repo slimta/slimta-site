@@ -50,3 +50,9 @@ slimta.lookup.drivers.dict
    :members:
    :show-inheritance:
 
+slimta.lookup.drivers.regex
+"""""""""""""""""""""""""""
+
+.. automodule:: slimta.lookup.drivers.regex
+   :members:
+   :show-inheritance:
