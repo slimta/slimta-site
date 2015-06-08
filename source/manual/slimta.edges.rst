@@ -151,6 +151,16 @@ sub-section. These keys are:
     ``RCPT TO:<>`` commands from the client. By default, all recipients are
     accepted.
 
+  * ``regex_senders``: List
+  
+    Like ``only_senders`` but compiles each value into a regular expression
+    that each sender address is matched against.
+    
+  * ``regex_recipients``: List
+  
+    Like ``only_recipients`` but compiles each value into a regular
+    expression that each recipient address is matched against.
+
   * ``lookup_senders``: Dictionary
 
     This section follows the :ref:`lookup section <lookup-section>`
