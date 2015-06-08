@@ -349,6 +349,48 @@ arguments passed in to <a class="reference internal" href="#slimta.lookup.driver
 </dd></dl>
 
 </div>
+<div class="section" id="module-slimta.lookup.drivers.regex">
+<span id="slimta-lookup-drivers-regex"></span><h3>slimta.lookup.drivers.regex<a class="headerlink" href="#module-slimta.lookup.drivers.regex" title="Permalink to this headline">¶</a></h3>
+<p>Implements slimta lookup against a series of regular expressions.</p>
+<dl class="class">
+<dt id="slimta.lookup.drivers.regex.RegexLookup">
+<em class="property">class </em><code class="descclassname">slimta.lookup.drivers.regex.</code><code class="descname">RegexLookup</code><span class="sig-paren">(</span><em>str_template</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.regex.RegexLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><code class="xref py py-class docutils literal"><span class="pre">slimta.lookup.drivers.LookupBase</span></code></a></p>
+<p>Instantiate this class without any mappings. This object may be used as
+a slimta lookup interface.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>str_template</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; This template string is used to determine the string
+to match against the regular expressions. The
+<a class="reference external" href="http://docs.python.org/library/stdtypes.html#str.format" title="(in Python v2.7)"><code class="xref py py-meth docutils literal"><span class="pre">str.format()</span></code></a> method is called with keyword
+arguments, given the keyword arguments passed in to
+<a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><code class="xref py py-meth docutils literal"><span class="pre">lookup()</span></code></a>.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="slimta.lookup.drivers.regex.RegexLookup.add_regex">
+<code class="descname">add_regex</code><span class="sig-paren">(</span><em>pattern</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.regex.RegexLookup.add_regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a regular expression with the associated value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pattern</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> or <a class="reference external" href="http://docs.python.org/library/re.html#re.RegexObject" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">re.RegexObject</span></code></a>) &#8211; Pattern to check the lookup string against.</li>
+<li><strong>value</strong> &#8211; The value to return on successful lookup.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 </div>
 
@@ -370,6 +412,7 @@ arguments passed in to <a class="reference internal" href="#slimta.lookup.driver
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.redis">slimta.lookup.drivers.redis</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.dbapi2">slimta.lookup.drivers.dbapi2</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.dict">slimta.lookup.drivers.dict</a></li>
+<li><a class="reference internal" href="#module-slimta.lookup.drivers.regex">slimta.lookup.drivers.regex</a></li>
 </ul>
 </li>
 </ul>

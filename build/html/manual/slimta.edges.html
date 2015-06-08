@@ -191,6 +191,14 @@ accepted.</p>
 <code class="docutils literal"><span class="pre">RCPT</span> <span class="pre">TO:&lt;&gt;</span></code> commands from the client. By default, all recipients are
 accepted.</p>
 </li>
+<li><p class="first"><code class="docutils literal"><span class="pre">regex_senders</span></code>: List</p>
+<p>Like <code class="docutils literal"><span class="pre">only_senders</span></code> but compiles each value into a regular expression
+that each sender address is matched against.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">regex_recipients</span></code>: List</p>
+<p>Like <code class="docutils literal"><span class="pre">only_recipients</span></code> but compiles each value into a regular
+expression that each recipient address is matched against.</p>
+</li>
 <li><p class="first"><code class="docutils literal"><span class="pre">lookup_senders</span></code>: Dictionary</p>
 <p>This section follows the <a class="reference internal" href="#lookup-section"><span>lookup section</span></a>
 requirements. It will limit the allowed addresses to the <code class="docutils literal"><span class="pre">MAIL</span> <span class="pre">FROM:&lt;&gt;</span></code>
