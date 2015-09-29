@@ -18,5 +18,4 @@ slimta.smtp
    slimta.smtp.server
    slimta.smtp.extensions
    slimta.smtp.reply
-   slimta.smtp.auth
 
