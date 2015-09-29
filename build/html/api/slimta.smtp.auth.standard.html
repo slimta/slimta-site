@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.smtp.auth.standard &mdash; slimta 1.1.0 documentation</title>
+    <title>slimta.smtp.auth.standard &mdash; slimta 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.1.0',
+        VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
+    <link rel="top" title="slimta 2.0.0 documentation" href="../index.html" />
     <link rel="up" title="slimta.smtp.auth" href="slimta.smtp.auth.html" />
     <link rel="next" title="slimta.smtp.auth.oauth" href="slimta.smtp.auth.oauth.html" />
     <link rel="prev" title="slimta.smtp.auth" href="slimta.smtp.auth.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.smtp.auth.html" title="slimta.smtp.auth"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -78,18 +78,6 @@
 <p><code class="docutils literal"><span class="pre">PLAIN</span></code> authentication mechanism. This is the primary mechanism to use
 on encrypted channels.</p>
 <p>See <a class="reference external" href="http://tools.ietf.org/html/rfc4616">RFC 4616</a> for details.</p>
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.Plain.name">
-<code class="descname">name</code><em class="property"> = 'PLAIN'</em><a class="headerlink" href="#slimta.smtp.auth.standard.Plain.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism identifies itself as <code class="docutils literal"><span class="pre">PLAIN</span></code>.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.Plain.secure">
-<code class="descname">secure</code><em class="property"> = False</em><a class="headerlink" href="#slimta.smtp.auth.standard.Plain.secure" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism is <strong>not</strong> secure for use on unencrypted channels.</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -98,18 +86,6 @@ on encrypted channels.</p>
 <dd><p>Bases: <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.ServerMechanism" title="slimta.smtp.auth.ServerMechanism"><code class="xref py py-class docutils literal"><span class="pre">slimta.smtp.auth.ServerMechanism</span></code></a>, <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.ClientMechanism" title="slimta.smtp.auth.ClientMechanism"><code class="xref py py-class docutils literal"><span class="pre">slimta.smtp.auth.ClientMechanism</span></code></a></p>
 <p><code class="docutils literal"><span class="pre">LOGIN</span></code> authentication mechanism. Simply a back-and-forth request from
 the client for its username and password, base64-encoded.</p>
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.Login.name">
-<code class="descname">name</code><em class="property"> = 'LOGIN'</em><a class="headerlink" href="#slimta.smtp.auth.standard.Login.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism identifies itself as <code class="docutils literal"><span class="pre">LOGIN</span></code>.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.Login.secure">
-<code class="descname">secure</code><em class="property"> = False</em><a class="headerlink" href="#slimta.smtp.auth.standard.Login.secure" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism is <strong>not</strong> secure for use on unencrypted channels.</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -123,32 +99,6 @@ communicated in a reversible form. However, it also means the server must
 have access to un-hashed passwords, which is not always possible or
 desired.</p>
 <p>See <a class="reference external" href="http://tools.ietf.org/html/rfc2195">RFC 2195</a> for details.</p>
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.CramMd5.name">
-<code class="descname">name</code><em class="property"> = 'CRAM-MD5'</em><a class="headerlink" href="#slimta.smtp.auth.standard.CramMd5.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism identifies itself as <code class="docutils literal"><span class="pre">CRAM-MD5</span></code>.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.CramMd5.secure">
-<code class="descname">secure</code><em class="property"> = True</em><a class="headerlink" href="#slimta.smtp.auth.standard.CramMd5.secure" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism is secure for use on unencrypted channels.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.CramMd5.hostname">
-<code class="descname">hostname</code><em class="property"> = 'ci.slimta.org'</em><a class="headerlink" href="#slimta.smtp.auth.standard.CramMd5.hostname" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is the hostname used when generating the initial challenge.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="slimta.smtp.auth.standard.CramMd5.requires_get_secret">
-<code class="descname">requires_get_secret</code><em class="property"> = True</em><a class="headerlink" href="#slimta.smtp.auth.standard.CramMd5.requires_get_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>This mechanism requires direct access to the original password using
-<a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth.get_secret" title="slimta.smtp.auth.Auth.get_secret"><code class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></code></a>. <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a> sub-classes must
-implement that method or this mechanism will be unavailable.</p>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -206,7 +156,7 @@ implement that method or this mechanism will be unavailable.</p>
         <li class="right" >
           <a href="slimta.smtp.auth.html" title="slimta.smtp.auth"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>

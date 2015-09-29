@@ -9,7 +9,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Index &mdash; slimta 1.1.0 documentation</title>
+    <title>Index &mdash; slimta 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.1.0',
+        VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.1.0 documentation" href="index.html" /> 
+    <link rel="top" title="slimta 2.0.0 documentation" href="index.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body role="document">
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
-    <li><a href="index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="index.html">slimta 2.0.0 documentation</a> &raquo;</li>
  
       </ul>
     </div>
@@ -236,14 +236,10 @@
   <dt><a href="api/slimta.relay.blackhole.html#slimta.relay.blackhole.BlackholeRelay">BlackholeRelay (class in slimta.relay.blackhole)</a>
   </dt>
 
-      
-  <dt><a href="api/slimta.bounce.html#slimta.bounce.Bounce">Bounce (class in slimta.bounce)</a>
-  </dt>
-
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/slimta.util.html#slimta.util.build_auth_from_dict">build_auth_from_dict() (in module slimta.util)</a>
+  <dt><a href="api/slimta.bounce.html#slimta.bounce.Bounce">Bounce (class in slimta.bounce)</a>
   </dt>
 
       
@@ -457,11 +453,15 @@
 
       </dl></dd>
       
-  <dt><a href="api/extra.spf.html#slimta.spf.EnforceSpf">EnforceSpf (class in slimta.spf)</a>
+  <dt><a href="api/slimta.smtp.server.html#slimta.smtp.server.Server.encrypted">encrypted (slimta.smtp.server.Server attribute)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/extra.spf.html#slimta.spf.EnforceSpf">EnforceSpf (class in slimta.spf)</a>
+  </dt>
+
       
   <dt><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.Reply.enhanced_status_code">enhanced_status_code (slimta.smtp.reply.Reply attribute)</a>
   </dt>
@@ -653,10 +653,6 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.CramMd5.hostname">hostname (slimta.smtp.auth.standard.CramMd5 attribute)</a>
-  </dt>
-
-      
   <dt><a href="api/slimta.edge.wsgi.html#slimta.edge.wsgi.WsgiEdge.http_verb">http_verb (slimta.edge.wsgi.WsgiEdge attribute)</a>
   </dt>
 
@@ -698,6 +694,10 @@
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.invalid_credentials">invalid_credentials (in module slimta.smtp.reply)</a>
+  </dt>
+
       
   <dt><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.Reply.is_error">is_error() (slimta.smtp.reply.Reply method)</a>
   </dt>
@@ -818,32 +818,6 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="api/slimta.smtp.auth.html#slimta.smtp.auth.ClientMechanism.name">name (slimta.smtp.auth.ClientMechanism attribute)</a>
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="api/slimta.smtp.auth.html#slimta.smtp.auth.ServerMechanism.name">(slimta.smtp.auth.ServerMechanism attribute)</a>
-  </dt>
-
-        
-  <dt><a href="api/slimta.smtp.auth.oauth.html#slimta.smtp.auth.oauth.OAuth2.name">(slimta.smtp.auth.oauth.OAuth2 attribute)</a>
-  </dt>
-
-        
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.CramMd5.name">(slimta.smtp.auth.standard.CramMd5 attribute)</a>
-  </dt>
-
-        
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.Login.name">(slimta.smtp.auth.standard.Login attribute)</a>
-  </dt>
-
-        
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.Plain.name">(slimta.smtp.auth.standard.Plain attribute)</a>
-  </dt>
-
-      </dl></dd>
       
   <dt><a href="api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay.new_static_relay">new_static_relay() (slimta.relay.smtp.mx.MxSmtpRelay method)</a>
   </dt>
@@ -1087,16 +1061,6 @@
   </dt>
 
       
-  <dt><a href="api/slimta.smtp.auth.html#slimta.smtp.auth.ServerMechanism.requires_get_secret">requires_get_secret (slimta.smtp.auth.ServerMechanism attribute)</a>
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.CramMd5.requires_get_secret">(slimta.smtp.auth.standard.CramMd5 attribute)</a>
-  </dt>
-
-      </dl></dd>
-      
   <dt><a href="api/slimta.smtp.extensions.html#slimta.smtp.extensions.Extensions.reset">reset() (slimta.smtp.extensions.Extensions method)</a>
   </dt>
 
@@ -1122,24 +1086,6 @@
   <dt><a href="api/slimta.policy.spamassassin.html#slimta.policy.spamassassin.SpamAssassin.scan">scan() (slimta.policy.spamassassin.SpamAssassin method)</a>
   </dt>
 
-      
-  <dt><a href="api/slimta.smtp.auth.html#slimta.smtp.auth.ServerMechanism.secure">secure (slimta.smtp.auth.ServerMechanism attribute)</a>
-  </dt>
-
-      <dd><dl>
-        
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.CramMd5.secure">(slimta.smtp.auth.standard.CramMd5 attribute)</a>
-  </dt>
-
-        
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.Login.secure">(slimta.smtp.auth.standard.Login attribute)</a>
-  </dt>
-
-        
-  <dt><a href="api/slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.Plain.secure">(slimta.smtp.auth.standard.Plain attribute)</a>
-  </dt>
-
-      </dl></dd>
       
   <dt><a href="api/slimta.logging.socket.html#slimta.logging.socket.SocketLogger.send">send() (slimta.logging.socket.SocketLogger method)</a>
   </dt>
@@ -1322,12 +1268,12 @@
   <dt><a href="api/extra.lookup.html#module-slimta.lookup.drivers.regex">slimta.lookup.drivers.regex (module)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/extra.lookup.html#module-slimta.lookup.policy">slimta.lookup.policy (module)</a>
   </dt>
 
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="api/slimta.policy.html#module-slimta.policy">slimta.policy (module)</a>
   </dt>
@@ -1666,7 +1612,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
-    <li><a href="index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="index.html">slimta 2.0.0 documentation</a> &raquo;</li>
  
       </ul>
     </div>

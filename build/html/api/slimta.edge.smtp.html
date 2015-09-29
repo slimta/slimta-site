@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.edge.smtp &mdash; slimta 1.1.0 documentation</title>
+    <title>slimta.edge.smtp &mdash; slimta 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.1.0',
+        VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
+    <link rel="top" title="slimta 2.0.0 documentation" href="../index.html" />
     <link rel="up" title="slimta.edge" href="slimta.edge.html" />
     <link rel="next" title="slimta.edge.wsgi" href="slimta.edge.wsgi.html" />
     <link rel="prev" title="slimta.edge" href="slimta.edge.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.edge.html" title="slimta.edge"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -86,6 +86,9 @@ sending the SMTP banner.</p>
 <li><p class="first"><code class="docutils literal"><span class="pre">handle_ehlo(reply,</span> <span class="pre">ehlo_as)</span></code>: Validate the EHLO string.</p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">handle_helo(reply,</span> <span class="pre">helo_as)</span></code>: Validate the HELO string.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">handle_auth(reply,</span> <span class="pre">creds)</span></code>: Validate an authentication attempt, given
+a <code class="xref py py-class docutils literal"><span class="pre">AuthenticationCredentials</span></code> object.</p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">handle_mail(reply,</span> <span class="pre">sender,</span> <span class="pre">params)</span></code>: Validate the sender address.</p>
 </li>
@@ -131,9 +134,8 @@ attributes which may be useful in validation:</p>
 <li><p class="first"><code class="docutils literal"><span class="pre">ehlo_as</span></code>: The EHLO or HELO string given by the client.</p>
 </li>
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">auth_result</span></code>: The authentication result returned by <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a></dt>
-<dd><p class="first last">after successful authentication, or <code class="docutils literal"><span class="pre">None</span></code> if
-the client has not authenticated.</p>
+<dt><code class="docutils literal"><span class="pre">auth</span></code>: A tuple of the form <code class="docutils literal"><span class="pre">(authcid,</span> <span class="pre">authzid)</span></code> if the</dt>
+<dd><p class="first last">client has authenticated.</p>
 </dd>
 </dl>
 </li>
@@ -151,7 +153,7 @@ the client has not authenticated.</p>
 
 <dl class="class">
 <dt id="slimta.edge.smtp.SmtpEdge">
-<em class="property">class </em><code class="descclassname">slimta.edge.smtp.</code><code class="descname">SmtpEdge</code><span class="sig-paren">(</span><em>listener</em>, <em>queue</em><span class="optional">[</span>, <em>pool=None</em><span class="optional">[</span>, <em>max_size=None</em><span class="optional">[</span>, <em>validator_class=None</em><span class="optional">[</span>, <em>auth_class=None</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">[</span>, <em>tls_immediately=False</em><span class="optional">[</span>, <em>command_timeout=None</em><span class="optional">[</span>, <em>data_timeout=None</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">[</span>, <em>auth_obj=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpEdge" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.edge.smtp.</code><code class="descname">SmtpEdge</code><span class="sig-paren">(</span><em>listener</em>, <em>queue</em><span class="optional">[</span>, <em>pool=None</em><span class="optional">[</span>, <em>max_size=None</em><span class="optional">[</span>, <em>validator_class=None</em><span class="optional">[</span>, <em>auth=False</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">[</span>, <em>tls_immediately=False</em><span class="optional">[</span>, <em>command_timeout=None</em><span class="optional">[</span>, <em>data_timeout=None</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpEdge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal"><span class="pre">slimta.edge.EdgeServer</span></code></a></p>
 <p>Class that uses <a class="reference internal" href="slimta.smtp.server.html#module-slimta.smtp.server" title="slimta.smtp.server"><code class="xref py py-mod docutils literal"><span class="pre">slimta.smtp.server</span></code></a> to implement an edge
 service to receive messages.</p>
@@ -168,9 +170,9 @@ service to receive messages.</p>
 <li><strong>max_size</strong> &#8211; Maximum size of incoming messages.</li>
 <li><strong>validator_class</strong> &#8211; <a class="reference internal" href="#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></code></a> sub-class to validate
 commands and alter replies.</li>
-<li><strong>auth_class</strong> &#8211; Optional <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a> sub-class to enable authentication.
-This argument is deprecated in favor of <code class="docutils literal"><span class="pre">auth_obj</span></code>,
-but is still available for backwards-compatibility.</li>
+<li><strong>auth</strong> &#8211; If True, enable authentication with default mechanisms. May
+also be given as a list of SASL mechanism names to support,
+e.g. <code class="docutils literal"><span class="pre">['PLAIN',</span> <span class="pre">'LOGIN',</span> <span class="pre">'CRAM-MD5']</span></code>.</li>
 <li><strong>tls</strong> &#8211; Optional dictionary of TLS settings passed directly as
 keyword arguments to <code class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></code>.</li>
 <li><strong>tls_immediately</strong> &#8211; If True, connections will be encrypted
@@ -182,8 +184,6 @@ receiving data. This is a cumulative timeout that
 is not tricked by the client sending data.</li>
 <li><strong>hostname</strong> &#8211; String identifying the local machine. See <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> for more
 details.</li>
-<li><strong>auth_obj</strong> &#8211; Optional object implementing the <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a> interface to
-enable authentication.</li>
 </ul>
 </td>
 </tr>
@@ -246,7 +246,7 @@ enable authentication.</li>
         <li class="right" >
           <a href="slimta.edge.html" title="slimta.edge"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>

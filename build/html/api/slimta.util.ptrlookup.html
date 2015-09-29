@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.util.ptrlookup &mdash; slimta 1.1.0 documentation</title>
+    <title>slimta.util.ptrlookup &mdash; slimta 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.1.0',
+        VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
+    <link rel="top" title="slimta 2.0.0 documentation" href="../index.html" />
     <link rel="up" title="slimta.util" href="slimta.util.html" />
     <link rel="next" title="slimta.system" href="slimta.system.html" />
     <link rel="prev" title="slimta.util.dnsbl" href="slimta.util.dnsbl.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.util.dnsbl.html" title="slimta.util.dnsbl"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -78,7 +78,7 @@ in DNS. If it exists, a PTR record will map an IP address to an arbitrary
 hostname.</p>
 <p>However, it is not usually desired to slow down a client&#8217;s request just because
 their PTR record lookup has not yet finished. This module implements a
-<a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b5.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> thread that will look up a client&#8217;s PTR record will
+<a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> thread that will look up a client&#8217;s PTR record will
 its request is being processed. If the request finishes before the PTR record
 lookup, the lookup is stopped</p>
 <dl class="class">
@@ -86,7 +86,7 @@ lookup, the lookup is stopped</p>
 <em class="property">class </em><code class="descclassname">slimta.util.ptrlookup.</code><code class="descname">PtrLookup</code><span class="sig-paren">(</span><em>ip</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">gevent.greenlet.Greenlet</span></code></p>
 <p>Asynchronously looks up the PTR record of an IP address, implemented as
-a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b5.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> thread.</p>
+a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> thread.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -137,7 +137,7 @@ port number from <a class="reference external" href="http://docs.python.org/libr
 <dd><p>Starts the PTR lookup thread.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet.start" title="(in gevent v1.1b5.dev0)"><code class="xref py py-meth docutils literal"><span class="pre">gevent.Greenlet.start()</span></code></a></p>
+<p class="last"><a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet.start" title="(in gevent v1.1b6.dev0)"><code class="xref py py-meth docutils literal"><span class="pre">gevent.Greenlet.start()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -146,7 +146,7 @@ port number from <a class="reference external" href="http://docs.python.org/libr
 <code class="descname">finish</code><span class="sig-paren">(</span><span class="optional">[</span><em>runtime=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.finish" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to get the results of the PTR lookup. If the results are
 not available, <code class="docutils literal"><span class="pre">None</span></code> is returned instead.</p>
-<p>When this method returns, the <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b5.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> executing the
+<p>When this method returns, the <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> executing the
 lookup is killed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -222,7 +222,7 @@ in.</td>
         <li class="right" >
           <a href="slimta.util.dnsbl.html" title="slimta.util.dnsbl"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>

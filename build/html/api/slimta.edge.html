@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.edge &mdash; slimta 1.1.0 documentation</title>
+    <title>slimta.edge &mdash; slimta 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.1.0',
+        VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
+    <link rel="top" title="slimta 2.0.0 documentation" href="../index.html" />
     <link rel="up" title="slimta" href="slimta.html" />
     <link rel="next" title="slimta.edge.smtp" href="slimta.edge.smtp.html" />
     <link rel="prev" title="slimta" href="slimta.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.html" title="slimta"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &raquo;</li> 
@@ -125,7 +125,7 @@ corresponding ID string or <a class="reference internal" href="slimta.queue.html
 <p><span class="versionmodified">New in version 0.3.15.</span></p>
 </div>
 <p>This method is used by <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> and <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a>-like objects to properly end
-associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b5.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> threads)
+associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> threads)
 and close resources.</p>
 </dd></dl>
 
@@ -135,8 +135,8 @@ and close resources.</p>
 <dt id="slimta.edge.EdgeServer">
 <em class="property">class </em><code class="descclassname">slimta.edge.</code><code class="descname">EdgeServer</code><span class="sig-paren">(</span><em>listener</em>, <em>queue</em><span class="optional">[</span>, <em>pool=None</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.EdgeServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">slimta.edge.Edge</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">gevent.greenlet.Greenlet</span></code></p>
-<p>This class implements a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b5.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> serving a
-<code class="xref py py-class docutils literal"><span class="pre">StreamServer</span></code> until killed. Connections are accepted
+<p>This class implements a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> serving a
+<a class="reference external" href="http://gevent.org/gevent.server.html#gevent.server.StreamServer" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">StreamServer</span></code></a> until killed. Connections are accepted
 on the socket and passed to <a class="reference internal" href="#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal"><span class="pre">handle()</span></code></a>, which should be overriden
 by implementers of this base class. The socket will be closed
 automatically.</p>
@@ -153,7 +153,7 @@ port upon which to listen for connections. See
 the <code class="docutils literal"><span class="pre">listener</span></code> parameter to
 <code class="xref py py-class docutils literal"><span class="pre">BaseServer</span></code> for more
 information.</li>
-<li><strong>pool</strong> &#8211; If given, defines a specific <a class="reference external" href="http://gevent.org/gevent.pool.html#gevent.pool.Pool" title="(in gevent v1.1b5.dev0)"><code class="xref py py-class docutils literal"><span class="pre">gevent.pool.Pool</span></code></a> to
+<li><strong>pool</strong> &#8211; If given, defines a specific <a class="reference external" href="http://gevent.org/gevent.pool.html#gevent.pool.Pool" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">gevent.pool.Pool</span></code></a> to
 use for new greenlets.</li>
 <li><strong>hostname</strong> &#8211; String identifying the local machine. See <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> for more
 details.</li>
@@ -249,7 +249,7 @@ details.</li>
         <li class="right" >
           <a href="slimta.html" title="slimta"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li> 

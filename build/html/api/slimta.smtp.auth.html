@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.smtp.auth &mdash; slimta 1.1.0 documentation</title>
+    <title>slimta.smtp.auth &mdash; slimta 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.1.0',
+        VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
+    <link rel="top" title="slimta 2.0.0 documentation" href="../index.html" />
     <link rel="up" title="slimta.smtp" href="slimta.smtp.html" />
     <link rel="next" title="slimta.smtp.auth.standard" href="slimta.smtp.auth.standard.html" />
     <link rel="prev" title="slimta.smtp.reply" href="slimta.smtp.reply.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.smtp.reply.html" title="slimta.smtp.reply"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -215,33 +215,6 @@ by the client.</li>
 </tr>
 </tbody>
 </table>
-<dl class="attribute">
-<dt id="slimta.smtp.auth.ServerMechanism.secure">
-<code class="descname">secure</code><em class="property"> = False</em><a class="headerlink" href="#slimta.smtp.auth.ServerMechanism.secure" title="Permalink to this definition">¶</a></dt>
-<dd><p>This static flag should be overidden by sub-classes to specify whether
-the implementation is safe to use over unencrypted channels. By default,
-unsafe mechanisms will not be advertised until TLS is negotiated.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="slimta.smtp.auth.ServerMechanism.name">
-<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.auth.ServerMechanism.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>This static string should be overriden by sub-classes to specify the
-SASL name that identifies this mechanism. This string will be used in
-the SMTP session. Custom mechanisms should be prefixed with <code class="docutils literal"><span class="pre">X</span></code>.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="slimta.smtp.auth.ServerMechanism.requires_get_secret">
-<code class="descname">requires_get_secret</code><em class="property"> = False</em><a class="headerlink" href="#slimta.smtp.auth.ServerMechanism.requires_get_secret" title="Permalink to this definition">¶</a></dt>
-<dd><p>This static flag should be overridden by sub-classes if use of the
-mechanism requires direct access to the original password, such as
-<a class="reference internal" href="slimta.smtp.auth.standard.html#slimta.smtp.auth.standard.CramMd5" title="slimta.smtp.auth.standard.CramMd5"><code class="xref py py-class docutils literal"><span class="pre">CramMd5</span></code></a>.</p>
-<p>If an <a class="reference internal" href="#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a> sub-class does not override
-<a class="reference internal" href="#slimta.smtp.auth.Auth.get_secret" title="slimta.smtp.auth.Auth.get_secret"><code class="xref py py-meth docutils literal"><span class="pre">get_secret()</span></code></a>, mechanisms that have set this
-flag to <code class="docutils literal"><span class="pre">True</span></code> will be automatically removed.</p>
-</dd></dl>
-
 <dl class="method">
 <dt id="slimta.smtp.auth.ServerMechanism.send_challenge_get_response">
 <code class="descname">send_challenge_get_response</code><span class="sig-paren">(</span><em>io</em>, <em>challenge_str</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.auth.ServerMechanism.send_challenge_get_response" title="Permalink to this definition">¶</a></dt>
@@ -307,12 +280,32 @@ of both, or any alternative.</p>
 <p>Base class of client-side SASL authentication mechanism implementations.
 Sub-classes will not be instantiated and should only use static members and
 class methods.</p>
-<dl class="attribute">
-<dt id="slimta.smtp.auth.ClientMechanism.name">
-<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.auth.ClientMechanism.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>This static string should be overriden by sub-classes to specify the
-SASL name that identifies this mechanism. This string will be used in
-the SMTP session. Custom mechanisms should be prefixed with <code class="docutils literal"><span class="pre">X</span></code>.</p>
+<dl class="classmethod">
+<dt id="slimta.smtp.auth.ClientMechanism.client_attempt">
+<em class="property">classmethod </em><code class="descname">client_attempt</code><span class="sig-paren">(</span><em>cls</em>, <em>io</em>, <em>authcid</em>, <em>secret</em>, <em>authzid</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.auth.ClientMechanism.client_attempt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Communicates back-and-forth with a server to negotiate
+authentication, based on the desired credentials. This class method
+must be overidden by sub-classes to be used by client-side SMTP
+sessions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>io</strong> (<code class="xref py py-class docutils literal"><span class="pre">IO</span></code>) &#8211; The underlying IO object.</li>
+<li><strong>authcid</strong> &#8211; The authentication identity, usually the username.</li>
+<li><strong>secret</strong> &#8211; The secret (i.e. password) string to send for the given
+authentication and authorization identities.</li>
+<li><strong>authzid</strong> &#8211; The authorization identity, if applicable.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> object received by the final authentication
+negotiation response from the server.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="classmethod">
@@ -337,34 +330,6 @@ request. Subsequent calls should use <code class="docutils literal"><span class=
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The challenge or final <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> sent back by the server after
 the response.</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="slimta.smtp.auth.ClientMechanism.client_attempt">
-<em class="property">classmethod </em><code class="descname">client_attempt</code><span class="sig-paren">(</span><em>cls</em>, <em>io</em>, <em>authcid</em>, <em>secret</em>, <em>authzid</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.auth.ClientMechanism.client_attempt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Communicates back-and-forth with a server to negotiate
-authentication, based on the desired credentials. This class method
-must be overidden by sub-classes to be used by client-side SMTP
-sessions.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>io</strong> (<code class="xref py py-class docutils literal"><span class="pre">IO</span></code>) &#8211; The underlying IO object.</li>
-<li><strong>authcid</strong> &#8211; The authentication identity, usually the username.</li>
-<li><strong>secret</strong> &#8211; The secret (i.e. password) string to send for the given
-authentication and authorization identities.</li>
-<li><strong>authzid</strong> &#8211; The authorization identity, if applicable.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> object received by the final authentication
-negotiation response from the server.</p>
 </td>
 </tr>
 </tbody>
@@ -436,7 +401,7 @@ negotiation response from the server.</p>
         <li class="right" >
           <a href="slimta.smtp.reply.html" title="slimta.smtp.reply"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>

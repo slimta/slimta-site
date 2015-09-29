@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>slimta.smtp.client &mdash; slimta 1.1.0 documentation</title>
+    <title>slimta.smtp.client &mdash; slimta 2.0.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.1.0',
+        VERSION:     '2.0.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
-    <link rel="top" title="slimta 1.1.0 documentation" href="../index.html" />
+    <link rel="top" title="slimta 2.0.0 documentation" href="../index.html" />
     <link rel="up" title="slimta.smtp" href="slimta.smtp.html" />
     <link rel="next" title="slimta.smtp.server" href="slimta.smtp.server.html" />
     <link rel="prev" title="slimta.smtp" href="slimta.smtp.html" /> 
@@ -52,7 +52,7 @@
         <li class="right" >
           <a href="slimta.smtp.html" title="slimta.smtp"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
@@ -245,7 +245,7 @@ another call to <a class="reference internal" href="#slimta.smtp.client.Client.e
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.auth">
-<code class="descname">auth</code><span class="sig-paren">(</span><em>authcid</em>, <em>secret</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">[</span>, <em>mechanism=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.auth" title="Permalink to this definition">¶</a></dt>
+<code class="descname">auth</code><span class="sig-paren">(</span><em>authcid</em>, <em>secret</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">[</span>, <em>mechanism='PLAIN'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.auth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Negotiates authentication for the current SMTP session. This
 transaction may involve several back-and-forth packets to the server,
 depending on the SASL mechanism used, and this function will only
@@ -259,9 +259,7 @@ return once all have completed.</p>
 <li><strong>secret</strong> &#8211; The secret (i.e. password) string to send for the given
 authentication and authorization identities.</li>
 <li><strong>authzid</strong> &#8211; The authorization identity, if applicable.</li>
-<li><strong>mechanism</strong> (<a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.ClientMechanism" title="slimta.smtp.auth.ClientMechanism"><code class="xref py py-class docutils literal"><span class="pre">ClientMechanism</span></code></a>) &#8211; Force the usage of the given SASL mechanism
-sub-class.  If not given, the best mechanism
-available is used.</li>
+<li><strong>mechanism</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; SASL mechanism name to use for authentication.</li>
 </ul>
 </td>
 </tr>
@@ -499,7 +497,7 @@ also be populated with the SMTP extensions the server supports.</p>
         <li class="right" >
           <a href="slimta.smtp.html" title="slimta.smtp"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 1.1.0 documentation</a> &raquo;</li>
+    <li><a href="../index.html">slimta 2.0.0 documentation</a> &raquo;</li>
 
           <li class="nav-item nav-item-1"><a href="../api.html" >API Reference</a> &raquo;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &raquo;</li>
