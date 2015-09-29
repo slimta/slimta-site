@@ -69,32 +69,8 @@
   <div class="section" id="slimta-lookup">
 <h1>slimta.lookup<a class="headerlink" href="#slimta-lookup" title="Permalink to this headline">¶</a></h1>
 <p>This module is available in the <code class="docutils literal"><span class="pre">python-slimta-lookup</span></code> extension package.</p>
-<div class="section" id="module-slimta.lookup.auth">
-<span id="slimta-lookup-auth"></span><h2>slimta.lookup.auth<a class="headerlink" href="#module-slimta.lookup.auth" title="Permalink to this headline">¶</a></h2>
-<p>Provides an implementation of the <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">Auth</span></code></a> interface that validates
-credentials using a slimta lookup mechanism. If the lookup fields include
-<code class="docutils literal"><span class="pre">password</span></code>, it is assumed to be an <a class="reference external" href="http://tools.ietf.org/html/rfc2307">RFC 2307</a> compatible password hash of
-the basic format <code class="docutils literal"><span class="pre">{SCHEME}HASH}</span></code>. If authentication is successful, the
-optional lookup field <code class="docutils literal"><span class="pre">user</span></code> may rewrite the authentication identity.</p>
-<dl class="class">
-<dt id="slimta.lookup.auth.LookupAuth">
-<em class="property">class </em><code class="descclassname">slimta.lookup.auth.</code><code class="descname">LookupAuth</code><span class="sig-paren">(</span><em>lookup</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.auth.LookupAuth" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.smtp.auth.html#slimta.smtp.auth.Auth" title="slimta.smtp.auth.Auth"><code class="xref py py-class docutils literal"><span class="pre">slimta.smtp.auth.Auth</span></code></a></p>
-<p>Instances of this class may be passed in as the <code class="docutils literal"><span class="pre">auth_obj</span></code> argument of
-<a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></code></a> or <a class="reference internal" href="slimta.smtp.server.html#slimta.smtp.server.Server" title="slimta.smtp.server.Server"><code class="xref py py-class docutils literal"><span class="pre">Server</span></code></a>.
-This class is not compatible with <code class="docutils literal"><span class="pre">CRAM-MD5</span></code> or other auth mechanisms
-that require plain text passwords.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lookup</strong> &#8211; The slimta lookup driver, implementing the
-<a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><code class="xref py py-class docutils literal"><span class="pre">LookupBase</span></code></a> interface.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
+<div class="section" id="slimta-lookup-auth">
+<h2>slimta.lookup.auth<a class="headerlink" href="#slimta-lookup-auth" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-slimta.lookup.policy">
 <span id="slimta-lookup-policy"></span><h2>slimta.lookup.policy<a class="headerlink" href="#module-slimta.lookup.policy" title="Permalink to this headline">¶</a></h2>
@@ -406,7 +382,7 @@ arguments, given the keyword arguments passed in to
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">slimta.lookup</a><ul>
-<li><a class="reference internal" href="#module-slimta.lookup.auth">slimta.lookup.auth</a></li>
+<li><a class="reference internal" href="#slimta-lookup-auth">slimta.lookup.auth</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.policy">slimta.lookup.policy</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers">slimta.lookup.drivers</a><ul>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.redis">slimta.lookup.drivers.redis</a></li>
