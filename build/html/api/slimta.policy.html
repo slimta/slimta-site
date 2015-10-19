@@ -128,13 +128,25 @@ attempt is made.</p>
 <dt id="slimta.policy.RelayPolicy.apply">
 <code class="descname">apply</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.RelayPolicy.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p><a class="reference internal" href="#slimta.policy.RelayPolicy" title="slimta.policy.RelayPolicy"><code class="xref py py-class docutils literal"><span class="pre">RelayPolicy</span></code></a> sub-classes must override this method, which
-will be called by the <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> before delivery.</p>
+will be called by the <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> before delivery. Unlike
+<a class="reference internal" href="#slimta.policy.QueuePolicy.apply" title="slimta.policy.QueuePolicy.apply"><code class="xref py py-meth docutils literal"><span class="pre">QueuePolicy.apply()</span></code></a>, the return value of this method is
+discarded.</p>
+<p>Much like <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay.attempt" title="slimta.relay.Relay.attempt"><code class="xref py py-meth docutils literal"><span class="pre">attempt()</span></code></a>, these methods may raise
+<a class="reference internal" href="slimta.relay.html#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a> or
+<a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a> to mark the relay attempt as
+failed for the entire message.</p>
+<p>Modifications to the <code class="docutils literal"><span class="pre">envelope</span></code> will be passed on to the
+<a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a>. However, it depends on the
+<a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></code></a> implementation to know if those
+modifications will or will not persist between relay attempts!</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> &#8211; The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> object the policy execution should
 apply any changes to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code>, <code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></td>
 </tr>
 </tbody>
 </table>

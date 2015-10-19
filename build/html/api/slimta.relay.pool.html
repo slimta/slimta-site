@@ -147,7 +147,7 @@ is received.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple containing the <a class="reference external" href="http://gevent.org/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">AsyncResult</span></code></a> and
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A tuple containing the <a class="reference external" href="http://gevent.org/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">AsyncResult</span></code></a> and
 the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> that make up a
 delivery request. If no delivery requests are received before
 the <a class="reference internal" href="#slimta.relay.pool.RelayPoolClient.idle_timeout" title="slimta.relay.pool.RelayPoolClient.idle_timeout"><code class="xref py py-attr docutils literal"><span class="pre">idle_timeout</span></code></a> timeout, <code class="docutils literal"><span class="pre">(None,</span> <span class="pre">None)</span></code> is
@@ -163,7 +163,7 @@ returned.</td>
 <dd><p>This method must be overriden by sub-classes to handle processing of
 delivery requests. It should call <a class="reference internal" href="#slimta.relay.pool.RelayPoolClient.poll" title="slimta.relay.pool.RelayPoolClient.poll"><code class="xref py py-meth docutils literal"><span class="pre">poll()</span></code></a> when it is ready for new
 delivery requests. The result of the delivery attempt should be written
-to the <a class="reference external" href="http://gevent.org/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.1b6.dev0)"><code class="xref py py-class docutils literal"><span class="pre">AsyncResult</span></code></a> object provided in the
+to the <a class="reference external" href="http://gevent.org/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">AsyncResult</span></code></a> object provided in the
 request.</p>
 </dd></dl>
 
