@@ -125,7 +125,7 @@ corresponding ID string or <a class="reference internal" href="slimta.queue.html
 <p><span class="versionmodified">New in version 0.3.15.</span></p>
 </div>
 <p>This method is used by <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> and <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a>-like objects to properly end
-associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> threads)
+associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1rc2.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> threads)
 and close resources.</p>
 </dd></dl>
 
@@ -135,8 +135,8 @@ and close resources.</p>
 <dt id="slimta.edge.EdgeServer">
 <em class="property">class </em><code class="descclassname">slimta.edge.</code><code class="descname">EdgeServer</code><span class="sig-paren">(</span><em>listener</em>, <em>queue</em><span class="optional">[</span>, <em>pool=None</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.EdgeServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">slimta.edge.Edge</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">gevent.greenlet.Greenlet</span></code></p>
-<p>This class implements a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> serving a
-<a class="reference external" href="http://gevent.org/gevent.server.html#gevent.server.StreamServer" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">StreamServer</span></code></a> until killed. Connections are accepted
+<p>This class implements a <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1rc2.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a> serving a
+<a class="reference external" href="http://gevent.org/gevent.server.html#gevent.server.StreamServer" title="(in gevent v1.1rc2.dev0)"><code class="xref py py-class docutils literal"><span class="pre">StreamServer</span></code></a> until killed. Connections are accepted
 on the socket and passed to <a class="reference internal" href="#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal"><span class="pre">handle()</span></code></a>, which should be overriden
 by implementers of this base class. The socket will be closed
 automatically.</p>
@@ -151,9 +151,9 @@ service.</li>
 <li><strong>listener</strong> &#8211; Usually a <code class="docutils literal"><span class="pre">(ip,</span> <span class="pre">port)</span></code> tuple defining the interface and
 port upon which to listen for connections. See
 the <code class="docutils literal"><span class="pre">listener</span></code> parameter to
-<a class="reference external" href="http://gevent.org/gevent.baseserver.html#gevent.baseserver.BaseServer" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">BaseServer</span></code></a> for more
+<a class="reference external" href="http://gevent.org/gevent.baseserver.html#gevent.baseserver.BaseServer" title="(in gevent v1.1rc2.dev0)"><code class="xref py py-class docutils literal"><span class="pre">BaseServer</span></code></a> for more
 information.</li>
-<li><strong>pool</strong> &#8211; If given, defines a specific <a class="reference external" href="http://gevent.org/gevent.pool.html#gevent.pool.Pool" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">gevent.pool.Pool</span></code></a> to
+<li><strong>pool</strong> &#8211; If given, defines a specific <a class="reference external" href="http://gevent.org/gevent.pool.html#gevent.pool.Pool" title="(in gevent v1.1rc2.dev0)"><code class="xref py py-class docutils literal"><span class="pre">gevent.pool.Pool</span></code></a> to
 use for new greenlets.</li>
 <li><strong>hostname</strong> &#8211; String identifying the local machine. See <a class="reference internal" href="#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> for more
 details.</li>

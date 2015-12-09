@@ -116,9 +116,10 @@ in to the <a class="reference internal" href="slimta.queue.html#slimta.queue.Que
 <p>Implementations may return <code class="docutils literal"><span class="pre">None</span></code> or raise a <code class="xref py py-class docutils literal"><span class="pre">RelayError</span></code> to
 apply the result to all recipients in the envelope. Alternatively, they
 may return an iterable where each item corresponds to
-<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal"><span class="pre">recipients</span></code></a> and is <code class="docutils literal"><span class="pre">None</span></code> on
-successful delivery, or an instance of <a class="reference internal" href="#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a> or
-<a class="reference internal" href="#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a> on failure.</p>
+<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal"><span class="pre">recipients</span></code></a> and is either <code class="docutils literal"><span class="pre">None</span></code> or
+a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> on successful delivery, or an instance of
+<a class="reference internal" href="#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a> or <a class="reference internal" href="#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a> on
+failure.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -140,7 +141,7 @@ successful delivery, or an instance of <a class="reference internal" href="#slim
 <dt id="slimta.relay.Relay.kill">
 <code class="descname">kill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.Relay.kill" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is used by <a class="reference internal" href="#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> and <a class="reference internal" href="#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a>-like objects to properly
-end associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1b7.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a>
+end associated services (such as running <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1rc2.dev0)"><code class="xref py py-class docutils literal"><span class="pre">Greenlet</span></code></a>
 threads) and close resources.</p>
 </dd></dl>
 
