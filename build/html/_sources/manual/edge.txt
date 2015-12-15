@@ -66,6 +66,28 @@ Creating SMTP Edge Objects
    smtp = SmtpEdge(('', 25), queue)
    smtp.start()
 
+Proxy Protocol with SMTP Edge
+'''''''''''''''''''''''''''''
+
+.. versionadded:: 3.0.0
+
+When using a TCP proxy in front of |slimta|, it is common to lose information
+about the original source address of the connection. The `PROXY protocol`_
+adds a header to each connection where the client posts information about the
+request's original connection information. To use the proxy protocol::
+
+   from slimta.edge.smtp import SmtpEdge
+   from slimta.util.proxyproto import ProxyProtocolV1
+
+   class MyEdge(ProxyProtocolV1, SmtpEdge):
+       pass
+
+   smtp = MyEdge(('', 25), queue)
+   smtp.start()
+
+Please note, this will cause strange behavior if you are not running |slimta|
+behind a proxy that is configured to use `PROXY protocol`_ version 1.
+
 .. _edge-http:
 
 HTTP Edge Services
@@ -118,4 +140,5 @@ Creating HTTP Edge Objects
 .. _RFC 821: http://tools.ietf.org/html/rfc821
 .. _WSGI: http://www.wsgi.org/
 .. _PEP 333: http://www.python.org/dev/peps/pep-0333/
+.. _PROXY protocol: http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt
 

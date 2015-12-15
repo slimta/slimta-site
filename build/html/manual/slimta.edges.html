@@ -154,6 +154,11 @@ SMTP edge. By default, TLS is not enabled.</p>
 a socket is only encrypted if the user runs <code class="docutils literal"><span class="pre">STARTTLS</span></code>. By default, sessions
 are only encrypted on <code class="docutils literal"><span class="pre">STARTTLS</span></code>.</p>
 </li>
+<li><p class="first"><code class="docutils literal"><span class="pre">proxy_protocol</span></code>: Boolean</p>
+<p>Defines whether or not connections to the edge will include a
+<a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">PROXY protocol</a> header defining the original connection information. Only
+use this option when running behind a properly configured proxy.</p>
+</li>
 <li><p class="first"><code class="docutils literal"><span class="pre">rules</span></code>: Dictionary</p>
 <p>This sub-section gives extra configurability in the internals of the SMTP
 edge. It has its own set of keys, all of which are optional:</p>
