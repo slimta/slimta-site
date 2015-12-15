@@ -217,6 +217,45 @@ the peer the socket was connected to. Logged at the <code class="docutils litera
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.proxyproto_success">
+<code class="descname">proxyproto_success</code><span class="sig-paren">(</span><em>socket</em>, <em>src_addr</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.proxyproto_success" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a successful proxy protocol header, with the new source address
+information. Logged at the <code class="docutils literal"><span class="pre">DEBUG</span></code> level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> &#8211; The socket that received the header.</li>
+<li><strong>src_addr</strong> &#8211; The new source address information.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.proxyproto_invalid">
+<code class="descname">proxyproto_invalid</code><span class="sig-paren">(</span><em>socket</em>, <em>exc</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.proxyproto_invalid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs an invalid proxy protocol header, with an exception provided by
+the <code class="xref py py-class docutils literal"><span class="pre">ProxyProtocol</span></code> class. Logged at the
+<code class="docutils literal"><span class="pre">WARNING</span></code> level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> &#8211; The socket that failed the proxy protocol.</li>
+<li><strong>exc</strong> &#8211; The exception generated during the failure.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
