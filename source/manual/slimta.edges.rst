@@ -5,6 +5,7 @@ Configuring the Edges
 =====================
 
 .. _python-slimta-lookup: https://github.com/slimta/python-slimta-lookup
+.. _PROXY protocol: http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt
 
 The next big section in ``slimta.conf`` is ``edge``, which allows you to setup
 as many different inbound edge listeners as you need. In the ``edge`` section,
@@ -106,6 +107,12 @@ sub-section. These keys are:
   Defines whether or not TLS should handshake immediately on connection, or if
   a socket is only encrypted if the user runs ``STARTTLS``. By default, sessions
   are only encrypted on ``STARTTLS``.
+
+* ``proxy_protocol``: Boolean
+
+  Defines whether or not connections to the edge will include a
+  `PROXY protocol`_ header defining the original connection information. Only
+  use this option when running behind a properly configured proxy.
 
 * ``rules``: Dictionary
 
