@@ -32,7 +32,6 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'cloud_sptheme.ext.index_styling',
-    'cloud_sptheme.ext.relbar_toc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
