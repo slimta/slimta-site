@@ -113,6 +113,10 @@ returns or generates an iterable. The iterable will be
 passed as the arguments into the
 <a class="reference internal" href="slimta.smtp.client.html#slimta.smtp.client.Client.auth" title="slimta.smtp.client.Client.auth"><code class="xref py py-meth docutils literal"><span class="pre">auth()</span></code></a> method of the
 session. By default, no authentication is attempted.</li>
+<li><strong>ehlo_as</strong> &#8211; The string to send as the EHLO or HELO string. Defaults to
+the FQDN of the system. This may also be given as a
+function that will be executed with the destination address
+at the beginning of each connection.</li>
 <li><strong>binary_encoder</strong> &#8211; Optional function from <a class="reference external" href="http://docs.python.org/library/email.encoders.html#module-email.encoders" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">email.encoders</span></code></a> used as
 an argument to
 <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.encode_7bit" title="slimta.envelope.Envelope.encode_7bit"><code class="xref py py-meth docutils literal"><span class="pre">encode_7bit()</span></code></a> when

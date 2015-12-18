@@ -106,7 +106,9 @@ connections are idle, new attempts will block.</li>
 to <code class="xref py py-class docutils literal"><span class="pre">gevent.ssl.SSLSocket</span></code>. This parameter is optional
 unless <code class="docutils literal"><span class="pre">https:</span></code> is given in <code class="docutils literal"><span class="pre">url</span></code>.</li>
 <li><strong>ehlo_as</strong> &#8211; The string to send as the EHLO string in a header. Defaults
-to the FQDN of the system.</li>
+to the FQDN of the system. This may also be given as a
+function that will be executed with no arguments at the
+beginning of each connection.</li>
 <li><strong>timeout</strong> &#8211; This is the maximum time in seconds to wait for the entire
 session: connection, request, and response. If <code class="docutils literal"><span class="pre">None</span></code>,
 there is no timeout.</li>
