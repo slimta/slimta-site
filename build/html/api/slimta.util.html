@@ -68,43 +68,6 @@
             
   <div class="section" id="module-slimta.util">
 <span id="slimta-util"></span><h1>slimta.util<a class="headerlink" href="#module-slimta.util" title="Permalink to this headline">¶</a></h1>
-<p>Module containing useful tools, helpers, and other features that didn&#8217;t
-belong under any other module.</p>
-<dl class="function">
-<dt id="slimta.util.monkeypatch_all">
-<code class="descclassname">slimta.util.</code><code class="descname">monkeypatch_all</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwds</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.monkeypatch_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a context manager that monkey-patches before execution and
-reverts after execution.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>args</strong> &#8211; Positional arguments fed directly into
-<a class="reference external" href="http://gevent.org/gevent.monkey.html#gevent.monkey.patch_all" title="(in gevent v1.1rc3.dev0)"><code class="xref py py-func docutils literal"><span class="pre">gevent.monkey.patch_all()</span></code></a>.</li>
-<li><strong>kwds</strong> &#8211; Keyword arguments fed directly into
-<a class="reference external" href="http://gevent.org/gevent.monkey.html#gevent.monkey.patch_all" title="(in gevent v1.1rc3.dev0)"><code class="xref py py-func docutils literal"><span class="pre">gevent.monkey.patch_all()</span></code></a>.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="data">
-<dt id="slimta.util.dns_resolver">
-<code class="descclassname">slimta.util.</code><code class="descname">dns_resolver</code><em class="property"> = &lt;dns.resolver.Resolver object&gt;</em><a class="headerlink" href="#slimta.util.dns_resolver" title="Permalink to this definition">¶</a></dt>
-<dd><div class="versionadded">
-<p><span class="versionmodified">New in version 0.3.19.</span></p>
-</div>
-<p>This is an instance of <a class="reference external" href="http://www.dnspython.org/docs/1.11.1/dns.resolver.Resolver-class.html">dns.resolver.Resolver()</a>
-monkey-patched with <a class="reference external" href="http://gevent.org/gevent.html#module-gevent" title="(in gevent v1.1rc3.dev0)"><code class="xref py py-mod docutils literal"><span class="pre">gevent</span></code></a>. Additionally it has its
-<code class="docutils literal"><span class="pre">retry_servfail</span></code> attribute set to <code class="docutils literal"><span class="pre">True</span></code>.</p>
-<p>Built-in slimta modules use this resolver for custom DNS queries, such as
-<em>MX</em> record lookup. You can modify attributes such as <code class="docutils literal"><span class="pre">timeout</span></code> or
-<code class="docutils literal"><span class="pre">lifetime</span></code> to control query behavior.</p>
-</dd></dl>
-
 <hr class="docutils" />
 <p><strong>Sub-Modules:</strong></p>
 <div class="toctree-wrapper compound">
