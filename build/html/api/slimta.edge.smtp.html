@@ -84,34 +84,24 @@ close the connection.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference external" href="https://tools.ietf.org/html/rfc2821#section-4.2">RFC 2821 4.2</a></p>
 </div>
-<ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_banner(reply,</span> <span class="pre">address)</span></code>: Validate connecting address before
-sending the SMTP banner.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_ehlo(reply,</span> <span class="pre">ehlo_as)</span></code>: Validate the EHLO string.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_helo(reply,</span> <span class="pre">helo_as)</span></code>: Validate the HELO string.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_auth(reply,</span> <span class="pre">creds)</span></code>: Validate an authentication attempt, given
-a <a class="reference external" href="http://pysasl.readthedocs.org/en/latest/index.html#pysasl.AuthenticationCredentials" title="(in pysasl v0.2)"><code class="xref py py-class docutils literal"><span class="pre">AuthenticationCredentials</span></code></a> object.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_mail(reply,</span> <span class="pre">sender,</span> <span class="pre">params)</span></code>: Validate the sender address.</p>
-</li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">handle_rcpt(reply,</span> <span class="pre">recipient,</span> <span class="pre">params)</span></code>: Validate one recipient</dt>
-<dd><p class="first last">address.</p>
-</dd>
-</dl>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_data(reply)</span></code>: Any remaining validation before receiving data.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_have_data(reply,</span> <span class="pre">data)</span></code>: Validate the received message data.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_rset(reply)</span></code>: Called before replying to an RSET command.</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">handle_tls()</span></code>: Called after a successful TLS handshake. This may be at
-the beginning of the session or after a <cite>STARTTLS</cite> command.</p>
-</li>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">handle_banner(reply,</span> <span class="pre">address)</span></code>: Validate connecting address before
+sending the SMTP banner.</li>
+<li><code class="docutils literal"><span class="pre">handle_ehlo(reply,</span> <span class="pre">ehlo_as)</span></code>: Validate the EHLO string.</li>
+<li><code class="docutils literal"><span class="pre">handle_helo(reply,</span> <span class="pre">helo_as)</span></code>: Validate the HELO string.</li>
+<li><code class="docutils literal"><span class="pre">handle_auth(reply,</span> <span class="pre">creds)</span></code>: Validate an authentication attempt, given
+a <a class="reference external" href="http://pysasl.readthedocs.org/en/latest/index.html#pysasl.AuthenticationCredentials" title="(in pysasl v0.2)"><code class="xref py py-class docutils literal"><span class="pre">AuthenticationCredentials</span></code></a> object.</li>
+<li><code class="docutils literal"><span class="pre">handle_mail(reply,</span> <span class="pre">sender,</span> <span class="pre">params)</span></code>: Validate the sender address.</li>
+<li><code class="docutils literal"><span class="pre">handle_rcpt(reply,</span> <span class="pre">recipient,</span> <span class="pre">params)</span></code>: Validate one recipient
+address.</li>
+<li><code class="docutils literal"><span class="pre">handle_data(reply)</span></code>: Any remaining validation before receiving data.</li>
+<li><code class="docutils literal"><span class="pre">handle_have_data(reply,</span> <span class="pre">data)</span></code>: Validate the received message data.</li>
+<li><code class="docutils literal"><span class="pre">handle_queued(reply,</span> <span class="pre">results)</span></code>: Once the message has been queued,
+modify the returned <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> using the <code class="docutils literal"><span class="pre">results</span></code> from calling
+<a class="reference internal" href="slimta.queue.html#slimta.queue.Queue.enqueue" title="slimta.queue.Queue.enqueue"><code class="xref py py-meth docutils literal"><span class="pre">enqueue()</span></code></a>.</li>
+<li><code class="docutils literal"><span class="pre">handle_rset(reply)</span></code>: Called before replying to an RSET command.</li>
+<li><code class="docutils literal"><span class="pre">handle_tls()</span></code>: Called after a successful TLS handshake. This may be at
+the beginning of the session or after a <cite>STARTTLS</cite> command.</li>
 </ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
