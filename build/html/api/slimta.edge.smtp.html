@@ -78,7 +78,12 @@ Attempts to follow the SMTP server RFCs.</p>
 <p>Base class for implementing SMTP command validators.</p>
 <p>Sub-classes may implement some or all of the following functions. Leaving
 the <cite>reply</cite> argument untouched will return the default, successful reply
-from the command.</p>
+from the command. Setting the response code to <code class="docutils literal"><span class="pre">421</span></code> or <code class="docutils literal"><span class="pre">221</span></code> will
+close the connection.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="https://tools.ietf.org/html/rfc2821#section-4.2">RFC 2821 4.2</a></p>
+</div>
 <ul>
 <li><p class="first"><code class="docutils literal"><span class="pre">handle_banner(reply,</span> <span class="pre">address)</span></code>: Validate connecting address before
 sending the SMTP banner.</p>
