@@ -113,13 +113,16 @@ delivery for a message.</p>
 <code class="descname">attempt</code><span class="sig-paren">(</span><em>envelope</em>, <em>attempts</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.Relay.attempt" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method must be overriden by sub-classes in order to be passed
 in to the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a> constructor.</p>
-<p>Implementations may return <code class="docutils literal"><span class="pre">None</span></code> or raise a <code class="xref py py-class docutils literal"><span class="pre">RelayError</span></code> to
-apply the result to all recipients in the envelope. Alternatively, they
-may return an iterable where each item corresponds to
-<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal"><span class="pre">recipients</span></code></a> and is either <code class="docutils literal"><span class="pre">None</span></code> or
-a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> on successful delivery, or an
-instance of <a class="reference internal" href="#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a> or
-<a class="reference internal" href="#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a> on failure.</p>
+<p>The result of a successful relay attempt is either <code class="docutils literal"><span class="pre">None</span></code> or a
+<a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> object. The result of a failing relay attempt is either a
+<code class="xref py py-class docutils literal"><span class="pre">PermanentRelayFailure</span></code> or
+<code class="xref py py-class docutils literal"><span class="pre">TransientRelayFailure</span></code> error.</p>
+<p>If the result applies to the entire <code class="docutils literal"><span class="pre">envelope</span></code> and all its
+recipients, implementations may return the successful result or raise
+the failure. If the result is different per-recipient, then
+implementations may return a dictionary where the key is a recipient
+from <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal"><span class="pre">recipients</span></code></a> and the value is the
+relay result (successful or failing).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -130,7 +133,10 @@ instance of <a class="reference internal" href="#slimta.relay.PermanentRelayErro
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a>, <a class="reference internal" href="#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The relay result, as described above.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a>, <a class="reference internal" href="#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a></p>
 </td>
 </tr>
 </tbody>
