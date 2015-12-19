@@ -1,4 +1,3 @@
-import shelve
 import logging
 
 from slimta.edge.smtp import SmtpEdge
@@ -13,10 +12,8 @@ logging.basicConfig(level=logging.DEBUG)
 # Set up outbound delivery by MX lookup.
 relay = MxSmtpRelay()
 
-# Set up local queue storage to berkeley database files.
-env_db = shelve.open('envelope.db')
-meta_db = shelve.open('meta.db')
-queue_storage = DictStorage(env_db, meta_db)
+# Set up local queue storage to in-memory dictionaries.
+queue_storage = DictStorage({}, {})
 queue = Queue(queue_storage, relay)
 queue.start()
 
