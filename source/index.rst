@@ -46,7 +46,7 @@ Python's great community.
 #. `README <https://github.com/slimta/python-slimta/blob/master/README.md>`_
 #. `Download <https://github.com/slimta/python-slimta/tags>`_ [`Repository <https://github.com/slimta/python-slimta>`_]
 #. `Bug Reports <https://github.com/slimta/python-slimta/issues>`_
-#. `Change Log <https://github.com/slimta/python-slimta/blob/master/CHANGELOG.md`_
+#. `Change Log <https://github.com/slimta/python-slimta/blob/master/CHANGELOG.md>`_
 #. `Installation <https://github.com/slimta/python-slimta/blob/master/README.md#getting-started>`_
 #. :doc:`api`
 #. :doc:`manual/python-slimta`
