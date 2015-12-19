@@ -120,6 +120,38 @@ before <code class="docutils literal"><span class="pre">DATA</span></code>.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="authentication-with-smtp-edge">
+<h3>Authentication with SMTP Edge<a class="headerlink" href="#authentication-with-smtp-edge" title="Permalink to this headline">¶</a></h3>
+<p>There are a few steps involved with adding authentication to the edge. The first
+is exposing the <code class="docutils literal"><span class="pre">AUTH</span></code> SMTP extensions to clients by passing <code class="docutils literal"><span class="pre">auth=True</span></code> to
+the <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></code></a> constructor.</p>
+<p>By default, any credentials will successfully authenticate, so the next step is
+adding a <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></code></a> class that implements the
+<code class="docutils literal"><span class="pre">handle_auth</span></code> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpValidators</span>
+<span class="kn">from</span> <span class="nn">slimta.smtp.reply</span> <span class="kn">import</span> <span class="n">invalid_credentials</span>
+
+<span class="k">class</span> <span class="nc">MyValidators</span><span class="p">(</span><span class="n">SmtpValidators</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">handle_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">creds</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">secret</span> <span class="o">=</span> <span class="n">valid_creds</span><span class="p">[</span><span class="n">creds</span><span class="o">.</span><span class="n">authcid</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="n">creds</span><span class="o">.</span><span class="n">check_secret</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">AssertionError</span><span class="p">):</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">invalid_credentials</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we&#8217;ll want to disallow <code class="docutils literal"><span class="pre">MAIL</span> <span class="pre">FROM</span></code> commands until there has been a
+successful authentication:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">handle_mail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">auth</span><span class="p">:</span>
+        <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s">&#39;550&#39;</span>
+        <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;5.7.1 Sender not allowed&#39;</span>
+</pre></div>
+</div>
+<p>If you have not already, you&#8217;ll need to attach your validators to your
+<a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal"><span class="pre">SmtpEdge</span></code></a> by passing in
+<code class="docutils literal"><span class="pre">validator_class=MyValidators</span></code> to its constructor.</p>
+</div>
 <div class="section" id="proxy-protocol-with-smtp-edge">
 <h3>Proxy Protocol with SMTP Edge<a class="headerlink" href="#proxy-protocol-with-smtp-edge" title="Permalink to this headline">¶</a></h3>
 <div class="versionadded">
@@ -199,6 +231,7 @@ Content-Length: 0</strong>
 <li><a class="reference internal" href="#">Edge Services</a><ul>
 <li><a class="reference internal" href="#smtp-edge-services">SMTP Edge Services</a><ul>
 <li><a class="reference internal" href="#creating-smtp-edge-objects">Creating SMTP Edge Objects</a></li>
+<li><a class="reference internal" href="#authentication-with-smtp-edge">Authentication with SMTP Edge</a></li>
 <li><a class="reference internal" href="#proxy-protocol-with-smtp-edge">Proxy Protocol with SMTP Edge</a></li>
 </ul>
 </li>

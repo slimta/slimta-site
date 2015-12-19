@@ -66,6 +66,40 @@ Creating SMTP Edge Objects
    smtp = SmtpEdge(('', 25), queue)
    smtp.start()
 
+Authentication with SMTP Edge
+'''''''''''''''''''''''''''''
+
+There are a few steps involved with adding authentication to the edge. The first
+is exposing the ``AUTH`` SMTP extensions to clients by passing ``auth=True`` to
+the :class:`~slimta.edge.smtp.SmtpEdge` constructor.
+
+By default, any credentials will successfully authenticate, so the next step is
+adding a :class:`~slimta.edge.smtp.SmtpValidators` class that implements the
+``handle_auth`` method::
+
+    from slimta.edge.smtp import SmtpValidators
+    from slimta.smtp.reply import invalid_credentials
+
+    class MyValidators(SmtpValidators):
+        def handle_auth(self, reply, creds):
+            try:
+                secret = valid_creds[creds.authcid]
+                assert creds.check_secret(secret)
+            except (KeyError, AssertionError):
+                reply.copy(invalid_credentials)
+
+Finally, we'll want to disallow ``MAIL FROM`` commands until there has been a
+successful authentication::
+
+        def handle_mail(self, reply, sender, params):
+            if not self.session.auth:
+                reply.code = '550'
+                reply.message = '5.7.1 Sender not allowed'
+
+If you have not already, you'll need to attach your validators to your
+:class:`~slimta.edge.smtp.SmtpEdge` by passing in
+``validator_class=MyValidators`` to its constructor.
+
 Proxy Protocol with SMTP Edge
 '''''''''''''''''''''''''''''
 
