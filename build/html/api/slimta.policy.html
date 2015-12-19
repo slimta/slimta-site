@@ -93,6 +93,13 @@ for policies that have to do with delivery, such as forwarding.</p>
 <p>Base class for queue policies. These are run before a message is
 persistently queued and may overwrite the original <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> with one or
 many new <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> objects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyQueuePolicy</span><span class="p">(</span><span class="n">QueuePolicy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+        <span class="n">env</span><span class="p">[</span><span class="s">&#39;X-When-Queued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+<span class="n">my_queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">MyQueuePolicy</span><span class="p">())</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="slimta.policy.QueuePolicy.apply">
 <code class="descname">apply</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.QueuePolicy.apply" title="Permalink to this definition">¶</a></dt>
@@ -124,6 +131,13 @@ Returning <code class="docutils literal"><span class="pre">None</span></code> or
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Base class for relay policies. These are run immediately before a relay
 attempt is made.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyRelayPolicy</span><span class="p">(</span><span class="n">RelayPolicy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+        <span class="n">env</span><span class="p">[</span><span class="s">&#39;X-When-Delivered&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+
+<span class="n">my_relay</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">MyRelayPolicy</span><span class="p">())</span>
+</pre></div>
+</div>
 <dl class="method">
 <dt id="slimta.policy.RelayPolicy.apply">
 <code class="descname">apply</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.RelayPolicy.apply" title="Permalink to this definition">¶</a></dt>
@@ -136,9 +150,9 @@ discarded.</p>
 <a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a> to mark the relay attempt as
 failed for the entire message.</p>
 <p>Modifications to the <code class="docutils literal"><span class="pre">envelope</span></code> will be passed on to the
-<a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a>. However, it depends on the
-<a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></code></a> implementation to know if those
-modifications will or will not persist between relay attempts!</p>
+<a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a>. However, it is unlikely these
+modifications will be persisted by the
+<a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal"><span class="pre">QueueStorage</span></code></a> implementation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -146,7 +160,8 @@ modifications will or will not persist between relay attempts!</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> &#8211; The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> object the policy execution should
 apply any changes to.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code>, <code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="slimta.relay.html#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal"><span class="pre">PermanentRelayError</span></code></a>,
+<a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal"><span class="pre">TransientRelayError</span></code></a></td>
 </tr>
 </tbody>
 </table>
