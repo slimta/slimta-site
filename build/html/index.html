@@ -95,8 +95,7 @@ their efforts! See the <em>Change Log</em> for details.</p>
 <li><a class="reference internal" href="api.html"><em>API Reference</em></a></li>
 <li><a class="reference internal" href="manual/python-slimta.html"><em>Python Library Usage</em></a></li>
 </ol>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">shelve</span>
-<span class="kn">import</span> <span class="nn">logging</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
 <span class="kn">from</span> <span class="nn">slimta.queue</span> <span class="kn">import</span> <span class="n">Queue</span>
@@ -110,10 +109,8 @@ their efforts! See the <em>Change Log</em> for details.</p>
 <span class="c"># Set up outbound delivery by MX lookup.</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">()</span>
 
-<span class="c"># Set up local queue storage to berkeley database files.</span>
-<span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;envelope.db&#39;</span><span class="p">)</span>
-<span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;meta.db&#39;</span><span class="p">)</span>
-<span class="n">queue_storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">(</span><span class="n">env_db</span><span class="p">,</span> <span class="n">meta_db</span><span class="p">)</span>
+<span class="c"># Set up local queue storage to in-memory dictionaries.</span>
+<span class="n">queue_storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">({},</span> <span class="p">{})</span>
 <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">(</span><span class="n">queue_storage</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
