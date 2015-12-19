@@ -11,6 +11,7 @@ slimta: Mail Transfer Library
    versions
 
 .. _MTA: http://en.wikipedia.org/wiki/Message_transfer_agent
+.. _contributors: https://github.com/slimta/python-slimta/graphs/contributors
 
 The *slimta* suite was created to provide an MTA (Mail Transfer Agent) taking advantage of new
 technologies and methodologies to scale horizontally in a virtualized
@@ -36,9 +37,16 @@ incorporate any protocol or policy -- custom or built-in. An MTA built with
 *python-slimta* can integrate with other Python libraries and take advantage of
 Python's great community.
 
+.. versionchanged:: 3.0.0
+
+   We are now compatible with Python 3.3+!  Compatibility with Python 2.6 has
+   been removed to ease the transition. Huge thanks to our `contributors`_ for
+   their efforts! See the *Change Log* for details.
+
 #. `README <https://github.com/slimta/python-slimta/blob/master/README.md>`_
 #. `Download <https://github.com/slimta/python-slimta/tags>`_ [`Repository <https://github.com/slimta/python-slimta>`_]
 #. `Bug Reports <https://github.com/slimta/python-slimta/issues>`_
+#. `Change Log <https://github.com/slimta/python-slimta/blob/master/CHANGELOG.md`_
 #. `Installation <https://github.com/slimta/python-slimta/blob/master/README.md#getting-started>`_
 #. :doc:`api`
 #. :doc:`manual/python-slimta`
