@@ -106,7 +106,7 @@ our <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Qu
 <span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Because queue objects inherit <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1rc3.dev0)"><code class="xref py py-class docutils literal"><span class="pre">gevent.Greenlet</span></code></a>, they must call their
+<p>Because queue objects inherit <a class="reference external" href="http://gevent.org/gevent.html#gevent.Greenlet" title="(in gevent v1.1rc4.dev0)"><code class="xref py py-class docutils literal"><span class="pre">gevent.Greenlet</span></code></a>, they must call their
 <code class="docutils literal"><span class="pre">.start()</span></code> method to function properly.</p>
 </div>
 <div class="section" id="step-3-add-queue-policies">
@@ -196,7 +196,7 @@ Their usage is relatively simple:</p>
 <p>The <a class="reference internal" href="../api/slimta.system.html#slimta.system.drop_privileges" title="slimta.system.drop_privileges"><code class="xref py py-func docutils literal"><span class="pre">drop_privileges()</span></code></a> command is only necessary if you
 ran your MTA as <code class="docutils literal"><span class="pre">root</span></code>, which is necessary to create servers listening on
 privileged ports such as 25, 587 or 465.</p>
-<p>The <a class="reference external" href="http://gevent.org/gevent.html#gevent.sleep" title="(in gevent v1.1rc3.dev0)"><code class="xref py py-func docutils literal"><span class="pre">gevent.sleep()</span></code></a> call is not always necessary, but sometimes gevent
+<p>The <a class="reference external" href="http://gevent.org/gevent.html#gevent.sleep" title="(in gevent v1.1rc4.dev0)"><code class="xref py py-func docutils literal"><span class="pre">gevent.sleep()</span></code></a> call is not always necessary, but sometimes gevent
 will not have opened the ports by the time you drop privileges and then it will
 fail, so calling a short sleep will make sure everything is ready.</p>
 </div>
