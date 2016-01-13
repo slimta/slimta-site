@@ -114,9 +114,40 @@ deliver to a certain hostname using the
 <div class="highlight-python"><div class="highlight"><pre><span class="n">relay</span><span class="o">.</span><span class="n">force_mx</span><span class="p">(</span><span class="s">&#39;example.com&#39;</span><span class="p">,</span> <span class="s">&#39;smarthost.example.com&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="section" id="changing-source-ip">
+<span id="relay-lmtp"></span><h3>Changing Source IP<a class="headerlink" href="#changing-source-ip" title="Permalink to this headline">¶</a></h3>
+<p>The source IP address of delivered mail is often hugely important, since one
+wrong move and you may find your IP on one of hundreds of spam blacklists. With
+more complex setups, an MTA will often have a pool of IP addresses to send
+from. SMTP relays (<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal"><span class="pre">StaticSmtpRelay</span></code></a> and
+<a class="reference internal" href="../api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><code class="xref py py-class docutils literal"><span class="pre">MxSmtpRelay</span></code></a> allow a constructor argument
+<code class="docutils literal"><span class="pre">socket_creator</span></code> that allows you to control socket bind address:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">source_ips</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;1.2.3.4&#39;</span><span class="p">,</span> <span class="s">&#39;1.3.5.7&#39;</span><span class="p">,</span> <span class="s">&#39;2.4.6.8&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">_socket_creator</span><span class="p">(</span><span class="n">address</span><span class="p">):</span>
+    <span class="n">bind_ip</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">source_ips</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">create_connection</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">source_address</span><span class="o">=</span><span class="p">(</span><span class="n">bind_ip</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">mx</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">(</span><span class="n">socket_creator</span><span class="o">=</span><span class="n">_socket_creator</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, every outbound relay attempt will call <code class="docutils literal"><span class="pre">_socket_creator</span></code>
+before connecting, passing in the destination <code class="docutils literal"><span class="pre">address</span></code> tuple (host and
+port). The function should return an open and connected socket, ready for data.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because SMTP relay connections were designed to be pooled and recycled,
+handling many <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> deliveries before disconnecting, the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a>
+objects are not passed in to the <code class="docutils literal"><span class="pre">socket_creator</span></code> call. If you need access
+to message data, such as recipients, your best option may be to create an
+intermediate <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> class that implements your logic and then calls
+<code class="xref py py-meth docutils literal"><span class="pre">MxSmtpRelay.attempt</span></code>.</p>
+</div>
+</div>
 </div>
 <div class="section" id="lmtp-relaying">
-<span id="relay-lmtp"></span><h2>LMTP Relaying<a class="headerlink" href="#lmtp-relaying" title="Permalink to this headline">¶</a></h2>
+<h2>LMTP Relaying<a class="headerlink" href="#lmtp-relaying" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="http://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol">LMTP protocol</a> is designed for delivering a message to its final
 destination. It&#8217;s greatest strength in this regard over SMTP is that it can
 report success or failure on a per-recipient basis.</p>
@@ -183,7 +214,10 @@ module documentation may be useful.</p>
     <ul>
 <li><a class="reference internal" href="#">Relay Services</a><ul>
 <li><a class="reference internal" href="#smtp-smart-host-relaying">SMTP Smart-Host Relaying</a></li>
-<li><a class="reference internal" href="#smtp-mx-relaying">SMTP MX Relaying</a></li>
+<li><a class="reference internal" href="#smtp-mx-relaying">SMTP MX Relaying</a><ul>
+<li><a class="reference internal" href="#changing-source-ip">Changing Source IP</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#lmtp-relaying">LMTP Relaying</a></li>
 <li><a class="reference internal" href="#http-relaying">HTTP Relaying</a></li>
 <li><a class="reference internal" href="#external-process-relaying">External Process Relaying</a></li>

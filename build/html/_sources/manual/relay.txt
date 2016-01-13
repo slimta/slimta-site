@@ -67,6 +67,38 @@ deliver to a certain hostname using the
 
 .. _relay-lmtp:
 
+Changing Source IP
+''''''''''''''''''
+
+The source IP address of delivered mail is often hugely important, since one
+wrong move and you may find your IP on one of hundreds of spam blacklists. With
+more complex setups, an MTA will often have a pool of IP addresses to send
+from. SMTP relays (:class:`~slimta.relay.smtp.static.StaticSmtpRelay` and
+:class:`~slimta.relay.smtp.mx.MxSmtpRelay` allow a constructor argument
+``socket_creator`` that allows you to control socket bind address::
+
+    import random
+    source_ips = ['1.2.3.4', '1.3.5.7', '2.4.6.8']
+
+    def _socket_creator(address):
+        bind_ip = random.choice(source_ips)
+        return create_connection(address, source_address=(bind_ip, 0))
+
+    mx = MxSmtpRelay(socket_creator=_socket_creator)
+
+In this example, every outbound relay attempt will call ``_socket_creator``
+before connecting, passing in the destination ``address`` tuple (host and
+port). The function should return an open and connected socket, ready for data.
+
+.. note::
+
+   Because SMTP relay connections were designed to be pooled and recycled,
+   handling many |Envelope| deliveries before disconnecting, the |Envelope|
+   objects are not passed in to the ``socket_creator`` call. If you need access
+   to message data, such as recipients, your best option may be to create an
+   intermediate |Relay| class that implements your logic and then calls
+   :meth:`MxSmtpRelay.attempt <slimta.relay.smtp.mx.MxSmtpRelay.attempt>`.
+
 LMTP Relaying
 """""""""""""
 
