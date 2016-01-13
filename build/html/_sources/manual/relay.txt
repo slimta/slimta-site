@@ -97,7 +97,7 @@ port). The function should return an open and connected socket, ready for data.
    objects are not passed in to the ``socket_creator`` call. If you need access
    to message data, such as recipients, your best option may be to create an
    intermediate |Relay| class that implements your logic and then calls
-   :meth:`MxSmtpRelay.attempt <slimta.relay.smtp.mx.MxSmtpRelay.attempt>`.
+   :meth:`MxSmtpRelay.attempt <slimta.relay.Relay.attempt>`.
 
 LMTP Relaying
 """""""""""""
