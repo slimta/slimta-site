@@ -110,31 +110,31 @@ other processes of the availability of a new message in the object store.</p>
 instances of the <a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudAuth</span></code></a>,
 <a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudFiles</span></code></a>, and optionally
 <a class="reference internal" href="../api/extra.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><code class="xref py py-class docutils literal"><span class="pre">RackspaceCloudQueues</span></code></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">auth</span> <span class="o">=</span> <span class="n">RackspaceCloudAuth</span><span class="p">({</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;slimta&#39;</span><span class="p">,</span> <span class="s">&#39;api_key&#39;</span><span class="p">:</span> <span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">},</span>
-                          <span class="n">region</span><span class="o">=</span><span class="s">&#39;IAD&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">auth</span> <span class="o">=</span> <span class="n">RackspaceCloudAuth</span><span class="p">({</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;slimta&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">:</span> <span class="s1">&#39;XXXXXXXXXXXX&#39;</span><span class="p">},</span>
+                          <span class="n">region</span><span class="o">=</span><span class="s1">&#39;IAD&#39;</span><span class="p">)</span>
 <span class="n">cloud_files</span> <span class="o">=</span> <span class="n">RackspaceCloudFiles</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
 <span class="n">cloud_queues</span> <span class="o">=</span> <span class="n">RackspaceCloudQueues</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Using <a class="reference external" href="http://aws.amazon.com/">AWS</a> services is a bit different. First, it requires installation and
-configuration of the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.38.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library:</p>
+configuration of the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.39.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ pip install boto
 </pre></div>
 </div>
-<p>Using the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.38.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library, we need to come up with references to a
-<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.38.0)"><code class="xref py py-class docutils literal"><span class="pre">Bucket</span></code></a> and optionally a
-<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/sqs.html#boto.sqs.queue.Queue" title="(in boto v2.38.0)"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a>. Then, use them to create
+<p>Using the <a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/boto.html#module-boto" title="(in boto v2.39.0)"><code class="xref py py-mod docutils literal"><span class="pre">boto</span></code></a> library, we need to come up with references to a
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.39.0)"><code class="xref py py-class docutils literal"><span class="pre">Bucket</span></code></a> and optionally a
+<a class="reference external" href="http://boto.readthedocs.org/en/latest/ref/sqs.html#boto.sqs.queue.Queue" title="(in boto v2.39.0)"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a>. Then, use them to create
 <a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><code class="xref py py-class docutils literal"><span class="pre">SimpleStorageService</span></code></a> and
 <a class="reference internal" href="../api/extra.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><code class="xref py py-class docutils literal"><span class="pre">SimpleQueueService</span></code></a> objects:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">boto.s3.connection</span> <span class="kn">import</span> <span class="n">S3Connection</span>
-<span class="n">s3_conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="s">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span> <span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
-<span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">s3_conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="s">&#39;slimta-queue&#39;</span><span class="p">)</span>
+<span class="n">s3_conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="s1">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span> <span class="s1">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
+<span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">s3_conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="s1">&#39;slimta-queue&#39;</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">boto.sqs</span>
-<span class="n">sqs_conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">sqs</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s">&#39;us-west-2&#39;</span><span class="p">,</span>
-        <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span>
-        <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
-<span class="n">sqs_queue</span> <span class="o">=</span> <span class="n">sqs_conn</span><span class="o">.</span><span class="n">create_queue</span><span class="p">(</span><span class="s">&#39;slimta-queue&#39;</span><span class="p">)</span>
+<span class="n">sqs_conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">sqs</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s1">&#39;us-west-2&#39;</span><span class="p">,</span>
+        <span class="n">aws_access_key_id</span><span class="o">=</span><span class="s1">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span>
+        <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="s1">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
+<span class="n">sqs_queue</span> <span class="o">=</span> <span class="n">sqs_conn</span><span class="o">.</span><span class="n">create_queue</span><span class="p">(</span><span class="s1">&#39;slimta-queue&#39;</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">slimta.cloudstorage.aws</span> <span class="kn">import</span> <span class="n">SimpleStorageService</span><span class="p">,</span> <span class="n">SimpleQueueService</span>
 <span class="n">s3</span> <span class="o">=</span> <span class="n">SimpleStorageService</span><span class="p">(</span><span class="n">s3_bucket</span><span class="p">)</span>
@@ -146,7 +146,7 @@ into a queue storage driver using <a class="reference internal" href="../api/ext
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.cloudstorage</span> <span class="kn">import</span> <span class="n">CloudStorage</span>
 
 <span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">cloud_files</span><span class="p">,</span> <span class="n">cloud_queues</span><span class="p">)</span>
-<span class="c"># or...</span>
+<span class="c1"># or...</span>
 <span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="n">sqs</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -178,7 +178,7 @@ by the same uuid string as its corresponding envelope file, but with the suffix
 <p>And to initialize a new <a class="reference internal" href="../api/extra.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><code class="xref py py-class docutils literal"><span class="pre">DiskStorage</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.diskstorage</span> <span class="kn">import</span> <span class="n">DiskStorage</span>
 
-<span class="n">queue_dir</span> <span class="o">=</span> <span class="s">&#39;/var/spool/slimta/queue&#39;</span>
+<span class="n">queue_dir</span> <span class="o">=</span> <span class="s1">&#39;/var/spool/slimta/queue&#39;</span>
 <span class="n">queue</span> <span class="o">=</span> <span class="n">DiskStorage</span><span class="p">(</span><span class="n">queue_dir</span><span class="p">,</span> <span class="n">queue_dir</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -217,7 +217,7 @@ redis 127.0.0.1:6379&gt;
 <p>And to initialize a new <a class="reference internal" href="../api/extra.redisstorage.html#slimta.redisstorage.RedisStorage" title="slimta.redisstorage.RedisStorage"><code class="xref py py-class docutils literal"><span class="pre">RedisStorage</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.redisstorage</span> <span class="kn">import</span> <span class="n">RedisStorage</span>
 
-<span class="n">store</span> <span class="o">=</span> <span class="n">RedisStorage</span><span class="p">(</span><span class="s">&#39;redis.example.com&#39;</span><span class="p">)</span>
+<span class="n">store</span> <span class="o">=</span> <span class="n">RedisStorage</span><span class="p">(</span><span class="s1">&#39;redis.example.com&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -255,8 +255,8 @@ act as the <em>queue</em>, and the task workers act as the <em>relay</em>.</p>
 <p>In a new file (I called mine <code class="docutils literal"><span class="pre">mytasks.py</span></code>), set up your <code class="docutils literal"><span class="pre">celery</span></code> object:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
 
-<span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s">&#39;mytasks&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s">&#39;redis://localhost/0&#39;</span><span class="p">,</span>
-                           <span class="n">backend</span><span class="o">=</span><span class="s">&#39;redis://localhost/0&#39;</span><span class="p">)</span>
+<span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;mytasks&#39;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;redis://localhost/0&#39;</span><span class="p">,</span>
+                           <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;redis://localhost/0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We&#8217;ll also set up our <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a> object now:</p>
@@ -285,7 +285,7 @@ from this file, add your policies, and create your <a class="reference internal"
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddReceivedHeader</span><span class="p">())</span>
 
-<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -323,8 +323,8 @@ want to act upon. These results are:</p>
 </ul>
 <p>So we create our rules:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">spf</span> <span class="o">=</span> <span class="n">EnforceSpf</span><span class="p">()</span>
-<span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s">&#39;fail&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s">&#39;5.7.1 Access denied: {reason}&#39;</span><span class="p">)</span>
-<span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s">&#39;softfail&#39;</span><span class="p">,</span> <span class="n">match_code</span><span class="o">=</span><span class="s">&#39;250&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s">&#39;2.0.0 Ok; {reason}&#39;</span><span class="p">)</span>
+<span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s1">&#39;fail&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s1">&#39;5.7.1 Access denied: {reason}&#39;</span><span class="p">)</span>
+<span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s1">&#39;softfail&#39;</span><span class="p">,</span> <span class="n">match_code</span><span class="o">=</span><span class="s1">&#39;250&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s1">&#39;2.0.0 Ok; {reason}&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And then in our <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal"><span class="pre">SmtpValidators</span></code></a> class, use the

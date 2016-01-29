@@ -95,7 +95,7 @@ persistently queued and may overwrite the original <a class="reference internal"
 many new <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal"><span class="pre">Envelope</span></code></a> objects.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyQueuePolicy</span><span class="p">(</span><span class="n">QueuePolicy</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
-        <span class="n">env</span><span class="p">[</span><span class="s">&#39;X-When-Queued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+        <span class="n">env</span><span class="p">[</span><span class="s1">&#39;X-When-Queued&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
 
 <span class="n">my_queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">MyQueuePolicy</span><span class="p">())</span>
 </pre></div>
@@ -133,7 +133,7 @@ Returning <code class="docutils literal"><span class="pre">None</span></code> or
 attempt is made.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyRelayPolicy</span><span class="p">(</span><span class="n">RelayPolicy</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
-        <span class="n">env</span><span class="p">[</span><span class="s">&#39;X-When-Delivered&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+        <span class="n">env</span><span class="p">[</span><span class="s1">&#39;X-When-Delivered&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
 
 <span class="n">my_relay</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">MyRelayPolicy</span><span class="p">())</span>
 </pre></div>

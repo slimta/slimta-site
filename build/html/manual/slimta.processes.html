@@ -69,10 +69,10 @@
   <div class="section" id="configuring-the-processes">
 <h1>Configuring the Processes<a class="headerlink" href="#configuring-the-processes" title="Permalink to this headline">¶</a></h1>
 <p>The first section in <code class="docutils literal"><span class="pre">slimta.conf</span></code> is <code class="docutils literal"><span class="pre">process</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">process</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">slimta</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">daemon</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
-    <span class="l-Scalar-Plain">logging</span><span class="p-Indicator">:</span> <span class="kt">!include</span> <span class="l-Scalar-Plain">logging.yaml</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l l-Scalar l-Scalar-Plain">process</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">slimta</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">daemon</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">logging</span><span class="p p-Indicator">:</span> <span class="kt">!include</span> <span class="l l-Scalar l-Scalar-Plain">logging.yaml</span>
 </pre></div>
 </div>
 <p>It has a single sub-section, <code class="docutils literal"><span class="pre">slimta</span></code>, which manage settings for the
@@ -118,37 +118,37 @@ is compatible with the <a class="reference external" href="http://docs.python.or
 <a class="reference external" href="https://github.com/slimta/slimta/blob/master/etc/logging.conf.sample">logging.conf</a> sample config has a good starting point.</p>
 <p>A more advanced, logging config that produces log files ready for rotation in a
 readable and parseable format might look like this:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">version</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 
-<span class="l-Scalar-Plain">formatters</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">console</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="s">&#39;%(levelname)-8s</span><span class="nv"> </span><span class="s">%(name)-15s</span><span class="nv"> </span><span class="s">%(message)s&#39;</span>
-  <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="s">&#39;%(asctime)s</span><span class="nv"> </span><span class="s">%(levelname)s</span><span class="nv"> </span><span class="s">%(name)s</span><span class="nv"> </span><span class="s">%(message)s&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">formatters</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">console</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="s">&#39;%(levelname)-8s</span><span class="nv"> </span><span class="s">%(name)-15s</span><span class="nv"> </span><span class="s">%(message)s&#39;</span>
+  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="s">&#39;%(asctime)s</span><span class="nv"> </span><span class="s">%(levelname)s</span><span class="nv"> </span><span class="s">%(name)s</span><span class="nv"> </span><span class="s">%(message)s&#39;</span>
 
-<span class="l-Scalar-Plain">handlers</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">console</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">logging.StreamHandler</span>
-    <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DEBUG</span>
-    <span class="l-Scalar-Plain">formatter</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">console</span>
-    <span class="l-Scalar-Plain">stream</span><span class="p-Indicator">:</span> <span class="kt">!!python/name:sys.stdout</span>
-  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">logging.handlers.WatchedFileHandler</span>
-    <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DEBUG</span>
-    <span class="l-Scalar-Plain">formatter</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">default</span>
-    <span class="l-Scalar-Plain">filename</span><span class="p-Indicator">:</span> <span class="s">&#39;/var/log/slimta/slimta.log&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">handlers</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">console</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">logging.StreamHandler</span>
+    <span class="l l-Scalar l-Scalar-Plain">level</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+    <span class="l l-Scalar l-Scalar-Plain">formatter</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">console</span>
+    <span class="l l-Scalar l-Scalar-Plain">stream</span><span class="p p-Indicator">:</span> <span class="kt">!!python/name:sys.stdout</span>
+  <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">logging.handlers.WatchedFileHandler</span>
+    <span class="l l-Scalar l-Scalar-Plain">level</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+    <span class="l l-Scalar l-Scalar-Plain">formatter</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+    <span class="l l-Scalar l-Scalar-Plain">filename</span><span class="p p-Indicator">:</span> <span class="s">&#39;/var/log/slimta/slimta.log&#39;</span>
 
-<span class="l-Scalar-Plain">loggers</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">celery</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">WARNING</span>
-    <span class="l-Scalar-Plain">propagate</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
-  <span class="l-Scalar-Plain">slimta</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DEBUG</span>
-    <span class="l-Scalar-Plain">propagate</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">loggers</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">celery</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">level</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">WARNING</span>
+    <span class="l l-Scalar l-Scalar-Plain">propagate</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">slimta</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">level</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+    <span class="l l-Scalar l-Scalar-Plain">propagate</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="l-Scalar-Plain">root</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DEBUG</span>
-  <span class="l-Scalar-Plain">handlers</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">file</span><span class="p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">root</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">level</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+  <span class="l l-Scalar l-Scalar-Plain">handlers</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">file</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 </div>

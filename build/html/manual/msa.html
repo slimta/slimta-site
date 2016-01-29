@@ -74,7 +74,7 @@
 on <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a> and <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a> depends on <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">Relay</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.smtp.mx</span> <span class="kn">import</span> <span class="n">MxSmtpRelay</span>
 
-<span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s">&#39;certfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
+<span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;certfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">(</span><span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">,</span> <span class="n">connect_timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">command_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                                   <span class="n">data_timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">idle_timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </pre></div>
@@ -93,8 +93,8 @@ in <a class="reference external" href="http://docs.python.org/library/stdtypes.h
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">shelve</span>
 <span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="kn">import</span> <span class="n">DictStorage</span>
 
-<span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;envelope.db&#39;</span><span class="p">)</span>
-<span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;meta.db&#39;</span><span class="p">)</span>
+<span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;envelope.db&#39;</span><span class="p">)</span>
+<span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;meta.db&#39;</span><span class="p">)</span>
 <span class="n">storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">(</span><span class="n">env_db</span><span class="p">,</span> <span class="n">meta_db</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -147,8 +147,8 @@ RFC-specified port 587 and the deprecated SSL-only port 465.</p>
 are received or from whom:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
 
-<span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s">&#39;certfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
-<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
+<span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;certfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -160,16 +160,16 @@ should add some sort of authentication:</p>
 
 <span class="k">class</span> <span class="nc">MyAuth</span><span class="p">(</span><span class="n">Auth</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">verify_secret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">identity</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">username</span> <span class="o">!=</span> <span class="s">&#39;testuser&#39;</span> <span class="ow">or</span> <span class="n">password</span> <span class="o">!=</span> <span class="s">&#39;testpassword&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">username</span> <span class="o">!=</span> <span class="s1">&#39;testuser&#39;</span> <span class="ow">or</span> <span class="n">password</span> <span class="o">!=</span> <span class="s1">&#39;testpassword&#39;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">CredentialsInvalidError</span><span class="p">()</span>
-        <span class="k">return</span> <span class="s">&#39;testuser&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;testuser&#39;</span>
     <span class="k">def</span> <span class="nf">get_secret</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">identity</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">username</span> <span class="o">==</span> <span class="s">&#39;testuser&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&#39;testpassword&#39;</span><span class="p">,</span> <span class="s">&#39;testuser&#39;</span>
+        <span class="k">if</span> <span class="n">username</span> <span class="o">==</span> <span class="s1">&#39;testuser&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;testpassword&#39;</span><span class="p">,</span> <span class="s1">&#39;testuser&#39;</span>
         <span class="k">raise</span> <span class="n">CredentialsInvalidError</span><span class="p">()</span>
 
-<span class="c"># Your edge creation line would now look like...</span>
-<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">auth_class</span><span class="o">=</span><span class="n">MyAuth</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
+<span class="c1"># Your edge creation line would now look like...</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">auth_class</span><span class="o">=</span><span class="n">MyAuth</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -181,12 +181,12 @@ sending messages if they haven&#8217;t authenticated. For that, we need to add a
 <span class="k">class</span> <span class="nc">MyValidators</span><span class="p">(</span><span class="n">SmtpValidators</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">handle_mail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">sender</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">auth_result</span><span class="p">:</span>
-            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s">&#39;550&#39;</span>
-            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;5.7.1 &lt;{0}&gt; Not authenticated&#39;</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;550&#39;</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;5.7.1 &lt;{0}&gt; Not authenticated&#39;</span>
             <span class="k">return</span>
 
-<span class="c"># Your edge creation line would now look like...</span>
-<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">,</span>
+<span class="c1"># Your edge creation line would now look like...</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">587</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">,</span>
                 <span class="n">validator_class</span><span class="o">=</span><span class="n">MyValidators</span><span class="p">,</span> <span class="n">auth_class</span><span class="o">=</span><span class="n">MyAuth</span><span class="p">)</span>
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
@@ -198,7 +198,7 @@ cannot send mail.</p>
 <p>Configuring port 465 for SSL-only traffic looks very similar, with one extra
 keyword argument. Don&#8217;t worry, two <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a> services may be configured and run
 simultaneously:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">ssl_edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">465</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls_tls_args</span><span class="p">,</span> <span class="n">tls_immediately</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ssl_edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">465</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls_tls_args</span><span class="p">,</span> <span class="n">tls_immediately</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                     <span class="n">validator_class</span><span class="o">=</span><span class="n">MyValidators</span><span class="p">,</span> <span class="n">auth_class</span><span class="o">=</span><span class="n">MyAuth</span><span class="p">)</span>
 <span class="n">ssl_edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
@@ -213,8 +213,8 @@ Their usage is relatively simple:</p>
 <span class="kn">from</span> <span class="nn">slimta</span> <span class="kn">import</span> <span class="n">system</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">system</span><span class="o">.</span><span class="n">drop_privileges</span><span class="p">(</span><span class="s">&#39;smtp-user&#39;</span><span class="p">,</span> <span class="s">&#39;smtp-user&#39;</span><span class="p">)</span>
-<span class="n">system</span><span class="o">.</span><span class="n">redirect_stdio</span><span class="p">()</span>  <span class="c"># Redirects all streams to /dev/null by default.</span>
+<span class="n">system</span><span class="o">.</span><span class="n">drop_privileges</span><span class="p">(</span><span class="s1">&#39;smtp-user&#39;</span><span class="p">,</span> <span class="s1">&#39;smtp-user&#39;</span><span class="p">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">redirect_stdio</span><span class="p">()</span>  <span class="c1"># Redirects all streams to /dev/null by default.</span>
 <span class="n">system</span><span class="o">.</span><span class="n">daemonize</span><span class="p">()</span>
 </pre></div>
 </div>

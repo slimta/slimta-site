@@ -294,7 +294,7 @@ the options object (that contains the <code class="docutils literal"><span class
 keys as well as any others as necessary) and the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a> object that the edge
 should delivery received messages to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">edge_factory</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">queue</span><span class="p">):</span>
-    <span class="k">if</span> <span class="s">&#39;foo&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;foo&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">FooEdge</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">stuff</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BarEdge</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">baz</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>

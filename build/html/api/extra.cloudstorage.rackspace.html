@@ -78,8 +78,8 @@ to <em>Cloud Files</em>. Upon success, a reference to the message is injected in
 <p>The <em>Cloud Queues</em> service is only necessary for alerting separate <em>slimta</em>
 processes that a new message has been queued. If reception and relaying are
 happening in the same process, <em>Cloud Queues</em> is unnecessary.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">auth</span> <span class="o">=</span> <span class="n">RackspaceCloudAuth</span><span class="p">({</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;slimta&#39;</span><span class="p">,</span> <span class="s">&#39;api_key&#39;</span><span class="p">:</span> <span class="s">&#39;xxxxxx&#39;</span><span class="p">},</span>
-                          <span class="n">region</span><span class="o">=</span><span class="s">&#39;IAD&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">auth</span> <span class="o">=</span> <span class="n">RackspaceCloudAuth</span><span class="p">({</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;slimta&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">:</span> <span class="s1">&#39;xxxxxx&#39;</span><span class="p">},</span>
+                          <span class="n">region</span><span class="o">=</span><span class="s1">&#39;IAD&#39;</span><span class="p">)</span>
 <span class="n">cloud_files</span> <span class="o">=</span> <span class="n">RackspaceCloudFiles</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
 <span class="n">cloud_queues</span> <span class="o">=</span> <span class="n">RackspaceCloudQueues</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
 

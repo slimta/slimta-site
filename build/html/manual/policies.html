@@ -136,7 +136,7 @@ lookup might, this is implemented as a queue policy, given by the
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.policy.forward</span> <span class="kn">import</span> <span class="n">Forward</span>
 
 <span class="n">fwd</span> <span class="o">=</span> <span class="n">Forward</span><span class="p">()</span>
-<span class="n">fwd</span><span class="o">.</span><span class="n">add_mapping</span><span class="p">(</span><span class="s">r&#39;(ian|icg)@example.com&#39;</span><span class="p">,</span> <span class="s">&#39;admin@example.com&#39;</span><span class="p">)</span>
+<span class="n">fwd</span><span class="o">.</span><span class="n">add_mapping</span><span class="p">(</span><span class="s1">r&#39;(ian|icg)@example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;admin@example.com&#39;</span><span class="p">)</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">fwd</span><span class="p">)</span>
 </pre></div>
 </div>

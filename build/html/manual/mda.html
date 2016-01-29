@@ -76,7 +76,7 @@ on <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Que
 substitute one of the other classes in <a class="reference internal" href="../api/slimta.relay.html#module-slimta.relay" title="slimta.relay"><code class="xref py py-mod docutils literal"><span class="pre">slimta.relay</span></code></a>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.relay.pipe</span> <span class="kn">import</span> <span class="n">DovecotLdaRelay</span>
 
-<span class="n">relay</span> <span class="o">=</span> <span class="n">DovecotLdaRelay</span><span class="p">(</span><span class="s">&#39;/usr/lib/dovecot/dovecot-lda&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+<span class="n">relay</span> <span class="o">=</span> <span class="n">DovecotLdaRelay</span><span class="p">(</span><span class="s1">&#39;/usr/lib/dovecot/dovecot-lda&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The result is a variable <code class="docutils literal"><span class="pre">relay</span></code> that can be passed in to the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code></a>
@@ -93,8 +93,8 @@ in <a class="reference external" href="http://docs.python.org/library/stdtypes.h
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">shelve</span>
 <span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="kn">import</span> <span class="n">DictStorage</span>
 
-<span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;envelope.db&#39;</span><span class="p">)</span>
-<span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;meta.db&#39;</span><span class="p">)</span>
+<span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;envelope.db&#39;</span><span class="p">)</span>
+<span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;meta.db&#39;</span><span class="p">)</span>
 <span class="n">storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">(</span><span class="n">env_db</span><span class="p">,</span> <span class="n">meta_db</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -146,8 +146,8 @@ RFC-specified port 25.</p>
 are received or from whom:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
 
-<span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s">&#39;certfile&#39;</span><span class="p">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
-<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
+<span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;certfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -161,18 +161,18 @@ the <code class="docutils literal"><span class="pre">RCPT</span> <span class="pr
 <span class="k">class</span> <span class="nc">MyValidators</span><span class="p">(</span><span class="n">SmtpValidators</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">handle_rcpt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">recipient</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">localpart</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">recipient</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s">&#39;@&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">localpart</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">recipient</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s">&#39;550&#39;</span>
-            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;5.7.1 &lt;{0}&gt; Not a valid address&#39;</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;550&#39;</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;5.7.1 &lt;{0}&gt; Not a valid address&#39;</span>
             <span class="k">return</span>
-        <span class="k">if</span> <span class="n">domain</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&#39;slimta.org&#39;</span><span class="p">:</span>
-            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s">&#39;550&#39;</span>
-            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s">&#39;5.7.1 &lt;{0}&gt; Not authenticated&#39;</span>
+        <span class="k">if</span> <span class="n">domain</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;slimta.org&#39;</span><span class="p">:</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;550&#39;</span>
+            <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;5.7.1 &lt;{0}&gt; Not authenticated&#39;</span>
             <span class="k">return</span>
 
-<span class="c"># Your edge creation line would now look like...</span>
-<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">,</span> <span class="n">validator_class</span><span class="o">=</span><span class="n">MyValidators</span><span class="p">)</span>
+<span class="c1"># Your edge creation line would now look like...</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">,</span> <span class="n">validator_class</span><span class="o">=</span><span class="n">MyValidators</span><span class="p">)</span>
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -188,8 +188,8 @@ Their usage is relatively simple:</p>
 <span class="kn">from</span> <span class="nn">slimta</span> <span class="kn">import</span> <span class="n">system</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">system</span><span class="o">.</span><span class="n">drop_privileges</span><span class="p">(</span><span class="s">&#39;smtp-user&#39;</span><span class="p">,</span> <span class="s">&#39;smtp-user&#39;</span><span class="p">)</span>
-<span class="n">system</span><span class="o">.</span><span class="n">redirect_stdio</span><span class="p">()</span>  <span class="c"># Redirects all streams to /dev/null by default.</span>
+<span class="n">system</span><span class="o">.</span><span class="n">drop_privileges</span><span class="p">(</span><span class="s1">&#39;smtp-user&#39;</span><span class="p">,</span> <span class="s1">&#39;smtp-user&#39;</span><span class="p">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">redirect_stdio</span><span class="p">()</span>  <span class="c1"># Redirects all streams to /dev/null by default.</span>
 <span class="n">system</span><span class="o">.</span><span class="n">daemonize</span><span class="p">()</span>
 </pre></div>
 </div>

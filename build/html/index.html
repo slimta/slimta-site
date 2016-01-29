@@ -106,22 +106,22 @@ their efforts! See the <em>Change Log</em> for details.</p>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 
-<span class="c"># Set up outbound delivery by MX lookup.</span>
+<span class="c1"># Set up outbound delivery by MX lookup.</span>
 <span class="n">relay</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">()</span>
 
-<span class="c"># Set up local queue storage to in-memory dictionaries.</span>
+<span class="c1"># Set up local queue storage to in-memory dictionaries.</span>
 <span class="n">queue_storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">({},</span> <span class="p">{})</span>
 <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">(</span><span class="n">queue_storage</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="c"># Ensure necessary headers are added.</span>
+<span class="c1"># Ensure necessary headers are added.</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddDateHeader</span><span class="p">())</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddReceivedHeader</span><span class="p">())</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">RecipientDomainSplit</span><span class="p">())</span>
 
-<span class="c"># Listen for messages on port 25.</span>
-<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
+<span class="c1"># Listen for messages on port 25.</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
 <span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">edge</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -142,39 +142,39 @@ the useful, built-in features needed for a normal mail system setup.</p>
 <li><a class="reference external" href="https://github.com/slimta/slimta/issues">Bug Reports</a></li>
 <li><a class="reference internal" href="manual/slimta.html"><em>Configuration and Setup Guide</em></a></li>
 </ol>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">process</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">slimta</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">daemon</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l l-Scalar l-Scalar-Plain">process</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">slimta</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">daemon</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 
-<span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">main</span><span class="p-Indicator">:</span> <span class="nl">&amp;tls_main</span>
-    <span class="l-Scalar-Plain">certfile</span><span class="p-Indicator">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span>
-    <span class="l-Scalar-Plain">keyfile</span><span class="p-Indicator">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">tls</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">main</span><span class="p p-Indicator">:</span> <span class="nl">&amp;tls_main</span>
+    <span class="l l-Scalar l-Scalar-Plain">certfile</span><span class="p p-Indicator">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">keyfile</span><span class="p p-Indicator">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span>
 
-<span class="l-Scalar-Plain">edge</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">outbound</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">smtp</span>
-    <span class="l-Scalar-Plain">queue</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">outbound</span>
-    <span class="l-Scalar-Plain">listener</span><span class="p-Indicator">:</span>
-      <span class="l-Scalar-Plain">interface</span><span class="p-Indicator">:</span> <span class="s">&#39;127.0.0.1&#39;</span>
-      <span class="l-Scalar-Plain">port</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">587</span>
-    <span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span> <span class="nv">*tls_main</span>
-    <span class="l-Scalar-Plain">rules</span><span class="p-Indicator">:</span> <span class="kt">!include</span> <span class="l-Scalar-Plain">rules.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">edge</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">outbound</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">smtp</span>
+    <span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">outbound</span>
+    <span class="l l-Scalar l-Scalar-Plain">listener</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="s">&#39;127.0.0.1&#39;</span>
+      <span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">587</span>
+    <span class="l l-Scalar l-Scalar-Plain">tls</span><span class="p p-Indicator">:</span> <span class="nv">*tls_main</span>
+    <span class="l l-Scalar l-Scalar-Plain">rules</span><span class="p p-Indicator">:</span> <span class="kt">!include</span> <span class="l l-Scalar l-Scalar-Plain">rules.yaml</span>
 
-<span class="l-Scalar-Plain">queue</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">outbound</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">memory</span>
-    <span class="l-Scalar-Plain">relay</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">outbound</span>
-    <span class="l-Scalar-Plain">policies</span><span class="p-Indicator">:</span>
-      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">add_date_header</span> <span class="p-Indicator">}</span>
-      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">add_messageid_header</span> <span class="p-Indicator">}</span>
-      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">add_received_header</span> <span class="p-Indicator">}</span>
-      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">type</span><span class="p-Indicator">:</span> <span class="nv">recipient_domain_split</span> <span class="p-Indicator">}</span>
+<span class="l l-Scalar l-Scalar-Plain">queue</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">outbound</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">memory</span>
+    <span class="l l-Scalar l-Scalar-Plain">relay</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">outbound</span>
+    <span class="l l-Scalar l-Scalar-Plain">policies</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span> <span class="nv">type</span><span class="p p-Indicator">:</span> <span class="nv">add_date_header</span> <span class="p p-Indicator">}</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span> <span class="nv">type</span><span class="p p-Indicator">:</span> <span class="nv">add_messageid_header</span> <span class="p p-Indicator">}</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span> <span class="nv">type</span><span class="p p-Indicator">:</span> <span class="nv">add_received_header</span> <span class="p p-Indicator">}</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span> <span class="nv">type</span><span class="p p-Indicator">:</span> <span class="nv">recipient_domain_split</span> <span class="p p-Indicator">}</span>
 
-<span class="l-Scalar-Plain">relay</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">outbound</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">mx</span>
-    <span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span> <span class="nv">*tls_main</span>
+<span class="l l-Scalar l-Scalar-Plain">relay</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">outbound</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">mx</span>
+    <span class="l l-Scalar l-Scalar-Plain">tls</span><span class="p p-Indicator">:</span> <span class="nv">*tls_main</span>
 </pre></div>
 </div>
 </div>
