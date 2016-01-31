@@ -133,6 +133,23 @@ separated by spaces.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="slimta.smtp.reply.Reply.__bytes__">
+<code class="descname">__bytes__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.__bytes__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the reply into a single bytestring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The code, <a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string, and the message,
+separated by spaces.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">bytes</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="slimta.smtp.reply.Reply.__bool__">
 <code class="descname">__bool__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.reply.Reply.__bool__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Defines the truth-testing operation for <a class="reference internal" href="#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> objects. This will
@@ -227,6 +244,21 @@ the code begins with a <code class="docutils literal"><span class="pre">4</span>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.smtp.reply.Reply.code">
+<code class="descname">code</code><a class="headerlink" href="#slimta.smtp.reply.Reply.code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds the reply code, which can only be set to a string containing
+three digits.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.smtp.reply.Reply.message">
+<code class="descname">message</code><a class="headerlink" href="#slimta.smtp.reply.Reply.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets and sets the reply message. If you set this property with an
+<a class="reference external" href="http://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string prefixed, that string will be pulled out
+and set in the <code class="docutils literal"><span class="pre">enhanced_status_code</span></code>.</p>
 </dd></dl>
 
 <dl class="attribute">

@@ -110,6 +110,12 @@ message headers.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="slimta.envelope.Envelope.message">
+<code class="descname">message</code><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>String of message data, not including headers.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="slimta.envelope.Envelope.client">
 <code class="descname">client</code><em class="property"> = None</em><a class="headerlink" href="#slimta.envelope.Envelope.client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary of information about the client that sent the message.
@@ -222,7 +228,7 @@ encode MIME parts that are not 7-bit.</td>
 <dt id="slimta.envelope.Envelope.parse_msg">
 <code class="descname">parse_msg</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.parse_msg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses the given <a class="reference external" href="http://docs.python.org/library/email.message.html#email.message.Message" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">Message</span></code></a> to
-populate the <a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><code class="xref py py-attr docutils literal"><span class="pre">headers</span></code></a> and <code class="xref py py-attr docutils literal"><span class="pre">message</span></code> attributes.</p>
+populate the <a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><code class="xref py py-attr docutils literal"><span class="pre">headers</span></code></a> and <a class="reference internal" href="#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><code class="xref py py-attr docutils literal"><span class="pre">message</span></code></a> attributes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -237,7 +243,7 @@ populate the <a class="reference internal" href="#slimta.envelope.Envelope.heade
 <dt id="slimta.envelope.Envelope.parse">
 <code class="descname">parse</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parses the given string to populate the <a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><code class="xref py py-attr docutils literal"><span class="pre">headers</span></code></a> and
-<code class="xref py py-attr docutils literal"><span class="pre">message</span></code> attributes.</p>
+<a class="reference internal" href="#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><code class="xref py py-attr docutils literal"><span class="pre">message</span></code></a> attributes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
