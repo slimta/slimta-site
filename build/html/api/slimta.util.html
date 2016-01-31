@@ -68,6 +68,35 @@
             
   <div class="section" id="module-slimta.util">
 <span id="slimta-util"></span><h1>slimta.util<a class="headerlink" href="#module-slimta.util" title="Permalink to this headline">¶</a></h1>
+<p>Package containing a variety of useful modules utilities that didn&#8217;t really
+belong anywhere else.</p>
+<dl class="function">
+<dt id="slimta.util.validate_tls">
+<code class="descclassname">slimta.util.</code><code class="descname">validate_tls</code><span class="sig-paren">(</span><em>tls</em><span class="optional">[</span>, <em>**overrides</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.validate_tls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a dictionary that could be used as keyword arguments to
+<code class="xref py py-class docutils literal"><span class="pre">ssl.wrap_socket</span></code>, checks the existence of any certificate files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tls</strong> (<a class="reference internal" href="extra.lookup.html#module-slimta.lookup.drivers.dict" title="slimta.lookup.drivers.dict"><em>dict</em></a>) &#8211; Dictionary of TLS settings as might be passed in to an <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal"><span class="pre">Edge</span></code></a>
+constructor.</li>
+<li><strong>overrides</strong> (<em>keyword arguments</em>) &#8211; May be used to override any of the elements of the
+<code class="docutils literal"><span class="pre">tls</span></code> dictionary.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The new, validated <code class="docutils literal"><span class="pre">tls</span></code> dictionary.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">OSError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <hr class="docutils" />
 <p><strong>Sub-Modules:</strong></p>
 <div class="toctree-wrapper compound">

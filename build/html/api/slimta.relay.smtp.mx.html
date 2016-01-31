@@ -77,7 +77,7 @@ for the domain MX email routing records. If multiple records exist, the pick is
 made by using the number of delivery attempts to cycle through the options.</p>
 <dl class="class">
 <dt id="slimta.relay.smtp.mx.MxSmtpRelay">
-<em class="property">class </em><code class="descclassname">slimta.relay.smtp.mx.</code><code class="descname">MxSmtpRelay</code><span class="sig-paren">(</span><span class="optional">[</span><em>**client_kwargs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.mx.MxSmtpRelay" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.relay.smtp.mx.</code><code class="descname">MxSmtpRelay</code><span class="sig-paren">(</span><span class="optional">[</span><em>tls=None</em><span class="optional">[</span>, <em>**client_kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.mx.MxSmtpRelay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal"><span class="pre">slimta.relay.Relay</span></code></a></p>
 <p>Delivers messages based on the MX records of their recipients. Keeps an
 expiring cache of resolved MX records to prevent DNS overuse, and uses a
