@@ -240,7 +240,7 @@ information. Logged at the <code class="docutils literal"><span class="pre">DEBU
 <dt id="slimta.logging.socket.SocketLogger.proxyproto_invalid">
 <code class="descname">proxyproto_invalid</code><span class="sig-paren">(</span><em>socket</em>, <em>exc</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.proxyproto_invalid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Logs an invalid proxy protocol header, with an exception provided by
-the <code class="xref py py-class docutils literal"><span class="pre">ProxyProtocol</span></code> class. Logged at the
+the <a class="reference internal" href="slimta.util.proxyproto.html#slimta.util.proxyproto.ProxyProtocol" title="slimta.util.proxyproto.ProxyProtocol"><code class="xref py py-class docutils literal"><span class="pre">ProxyProtocol</span></code></a> class. Logged at the
 <code class="docutils literal"><span class="pre">WARNING</span></code> level.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -254,6 +254,13 @@ the <code class="xref py py-class docutils literal"><span class="pre">ProxyProto
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.socket.SocketLogger.proxyproto_local">
+<code class="descname">proxyproto_local</code><span class="sig-paren">(</span><em>sock</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.proxyproto_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a successful proxy protocol header that indicates a &#8220;local&#8221;
+connection from the proxy itself, to perform a health check.</p>
 </dd></dl>
 
 </dd></dl>
