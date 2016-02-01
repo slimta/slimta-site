@@ -74,19 +74,19 @@ the <code class="xref py py-func docutils literal"><span class="pre">str.format(
 should work in all supported versions.</p>
 <p>This class does the heavy lifting (a <a class="reference external" href="http://docs.python.org/library/re.html#re.finditer" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">re.finditer()</span></code></a> loop) during
 construction, so it is optimal to instantiate it once and then re-use
-<code class="xref py py-meth docutils literal"><span class="pre">format()</span></code>.</p>
+<a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal"><span class="pre">format()</span></code></a>.</p>
 <dl class="class">
 <dt id="slimta.util.bytesformat.BytesFormat">
 <em class="property">class </em><code class="descclassname">slimta.util.bytesformat.</code><code class="descname">BytesFormat</code><span class="sig-paren">(</span><em>template</em><span class="optional">[</span>, <em>mode='ignore'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>Wraps a bytestring in a class with a <code class="xref py py-meth docutils literal"><span class="pre">format()</span></code> method similar to
+<p>Wraps a bytestring in a class with a <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal"><span class="pre">format()</span></code></a> method similar to
 <code class="xref py py-func docutils literal"><span class="pre">str.format()</span></code>.</p>
 <p>During construction, the template string is scanned for matching <code class="docutils literal"><span class="pre">{...}</span></code>
 pairs that contain only characters that match the <code class="docutils literal"><span class="pre">\w</span></code> regular
-expression.  In the <code class="xref py py-meth docutils literal"><span class="pre">format()</span></code> method, these <code class="docutils literal"><span class="pre">{...}</span></code> are replaced
+expression.  In the <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal"><span class="pre">format()</span></code></a> method, these <code class="docutils literal"><span class="pre">{...}</span></code> are replaced
 with a matching argument&#8217;s value, if an argument matches, or the action
 specified by <code class="docutils literal"><span class="pre">mode</span></code> happens when it does not match</p>
-<p>To match <code class="xref py py-meth docutils literal"><span class="pre">format()</span></code> arguments, you may use a positional argument&#8217;s
+<p>To match <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal"><span class="pre">format()</span></code></a> arguments, you may use a positional argument&#8217;s
 number (e.g.  <code class="docutils literal"><span class="pre">{0}</span></code>) or a keyword argument&#8217;s key (e.g. <code class="docutils literal"><span class="pre">{recipient}</span></code>).
 Additional formatting options are not supported.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -96,7 +96,7 @@ Additional formatting options are not supported.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>template</strong> (<code class="xref py py-obj docutils literal"><span class="pre">bytes</span></code>) &#8211; The template bytestring.</li>
 <li><strong>mode</strong> &#8211; If <code class="docutils literal"><span class="pre">'ignore'</span></code>, any <code class="docutils literal"><span class="pre">{...}</span></code> that does not match a
-<code class="xref py py-meth docutils literal"><span class="pre">format()</span></code> argument is left in place as-is. If
+<a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal"><span class="pre">format()</span></code></a> argument is left in place as-is. If
 <code class="docutils literal"><span class="pre">'remove'</span></code>, these <code class="docutils literal"><span class="pre">{...}</span></code> are replaced with an empty
 string. If <code class="docutils literal"><span class="pre">'strict'</span></code>, these <code class="docutils literal"><span class="pre">{...}</span></code> will cause
 <code class="xref py py-class docutils literal"><span class="pre">KeyError</span></code> or <code class="xref py py-class docutils literal"><span class="pre">IndexError</span></code> exceptions.</li>
@@ -105,6 +105,22 @@ string. If <code class="docutils literal"><span class="pre">'strict'</span></cod
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="slimta.util.bytesformat.BytesFormat.format">
+<code class="descname">format</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitutes in the given positional and keyword arguments into the
+original template string, replacing occurrences of <code class="docutils literal"><span class="pre">{...}</span></code> with the
+correct argument&#8217;s value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal"><span class="pre">bytes</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
