@@ -69,7 +69,7 @@
             
   <div class="section" id="module-slimta.util.dns">
 <span id="slimta-util-dns"></span><h1>slimta.util.dns<a class="headerlink" href="#module-slimta.util.dns" title="Permalink to this headline">¶</a></h1>
-<p>This module implements DNS resolution with <code class="xref py py-mod docutils literal"><span class="pre">pycares</span></code>.</p>
+<p>This module implements DNS resolution with <a class="reference external" href="https://pycares.readthedocs.org/en/latest/pycares.html#module-pycares" title="(in pycares v1.0.0)"><code class="xref py py-mod docutils literal"><span class="pre">pycares</span></code></a>.</p>
 <dl class="exception">
 <dt id="slimta.util.dns.DNSError">
 <em class="property">exception </em><code class="descclassname">slimta.util.dns.</code><code class="descname">DNSError</code><span class="sig-paren">(</span><em>errno</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSError" title="Permalink to this definition">¶</a></dt>
@@ -89,12 +89,12 @@ contain more information.</p>
 <em class="property">class </em><code class="descclassname">slimta.util.dns.</code><code class="descname">DNSResolver</code><a class="headerlink" href="#slimta.util.dns.DNSResolver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Manages all the active DNS queries using a single, static
-<code class="xref py py-class docutils literal"><span class="pre">pycares.Channel</span></code> object.</p>
+<a class="reference external" href="https://pycares.readthedocs.org/en/latest/channel.html#pycares.Channel" title="(in pycares v1.0.0)"><code class="xref py py-class docutils literal"><span class="pre">pycares.Channel</span></code></a> object.</p>
 <dl class="attribute">
 <dt id="slimta.util.dns.DNSResolver.channel">
 <code class="descname">channel</code><a class="headerlink" href="#slimta.util.dns.DNSResolver.channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Before making any queries, this attribute may be set to override the
-default with a <code class="xref py py-class docutils literal"><span class="pre">pycares.Channel</span></code> object that will manage all DNS
+default with a <a class="reference external" href="https://pycares.readthedocs.org/en/latest/channel.html#pycares.Channel" title="(in pycares v1.0.0)"><code class="xref py py-class docutils literal"><span class="pre">pycares.Channel</span></code></a> object that will manage all DNS
 queries.</p>
 </dd></dl>
 
@@ -110,7 +110,7 @@ returned <a class="reference external" href="http://gevent.org/gevent.event.html
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The DNS name to resolve.</li>
 <li><strong>query_type</strong> &#8211; The DNS query type, see
-<code class="xref py py-meth docutils literal"><span class="pre">pycares.Channel.query()</span></code> for options. A string
+<a class="reference external" href="https://pycares.readthedocs.org/en/latest/channel.html#pycares.Channel.query" title="(in pycares v1.0.0)"><code class="xref py py-meth docutils literal"><span class="pre">pycares.Channel.query()</span></code></a> for options. A string
 may be given instead, e.g. <code class="docutils literal"><span class="pre">'MX'</span></code>.</li>
 </ul>
 </td>
@@ -190,7 +190,7 @@ may be given instead, e.g. <code class="docutils literal"><span class="pre">'MX'
 
 
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, Ian Good.
+        &copy; Copyright 2016, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script>
