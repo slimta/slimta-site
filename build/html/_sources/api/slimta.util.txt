@@ -14,7 +14,10 @@ slimta.util
 
 .. toctree::
 
+   slimta.util.bytesformat
+   slimta.util.dns
    slimta.util.dnsbl
-   slimta.util.ptrlookup
    slimta.util.proxyproto
+   slimta.util.ptrlookup
+   slimta.util.pycompat
 
