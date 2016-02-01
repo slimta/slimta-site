@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'slimta'
-copyright = u'2014, Ian Good'
+copyright = u'2016, Ian Good'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -271,6 +271,7 @@ texinfo_documents = [
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'py': ('http://docs.python.org/', None),
                        'gevent': ('http://gevent.org/', None),
+                       'pycares': ('https://pycares.readthedocs.org/en/latest/', None),
                        'pysasl': ('http://pysasl.readthedocs.org/en/latest/', None),
                        'redis': ('http://redis-py.readthedocs.org/en/latest/', None),
                        'passlib': ('https://pythonhosted.org/passlib/', None),
