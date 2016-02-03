@@ -72,7 +72,7 @@
 <p>An SMTP client library that supports PIPELINING commands.</p>
 <dl class="class">
 <dt id="slimta.smtp.client.Client">
-<em class="property">class </em><code class="descclassname">slimta.smtp.client.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>socket</em><span class="optional">[</span>, <em>tls_wrapper=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.smtp.client.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>socket</em><span class="optional">[</span>, <em>tls_wrapper=None</em><span class="optional">[</span>, <em>address=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Class whose methods perform various SMTP commands on a given socket. The
 return value from each command is a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal"><span class="pre">Reply</span></code></a> object. Commands that are
@@ -90,6 +90,8 @@ available by the server.</p>
 dictionary, creates a new encrypted socket, performs
 the TLS handshake, and returns it. The default uses
 <code class="xref py py-class docutils literal"><span class="pre">SSLSocket</span></code>.</li>
+<li><strong>address</strong> &#8211; Remote address associated with the socket, which will
+default to a call to <code class="xref py py-func docutils literal"><span class="pre">getpeername()</span></code>.</li>
 </ul>
 </td>
 </tr>
@@ -417,7 +419,7 @@ response is received (should be 221) the socket should be closed.</p>
 
 <dl class="class">
 <dt id="slimta.smtp.client.LmtpClient">
-<em class="property">class </em><code class="descclassname">slimta.smtp.client.</code><code class="descname">LmtpClient</code><span class="sig-paren">(</span><em>socket</em><span class="optional">[</span>, <em>tls_wrapper=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.smtp.client.</code><code class="descname">LmtpClient</code><span class="sig-paren">(</span><em>socket</em><span class="optional">[</span>, <em>tls_wrapper=None</em><span class="optional">[</span>, <em>address=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.client.Client" title="slimta.smtp.client.Client"><code class="xref py py-class docutils literal"><span class="pre">slimta.smtp.client.Client</span></code></a></p>
 <p>This sub-class has been modified to implement the LMTP protocol instead.
 The first primary difference is the <a class="reference internal" href="#slimta.smtp.client.Client.ehlo" title="slimta.smtp.client.Client.ehlo"><code class="xref py py-meth docutils literal"><span class="pre">ehlo()</span></code></a> and <a class="reference internal" href="#slimta.smtp.client.Client.helo" title="slimta.smtp.client.Client.helo"><code class="xref py py-meth docutils literal"><span class="pre">helo()</span></code></a> are no
