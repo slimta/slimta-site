@@ -285,7 +285,7 @@ autodoc_docstring_signature = True
 def reformat_signatures(app, what, name, obj, options, signature,
         return_annotation):
     import inspect
-    import repr
+    import reprlib
 
     if what == 'attribute':
         return None, 'derp'
@@ -299,7 +299,7 @@ def reformat_signatures(app, what, name, obj, options, signature,
         return
     if args and args[0] == 'self':
         del args[0]
-    doc_repr = repr.Repr()
+    doc_repr = reprlib.Repr()
     doc_repr.maxstring = 40
     with_defaults = []
     without_defaults = []
