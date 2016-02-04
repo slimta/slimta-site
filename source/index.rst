@@ -18,7 +18,7 @@ technologies and methodologies to scale horizontally in a virtualized
 environment. Along with that, *slimta* is designed to work either as a
 traditional application or as a software library.
 
-.. |buildstatus| image:: http://ci.slimta.org/job/python-slimta/badge/icon
+.. |buildstatus| image:: https://ci.slimta.org/job/python-slimta/badge/icon
 
 #. :doc:`license`
 #. :doc:`manual/terminology`
