@@ -1,12 +1,11 @@
 sphinx
 cloud_sptheme
 boto
--e git+https://github.com/slimta/python-slimta.git#egg=python_slimta-dev
--e git+https://github.com/slimta/python-slimta-celeryqueue.git#egg=python_slimta_celeryqueue-dev
--e git+https://github.com/slimta/python-slimta-diskstorage.git#egg=python_slimta_diskstorage-dev
--e git+https://github.com/slimta/python-slimta-spf.git#egg=python_slimta_spf-dev
--e git+https://github.com/slimta/python-slimta-redisstorage.git#egg=python_slimta_redisstorage-dev
--e git+https://github.com/slimta/python-slimta-cloudstorage.git#egg=python_slimta_cloudstorage-dev
--e git+https://github.com/slimta/python-slimta-lookup.git#egg=python_slimta_lookup-dev
--e git+https://github.com/slimta/python-slimta-lists.git#egg=python_slimta_lists-dev
--e git+https://github.com/slimta/slimta.git#egg=slimta-dev
+git+https://github.com/slimta/python-slimta.git@3.1.0
+git+https://github.com/slimta/python-slimta-celeryqueue.git@667665db05bd8638ba8324b447c1f436ea311d14
+git+https://github.com/slimta/python-slimta-diskstorage.git@18df55402523ec1653db16e66d95df74474bbf43
+git+https://github.com/slimta/python-slimta-spf.git@f63167f1432dce50003e601d45663281d3f193c2
+git+https://github.com/slimta/python-slimta-redisstorage.git@a429e65d1ab875732a2847106d16b52232e7d166
+git+https://github.com/slimta/python-slimta-cloudstorage.git@f596eefdcac4c62500dbd0c921eada917dd58c49
+git+https://github.com/slimta/python-slimta-lookup.git@650f3c1048b91cfbbcb0b01aafba5c56ef354c3f
+git+https://github.com/slimta/slimta.git@bcd5813e3a3ecac0c1833619cd2b737e83486f35
