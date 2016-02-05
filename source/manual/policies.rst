@@ -1,8 +1,8 @@
 
 .. include:: /global.rst
 
-.. _cr.yp.to: http://cr.yp.to/immhf/envelope.html#received
-.. _SpamAssassin: http://spamassassin.apache.org/
+.. _cr.yp.to: https://cr.yp.to/immhf/envelope.html#received
+.. _SpamAssassin: https://spamassassin.apache.org/
 
 Policy Implementation
 =====================

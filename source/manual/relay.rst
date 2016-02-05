@@ -2,10 +2,10 @@
 .. include:: /global.rst
 
 .. _courier-maildrop: http://www.courier-mta.org/maildrop/
-.. _LMTP protocol: http://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol
+.. _LMTP protocol: https://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol
 .. _dovecot-lda: http://wiki.dovecot.org/LDA
 .. _pipe daemon: http://www.postfix.org/pipe.8.html
-.. _Smart-Hosting: http://en.wikipedia.org/wiki/Smart_host
+.. _Smart-Hosting: https://en.wikipedia.org/wiki/Smart_host
 
 Relay Services
 ==============

@@ -269,14 +269,14 @@ texinfo_documents = [
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'py': ('http://docs.python.org/', None),
+intersphinx_mapping = {'py': ('https://docs.python.org/', None),
                        'gevent': ('http://gevent.org/', None),
                        'pycares': ('https://pycares.readthedocs.org/en/latest/', None),
-                       'pysasl': ('http://pysasl.readthedocs.org/en/latest/', None),
-                       'redis': ('http://redis-py.readthedocs.org/en/latest/', None),
+                       'pysasl': ('https://pysasl.readthedocs.org/en/latest/', None),
+                       'redis': ('https://redis-py.readthedocs.org/en/latest/', None),
                        'passlib': ('https://pythonhosted.org/passlib/', None),
                        'celery': ('http://docs.celeryproject.org/en/latest/', None),
-                       'boto': ('http://boto.readthedocs.org/en/latest/', None)}
+                       'boto': ('https://boto.readthedocs.org/en/latest/', None)}
 
 autodoc_member_order = 'bysource'
 autodoc_docstring_signature = True

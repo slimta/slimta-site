@@ -1,7 +1,7 @@
 :orphan:
 
 .. Useful Links
-.. _slimta: http://slimta.org/
+.. _slimta: https://slimta.org/
 
 .. Useful Substitutions
 .. |slimta| replace:: `slimta`_

@@ -56,7 +56,7 @@ to control this behavior. Each sub-section shares the same possible settings:
 Logging Configuration
 """""""""""""""""""""
 
-.. _dictionary schema: http://docs.python.org/2/library/logging.config.html#configuration-dictionary-schema
+.. _dictionary schema: https://docs.python.org/2/library/logging.config.html#configuration-dictionary-schema
 .. _logging.conf: https://github.com/slimta/slimta/blob/master/etc/logging.conf.sample
 
 Because the ``logging`` sub-section is parsed into a dictionary-like object, it

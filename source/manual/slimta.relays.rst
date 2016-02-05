@@ -17,7 +17,7 @@ mapping with one required key:
 ``mx`` and ``static`` Relays
 """"""""""""""""""""""""""""
 
-.. _MSA: http://en.wikipedia.org/wiki/Mail_submission_agent
+.. _MSA: https://en.wikipedia.org/wiki/Mail_submission_agent
 
 When configuring an `MSA`_, you generally want to accept all mail from
 authorized senders for delivery to the intended target. The fundamental design
@@ -90,7 +90,7 @@ are as follows:
 ``lmtp`` Relays
 """""""""""""""
 
-.. _MDA: http://en.wikipedia.org/wiki/Mail_delivery_agent
+.. _MDA: https://en.wikipedia.org/wiki/Mail_delivery_agent
 
 This relay type is configured exactly like the ``static`` relay type, except the
 ``host`` option defaults to ``"localhost"``. This option will produce a

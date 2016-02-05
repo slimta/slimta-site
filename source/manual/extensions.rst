@@ -7,10 +7,10 @@
 .. _pyaio: https://github.com/felipecruz/pyaio
 .. _redis: http://redis.io/
 .. _redis-py: https://github.com/andymccurdy/redis-py
-.. _ESPs: http://en.wikipedia.org/wiki/E-mail_service_provider
-.. _spam-filled world: http://www.maawg.org/email_metrics_report
+.. _ESPs: https://en.wikipedia.org/wiki/E-mail_service_provider
+.. _spam-filled world: https://www.maawg.org/email_metrics_report
 .. _Celery Distributed Task Queue: http://www.celeryproject.org/
-.. _SPF: http://en.wikipedia.org/wiki/Sender_Policy_Framework
+.. _SPF: https://en.wikipedia.org/wiki/Sender_Policy_Framework
 
 Extensions
 ==========
@@ -51,8 +51,8 @@ instance::
 Cloud Storage
 """""""""""""
 
-.. _Rackspace Cloud: http://www.rackspace.com/cloud/
-.. _AWS: http://aws.amazon.com/
+.. _Rackspace Cloud: https://www.rackspace.com/cloud/
+.. _AWS: https://aws.amazon.com/
 
 This module makes available connectors to two cloud service providers,
 `Rackspace Cloud`_ and `AWS`_. |Envelope| data and queue metadata are written to
@@ -292,13 +292,13 @@ do this by creating a :class:`~slimta.spf.EnforceSpf` object and calling
 :meth:`~slimta.spf.EnforceSpf.set_enforcement` for each different results you
 want to act upon. These results are:
 
-* `none <http://tools.ietf.org/html/rfc4408#section-2.5.1>`_
-* `neutral <http://tools.ietf.org/html/rfc4408#section-2.5.2>`_
-* `pass <http://tools.ietf.org/html/rfc4408#section-2.5.3>`_
-* `fail <http://tools.ietf.org/html/rfc4408#section-2.5.4>`_
-* `softfail <http://tools.ietf.org/html/rfc4408#section-2.5.5>`_
-* `temperror <http://tools.ietf.org/html/rfc4408#section-2.5.6>`_
-* `permerror <http://tools.ietf.org/html/rfc4408#section-2.5.7>`_
+* `none <https://tools.ietf.org/html/rfc4408#section-2.5.1>`_
+* `neutral <https://tools.ietf.org/html/rfc4408#section-2.5.2>`_
+* `pass <https://tools.ietf.org/html/rfc4408#section-2.5.3>`_
+* `fail <https://tools.ietf.org/html/rfc4408#section-2.5.4>`_
+* `softfail <https://tools.ietf.org/html/rfc4408#section-2.5.5>`_
+* `temperror <https://tools.ietf.org/html/rfc4408#section-2.5.6>`_
+* `permerror <https://tools.ietf.org/html/rfc4408#section-2.5.7>`_
 
 So we create our rules::
 

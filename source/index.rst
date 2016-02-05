@@ -10,7 +10,7 @@ slimta: Mail Transfer Library
    license
    versions
 
-.. _MTA: http://en.wikipedia.org/wiki/Message_transfer_agent
+.. _MTA: https://en.wikipedia.org/wiki/Message_transfer_agent
 .. _contributors: https://github.com/slimta/python-slimta/graphs/contributors
 
 The *slimta* suite was created to provide an MTA (Mail Transfer Agent) taking advantage of new
@@ -23,7 +23,7 @@ traditional application or as a software library.
 #. :doc:`license`
 #. :doc:`manual/terminology`
 #. `Continuous Integration <https://travis-ci.org/slimta/>`_ |buildstatus|
-#. IRC Channel: `#slimta <http://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
+#. IRC Channel: `#slimta <https://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
 
 .. rst-class:: html-toggle
 

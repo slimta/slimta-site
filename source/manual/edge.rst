@@ -151,7 +151,7 @@ this, with server (edge) replies back to the client bolded:
     Subject: HTTP mail delivery
 
     Test message!
-    
+
     **HTTP/1.1 200 OK
     X-Smtp-Reply: 250; message="2.6.0 Message accepted for delivery"
     Date: Mon, 29 Jul 2013 20:11:55 GMT
@@ -168,11 +168,11 @@ Creating HTTP Edge Objects
     http = wsgi.build_server(('', 8025))
     http.start()
 
-.. _Edge Transport Server Role: http://technet.microsoft.com/en-us/library/bb124701.aspx
-.. _RFC 5321: http://tools.ietf.org/html/rfc5321
-.. _RFC 2821: http://tools.ietf.org/html/rfc2821
-.. _RFC 821: http://tools.ietf.org/html/rfc821
+.. _Edge Transport Server Role: https://technet.microsoft.com/en-us/library/bb124701.aspx
+.. _RFC 5321: https://tools.ietf.org/html/rfc5321
+.. _RFC 2821: https://tools.ietf.org/html/rfc2821
+.. _RFC 821: https://tools.ietf.org/html/rfc821
 .. _WSGI: http://www.wsgi.org/
-.. _PEP 333: http://www.python.org/dev/peps/pep-0333/
+.. _PEP 333: https://www.python.org/dev/peps/pep-0333/
 .. _PROXY protocol: http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt
 

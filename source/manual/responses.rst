@@ -1,7 +1,7 @@
 
 .. include:: /global.rst
 
-.. _ENHANCEDSTATUSCODES: http://tools.ietf.org/html/rfc2034
+.. _ENHANCEDSTATUSCODES: https://tools.ietf.org/html/rfc2034
 
 Deciphering Message Delivery Responses
 ======================================

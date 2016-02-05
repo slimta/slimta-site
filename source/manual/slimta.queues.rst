@@ -164,7 +164,7 @@ across processes. This queue type is configured with the following keys:
 ``rackspace`` Queues
 """"""""""""""""""""
 
-.. _Rackspace Cloud: http://www.rackspace.com/cloud/
+.. _Rackspace Cloud: https://www.rackspace.com/cloud/
 
 This queue type stores messages and their metadata in `Rackspace Cloud`_
 services. To do so, it needs the following information:
@@ -193,7 +193,7 @@ services. To do so, it needs the following information:
 * ``region``: String
 
   Used as the default `region
-  <http://www.rackspace.com/knowledge_center/article/about-regions>`_ when
+  <https://www.rackspace.com/knowledge_center/article/about-regions>`_ when
   processing the service catalog.
 
 * ``tls``: Dictionary
@@ -216,7 +216,7 @@ services. To do so, it needs the following information:
 ``aws`` Queues
 """"""""""""""
 
-.. _AWS: http://aws.amazon.com/
+.. _AWS: https://aws.amazon.com/
 
 This queue type stores messages and their metadata in `AWS`_ services. The
 :mod:`boto` library must be installed from *PyPI* to use this queue type. It
