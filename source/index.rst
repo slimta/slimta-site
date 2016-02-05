@@ -18,11 +18,11 @@ technologies and methodologies to scale horizontally in a virtualized
 environment. Along with that, *slimta* is designed to work either as a
 traditional application or as a software library.
 
-.. |buildstatus| image:: https://ci.slimta.org/job/python-slimta/badge/icon
+.. |buildstatus| image:: https://travis-ci.org/slimta/python-slimta.svg?branch=master
 
 #. :doc:`license`
 #. :doc:`manual/terminology`
-#. `Continuous Integration <http://ci.slimta.org/>`_ |buildstatus|
+#. `Continuous Integration <https://travis-ci.org/slimta/>`_ |buildstatus|
 #. IRC Channel: `#slimta <http://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
 
 .. rst-class:: html-toggle
