@@ -6,13 +6,6 @@ slimta.lookup
 
 This module is available in the ``python-slimta-lookup`` extension package.
 
-slimta.lookup.auth
-------------------
-
-.. automodule:: slimta.lookup.auth
-   :members:
-   :show-inheritance:
-
 slimta.lookup.policy
 --------------------
 
