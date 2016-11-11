@@ -25,6 +25,9 @@ traditional application or as a software library.
 #. `Continuous Integration <https://travis-ci.org/slimta/>`_ |buildstatus|
 #. IRC Channel: `#slimta <https://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
 
+.. raw:: html
+   :file: flattr.html
+
 .. rst-class:: html-toggle
 
 Python Library
