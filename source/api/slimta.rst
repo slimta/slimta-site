@@ -24,5 +24,4 @@ slimta
    slimta.policy
    slimta.logging
    slimta.util
-   slimta.system
 

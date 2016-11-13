@@ -19,4 +19,5 @@ slimta.util
    slimta.util.dnsbl
    slimta.util.proxyproto
    slimta.util.ptrlookup
+   slimta.util.system
 
