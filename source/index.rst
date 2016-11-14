@@ -21,15 +21,15 @@ traditional application or as a software library.
 
 .. |buildstatus| image:: https://travis-ci.org/slimta/python-slimta.svg?branch=master
 
+#. :doc:`license`
+#. :doc:`manual/terminology`
+#. `Continuous Integration <https://travis-ci.org/slimta/>`_ |buildstatus|
+#. IRC Channel: `#slimta <https://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
 #. :doc:`Blog <blog/index>`
 
    - :doc:`blog/2016-11-14`
    - :doc:`blog/2016-11-14-2`
 
-#. :doc:`license`
-#. :doc:`manual/terminology`
-#. `Continuous Integration <https://travis-ci.org/slimta/>`_ |buildstatus|
-#. IRC Channel: `#slimta <https://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
 
 .. raw:: html
    :file: donate.html
