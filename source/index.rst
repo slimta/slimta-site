@@ -5,10 +5,11 @@ slimta: Mail Transfer Library
 .. toctree::
    :hidden:
 
-   api
-   manual
    license
    versions
+   api/index
+   manual/index
+   blog/index
 
 .. _MTA: https://en.wikipedia.org/wiki/Message_transfer_agent
 .. _contributors: https://github.com/slimta/python-slimta/graphs/contributors
@@ -20,13 +21,18 @@ traditional application or as a software library.
 
 .. |buildstatus| image:: https://travis-ci.org/slimta/python-slimta.svg?branch=master
 
+#. :doc:`Blog <blog/index>`
+
+   - :doc:`blog/2016-11-14`
+   - :doc:`blog/2016-11-14-2`
+
 #. :doc:`license`
 #. :doc:`manual/terminology`
 #. `Continuous Integration <https://travis-ci.org/slimta/>`_ |buildstatus|
 #. IRC Channel: `#slimta <https://webchat.freenode.net/?channels=%23slimta>`_ on Freenode.
 
 .. raw:: html
-   :file: flattr.html
+   :file: donate.html
 
 .. rst-class:: html-toggle
 
@@ -51,7 +57,7 @@ Python's great community.
 #. `Bug Reports <https://github.com/slimta/python-slimta/issues>`_
 #. `Change Log <https://github.com/slimta/python-slimta/blob/master/CHANGELOG.md>`_
 #. `Installation <https://github.com/slimta/python-slimta/blob/master/README.md#getting-started>`_
-#. :doc:`api`
+#. :doc:`api/index`
 #. :doc:`manual/python-slimta`
 
 .. literalinclude:: python-slimta-sample.txt

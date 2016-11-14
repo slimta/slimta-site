@@ -17,8 +17,8 @@ Python Library Usage
    msa
    extensions
 
-The :doc:`/api` provides great information on how to use each piece of the
-*python-slimta* library, but it rarely helps decide when and how to put the
+The :doc:`/api/index` provides great information on how to use each piece of
+the *python-slimta* library, but it rarely helps decide when and how to put the
 pieces together. These pages describe the components of a *python-slimta*
 application, with examples, to help construct your own personalized MTA.
 
