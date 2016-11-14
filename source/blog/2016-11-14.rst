@@ -61,8 +61,8 @@ Changed
   extension will be advertized, but attempts to use insecure auth mechanisms
   such as ``PLAIN`` will fail as specified by the RFC.
 
-* Moved the `slimta.system` module to `slimta.util.system` to de-clutter the
-  top-level namespace.
+* Moved the ``slimta.system`` module to :mod:`slimta.util.system` to de-clutter
+  the top-level namespace.
 
 Fixed
 ~~~~~
