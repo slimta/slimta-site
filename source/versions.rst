@@ -23,3 +23,10 @@ made to the API. The ``1.0.0`` releases of *slimta* projects also try to carry
 with it a commitment to application stability, particularly that production
 traffic may be served with confidence.
 
+.. note::
+
+   Changing the order of or adding to optional parameters of a function or
+   method is not considered a breaking change. Consider passing these arguments
+   by keyword to avoid regressions. This choice helps maintain code cleanliness
+   over time.
+
