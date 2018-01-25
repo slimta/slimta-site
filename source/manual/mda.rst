@@ -101,7 +101,7 @@ the ``RCPT TO:<...>`` command::
     from slimta.edge.smtp import SmtpValidators
 
     class MyValidators(SmtpValidators):
-        def handle_rcpt(self, reply, recipient):
+        def handle_rcpt(self, reply, recipient, params):
             try:
                 localpart, domain = recipient.rsplit('@', 1)
             except ValueError:
