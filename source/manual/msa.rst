@@ -56,9 +56,9 @@ various headers, such as ``Date`` and ``Received``, for example::
 
     from slimta.policy.headers import *
 
-    queue.add_prequeue_policy(AddDateHeader())
-    queue.add_prequeue_policy(AddMessageIdHeader())
-    queue.add_prequeue_policy(AddReceivedHeader())
+    queue.add_policy(AddDateHeader())
+    queue.add_policy(AddMessageIdHeader())
+    queue.add_policy(AddReceivedHeader())
 
 Because our |Relay| above was :class:`~slimta.relay.smtp.mx.MxSmtpRelay`, we
 should also use the :class:`~slimta.policy.split.RecipientDomainSplit` policy.
@@ -67,7 +67,7 @@ since an |Envelope| can have many recipients of many different domains::
 
     from slimta.policy.split import RecipientDomainSplit
 
-    queue.add_prequeue_policy(RecipientDomainSplit())
+    queue.add_policy(RecipientDomainSplit())
 
 Most MSAs trust that their clients aren't going to be sending spam, so we'll
 leave discussion of the :class:`~slimta.policy.spamassassin.SpamAssassin`

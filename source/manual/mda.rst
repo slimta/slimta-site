@@ -56,9 +56,9 @@ various headers, such as ``Date`` and ``Received``, for example::
 
     from slimta.policy.headers import *
 
-    queue.add_prequeue_policy(AddDateHeader())
-    queue.add_prequeue_policy(AddMessageIdHeader())
-    queue.add_prequeue_policy(AddReceivedHeader())
+    queue.add_policy(AddDateHeader())
+    queue.add_policy(AddMessageIdHeader())
+    queue.add_policy(AddReceivedHeader())
 
 Because an MDA configuration typically receives mail from the outside world, it
 is likely you will want to scan this mail from spam. The
@@ -68,7 +68,7 @@ used by maildrop to filter to a spam quarantine::
 
     from slimta.policy.spamassassin import SpamAssassin
 
-    queue.add_prequeue_policy(SpamAssassin())
+    queue.add_policy(SpamAssassin())
 
 As with MSA configurations, MDAs will often find the
 :class:`~slimta.policy.forward.Forward` policy useful as well.
