@@ -16,7 +16,7 @@ began in early 2011, using Lua and `homegrown C socket multiplexing
 <https://github.com/icgood/ratchet>`_. I `relaunched the project
 <https://github.com/slimta/python-slimta/commit/8c0ddf0fac5a741b44c66d6ecb2303acc348c8ac>`_
 in late 2012 in Python with gevent, hoping to reach a broader audience and
-comminity. Now, over half-a-decade later, I am very happy that *slimta* is
+community. Now, over half-a-decade later, I am very happy that *slimta* is
 humming along with a modest user-base and relative stability. It is a project I
 am proud of. A huge thank you to everyone who has contributed, from submitting
 code, filing a bug report, to simply writing me a note.
