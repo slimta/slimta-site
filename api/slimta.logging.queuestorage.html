@@ -1,0 +1,213 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.logging.queuestorage &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.util" href="slimta.util.html" />
+    <link rel="prev" title="slimta.logging.subprocess" href="slimta.logging.subprocess.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.html" title="slimta.util"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.subprocess.html" title="slimta.logging.subprocess"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.logging.html" accesskey="U">slimta.logging</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.logging.queuestorage">
+<span id="slimta-logging-queuestorage"></span><h1>slimta.logging.queuestorage<a class="headerlink" href="#module-slimta.logging.queuestorage" title="Permalink to this headline">¶</a></h1>
+<p>Utilities to make logging consistent and easy for any <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a>
+interaction.</p>
+<dl class="class">
+<dt id="slimta.logging.queuestorage.QueueStorageLogger">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.logging.queuestorage.</code><code class="sig-name descname">QueueStorageLogger</code><span class="sig-paren">(</span><em class="sig-param">log</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Provides a limited set of log methods that <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> packages may
+use. This prevents free-form logs from mixing in with standard, machine-
+parseable logs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>log</strong> – <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a> object to log through.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="slimta.logging.queuestorage.QueueStorageLogger.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">id</em>, <em class="sig-param">envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a new <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> being written to the queue storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – The ID string that identifies the message in storage.</p></li>
+<li><p><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> being written to storage.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.queuestorage.QueueStorageLogger.update_meta">
+<code class="sig-name descname">update_meta</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="optional">[</span>, <em class="sig-param">**what</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger.update_meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs operations that modify the metadata associated with an
+<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> in queue storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – The ID string that identifies the message in storage.</p></li>
+<li><p><strong>what</strong> – What is being changed in the metadata.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.queuestorage.QueueStorageLogger.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs when an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> is removed from the queue, which could be
+because of success or failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> – The ID string that identifies the message in storage.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.logging.subprocess.html"
+                          title="Previous page">&larr; slimta.logging.subprocess</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.util.html"
+                          title="Next page">&rarr; slimta.util</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.html" title="slimta.util"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.subprocess.html" title="slimta.logging.subprocess"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.logging.html" >slimta.logging</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

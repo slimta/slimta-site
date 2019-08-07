@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.logging.http &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.logging.subprocess" href="slimta.logging.subprocess.html" />
+    <link rel="prev" title="slimta.logging.socket" href="slimta.logging.socket.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.subprocess.html" title="slimta.logging.subprocess"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.socket.html" title="slimta.logging.socket"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.logging.html" accesskey="U">slimta.logging</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.logging.http">
+<span id="slimta-logging-http"></span><h1>slimta.logging.http<a class="headerlink" href="#module-slimta.logging.http" title="Permalink to this headline">¶</a></h1>
+<p>Utilities to make logging consistent and easy for WSGI-style requests and
+responses as well as more general HTTP logs.</p>
+<dl class="class">
+<dt id="slimta.logging.http.HttpLogger">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.logging.http.</code><code class="sig-name descname">HttpLogger</code><span class="sig-paren">(</span><em class="sig-param">log</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.http.HttpLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Provides a limited set of log methods that <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> packages may
+use. This prevents free-form logs from mixing in with standard, machine-
+parseable logs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>log</strong> – <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a> object to log through.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="slimta.logging.http.HttpLogger.wsgi_request">
+<code class="sig-name descname">wsgi_request</code><span class="sig-paren">(</span><em class="sig-param">environ</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.http.HttpLogger.wsgi_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a WSGI-style request. This method pulls the appropriate info
+from <code class="docutils literal notranslate"><span class="pre">environ</span></code> and passes it to <a class="reference internal" href="#slimta.logging.http.HttpLogger.request" title="slimta.logging.http.HttpLogger.request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">request()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>environ</strong> – The environment data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.http.HttpLogger.wsgi_response">
+<code class="sig-name descname">wsgi_response</code><span class="sig-paren">(</span><em class="sig-param">environ</em>, <em class="sig-param">status</em>, <em class="sig-param">headers</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.http.HttpLogger.wsgi_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a WSGI-style response. This method passes its given info along
+to <a class="reference internal" href="#slimta.logging.http.HttpLogger.response" title="slimta.logging.http.HttpLogger.response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">response()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>environ</strong> – The environment data.</p></li>
+<li><p><strong>status</strong> – The status line given to the client, e.g.
+<code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code>.</p></li>
+<li><p><strong>headers</strong> – The headers returned in the response.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.http.HttpLogger.request">
+<code class="sig-name descname">request</code><span class="sig-paren">(</span><em class="sig-param">conn</em>, <em class="sig-param">method</em>, <em class="sig-param">path</em>, <em class="sig-param">headers</em><span class="optional">[</span>, <em class="sig-param">is_client=True</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.http.HttpLogger.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs an HTTP request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a>) – The same object should be passed in this parameter to both
+this method and to its corresponding <a class="reference internal" href="#slimta.logging.http.HttpLogger.response" title="slimta.logging.http.HttpLogger.response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">response()</span></code></a>.
+There are no constraints on its type or value.</p></li>
+<li><p><strong>method</strong> – The request method string.</p></li>
+<li><p><strong>path</strong> – The path string.</p></li>
+<li><p><strong>headers</strong> – A list of <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">value)</span></code> header tuples given in the
+request.</p></li>
+<li><p><strong>is_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – Whether or not the log line should be identified as a
+client- or server-side request.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.logging.http.HttpLogger.response">
+<code class="sig-name descname">response</code><span class="sig-paren">(</span><em class="sig-param">conn</em>, <em class="sig-param">status</em>, <em class="sig-param">headers</em><span class="optional">[</span>, <em class="sig-param">is_client=True</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.http.HttpLogger.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs an HTTP response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a>) – The same object should be passed in this parameter to both
+this method and to its corresponding <a class="reference internal" href="#slimta.logging.http.HttpLogger.request" title="slimta.logging.http.HttpLogger.request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">request()</span></code></a>.
+There are no constraints on its type or value.</p></li>
+<li><p><strong>status</strong> – The status string of the response, e.g. <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code>.</p></li>
+<li><p><strong>headers</strong> – A list of <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">value)</span></code> header tuples given in the
+response.</p></li>
+<li><p><strong>is_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – Whether or not the log line should be identified as a
+client- or server-side request.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.logging.socket.html"
+                          title="Previous page">&larr; slimta.logging.socket</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.logging.subprocess.html"
+                          title="Next page">&rarr; slimta.logging.subprocess</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.subprocess.html" title="slimta.logging.subprocess"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.logging.socket.html" title="slimta.logging.socket"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.logging.html" >slimta.logging</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

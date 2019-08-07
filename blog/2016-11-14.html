@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Version 4.0.0 Released &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="A Little Bit of History" href="2016-11-14-2.html" />
+    <link rel="prev" title="Slimta Blog" href="index.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="2016-11-14-2.html" title="A Little Bit of History"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="Slimta Blog"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Slimta Blog</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="version-4-0-0-released">
+<h1>Version 4.0.0 Released<a class="headerlink" href="#version-4-0-0-released" title="Permalink to this headline">¶</a></h1>
+<p>November 14, 2016</p>
+<p>The release of 4.0.0 introduces some changes that are not backwards-compatible
+with previous versions, focusing mainly on the API to control SSL behavior with
+the new <code class="docutils literal notranslate"><span class="pre">context</span></code> pattern described below.</p>
+<div class="section" id="change-log-in-detail">
+<h2>Change Log In Detail<a class="headerlink" href="#change-log-in-detail" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="added">
+<h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>New <a class="reference internal" href="../api/slimta.util.html#module-slimta.util" title="slimta.util"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util</span></code></a> functions for limiting outbound connections to IPv4.</p>
+<p>The need for this change reflects some of the difficulty currently in
+delivering mail to hosts with IPv6 addresses configured. It is provided for
+convenience and not used by default.</p>
+</li>
+<li><p>New <a class="reference internal" href="../api/slimta.logging.socket.html#slimta.logging.socket.socket_error_log_level" title="slimta.logging.socket.socket_error_log_level"><code class="xref py py-attr docutils literal notranslate"><span class="pre">socket_error_log_level</span></code></a> variable for better
+log level control.</p>
+<p>This change was put in place for log systems that have special behavior
+configured for error-level events, such as monitoring alerts or other
+metrics. Because socket errors are non-fatal and often simply informative,
+it is often useful for them to be warning- or info-level logs.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Constructors and functions that took a <code class="docutils literal notranslate"><span class="pre">tls</span></code> dictionary now take a
+<code class="docutils literal notranslate"><span class="pre">context</span></code> argument that should be an <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a> object.
+This allows finer control of encryption behavior, as well as the ability to
+pre-load sensitive certificate data before daemonization.</p>
+<p>Since this project began with Python 2.6 support, it relied on using the
+<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">ssl.wrap_socket()</span></code></a> function to take care of SSL encryption when
+desired. Among other things, this has the disadvantage of needing to load key
+and certificate files for every new socket! In addition to being a waste of
+system resources, for a daemonized service this had implications around the
+permissions of the process and key/cert files. The primary change of this
+release is the switch to using <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ssl.SSLContext</span></code></a>. This is made
+possible by the previous dropping of support for Python 2.6 and now 3.3 as
+well. Hopefully these changes help mail server implementations stay secure.</p>
+</li>
+<li><p>Client connections will now be opportunistic and try to use TLS if it is
+available, even if a key or cert have not been configured.</p>
+<p>Since client-side SSL sessions require little-to-no explicit configuration,
+it should be made the default behavior in most situations to use SSL when
+available.</p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> SMTP extension will now advertise insecure authentication
+mechanisms without TLS, but trying to use them will fail.</p>
+<p>Some clients that are required to authenticate may look for the <code class="docutils literal notranslate"><span class="pre">AUTH</span></code>
+extension in the EHLO results before encrypting the session. Now, the
+extension will be advertized, but attempts to use insecure auth mechanisms
+such as <code class="docutils literal notranslate"><span class="pre">PLAIN</span></code> will fail as specified by the RFC.</p>
+</li>
+<li><p>Moved the <code class="docutils literal notranslate"><span class="pre">slimta.system</span></code> module to <a class="reference internal" href="../api/slimta.util.system.html#module-slimta.util.system" title="slimta.util.system"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util.system</span></code></a> to de-clutter
+the top-level namespace.</p></li>
+</ul>
+</div>
+<div class="section" id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Fixed a possible race condition on enqueue.</p>
+<p>Thanks to <a class="reference external" href="https://github.com/brycedrennan">Bryce Drennan</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/pull/107">pull
+request</a>!</p>
+</li>
+<li><p>Fixed exception when given empty EHLO/HELO string.</p>
+<p>Thanks to <a class="reference external" href="https://github.com/toxinu">Geoffrey Lehée</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/pull/112">pull request</a>!</p>
+</li>
+<li><p>Fixed the fallback from EHLO to HELO in certain situations.</p>
+<p>Thanks to <a class="reference external" href="https://github.com/thestick613">thestick613</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/issues/103">pull
+request</a>!</p>
+</li>
+<li><p>The <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators.session" title="slimta.edge.smtp.SmtpValidators.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> <code class="docutils literal notranslate"><span class="pre">auth</span></code> attribute now
+correctly contains the tuple described in the documentation.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Version 4.0.0 Released</a><ul>
+<li><a class="reference internal" href="#change-log-in-detail">Change Log In Detail</a><ul>
+<li><a class="reference internal" href="#added">Added</a></li>
+<li><a class="reference internal" href="#changed">Changed</a></li>
+<li><a class="reference internal" href="#fixed">Fixed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; Slimta Blog</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="2016-11-14-2.html"
+                          title="Next page">&rarr; A Little Bit of History</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="2016-11-14-2.html" title="A Little Bit of History"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="index.html" title="Slimta Blog"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Slimta Blog</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

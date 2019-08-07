@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.policy.forward &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.policy.split" href="slimta.policy.split.html" />
+    <link rel="prev" title="slimta.policy.headers" href="slimta.policy.headers.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.split.html" title="slimta.policy.split"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.headers.html" title="slimta.policy.headers"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.policy.html" accesskey="U">slimta.policy</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.policy.forward">
+<span id="slimta-policy-forward"></span><h1>slimta.policy.forward<a class="headerlink" href="#module-slimta.policy.forward" title="Permalink to this headline">¶</a></h1>
+<p>Implements a simple forwarding policy, to transform or replace
+recipients.</p>
+<dl class="class">
+<dt id="slimta.policy.forward.Forward">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.policy.forward.</code><code class="sig-name descname">Forward</code><a class="headerlink" href="#slimta.policy.forward.Forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
+<p>Each <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> recipient is run through <a class="reference external" href="https://docs.python.org/3/library/re.html#re.sub" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.sub()</span></code></a> to see if it
+is modified. If a recipient matches a mapping rule, no further mapping
+rules are processed. Mapping rules are checked in the order that they were
+added.</p>
+<dl class="method">
+<dt id="slimta.policy.forward.Forward.add_mapping">
+<code class="sig-name descname">add_mapping</code><span class="sig-paren">(</span><em class="sig-param">pattern</em>, <em class="sig-param">repl</em><span class="optional">[</span>, <em class="sig-param">count=0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.forward.Forward.add_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a mapping rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">re.RegexObject</span></code>) – Pattern to check recipient against.</p></li>
+<li><p><strong>repl</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or function) – Replacement for <code class="docutils literal notranslate"><span class="pre">pattern</span></code> matches, as described by
+<a class="reference external" href="https://docs.python.org/3/library/re.html#re.sub" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.sub()</span></code></a>.</p></li>
+<li><p><strong>count</strong> – Max number of replacements per recipient string.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.policy.forward.Forward.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.forward.Forward.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code> sub-classes must override this method, which
+will be called by the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> before storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
+apply any changes to. This envelope object <em>may</em> be
+modified, though if new envelopes are returned this
+object is discarded.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
+objects to replace the given <code class="docutils literal notranslate"><span class="pre">envelope</span></code> going forward.
+Returning <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty list will keep using
+<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.policy.headers.html"
+                          title="Previous page">&larr; slimta.policy.headers</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.policy.split.html"
+                          title="Next page">&rarr; slimta.policy.split</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.split.html" title="slimta.policy.split"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.policy.headers.html" title="slimta.policy.headers"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.policy.html" >slimta.policy</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

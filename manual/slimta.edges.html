@@ -1,0 +1,400 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Configuring the Edges &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring the Queues" href="slimta.queues.html" />
+    <link rel="prev" title="Configuring the Processes" href="slimta.processes.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queues.html" title="Configuring the Queues"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.processes.html" title="Configuring the Processes"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">Application Usage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="configuring-the-edges">
+<h1>Configuring the Edges<a class="headerlink" href="#configuring-the-edges" title="Permalink to this headline">¶</a></h1>
+<p>The next big section in <code class="docutils literal notranslate"><span class="pre">slimta.conf</span></code> is <code class="docutils literal notranslate"><span class="pre">edge</span></code>, which allows you to setup
+as many different inbound edge listeners as you need. In the <code class="docutils literal notranslate"><span class="pre">edge</span></code> section,
+each key provides an arbitrary, free-form name for the edge, and the value is
+a mapping with two required keys:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: String</p>
+<p>Defines the type of edge. A known type must be given or an error will be
+thrown. The other keys in this mapping depend on the value of <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">queue</span></code>: String</p>
+<p>When messages are received by this edge listener, they are passed to this
+queue. The value of this queue is a name, which must correspond to a key in
+the top-level <code class="docutils literal notranslate"><span class="pre">queue</span></code> section.</p>
+</li>
+</ul>
+<p>When available, edges may also include a <code class="docutils literal notranslate"><span class="pre">listener</span></code> sub-section that uses
+consistent options. This sub-section is defined as:</p>
+<ul id="slimta-listener">
+<li><p><code class="docutils literal notranslate"><span class="pre">listener</span></code>: Dictionary</p>
+<p>This mapping defines how to open the listening socket. Available keys are as
+follows:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: String</p>
+<p>Defines the type of listening socket. Valid values are <code class="docutils literal notranslate"><span class="pre">tcp</span></code> , <code class="docutils literal notranslate"><span class="pre">udp</span></code>
+and <code class="docutils literal notranslate"><span class="pre">unix</span></code>. The default type is <code class="docutils literal notranslate"><span class="pre">tcp</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interface</span></code>: String</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">tcp</span></code> and <code class="docutils literal notranslate"><span class="pre">udp</span></code> types, this setting defines the interface IP on
+which to bind. Examples are <code class="docutils literal notranslate"><span class="pre">'127.0.0.1'</span></code> to only listen locally, or
+<code class="docutils literal notranslate"><span class="pre">''</span></code> to listen on all interfaces. The default is <code class="docutils literal notranslate"><span class="pre">'127.0.0.1'</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: Integer</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">tcp</span></code> and <code class="docutils literal notranslate"><span class="pre">udp</span></code> types, this setting defines the port on which to
+bind. The default port number depends on the type of edge.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: String</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">unix</span></code> types, this setting defines the file path where the listening
+UNIX socket is created. There is no default value.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backlog</span></code>: Integer</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">tcp</span></code> and <code class="docutils literal notranslate"><span class="pre">unix</span></code> types, this setting defines the size of the
+backlog of unaccepted connections. See the <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.listen" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">listen()</span></code></a>
+method for more information. The default is <code class="docutils literal notranslate"><span class="pre">256</span></code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p id="lookup-section">Some options can use <a class="reference external" href="https://github.com/slimta/python-slimta-lookup">python-slimta-lookup</a> to query an external source for
+its data. These sections must have the following option:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: String, required</p>
+<p>Defines the type of external data source. Valid values are <code class="docutils literal notranslate"><span class="pre">redis</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>, and <code class="docutils literal notranslate"><span class="pre">config</span></code>.</p>
+</li>
+</ul>
+<p>Additional optional and required options depend on <code class="docutils literal notranslate"><span class="pre">type</span></code>. See the class
+definitions in <a class="reference internal" href="../api/extra.lookup.html#slimta-lookup-drivers"><span class="std std-ref">slimta.lookup.drivers</span></a> for more
+information on these options.</p>
+<div class="section" id="smtp-edges">
+<h2><code class="docutils literal notranslate"><span class="pre">smtp</span></code> Edges<a class="headerlink" href="#smtp-edges" title="Permalink to this headline">¶</a></h2>
+<p>SMTP Edges produce an <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code></a> object from the extra keys given in the edge
+sub-section. These keys are:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">listener</span></code>: Dictionary</p>
+<p>This mapping defines how to open the listening socket. See the
+<a class="reference internal" href="#slimta-listener"><span class="std std-ref">listener sub-section</span></a> for information on its
+available keys. The default value for <code class="docutils literal notranslate"><span class="pre">port</span></code> is <code class="docutils literal notranslate"><span class="pre">25</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code>: String</p>
+<p>This is the string presented as the machine’s hostname in the SMTP banner
+message. By default, this will be the machine’s FQDN.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_size</span></code>: Integer</p>
+<p>This is the maximum allowed size, in bytes, of incoming messages on this SMTP
+edge. Larger messages are rejected. By default, there is no size limit.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tls</span></code>: Dictionary</p>
+<p>This mapping, which takes the same keys as the keyword parameters to
+<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
+SMTP edge. By default, TLS is not enabled.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tls_immediately</span></code>: Boolean</p>
+<p>Defines whether or not TLS should handshake immediately on connection, or if
+a socket is only encrypted if the user runs <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>. By default, sessions
+are only encrypted on <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proxy_protocol</span></code>: Boolean</p>
+<p>Defines whether or not connections to the edge will include a
+<a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">PROXY protocol</a> header defining the original connection information. Only
+use this option when running behind a properly configured proxy.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rules</span></code>: Dictionary</p>
+<p>This sub-section gives extra configurability in the internals of the SMTP
+edge. It has its own set of keys, all of which are optional:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">banner</span></code>: String</p>
+<p>This string is presented to connecting clients as the SMTP banner message.
+It can contain <code class="docutils literal notranslate"><span class="pre">{fqdn}</span></code> or <code class="docutils literal notranslate"><span class="pre">{hostname}</span></code> to substitute in the respective
+information about the local machine. By default, a generic banner message is
+used.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dnsbl</span></code>: String</p>
+<p>Specifies a server that will be queried as a DNS blocklist. If a connecting
+client “hits” on the DNS blocklist, it is rejected outright. By default, no
+DNS blocklists are checked.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reject_spf</span></code>: List</p>
+<p>Specifies a list of SPF result types that are rejected in an SMTP session.
+Valid strings in the list are: <code class="docutils literal notranslate"><span class="pre">pass</span></code>, <code class="docutils literal notranslate"><span class="pre">permerror</span></code>, <code class="docutils literal notranslate"><span class="pre">fail</span></code>,
+<code class="docutils literal notranslate"><span class="pre">temperror</span></code>, <code class="docutils literal notranslate"><span class="pre">softfail</span></code>, <code class="docutils literal notranslate"><span class="pre">none</span></code>, and <code class="docutils literal notranslate"><span class="pre">neutral</span></code>. By default, no SPF
+results are rejected.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reject_spam</span></code>: Dictionary</p>
+<p>Specifies a spam engine that will be used to reject message data that is
+considered spam before it is accepted for delivery. At the moment, only
+<a class="reference internal" href="../api/slimta.policy.spamassassin.html#module-slimta.policy.spamassassin" title="slimta.policy.spamassassin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spamassassin</span></code></a> is available, which takes optional
+<code class="docutils literal notranslate"><span class="pre">host</span></code> and <code class="docutils literal notranslate"><span class="pre">port</span></code> keys.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">only_senders</span></code>: List</p>
+<p>Only the email addresses in this list will be accepted when given in the
+<code class="docutils literal notranslate"><span class="pre">MAIL</span> <span class="pre">FROM:&lt;&gt;</span></code> command from a client. By default, all senders are
+accepted.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">only_recipients</span></code>: List</p>
+<p>Only the email addresses in this list will be acceped when given in the
+<code class="docutils literal notranslate"><span class="pre">RCPT</span> <span class="pre">TO:&lt;&gt;</span></code> commands from the client. By default, all recipients are
+accepted.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regex_senders</span></code>: List</p>
+<p>Like <code class="docutils literal notranslate"><span class="pre">only_senders</span></code> but compiles each value into a regular expression
+that each sender address is matched against.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">regex_recipients</span></code>: List</p>
+<p>Like <code class="docutils literal notranslate"><span class="pre">only_recipients</span></code> but compiles each value into a regular
+expression that each recipient address is matched against.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lookup_senders</span></code>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><span class="std std-ref">lookup section</span></a>
+requirements. It will limit the allowed addresses to the <code class="docutils literal notranslate"><span class="pre">MAIL</span> <span class="pre">FROM:&lt;&gt;</span></code>
+command to those with records in the external data source.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lookup_recipients</span></code>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><span class="std std-ref">lookup section</span></a>
+requirements. It will limit the allowed addresses to the <code class="docutils literal notranslate"><span class="pre">RCPT</span> <span class="pre">TO:&lt;&gt;</span></code>
+command to those with records in the external data source.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lookup_credentials</span></code>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><span class="std std-ref">lookup section</span></a>
+requirements. The SMTP <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> extension will check the external data
+source for the authenticating username, and look for the <code class="docutils literal notranslate"><span class="pre">password</span></code>
+attribute. That password is verified against that field using
+<a class="reference external" href="https://pythonhosted.org/passlib/lib/passlib.apps.html#passlib.apps.ldap_context" title="(in Passlib v1.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">passlib.apps.ldap_context</span></code></a>, meaning it supports the <code class="docutils literal notranslate"><span class="pre">{SCHEME}HASH</span></code>
+format.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="http-edges">
+<h2><code class="docutils literal notranslate"><span class="pre">http</span></code> Edges<a class="headerlink" href="#http-edges" title="Permalink to this headline">¶</a></h2>
+<p>HTTP Edges produce an <a class="reference internal" href="../api/slimta.edge.wsgi.html#slimta.edge.wsgi.WsgiEdge" title="slimta.edge.wsgi.WsgiEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">WsgiEdge</span></code></a> object that is then
+configured to receive mail. It supports the following options:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">listener</span></code>: Dictionary</p>
+<p>This mapping defines how to open the listening socket. See the
+<a class="reference internal" href="#slimta-listener"><span class="std std-ref">listener sub-section</span></a> for information on its
+available keys. The default value for <code class="docutils literal notranslate"><span class="pre">port</span></code> is <code class="docutils literal notranslate"><span class="pre">8025</span></code>.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code>: String</p>
+<p>This is the string presented as the machine’s hostname in the SMTP banner
+message. By default, this will be the machine’s FQDN.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: String</p>
+<p>This option defines a regular expression pattern that request paths must
+match, or a <code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code> will be returned. If it is not given, all paths
+are accepted.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tls</span></code>: Dictionary</p>
+<p>This mapping, which takes the same keys as the keyword parameters to
+<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
+HTTP edge. All inbound requests must be HTTPS. By default, TLS is not
+enabled.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rules</span></code>: Dictionary</p>
+<p>This sub-section gives extra configurability in the internals of the HTTP
+edge. It has its own set of keys, all of which are optional:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">only_senders</span></code>: List</p>
+<p>Only the email addresses in this list will be accepted when given in the
+<code class="docutils literal notranslate"><span class="pre">X-Envelope-Sender</span></code> header from a client. By default, all senders are
+accepted.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">only_recipients</span></code>: List</p>
+<p>Only the email addresses in this list will be acceped when given in the
+<code class="docutils literal notranslate"><span class="pre">X-Envelope-Recipient</span></code> headers from the client. By default, all
+recipients are accepted.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lookup_senders</span></code>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><span class="std std-ref">lookup section</span></a>
+requirements. It will limit the allowed addresses in the
+<code class="docutils literal notranslate"><span class="pre">X-Envelope-Sender</span></code> header to those with records in the external data
+source.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lookup_recipients</span></code>: Dictionary</p>
+<p>This section follows the <a class="reference internal" href="#lookup-section"><span class="std std-ref">lookup section</span></a>
+requirements. It will limit the allowed addresses in the
+<code class="docutils literal notranslate"><span class="pre">X-Envelope-Recipient</span></code> header to those with records in the external data
+source.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="custom-edges">
+<h2><code class="docutils literal notranslate"><span class="pre">custom</span></code> Edges<a class="headerlink" href="#custom-edges" title="Permalink to this headline">¶</a></h2>
+<p>Only one additional key is required by the <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code> edge type:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">factory</span></code>: String, required</p>
+<p>This is a string of the form <code class="docutils literal notranslate"><span class="pre">package.module:symbol</span></code>. The package and
+module portion are imported with <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>, and then
+the symbol is fetched from the loaded module with <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a>.</p>
+<p>The result of loading the symbol must be a function that takes two arguments,
+the options object (that contains the <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">queue</span></code>, and <code class="docutils literal notranslate"><span class="pre">factory</span></code>
+keys as well as any others as necessary) and the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> object that the edge
+should delivery received messages to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">edge_factory</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">queue</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;foo&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FooEdge</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">stuff</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">BarEdge</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">baz</span><span class="p">,</span> <span class="n">queue</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Configuring the Edges</a><ul>
+<li><a class="reference internal" href="#smtp-edges"><code class="docutils literal notranslate"><span class="pre">smtp</span></code> Edges</a></li>
+<li><a class="reference internal" href="#http-edges"><code class="docutils literal notranslate"><span class="pre">http</span></code> Edges</a></li>
+<li><a class="reference internal" href="#custom-edges"><code class="docutils literal notranslate"><span class="pre">custom</span></code> Edges</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.processes.html"
+                          title="Previous page">&larr; Configuring the Processes</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.queues.html"
+                          title="Next page">&rarr; Configuring the Queues</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queues.html" title="Configuring the Queues"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.processes.html" title="Configuring the Processes"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >Application Usage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

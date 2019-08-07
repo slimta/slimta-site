@@ -1,0 +1,247 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.relay &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.relay.pool" href="slimta.relay.pool.html" />
+    <link rel="prev" title="slimta.queue.proxy" href="slimta.queue.proxy.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.pool.html" title="slimta.relay.pool"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queue.proxy.html" title="slimta.queue.proxy"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.relay">
+<span id="slimta-relay"></span><h1>slimta.relay<a class="headerlink" href="#module-slimta.relay" title="Permalink to this headline">¶</a></h1>
+<p>Root package for relaying messages to their next destination. A relay could
+be another SMTP hop, or it could be implemented as a final delivery mechanism.</p>
+<dl class="exception">
+<dt id="slimta.relay.PermanentRelayError">
+<em class="property">exception </em><code class="sig-prename descclassname">slimta.relay.</code><code class="sig-name descname">PermanentRelayError</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="optional">[</span>, <em class="sig-param">reply=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.PermanentRelayError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.relay.RelayError</span></code></p>
+<p>Base exception for all relay errors that indicate a message will not
+be successfully delivered no matter how many times delivery is attempted.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="slimta.relay.TransientRelayError">
+<em class="property">exception </em><code class="sig-prename descclassname">slimta.relay.</code><code class="sig-name descname">TransientRelayError</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="optional">[</span>, <em class="sig-param">reply=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.TransientRelayError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.relay.RelayError</span></code></p>
+<p>Base exception for all relay errors that indicate the message may be
+successful if tried again later.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.relay.Relay">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.relay.</code><code class="sig-name descname">Relay</code><a class="headerlink" href="#slimta.relay.Relay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for objects that implement the relaying pattern. Included
+implementations are <a class="reference internal" href="slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">MxSmtpRelay</span></code></a> and
+<a class="reference internal" href="slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticSmtpRelay</span></code></a>.</p>
+<dl class="method">
+<dt id="slimta.relay.Relay.add_policy">
+<code class="sig-name descname">add_policy</code><span class="sig-paren">(</span><em class="sig-param">policy</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.Relay.add_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a <a class="reference internal" href="slimta.policy.html#slimta.policy.RelayPolicy" title="slimta.policy.RelayPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPolicy</span></code></a> to be executed each time the relay attempts
+delivery for a message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>policy</strong> – <a class="reference internal" href="slimta.policy.html#slimta.policy.RelayPolicy" title="slimta.policy.RelayPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPolicy</span></code></a> object to execute.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.relay.Relay.attempt">
+<code class="sig-name descname">attempt</code><span class="sig-paren">(</span><em class="sig-param">envelope</em>, <em class="sig-param">attempts</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.Relay.attempt" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method must be overridden by sub-classes in order to be passed
+in to the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> constructor.</p>
+<p>The result of a successful relay attempt is either <code class="docutils literal notranslate"><span class="pre">None</span></code> or a
+<a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object. The result of a failing relay attempt is either a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PermanentRelayFailure</span></code> or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TransientRelayFailure</span></code> error.</p>
+<p>If the result applies to the entire <code class="docutils literal notranslate"><span class="pre">envelope</span></code> and all its
+recipients, implementations may return the successful result or raise
+the failure. If the result is different per-recipient, then
+implementations may return a dictionary where the key is a recipient
+from <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> and the value is the
+relay result (successful or failing).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>envelope</strong> – <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> to attempt delivery for.</p></li>
+<li><p><strong>attempts</strong> – Number of times the envelope has attempted delivery.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The relay result, as described above.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PermanentRelayError</span></code></a>, <a class="reference internal" href="#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransientRelayError</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.relay.Relay.kill">
+<code class="sig-name descname">kill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.Relay.kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used by <a class="reference internal" href="#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> and <a class="reference internal" href="#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a>-like objects to properly
+end associated services (such as running <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a>
+threads) and close resources.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<p><strong>Sub-Modules:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slimta.relay.pool.html">slimta.relay.pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.relay.blackhole.html">slimta.relay.blackhole</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.relay.pipe.html">slimta.relay.pipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.relay.smtp.html">slimta.relay.smtp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slimta.relay.smtp.static.html">slimta.relay.smtp.static</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.relay.smtp.mx.html">slimta.relay.smtp.mx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.relay.http.html">slimta.relay.http</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.queue.proxy.html"
+                          title="Previous page">&larr; slimta.queue.proxy</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.relay.pool.html"
+                          title="Next page">&rarr; slimta.relay.pool</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.relay.pool.html" title="slimta.relay.pool"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queue.proxy.html" title="slimta.queue.proxy"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

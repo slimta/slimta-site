@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.util.bytesformat &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.util.dns" href="slimta.util.dns.html" />
+    <link rel="prev" title="slimta.util" href="slimta.util.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.dns.html" title="slimta.util.dns"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.html" title="slimta.util"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" accesskey="U">slimta.util</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.util.bytesformat">
+<span id="slimta-util-bytesformat"></span><h1>slimta.util.bytesformat<a class="headerlink" href="#module-slimta.util.bytesformat" title="Permalink to this headline">¶</a></h1>
+<p>Provides a class that is capable of basic bytestring templating, similar to
+the <code class="xref py py-func docutils literal notranslate"><span class="pre">str.format()</span></code> method. This is needed in Python 3 before 3.5+, but
+should work in all supported versions.</p>
+<p>This class does the heavy lifting (a <a class="reference external" href="https://docs.python.org/3/library/re.html#re.finditer" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.finditer()</span></code></a> loop) during
+construction, so it is optimal to instantiate it once and then re-use
+<a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a>.</p>
+<dl class="class">
+<dt id="slimta.util.bytesformat.BytesFormat">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.util.bytesformat.</code><code class="sig-name descname">BytesFormat</code><span class="sig-paren">(</span><em class="sig-param">template</em><span class="optional">[</span>, <em class="sig-param">mode='ignore'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Wraps a bytestring in a class with a <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method similar to
+<code class="xref py py-func docutils literal notranslate"><span class="pre">str.format()</span></code>.</p>
+<p>During construction, the template string is scanned for matching <code class="docutils literal notranslate"><span class="pre">{...}</span></code>
+pairs that contain only characters that match the <code class="docutils literal notranslate"><span class="pre">\w</span></code> regular
+expression.  In the <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> are replaced
+with a matching argument’s value, if an argument matches, or the action
+specified by <code class="docutils literal notranslate"><span class="pre">mode</span></code> happens when it does not match</p>
+<p>To match <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> arguments, you may use a positional argument’s
+number (e.g.  <code class="docutils literal notranslate"><span class="pre">{0}</span></code>) or a keyword argument’s key (e.g. <code class="docutils literal notranslate"><span class="pre">{recipient}</span></code>).
+Additional formatting options are not supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The template bytestring.</p></li>
+<li><p><strong>mode</strong> – If <code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>, any <code class="docutils literal notranslate"><span class="pre">{...}</span></code> that does not match a
+<a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> argument is left in place as-is. If
+<code class="docutils literal notranslate"><span class="pre">'remove'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> are replaced with an empty
+string. If <code class="docutils literal notranslate"><span class="pre">'strict'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> will cause
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a> exceptions.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="slimta.util.bytesformat.BytesFormat.format">
+<code class="sig-name descname">format</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*args</em><span class="optional">[</span>, <em class="sig-param">**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitutes in the given positional and keyword arguments into the
+original template string, replacing occurrences of <code class="docutils literal notranslate"><span class="pre">{...}</span></code> with the
+correct argument’s value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.util.html"
+                          title="Previous page">&larr; slimta.util</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.util.dns.html"
+                          title="Next page">&rarr; slimta.util.dns</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.dns.html" title="slimta.util.dns"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.html" title="slimta.util"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" >slimta.util</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

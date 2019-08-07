@@ -1,0 +1,244 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>API Reference &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta" href="slimta.html" />
+    <link rel="prev" title="Versions" href="../versions.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="slimta"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../versions.html" title="Versions"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<p>These pages are intended to serve as usage reference for the modules included
+in <em>python-slimta</em>.  The prototypes in these docs are generated directly from
+the source code, with docstrings used for descriptions and parameter
+information. Documentation for the <code class="docutils literal notranslate"><span class="pre">latest/</span></code> version are generated based on
+the <a class="reference external" href="https://github.com/slimta/python-slimta/tree/master">master branch</a> upon commit using <a class="reference external" href="https://readthedocs.org/">Read The Docs</a>.</p>
+<p><strong>Modules:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slimta.html">slimta</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slimta.edge.html">slimta.edge</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.edge.smtp.html">slimta.edge.smtp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.edge.wsgi.html">slimta.edge.wsgi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.queue.html">slimta.queue</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.queue.dict.html">slimta.queue.dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.queue.proxy.html">slimta.queue.proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.relay.html">slimta.relay</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.relay.pool.html">slimta.relay.pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.relay.blackhole.html">slimta.relay.blackhole</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.relay.pipe.html">slimta.relay.pipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.relay.smtp.html">slimta.relay.smtp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="slimta.relay.smtp.static.html">slimta.relay.smtp.static</a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.relay.smtp.mx.html">slimta.relay.smtp.mx</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.relay.http.html">slimta.relay.http</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.html">slimta.smtp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.smtp.client.html">slimta.smtp.client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.smtp.server.html">slimta.smtp.server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.smtp.extensions.html">slimta.smtp.extensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.smtp.reply.html">slimta.smtp.reply</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.http.html">slimta.http</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.http.wsgi.html">slimta.http.wsgi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.envelope.html">slimta.envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.bounce.html">slimta.bounce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.policy.html">slimta.policy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.policy.headers.html">slimta.policy.headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.policy.forward.html">slimta.policy.forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.policy.split.html">slimta.policy.split</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.policy.spamassassin.html">slimta.policy.spamassassin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.logging.html">slimta.logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.logging.socket.html">slimta.logging.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.logging.http.html">slimta.logging.http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.logging.subprocess.html">slimta.logging.subprocess</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.logging.queuestorage.html">slimta.logging.queuestorage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.util.html">slimta.util</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slimta.util.bytesformat.html">slimta.util.bytesformat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.util.dns.html">slimta.util.dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.util.dnsbl.html">slimta.util.dnsbl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.util.proxyproto.html">slimta.util.proxyproto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.util.ptrlookup.html">slimta.util.ptrlookup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.util.system.html">slimta.util.system</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extra.html">Available Extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extra.lookup.html">slimta.lookup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="extra.lookup.html#module-slimta.lookup.policy">slimta.lookup.policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extra.lookup.html#module-slimta.lookup.drivers">slimta.lookup.drivers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="extra.lookup.html#module-slimta.lookup.drivers.redis">slimta.lookup.drivers.redis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extra.lookup.html#module-slimta.lookup.drivers.dbapi2">slimta.lookup.drivers.dbapi2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extra.lookup.html#module-slimta.lookup.drivers.dict">slimta.lookup.drivers.dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="extra.lookup.html#module-slimta.lookup.drivers.regex">slimta.lookup.drivers.regex</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extra.diskstorage.html">slimta.diskstorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extra.cloudstorage.html">slimta.cloudstorage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="extra.cloudstorage.rackspace.html">slimta.cloudstorage.rackspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extra.cloudstorage.aws.html">slimta.cloudstorage.aws</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extra.redisstorage.html">slimta.redisstorage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extra.celeryqueue.html">slimta.celeryqueue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extra.spf.html">slimta.spf</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="../versions.html"
+                          title="Previous page">&larr; Versions</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.html"
+                          title="Next page">&rarr; slimta</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="slimta"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="../versions.html" title="Versions"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

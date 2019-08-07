@@ -1,0 +1,281 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.smtp.extensions &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.smtp.reply" href="slimta.smtp.reply.html" />
+    <link rel="prev" title="slimta.smtp.server" href="slimta.smtp.server.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.reply.html" title="slimta.smtp.reply"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.server.html" title="slimta.smtp.server"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.smtp.html" accesskey="U">slimta.smtp</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.smtp.extensions">
+<span id="slimta-smtp-extensions"></span><h1>slimta.smtp.extensions<a class="headerlink" href="#module-slimta.smtp.extensions" title="Permalink to this headline">¶</a></h1>
+<p>Manages the SMTP extensions offered by a server or available to a client.</p>
+<dl class="class">
+<dt id="slimta.smtp.extensions.Extensions">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.smtp.extensions.</code><code class="sig-name descname">Extensions</code><a class="headerlink" href="#slimta.smtp.extensions.Extensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class that simplifies the usage of SMTP extensions. Along with an
+extension, a simple string parameter can be stored if necessary.</p>
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all known extensions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.__contains__">
+<code class="sig-name descname">__contains__</code><span class="sig-paren">(</span><em class="sig-param">ext</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the given extension is in the known extensions. This is
+especially useful for clients to check if a server offers a certain
+desired extension, e.g. <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">'AUTH'</span> <span class="pre">in</span> <span class="pre">extensions:</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ext</strong> – The extension to check for, case-insensitive.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>True or False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.getparam">
+<code class="sig-name descname">getparam</code><span class="sig-paren">(</span><em class="sig-param">ext</em><span class="optional">[</span>, <em class="sig-param">filter=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.getparam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the parameter associated with an extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> – The extension to get the parameter for.</p></li>
+<li><p><strong>filter</strong> – An optional filter function to modify the returned
+parameter, if it exists, e.g. <code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns None if the extension doesn’t exist, the extension
+doesn’t have a parameter, or the filter function raises
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ValueEror</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param">ext</em><span class="optional">[</span>, <em class="sig-param">param=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new supported extension. This is useful for servers to
+advertise their offered extensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> – The extension name, which will be upper-cased.</p></li>
+<li><p><strong>param</strong> – Optional parameter string associated with the extension.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.drop">
+<code class="sig-name descname">drop</code><span class="sig-paren">(</span><em class="sig-param">ext</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.drop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops the given extension, if it exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ext</strong> – The extension name.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the extension existed, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.parse_string">
+<code class="sig-name descname">parse_string</code><span class="sig-paren">(</span><em class="sig-param">string</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.parse_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a string as returned by the EHLO command and adds all
+discovered extensions. This string should <em>not</em> have the response code
+prefixed to its lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>string</strong> – The string to parse.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The first line of the string, which will be a free-form
+message response to the EHLO command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.smtp.extensions.Extensions.build_string">
+<code class="sig-name descname">build_string</code><span class="sig-paren">(</span><em class="sig-param">header</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.build_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the object into a string that can be sent with the response
+to a EHLO command, without the code prefixed to each line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>header</strong> – The first line of the resulting string, which can be a
+free-form message response for the EHLO command.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.smtp.extensions.Extensions.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#slimta.smtp.extensions.Extensions.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.smtp.server.html"
+                          title="Previous page">&larr; slimta.smtp.server</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.smtp.reply.html"
+                          title="Next page">&rarr; slimta.smtp.reply</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.reply.html" title="slimta.smtp.reply"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.smtp.server.html" title="slimta.smtp.server"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.smtp.html" >slimta.smtp</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

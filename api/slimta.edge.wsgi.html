@@ -1,0 +1,350 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.edge.wsgi &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.queue" href="slimta.queue.html" />
+    <link rel="prev" title="slimta.edge.smtp" href="slimta.edge.smtp.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queue.html" title="slimta.queue"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edge.smtp.html" title="slimta.edge.smtp"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.edge.html" accesskey="U">slimta.edge</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.edge.wsgi">
+<span id="slimta-edge-wsgi"></span><h1>slimta.edge.wsgi<a class="headerlink" href="#module-slimta.edge.wsgi" title="Permalink to this headline">¶</a></h1>
+<p>Implements an <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> that receives messages with the HTTP protocol. <a class="reference external" href="http://wsgi.readthedocs.org/en/latest/">WSGI</a> is
+a Python specification for defining communication between web servers and the
+application.</p>
+<p>The resulting edge can be used by any HTTP client, like curl:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl -v -X POST -H &#39;Content-Type: message/rfc822&#39; \
+       --data-binary @test.eml \
+       -H &#39;X-Envelope-Sender: c2VuZGVyQGV4YW1wbGUuY29t&#39; \
+       -H &#39;X-Envelope-Recipient: cmVjaXBpZW50QGV4YW1wbGUuY29t&#39; \
+       http://localhost:8080/
+* About to connect() to localhost port 8080 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 8080 (#0)
+&gt; POST / HTTP/1.1
+&gt; User-Agent: curl/7.29.0
+&gt; Host: localhost:8080
+&gt; Accept: */*
+&gt; Content-Type: message/rfc822
+&gt; X-Envelope-Sender: c2VuZGVyQGV4YW1wbGUuY29t
+&gt; X-Envelope-Recipient: cmVjaXBpZW50QGV4YW1wbGUuY29t
+&gt; Content-Length: 99
+&gt;
+* upload completely sent off: 99 out of 99 bytes
+&lt; HTTP/1.1 200 OK
+&lt; X-Smtp-Reply: 250; message=&quot;2.6.0 Message accepted for delivery&quot;
+&lt; Date: Mon, 29 Jul 2013 20:11:55 GMT
+&lt; Content-Length: 0
+&lt;
+* Connection #0 to host localhost left intact
+</pre></div>
+</div>
+<dl class="exception">
+<dt id="slimta.edge.wsgi.WsgiResponse">
+<em class="property">exception </em><code class="sig-prename descclassname">slimta.edge.wsgi.</code><code class="sig-name descname">WsgiResponse</code><span class="sig-paren">(</span><em class="sig-param">status</em><span class="optional">[</span>, <em class="sig-param">headers=None</em><span class="optional">[</span>, <em class="sig-param">data=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.wsgi.WsgiResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<p>This exception can be explicitly raised to end the WSGI request and
+return the given response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>status</strong> – The HTTP status string to return, e.g. <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code>.</p></li>
+<li><p><strong>headers</strong> – List of <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">value)</span></code> header tuples to return.</p></li>
+<li><p><strong>data</strong> – Optional raw data string to return.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.edge.wsgi.WsgiEdge">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.edge.wsgi.</code><code class="sig-name descname">WsgiEdge</code><span class="sig-paren">(</span><em class="sig-param">queue</em><span class="optional">[</span>, <em class="sig-param">hostname=None</em><span class="optional">[</span>, <em class="sig-param">validator_class=None</em><span class="optional">[</span>, <em class="sig-param">uri_pattern=None</em><span class="optional">[</span>, <em class="sig-param">listener=None</em><span class="optional">[</span>, <em class="sig-param">pool=None</em><span class="optional">[</span>, <em class="sig-param">context=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.wsgi.WsgiEdge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.edge.EdgeServer</span></code></a>, <a class="reference internal" href="slimta.http.wsgi.html#slimta.http.wsgi.WsgiServer" title="slimta.http.wsgi.WsgiServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.http.wsgi.WsgiServer</span></code></a></p>
+<p>This class is intended to be instantiated and used as an app on top of a
+WSGI server engine such as <a class="reference external" href="http://www.gevent.org/api/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pywsgi.WSGIServer</span></code></a>. It will only
+acccept <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests that provide a <code class="docutils literal notranslate"><span class="pre">message/rfc822</span></code> payload.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">listener</span></code> is not provided, use
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">build_server()</span></code> to build and manage the
+server manually.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue</strong> – <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> object used by <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge.handoff" title="slimta.edge.Edge.handoff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handoff()</span></code></a> to ensure the
+envelope is properly queued before acknowledged by the edge
+service.</p></li>
+<li><p><strong>hostname</strong> – String identifying the local machine. See <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> for more
+details.</p></li>
+<li><p><strong>validator_class</strong> – A class inherited from <a class="reference internal" href="#slimta.edge.wsgi.WsgiValidators" title="slimta.edge.wsgi.WsgiValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">WsgiValidators</span></code></a>
+whose methods will be executed on various request
+headers to validate the request.</p></li>
+<li><p><strong>uri_pattern</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">RegexObject</span></code> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>) – If given, only URI paths that match the given pattern
+will be allowed.</p></li>
+<li><p><strong>listener</strong> – Usually a <code class="docutils literal notranslate"><span class="pre">(ip,</span> <span class="pre">port)</span></code> tuple defining the interface
+and port upon which to listen for connections.</p></li>
+<li><p><strong>pool</strong> – If given, defines a specific <a class="reference external" href="http://www.gevent.org/api/gevent.pool.html#gevent.pool.Pool" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pool.Pool</span></code></a> to
+use for new greenlets.</p></li>
+<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Enables SSL encryption on connected sockets using the
+information given in the context.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="slimta.edge.wsgi.WsgiEdge.http_verb">
+<code class="sig-name descname">http_verb</code><em class="property"> = 'POST'</em><a class="headerlink" href="#slimta.edge.wsgi.WsgiEdge.http_verb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The HTTP verb that clients will use with the requests. This may be
+changed with caution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.edge.wsgi.WsgiEdge.sender_header">
+<code class="sig-name descname">sender_header</code><em class="property"> = 'X-Envelope-Sender'</em><a class="headerlink" href="#slimta.edge.wsgi.WsgiEdge.sender_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>The header name that clients will use to provide the envelope sender
+address.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.edge.wsgi.WsgiEdge.rcpt_header">
+<code class="sig-name descname">rcpt_header</code><em class="property"> = 'X-Envelope-Recipient'</em><a class="headerlink" href="#slimta.edge.wsgi.WsgiEdge.rcpt_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>The header name that clients will use to provide the envelope recipient
+addresses. This header may be given multiple times, for each recipient.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.edge.wsgi.WsgiEdge.ehlo_header">
+<code class="sig-name descname">ehlo_header</code><em class="property"> = 'X-Ehlo'</em><a class="headerlink" href="#slimta.edge.wsgi.WsgiEdge.ehlo_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>The header name that clients will use to provide the EHLO identifier
+string, as in an SMTP session.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.edge.wsgi.WsgiValidators">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.edge.wsgi.</code><code class="sig-name descname">WsgiValidators</code><span class="sig-paren">(</span><em class="sig-param">environ</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.wsgi.WsgiValidators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for implementing WSGI request validation. Instances will be
+created for each WSGI request.</p>
+<p>To terminate the current WSGI request with a response, raise the
+<a class="reference internal" href="#slimta.edge.wsgi.WsgiResponse" title="slimta.edge.wsgi.WsgiResponse"><code class="xref py py-exc docutils literal notranslate"><span class="pre">WsgiResponse</span></code></a> exception from with the validator methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>environ</strong> – The environment <a class="reference external" href="http://www.python.org/dev/peps/pep-0333/#environ-variables">variables</a> for the current session.</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="slimta.edge.wsgi.WsgiValidators.custom_headers">
+<code class="sig-name descname">custom_headers</code><em class="property"> = []</em><a class="headerlink" href="#slimta.edge.wsgi.WsgiValidators.custom_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>A static list of headers that should be passed in to
+<a class="reference internal" href="#slimta.edge.wsgi.WsgiValidators.validate_custom" title="slimta.edge.wsgi.WsgiValidators.validate_custom"><code class="xref py py-meth docutils literal notranslate"><span class="pre">validate_custom()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.edge.wsgi.WsgiValidators.environ">
+<code class="sig-name descname">environ</code><em class="property"> = None</em><a class="headerlink" href="#slimta.edge.wsgi.WsgiValidators.environ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the environment <a class="reference external" href="http://www.python.org/dev/peps/pep-0333/#environ-variables">variables</a> for the current session.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.edge.wsgi.WsgiValidators.validate_ehlo">
+<code class="sig-name descname">validate_ehlo</code><span class="sig-paren">(</span><em class="sig-param">ehlo</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.wsgi.WsgiValidators.validate_ehlo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to validate the EHLO string passed in by the
+client in the <code class="docutils literal notranslate"><span class="pre">X-Ehlo</span></code> (or equivalent) header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ehlo</strong> – The value of the EHLO header.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.edge.wsgi.WsgiValidators.validate_sender">
+<code class="sig-name descname">validate_sender</code><span class="sig-paren">(</span><em class="sig-param">sender</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.wsgi.WsgiValidators.validate_sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to validate the sender address passed in by the
+client in the <code class="docutils literal notranslate"><span class="pre">X-Envelope-Sender</span></code> (or equivalent) header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sender</strong> – The decoded value of the sender header.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.edge.wsgi.WsgiValidators.validate_recipient">
+<code class="sig-name descname">validate_recipient</code><span class="sig-paren">(</span><em class="sig-param">recipient</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.wsgi.WsgiValidators.validate_recipient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to validate each recipient address passed in by
+the client in the <code class="docutils literal notranslate"><span class="pre">X-Envelope-Recipient</span></code> (or equivalent) headers.
+This method will be called for each occurence of the header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>recipient</strong> – The decoded value of one recipient header.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.edge.wsgi.WsgiValidators.validate_custom">
+<code class="sig-name descname">validate_custom</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.wsgi.WsgiValidators.validate_custom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this method to validate custom headers sent in by the
+client. This method will be called exactly once for each header listed
+in the <a class="reference internal" href="#slimta.edge.wsgi.WsgiValidators.custom_headers" title="slimta.edge.wsgi.WsgiValidators.custom_headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">custom_headers</span></code></a> class attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – The name of the header.</p></li>
+<li><p><strong>value</strong> – The raw value of the header, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the client
+did not provide the header.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.edge.smtp.html"
+                          title="Previous page">&larr; slimta.edge.smtp</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.queue.html"
+                          title="Next page">&rarr; slimta.queue</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.queue.html" title="slimta.queue"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edge.smtp.html" title="slimta.edge.smtp"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.edge.html" >slimta.edge</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

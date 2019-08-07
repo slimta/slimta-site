@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.cloudstorage.aws &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.redisstorage" href="extra.redisstorage.html" />
+    <link rel="prev" title="slimta.cloudstorage.rackspace" href="extra.cloudstorage.rackspace.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="extra.redisstorage.html" title="slimta.redisstorage"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="extra.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="extra.cloudstorage.html" accesskey="U">slimta.cloudstorage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.cloudstorage.aws">
+<span id="slimta-cloudstorage-aws"></span><h1>slimta.cloudstorage.aws<a class="headerlink" href="#module-slimta.cloudstorage.aws" title="Permalink to this headline">¶</a></h1>
+<p>This module defines the queue storage mechanism specific to the <a class="reference external" href="http://aws.amazon.com/">Amazon Web
+Services</a> hosting service. It requires an account as well as the <a class="reference external" href="http://aws.amazon.com/s3/">Simple
+Storage Service (S3)</a> and optionally the <a class="reference external" href="http://aws.amazon.com/sqs/">Simple Queue Service (SQS)</a>
+services.</p>
+<p>For each queued message, the contents and metadata of the message are written
+to <em>S3</em>. Upon success, a reference to the S3 object is injected into <em>SQS</em> as a
+new message.</p>
+<p>The <em>SQS</em> service is only necessary for alerting separate <em>slimta</em> processes
+that a new message has been queued. If reception and relaying are happening in
+the same process, <em>SQS</em> is unnecessary.</p>
+<p><strong>NOTE:</strong> This module uses the <a class="reference external" href="http://boto.readthedocs.org/en/latest/">boto</a> library to communicate with <em>AWS</em>. To
+avoid performance issues, you must use gevent <a class="reference external" href="http://gevent.org/intro.html#monkey-patching">monkey patching</a> before using
+it!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="k">import</span> <span class="n">monkey</span><span class="p">;</span> <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
+
+<span class="n">s3_conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">connect_s3</span><span class="p">()</span>
+<span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">s3_conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="s1">&#39;slimta-queue&#39;</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">SimpleStorageService</span><span class="p">(</span><span class="n">s3_bucket</span><span class="p">)</span>
+
+<span class="n">sqs_conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">sqs</span><span class="o">.</span><span class="n">connect_to_region</span><span class="p">(</span><span class="s1">&#39;us-west-2&#39;</span><span class="p">)</span>
+<span class="n">sqs_queue</span> <span class="o">=</span> <span class="n">sqs_conn</span><span class="o">.</span><span class="n">create_queue</span><span class="p">(</span><span class="s1">&#39;slimta-queue&#39;</span><span class="p">)</span>
+<span class="n">sqs</span> <span class="o">=</span> <span class="n">SimpleQueueService</span><span class="p">(</span><span class="n">sqs_queue</span><span class="p">)</span>
+
+<span class="n">queue_storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="n">sqs</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="slimta.cloudstorage.aws.SimpleStorageService">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.cloudstorage.aws.</code><code class="sig-name descname">SimpleStorageService</code><span class="sig-paren">(</span><em class="sig-param">bucket</em><span class="optional">[</span>, <em class="sig-param">timeout=None</em><span class="optional">[</span>, <em class="sig-param">prefix=''</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.aws.SimpleStorageService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Instances of this class may be passed in to the
+<a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the <code class="docutils literal notranslate"><span class="pre">storage</span></code>
+parameter to use <em>S3</em> as the storage backend.</p>
+<p>Keys added to the bucket are generated with <code class="docutils literal notranslate"><span class="pre">prefix</span> <span class="pre">+</span> <span class="pre">str(uuid.uuid4())</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bucket</strong> (<a class="reference external" href="https://boto.readthedocs.io/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.49.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">boto.s3.bucket.Bucket</span></code></a>) – The S3 bucket object in which all message contents and
+metadata will be written. Each created S3 object will use a
+<a class="reference external" href="https://docs.python.org/3/library/uuid.html#module-uuid" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uuid</span></code></a> string as its key.</p></li>
+<li><p><strong>timeout</strong> – Timeout, in seconds, before requests to <em>S3</em> will fail and
+raise an exception.</p></li>
+<li><p><strong>prefix</strong> – The string prefixed to every key added to the bucket.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.cloudstorage.aws.SimpleQueueService">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.cloudstorage.aws.</code><code class="sig-name descname">SimpleQueueService</code><span class="sig-paren">(</span><em class="sig-param">queue</em><span class="optional">[</span>, <em class="sig-param">timeout=None</em><span class="optional">[</span>, <em class="sig-param">poll_pause=1.0</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.aws.SimpleQueueService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Instances of this class may be passed in to the
+<a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the
+<code class="docutils literal notranslate"><span class="pre">message_queue</span></code> parameter to use <em>SQS</em> as the message queue backend to
+alert other processes that a new message was stored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue</strong> (<a class="reference external" href="https://boto.readthedocs.io/en/latest/ref/sqs.html#boto.sqs.queue.Queue" title="(in boto v2.49.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">boto.sqs.queue.Queue</span></code></a>) – The SQS queue object in which each new message corresponds to
+a new object in storage.</p></li>
+<li><p><strong>timeout</strong> – Timeout, in seconds, before requests to <em>S3</em> will fail and
+raise an exception.</p></li>
+<li><p><strong>poll_pause</strong> – The time, in seconds, to idle between attempts to poll
+the queue for new messages.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="extra.cloudstorage.rackspace.html"
+                          title="Previous page">&larr; slimta.cloudstorage.rackspace</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="extra.redisstorage.html"
+                          title="Next page">&rarr; slimta.redisstorage</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="extra.redisstorage.html" title="slimta.redisstorage"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="extra.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="extra.cloudstorage.html" >slimta.cloudstorage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

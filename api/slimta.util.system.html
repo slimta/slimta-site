@@ -1,0 +1,224 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.util.system &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Available Extensions" href="extra.html" />
+    <link rel="prev" title="slimta.util.ptrlookup" href="slimta.util.ptrlookup.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="extra.html" title="Available Extensions"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.ptrlookup.html" title="slimta.util.ptrlookup"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" accesskey="U">slimta.util</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.util.system">
+<span id="slimta-util-system"></span><h1>slimta.util.system<a class="headerlink" href="#module-slimta.util.system" title="Permalink to this headline">¶</a></h1>
+<p>Contains functions to simplify the usual daemonization procedures for long-
+running processes.</p>
+<dl class="function">
+<dt id="slimta.util.system.daemonize">
+<code class="sig-prename descclassname">slimta.util.system.</code><code class="sig-name descname">daemonize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.system.daemonize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Daemonizes the current process using the standard double-fork.
+This function does not affect standard input, output, or error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The PID of the daemonized process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="slimta.util.system.redirect_stdio">
+<code class="sig-prename descclassname">slimta.util.system.</code><code class="sig-name descname">redirect_stdio</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">stdout=None</em><span class="optional">[</span>, <em class="sig-param">stderr=None</em><span class="optional">[</span>, <em class="sig-param">stdin=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.system.redirect_stdio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redirects standard output, error, and input to the given
+filenames. Standard output and error are opened in append-mode, and
+standard input is opened in read-only mode. Leaving any parameter
+blank leaves that stream alone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stdout</strong> – filename to append the standard output stream into.</p></li>
+<li><p><strong>stderr</strong> – filename to append the standard error stream into.</p></li>
+<li><p><strong>stdin</strong> – filename to read from as the standard input stream.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="slimta.util.system.drop_privileges">
+<code class="sig-prename descclassname">slimta.util.system.</code><code class="sig-name descname">drop_privileges</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">user=None</em><span class="optional">[</span>, <em class="sig-param">group=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.system.drop_privileges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the system calls <a class="reference external" href="https://docs.python.org/3/library/os.html#os.setuid" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setuid()</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/os.html#os.setgid" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setgid()</span></code></a> to drop
+root privileges to the given user and group. This is useful for security
+purposes, once root-only ports like 25 are opened.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> – user name (from /etc/passwd) or UID.</p></li>
+<li><p><strong>group</strong> – group name (from /etc/group) or GID.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.util.system.PidFile">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.util.system.</code><code class="sig-name descname">PidFile</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">filename=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.system.PidFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.3.13.</span></p>
+</div>
+<p>Context manager which creates a PID file containing the current process id,
+runs the context, and then removes the PID file.</p>
+<p>An <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> exceptions when creating the PID file will be
+propogated without executing the context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – The filename to use for the PID file. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is
+given, the context is simply executed with no PID file
+created.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.util.ptrlookup.html"
+                          title="Previous page">&larr; slimta.util.ptrlookup</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="extra.html"
+                          title="Next page">&rarr; Available Extensions</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="extra.html" title="Available Extensions"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.ptrlookup.html" title="slimta.util.ptrlookup"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" >slimta.util</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

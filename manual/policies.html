@@ -1,0 +1,254 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Policy Implementation &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Integrating Everything" href="integrating.html" />
+    <link rel="prev" title="Relay Services" href="relay.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="integrating.html" title="Integrating Everything"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="relay.html" title="Relay Services"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="policy-implementation">
+<h1>Policy Implementation<a class="headerlink" href="#policy-implementation" title="Permalink to this headline">¶</a></h1>
+<p>Many policies in <a class="reference external" href="https://slimta.org/">slimta</a> will be applied directly before queuing the message.
+These are called queue policies, and they are especially useful because they
+are executed <strong>once</strong> for every message and the results are persistently
+stored.  Spam filtering is an example of a great queue policy, because it is
+expensive and the results can be stored in the <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object as an
+attribute or header.</p>
+<p>Other policies in <a class="reference external" href="https://slimta.org/">slimta</a> will be applied directly before each delivery
+attempt, called relay policies. A great example of a relay policy would be
+recipient forwarding looked up from a database; you would want to make sure the
+latest forwarding rules are applied on each delivery attempt, to not use a
+stale rule. At the moment, no relay policies are included with <a class="reference external" href="https://slimta.org/">slimta</a>.</p>
+<div class="section" id="date-header">
+<span id="policy-add-date-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Date</span></code> Header<a class="headerlink" href="#date-header" title="Permalink to this headline">¶</a></h2>
+<p>Addition of a <code class="docutils literal notranslate"><span class="pre">Date:</span></code> header is a necessary policy for most MTAs, when the
+original message lacks one. The header generally uses local time-zones written
+as acronyms, for better human-readability.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Date:</span></code> header addition is a queue policy, given by the
+<a class="reference internal" href="../api/slimta.policy.headers.html#slimta.policy.headers.AddDateHeader" title="slimta.policy.headers.AddDateHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AddDateHeader</span></code></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="k">import</span> <span class="n">AddDateHeader</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddDateHeader</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="message-id-header">
+<span id="policy-add-message-id-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> Header<a class="headerlink" href="#message-id-header" title="Permalink to this headline">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Message-Id:</span></code> header should be added by the first <em>MTA</em> receiving the
+message from the client, if not by the client itself. The header should not be
+overridden by any subsequent MTA handling the message. A <code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> will
+look similar to an email address: left- and right-parts separated by an <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>
+with the whole thing surrounded by <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. The right-part of the ID
+is usually the FQDN of the MTA that first received the message. The left-part
+should be a string that tries to uniquely identify the message from all the
+other messages the MTA has or will handle. This uniqueness is usually attained
+by concatenating a randomly-generated UUID to a timestamp.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Message-Id:</span></code> header addition is a queue policy, given by the
+<a class="reference internal" href="../api/slimta.policy.headers.html#slimta.policy.headers.AddMessageIdHeader" title="slimta.policy.headers.AddMessageIdHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AddMessageIdHeader</span></code></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="k">import</span> <span class="n">AddMessageIdHeader</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="received-header">
+<span id="policy-add-received-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Received</span></code> Header<a class="headerlink" href="#received-header" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Received:</span></code> header is the most unique and complicated header of those that
+MTAs should add to a message. The header should be pre-pended to every message,
+so that the order that each MTA handled the message is preserved. The header
+does not have a strict, RFC-mandated format, but <a class="reference external" href="https://cr.yp.to/immhf/envelope.html#received">cr.yp.to</a> has a good
+recommendation that fits what <em>most</em> good MTAs will do, and <a class="reference external" href="https://slimta.org/">slimta</a> attempts to
+follow.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Received:</span></code> header addition is a queue policy, given by the
+<a class="reference internal" href="../api/slimta.policy.headers.html#slimta.policy.headers.AddReceivedHeader" title="slimta.policy.headers.AddReceivedHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AddReceivedHeader</span></code></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="k">import</span> <span class="n">AddReceivedHeader</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddReceivedHeader</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="recipient-forwarding">
+<span id="policy-forwarding"></span><h2>Recipient Forwarding<a class="headerlink" href="#recipient-forwarding" title="Permalink to this headline">¶</a></h2>
+<p>Forwarding policies range from quite simple to exorbitantly complex. The
+<a class="reference internal" href="../api/slimta.policy.forward.html#slimta.policy.forward.Forward" title="slimta.policy.forward.Forward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code></a> policy included with <a class="reference external" href="https://slimta.org/">slimta</a> can only
+handle <em>static</em> rules (e.g. not queried from a database) using regular
+expression-based substitution.</p>
+<p>Because the mappings are static and thus will never become stale like a database
+lookup might, this is implemented as a queue policy, given by the
+<a class="reference internal" href="../api/slimta.policy.forward.html#slimta.policy.forward.Forward" title="slimta.policy.forward.Forward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.forward</span> <span class="k">import</span> <span class="n">Forward</span>
+
+<span class="n">fwd</span> <span class="o">=</span> <span class="n">Forward</span><span class="p">()</span>
+<span class="n">fwd</span><span class="o">.</span><span class="n">add_mapping</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(ian|icg)@example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;admin@example.com&#39;</span><span class="p">)</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">fwd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="policy-spamassassin">
+<span id="id1"></span><h2>SpamAssassin<a class="headerlink" href="#policy-spamassassin" title="Permalink to this headline">¶</a></h2>
+<p>The included spam filtering mechanism uses <a class="reference external" href="https://spamassassin.apache.org/">SpamAssassin</a> by making a socket
+connection to a <code class="docutils literal notranslate"><span class="pre">spamd</span></code> server. When used as a policy, the message is scanned
+and a <code class="docutils literal notranslate"><span class="pre">X-Spam-Status:</span></code> header is added to the message with either <code class="docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> indicating spamminess. If spammy, another header <code class="docutils literal notranslate"><span class="pre">X-Spam-Symbols:</span></code> is
+also added with the symbols used in the match.</p>
+<p>SpamAssassin is an expensive operation, so it is implemented as a queue policy,
+given by the <a class="reference internal" href="../api/slimta.policy.spamassassin.html#slimta.policy.spamassassin.SpamAssassin" title="slimta.policy.spamassassin.SpamAssassin"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpamAssassin</span></code></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.spamassassin</span> <span class="k">import</span> <span class="n">SpamAssassin</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">SpamAssassin</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Policy Implementation</a><ul>
+<li><a class="reference internal" href="#date-header"><code class="docutils literal notranslate"><span class="pre">Date</span></code> Header</a></li>
+<li><a class="reference internal" href="#message-id-header"><code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> Header</a></li>
+<li><a class="reference internal" href="#received-header"><code class="docutils literal notranslate"><span class="pre">Received</span></code> Header</a></li>
+<li><a class="reference internal" href="#recipient-forwarding">Recipient Forwarding</a></li>
+<li><a class="reference internal" href="#policy-spamassassin">SpamAssassin</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="relay.html"
+                          title="Previous page">&larr; Relay Services</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="integrating.html"
+                          title="Next page">&rarr; Integrating Everything</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="integrating.html" title="Integrating Everything"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="relay.html" title="Relay Services"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,266 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta: Mail Transfer Library &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="_static/cloud.base.js"></script>
+    <script type="text/javascript" src="_static/cloud.js"></script>
+    <link rel="shortcut icon" href="_static/slimta.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MIT License" href="license.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="license.html" title="MIT License"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+    <li><a href="#">slimta 4.0.8 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="slimta-mail-transfer-library">
+<h1>slimta: Mail Transfer Library<a class="headerlink" href="#slimta-mail-transfer-library" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The <em>slimta</em> suite was created to provide an MTA (Mail Transfer Agent) taking advantage of new
+technologies and methodologies to scale horizontally in a virtualized
+environment. Along with that, <em>slimta</em> is designed to work either as a
+traditional application or as a software library.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="license.html"><span class="doc">MIT License</span></a></p></li>
+<li><p><a class="reference internal" href="manual/terminology.html"><span class="doc">Terminology</span></a></p></li>
+<li><p><a class="reference external" href="https://travis-ci.org/slimta/">Continuous Integration</a> <img alt="buildstatus" src="https://travis-ci.org/slimta/python-slimta.svg?branch=master" /></p></li>
+<li><p>News</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="blog/2016-11-14.html"><span class="doc">Version 4.0.0 Released</span></a></p></li>
+<li><p><a class="reference internal" href="blog/2016-11-14-2.html"><span class="doc">A Little Bit of History</span></a></p></li>
+</ul>
+</li>
+</ol>
+<a href="https://paypal.me/icgood"><img src="https://img.shields.io/badge/contribute-paypal.me-blue.svg" alt="paypal.me/icgood"></a>
+<div class="html-toggle section" id="python-library">
+<h2>Python Library<a class="headerlink" href="#python-library" title="Permalink to this headline">¶</a></h2>
+<p>The <em>python-slimta</em> project is a Python library offering the building blocks
+necessary to create a full-featured <a class="reference external" href="https://en.wikipedia.org/wiki/Message_transfer_agent">MTA</a>. Most MTAs must be configured, but an
+MTA built with <em>python-slimta</em> is coded. An MTA built with <em>python-slimta</em> can
+incorporate any protocol or policy – custom or built-in. An MTA built with
+<em>python-slimta</em> can integrate with other Python libraries and take advantage of
+Python’s great community.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/slimta/python-slimta/blob/master/README.md">README</a></p></li>
+<li><p><a class="reference external" href="https://github.com/slimta/python-slimta/tags">Download</a> [<a class="reference external" href="https://github.com/slimta/python-slimta">Repository</a>]</p></li>
+<li><p><a class="reference external" href="https://github.com/slimta/python-slimta/issues">Bug Reports</a></p></li>
+<li><p><a class="reference external" href="https://github.com/slimta/python-slimta/blob/master/CHANGELOG.md">Change Log</a></p></li>
+<li><p><a class="reference external" href="https://github.com/slimta/python-slimta/blob/master/README.md#getting-started">Installation</a></p></li>
+<li><p><a class="reference internal" href="api/index.html"><span class="doc">API Reference</span></a></p></li>
+<li><p><a class="reference internal" href="manual/python-slimta.html"><span class="doc">Python Library Usage</span></a></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
+<span class="kn">from</span> <span class="nn">slimta.queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+<span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="kn">import</span> <span class="n">DictStorage</span>
+<span class="kn">from</span> <span class="nn">slimta.relay.smtp.mx</span> <span class="kn">import</span> <span class="n">MxSmtpRelay</span>
+<span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">slimta.policy.split</span> <span class="kn">import</span> <span class="n">RecipientDomainSplit</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="c1"># Set up outbound delivery by MX lookup.</span>
+<span class="n">relay</span> <span class="o">=</span> <span class="n">MxSmtpRelay</span><span class="p">()</span>
+
+<span class="c1"># Set up local queue storage to in-memory dictionaries.</span>
+<span class="n">queue_storage</span> <span class="o">=</span> <span class="n">DictStorage</span><span class="p">({},</span> <span class="p">{})</span>
+<span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">(</span><span class="n">queue_storage</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># Ensure necessary headers are added.</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddDateHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddReceivedHeader</span><span class="p">())</span>
+<span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">RecipientDomainSplit</span><span class="p">())</span>
+
+<span class="c1"># Listen for messages on port 25.</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
+<span class="n">edge</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">edge</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="k">print</span>
+
+</pre></div>
+</div>
+</div>
+<div class="html-toggle section" id="traditional-application">
+<h2>Traditional Application<a class="headerlink" href="#traditional-application" title="Permalink to this headline">¶</a></h2>
+<p>The <em>slimta</em> project is a traditional application built on top of the
+<em>python-slimta</em> library. It allows a more “out-of-the-box” <a class="reference external" href="https://en.wikipedia.org/wiki/Message_transfer_agent">MTA</a> that offers all
+the useful, built-in features needed for a normal mail system setup.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://github.com/slimta/slimta/blob/master/README.md">README</a></p></li>
+<li><p><a class="reference external" href="https://github.com/slimta/slimta/tags">Download</a> [<a class="reference external" href="https://github.com/slimta/slimta">Repository</a>]</p></li>
+<li><p><a class="reference external" href="https://github.com/slimta/slimta/issues">Bug Reports</a></p></li>
+<li><p><a class="reference internal" href="manual/slimta.html"><span class="doc">Configuration and Setup Guide</span></a></p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">process</span><span class="p">:</span>
+  <span class="nt">slimta</span><span class="p">:</span>
+    <span class="nt">daemon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">tls</span><span class="p">:</span>
+  <span class="nt">main</span><span class="p">:</span> <span class="nl">&amp;tls_main</span>
+    <span class="nt">certfile</span><span class="p">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span>
+    <span class="nt">keyfile</span><span class="p">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span>
+
+<span class="nt">edge</span><span class="p">:</span>
+  <span class="nt">outbound</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">smtp</span>
+    <span class="nt">queue</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">outbound</span>
+    <span class="nt">listener</span><span class="p">:</span>
+      <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;127.0.0.1&#39;</span>
+      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">587</span>
+    <span class="nt">tls</span><span class="p">:</span> <span class="nv">*tls_main</span>
+    <span class="nt">rules</span><span class="p">:</span> <span class="kt">!include</span> <span class="l l-Scalar l-Scalar-Plain">rules.yaml</span>
+
+<span class="nt">queue</span><span class="p">:</span>
+  <span class="nt">outbound</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">memory</span>
+    <span class="nt">relay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">outbound</span>
+    <span class="nt">policies</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">add_date_header</span> <span class="p p-Indicator">}</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">add_messageid_header</span> <span class="p p-Indicator">}</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">add_received_header</span> <span class="p p-Indicator">}</span>
+      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">recipient_domain_split</span> <span class="p p-Indicator">}</span>
+
+<span class="nt">relay</span><span class="p">:</span>
+  <span class="nt">outbound</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mx</span>
+    <span class="nt">tls</span><span class="p">:</span> <span class="nv">*tls_main</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="#" title="index">
+          <img class="logo" src="_static/slimta.svg" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="#">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">slimta: Mail Transfer Library</a><ul>
+<li><a class="reference internal" href="#python-library">Python Library</a></li>
+<li><a class="reference internal" href="#traditional-application">Traditional Application</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="license.html"
+                          title="Next page">&rarr; MIT License</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="license.html" title="MIT License"
+             >next</a> &nbsp; &nbsp;</li>
+    <li><a href="#">slimta 4.0.8 documentation</a> &#187;</li>
+ 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,211 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Python Library Usage &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="System Helpers" href="system.html" />
+    <link rel="prev" title="Terminology" href="terminology.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="system.html" title="System Helpers"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="terminology.html" title="Terminology"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Usage Manual</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="python-library-usage">
+<h1>Python Library Usage<a class="headerlink" href="#python-library-usage" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The <a class="reference internal" href="../api/index.html"><span class="doc">API Reference</span></a> provides great information on how to use each piece of
+the <em>python-slimta</em> library, but it rarely helps decide when and how to put the
+pieces together. These pages describe the components of a <em>python-slimta</em>
+application, with examples, to help construct your own personalized MTA.</p>
+<p>For example, once you’ve read about the <a class="reference internal" href="edge.html#edge-smtp"><span class="std std-ref">SMTP edge service</span></a>
+and decided it’s what you want, you can use the
+<a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code></a> reference page for details on exactly what
+arguments it takes and what they mean.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="system.html"><span class="doc">System Helpers</span></a></p></li>
+<li><p><a class="reference internal" href="envelopes.html"><span class="doc">Envelope Objects</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="envelopes.html#envelope-bounces"><span class="std std-ref">Bounces</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="edge.html"><span class="doc">Edge Services</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="edge.html#edge-smtp"><span class="std std-ref">SMTP</span></a></p></li>
+<li><p><a class="reference internal" href="edge.html#edge-http"><span class="std std-ref">HTTP</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="queue.html"><span class="doc">Queue Services</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html"><span class="doc">Relay Services</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="relay.html#relay-smtp-smarthost"><span class="std std-ref">SMTP Smart-Hosting</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-smtp-mx"><span class="std std-ref">SMTP MX</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-lmtp"><span class="std std-ref">LMTP</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-http"><span class="std std-ref">HTTP</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-pipe"><span class="std std-ref">External Processes</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="policies.html"><span class="doc">Policy Implementation</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="policies.html#policy-add-date-header"><span class="std std-ref">Date Header</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-add-message-id-header"><span class="std std-ref">Message-Id Header</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-add-received-header"><span class="std std-ref">Received Header</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-forwarding"><span class="std std-ref">Recipient Forwarding</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-spamassassin"><span class="std std-ref">SpamAssassin</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="integrating.html"><span class="doc">Integrating Everything</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="mda.html"><span class="doc">Mail Delivery Agent</span></a></p></li>
+<li><p><a class="reference internal" href="msa.html"><span class="doc">Mail Submission Agent</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="extensions.html"><span class="doc">Extensions</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="extensions.html#pipe-relay-extension"><span class="std std-ref">External Process Delivery</span></a></p></li>
+<li><p><a class="reference internal" href="extensions.html#cloud-storage"><span class="std std-ref">Cloud Storage</span></a></p></li>
+<li><p><a class="reference internal" href="extensions.html#disk-storage"><span class="std std-ref">Disk Storage</span></a></p></li>
+<li><p><a class="reference internal" href="extensions.html#redis-storage"><span class="std std-ref">Redis Storage</span></a></p></li>
+<li><p><a class="reference internal" href="extensions.html#celery-queue"><span class="std std-ref">Celery Queuing</span></a></p></li>
+<li><p><a class="reference internal" href="extensions.html#enforce-spf"><span class="std std-ref">Sender Policy Framework (SPF)</span></a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="terminology.html"
+                          title="Previous page">&larr; Terminology</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="system.html"
+                          title="Next page">&rarr; System Helpers</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="system.html" title="System Helpers"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="terminology.html" title="Terminology"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

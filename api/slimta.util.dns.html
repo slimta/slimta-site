@@ -1,0 +1,207 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.util.dns &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.util.dnsbl" href="slimta.util.dnsbl.html" />
+    <link rel="prev" title="slimta.util.bytesformat" href="slimta.util.bytesformat.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.dnsbl.html" title="slimta.util.dnsbl"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.bytesformat.html" title="slimta.util.bytesformat"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" accesskey="U">slimta.util</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.util.dns">
+<span id="slimta-util-dns"></span><h1>slimta.util.dns<a class="headerlink" href="#module-slimta.util.dns" title="Permalink to this headline">¶</a></h1>
+<p>This module implements DNS resolution with <a class="reference external" href="https://pycares.readthedocs.io/en/latest/pycares.html#module-pycares" title="(in pycares v2.3.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycares</span></code></a>.</p>
+<dl class="exception">
+<dt id="slimta.util.dns.DNSError">
+<em class="property">exception </em><code class="sig-prename descclassname">slimta.util.dns.</code><code class="sig-name descname">DNSError</code><span class="sig-paren">(</span><em class="sig-param">errno</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+<p>Exception raised with DNS resolution failed. The exception message will
+contain more information.</p>
+<dl class="attribute">
+<dt id="slimta.util.dns.DNSError.errno">
+<code class="sig-name descname">errno</code><a class="headerlink" href="#slimta.util.dns.DNSError.errno" title="Permalink to this definition">¶</a></dt>
+<dd><p>The error number, as per <code class="xref py py-mod docutils literal notranslate"><span class="pre">pycares.errno</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="slimta.util.dns.DNSResolver">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.util.dns.</code><code class="sig-name descname">DNSResolver</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*args</em><span class="optional">[</span>, <em class="sig-param">**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSResolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Manages all the active DNS queries using a single, static
+<a class="reference external" href="https://pycares.readthedocs.io/en/latest/channel.html#pycares.Channel" title="(in pycares v2.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycares.Channel</span></code></a> object.</p>
+<dl class="attribute">
+<dt id="slimta.util.dns.DNSResolver.channel">
+<code class="sig-name descname">channel</code><a class="headerlink" href="#slimta.util.dns.DNSResolver.channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Before making any queries, this attribute may be set to override the
+default with a <a class="reference external" href="https://pycares.readthedocs.io/en/latest/channel.html#pycares.Channel" title="(in pycares v2.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycares.Channel</span></code></a> object that will manage all DNS
+queries.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.util.dns.DNSResolver.query">
+<em class="property">classmethod </em><code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">name</em>, <em class="sig-param">query_type</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSResolver.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Begin a DNS lookup. The result (or exception) will be in the
+returned <a class="reference external" href="http://www.gevent.org/api/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncResult</span></code></a> when it is available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The DNS name to resolve.</p></li>
+<li><p><strong>query_type</strong> – The DNS query type, see
+<a class="reference external" href="https://pycares.readthedocs.io/en/latest/channel.html#pycares.Channel.query" title="(in pycares v2.3.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pycares.Channel.query()</span></code></a> for options. A string
+may be given instead, e.g. <code class="docutils literal notranslate"><span class="pre">'MX'</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="http://www.gevent.org/api/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncResult</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.util.bytesformat.html"
+                          title="Previous page">&larr; slimta.util.bytesformat</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.util.dnsbl.html"
+                          title="Next page">&rarr; slimta.util.dnsbl</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.dnsbl.html" title="slimta.util.dnsbl"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.util.bytesformat.html" title="slimta.util.bytesformat"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" >slimta.util</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

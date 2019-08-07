@@ -1,0 +1,86 @@
+
+Version 4.0.0 Released
+======================
+
+November 14, 2016
+
+The release of 4.0.0 introduces some changes that are not backwards-compatible
+with previous versions, focusing mainly on the API to control SSL behavior with
+the new ``context`` pattern described below.
+
+Change Log In Detail
+--------------------
+
+Added
+~~~~~
+
+* New :mod:`slimta.util` functions for limiting outbound connections to IPv4.
+
+  The need for this change reflects some of the difficulty currently in
+  delivering mail to hosts with IPv6 addresses configured. It is provided for
+  convenience and not used by default.
+
+* New :attr:`~slimta.logging.socket.socket_error_log_level` variable for better
+  log level control.
+
+  This change was put in place for log systems that have special behavior
+  configured for error-level events, such as monitoring alerts or other
+  metrics. Because socket errors are non-fatal and often simply informative,
+  it is often useful for them to be warning- or info-level logs.
+
+Changed
+~~~~~~~
+
+* Constructors and functions that took a ``tls`` dictionary now take a
+  ``context`` argument that should be an :py:class:`~ssl.SSLContext` object.
+  This allows finer control of encryption behavior, as well as the ability to
+  pre-load sensitive certificate data before daemonization.
+
+  Since this project began with Python 2.6 support, it relied on using the
+  :py:func:`ssl.wrap_socket` function to take care of SSL encryption when
+  desired. Among other things, this has the disadvantage of needing to load key
+  and certificate files for every new socket! In addition to being a waste of
+  system resources, for a daemonized service this had implications around the
+  permissions of the process and key/cert files. The primary change of this
+  release is the switch to using :py:class:`ssl.SSLContext`. This is made
+  possible by the previous dropping of support for Python 2.6 and now 3.3 as
+  well. Hopefully these changes help mail server implementations stay secure.
+
+* Client connections will now be opportunistic and try to use TLS if it is
+  available, even if a key or cert have not been configured.
+
+  Since client-side SSL sessions require little-to-no explicit configuration,
+  it should be made the default behavior in most situations to use SSL when
+  available.
+
+* The ``AUTH`` SMTP extension will now advertise insecure authentication
+  mechanisms without TLS, but trying to use them will fail.
+
+  Some clients that are required to authenticate may look for the ``AUTH``
+  extension in the EHLO results before encrypting the session. Now, the
+  extension will be advertized, but attempts to use insecure auth mechanisms
+  such as ``PLAIN`` will fail as specified by the RFC.
+
+* Moved the ``slimta.system`` module to :mod:`slimta.util.system` to de-clutter
+  the top-level namespace.
+
+Fixed
+~~~~~
+
+* Fixed a possible race condition on enqueue.
+
+  Thanks to `Bryce Drennan <https://github.com/brycedrennan>`_ for the `pull
+  request <https://github.com/slimta/python-slimta/pull/107>`_!
+
+* Fixed exception when given empty EHLO/HELO string.
+
+  Thanks to `Geoffrey Lehée <https://github.com/toxinu>`_ for the `pull request
+  <https://github.com/slimta/python-slimta/pull/112>`_!
+
+* Fixed the fallback from EHLO to HELO in certain situations.
+
+  Thanks to `thestick613 <https://github.com/thestick613>`_ for the `pull
+  request <https://github.com/slimta/python-slimta/issues/103>`_!
+
+* The :attr:`~slimta.edge.smtp.SmtpValidators.session` ``auth`` attribute now
+  correctly contains the tuple described in the documentation.

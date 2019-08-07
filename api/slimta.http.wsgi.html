@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>slimta.http.wsgi &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="slimta.envelope" href="slimta.envelope.html" />
+    <link rel="prev" title="slimta.http" href="slimta.http.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.envelope.html" title="slimta.envelope"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.http.html" title="slimta.http"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.http.html" accesskey="U">slimta.http</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-slimta.http.wsgi">
+<span id="slimta-http-wsgi"></span><h1>slimta.http.wsgi<a class="headerlink" href="#module-slimta.http.wsgi" title="Permalink to this headline">¶</a></h1>
+<p>This module provides a basis for implementing <a class="reference external" href="http://wsgi.readthedocs.org/en/latest/">WSGI</a> applications that are
+automatically logged with <a class="reference internal" href="slimta.logging.http.html#module-slimta.logging.http" title="slimta.logging.http"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.logging.http</span></code></a>.</p>
+<dl class="class">
+<dt id="slimta.http.wsgi.WsgiServer">
+<em class="property">class </em><code class="sig-prename descclassname">slimta.http.wsgi.</code><code class="sig-name descname">WsgiServer</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*args</em><span class="optional">[</span>, <em class="sig-param">**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Implements the base class for a WSGI server that logs its requests and
+responses and can easily be deployed as a functioning HTTP server.</p>
+<p>Instances of this class can be used as applications in WSGI server engines,
+or <a class="reference internal" href="#slimta.http.wsgi.WsgiServer.build_server" title="slimta.http.wsgi.WsgiServer.build_server"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_server()</span></code></a> can be used.</p>
+<dl class="method">
+<dt id="slimta.http.wsgi.WsgiServer.build_server">
+<code class="sig-name descname">build_server</code><span class="sig-paren">(</span><em class="sig-param">listener</em><span class="optional">[</span>, <em class="sig-param">pool=None</em><span class="optional">[</span>, <em class="sig-param">ssl_args=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer.build_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs and returns a WSGI server engine, configured to use the
+current object as its application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listener</strong> – Usually a <code class="docutils literal notranslate"><span class="pre">(ip,</span> <span class="pre">port)</span></code> tuple defining the interface
+and port upon which to listen for connections.</p></li>
+<li><p><strong>pool</strong> – If given, defines a specific <a class="reference external" href="http://www.gevent.org/api/gevent.pool.html#gevent.pool.Pool" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pool.Pool</span></code></a> to
+use for new greenlets.</p></li>
+<li><p><strong>ssl_args</strong> – Optional dictionary of TLS settings, causing sockets
+to be encrypted on connection. See
+<a class="reference external" href="http://www.gevent.org/api/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">WSGIServer</span></code></a> for details.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="http://www.gevent.org/api/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pywsgi.WSGIServer</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.http.wsgi.WsgiServer.handle">
+<code class="sig-name descname">handle</code><span class="sig-paren">(</span><em class="sig-param">environ</em>, <em class="sig-param">start_response</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer.handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overridden by sub-classes to handle WSGI requests and generate a
+response. This method should be used as if it were the WSGI application
+function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>environ</strong> – The WSGI environment <a class="reference external" href="http://www.python.org/dev/peps/pep-0333/#environ-variables">variables</a>.</p></li>
+<li><p><strong>start_response</strong> – Call this function to initiate the WSGI
+response.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An iterable of raw data parts to return with the response.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.http.wsgi.WsgiServer.__call__">
+<code class="sig-name descname">__call__</code><span class="sig-paren">(</span><em class="sig-param">environ</em>, <em class="sig-param">start_response</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>When this object is used as a WSGI application, this method logs the
+request and ensures that the response will be logged as well. The
+request is then proxied to <a class="reference internal" href="#slimta.http.wsgi.WsgiServer.handle" title="slimta.http.wsgi.WsgiServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a> for processing.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="slimta.http.wsgi.WsgiServer.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#slimta.http.wsgi.WsgiServer.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.http.html"
+                          title="Previous page">&larr; slimta.http</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.envelope.html"
+                          title="Next page">&rarr; slimta.envelope</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.envelope.html" title="slimta.envelope"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.http.html" title="slimta.http"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.http.html" >slimta.http</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>

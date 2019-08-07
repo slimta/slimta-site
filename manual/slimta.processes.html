@@ -1,0 +1,247 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Configuring the Processes &#8212; slimta 4.0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    <script type="text/javascript" src="../_static/cloud.js"></script>
+    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring the Edges" href="slimta.edges.html" />
+    <link rel="prev" title="Application Usage" href="slimta.html" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head><body>
+    <div class="relbar-top">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edges.html" title="Configuring the Edges"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="Application Usage"
+             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">Application Usage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="configuring-the-processes">
+<h1>Configuring the Processes<a class="headerlink" href="#configuring-the-processes" title="Permalink to this headline">¶</a></h1>
+<p>The first section in <code class="docutils literal notranslate"><span class="pre">slimta.conf</span></code> is <code class="docutils literal notranslate"><span class="pre">process</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">process</span><span class="p">:</span>
+  <span class="nt">slimta</span><span class="p">:</span>
+    <span class="nt">daemon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="nt">logging</span><span class="p">:</span> <span class="kt">!include</span> <span class="l l-Scalar l-Scalar-Plain">logging.yaml</span>
+</pre></div>
+</div>
+<p>It has a single sub-section, <code class="docutils literal notranslate"><span class="pre">slimta</span></code>, which manage settings for the
+<code class="docutils literal notranslate"><span class="pre">slimta</span></code> executables. You can use the <code class="docutils literal notranslate"><span class="pre">--process-name</span></code> command-line option
+to control this behavior. Each sub-section shares the same possible settings:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">daemon</span></code>: Boolean</p>
+<p>Whether or not the executables should daemonize on startup. This option can be
+overriden by the <code class="docutils literal notranslate"><span class="pre">--no-daemon</span></code> command-line option. This value is False by
+default.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user</span></code>: String</p>
+<p>If given, the process will attempt to drop root privileges to this username.
+This is useful for when using privileged ports 25, 465, and/or 587. By
+default, privileges are not dropped by the process.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">group</span></code>: String</p>
+<p>Like the <code class="docutils literal notranslate"><span class="pre">user</span></code> option, the process will attempt to drop privileges to this
+group name. By default, privileges are not dropped by the process.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stdout</span></code>: String</p>
+<p>If given, this path will be opened in append-mode (and created if necessary)
+and all standard output will be written to it instead of the console. This is
+particularly useful when daemonized. By default, the standard output stream is
+not redirected.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stderr</span></code>: String</p>
+<p>Like the <code class="docutils literal notranslate"><span class="pre">stdout</span></code> option, this redirects the standard error stream to the
+given path in append mode. By default, the standard error stream is not
+redirected.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logging</span></code>: Dictionary</p>
+<p>See the section on logging below. It’s often convenient to put logging configs
+in a separate config file, like in the example above. By default, debug-level
+logging is written to standard output.</p>
+</li>
+</ul>
+<div class="section" id="logging-configuration">
+<h2>Logging Configuration<a class="headerlink" href="#logging-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Because the <code class="docutils literal notranslate"><span class="pre">logging</span></code> sub-section is parsed into a dictionary-like object, it
+is compatible with the <a class="reference external" href="https://docs.python.org/3/library/logging.config.html#logging.config.dictConfig" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.config.dictConfig()</span></code></a> function. The
+<a class="reference external" href="https://docs.python.org/2/library/logging.config.html#configuration-dictionary-schema">dictionary schema</a> explains how to use this configuration, and the
+<a class="reference external" href="https://github.com/slimta/slimta/blob/master/etc/logging.conf.sample">logging.conf</a> sample config has a good starting point.</p>
+<p>A more advanced, logging config that produces log files ready for rotation in a
+readable and parseable format might look like this:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="nt">formatters</span><span class="p">:</span>
+  <span class="nt">console</span><span class="p">:</span>
+    <span class="nt">format</span><span class="p">:</span> <span class="s">&#39;%(levelname)-8s</span><span class="nv"> </span><span class="s">%(name)-15s</span><span class="nv"> </span><span class="s">%(message)s&#39;</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">format</span><span class="p">:</span> <span class="s">&#39;%(asctime)s</span><span class="nv"> </span><span class="s">%(levelname)s</span><span class="nv"> </span><span class="s">%(name)s</span><span class="nv"> </span><span class="s">%(message)s&#39;</span>
+
+<span class="nt">handlers</span><span class="p">:</span>
+  <span class="nt">console</span><span class="p">:</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">logging.StreamHandler</span>
+    <span class="nt">level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+    <span class="nt">formatter</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">console</span>
+    <span class="nt">stream</span><span class="p">:</span> <span class="kt">!!python/name:sys.stdout</span>
+  <span class="nt">file</span><span class="p">:</span>
+    <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">logging.handlers.WatchedFileHandler</span>
+    <span class="nt">level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+    <span class="nt">formatter</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">default</span>
+    <span class="nt">filename</span><span class="p">:</span> <span class="s">&#39;/var/log/slimta/slimta.log&#39;</span>
+
+<span class="nt">loggers</span><span class="p">:</span>
+  <span class="nt">celery</span><span class="p">:</span>
+    <span class="nt">level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">WARNING</span>
+    <span class="nt">propagate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">slimta</span><span class="p">:</span>
+    <span class="nt">level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+    <span class="nt">propagate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">root</span><span class="p">:</span>
+  <span class="nt">level</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DEBUG</span>
+  <span class="nt">handlers</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">file</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+        <p class="logo"><a href="../index.html" title="index">
+          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
+        </a></p><div class="sphinx-toc sphinxlocaltoc">
+    <h3><a href="../index.html">Page contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Configuring the Processes</a><ul>
+<li><a class="reference internal" href="#logging-configuration">Logging Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="slimta.html"
+                          title="Previous page">&larr; Application Usage</a></p>
+  </div>
+  <div class="sphinxnext">
+    <h4>Next page</h4>
+    <p class="topless"><a href="slimta.edges.html"
+                          title="Next page">&rarr; Configuring the Edges</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+        <div class="sidebar-toggle-group no-js">
+            
+            <button class="sidebar-toggle" id="sidebar-hide" title="Hide the sidebar menu">
+                 «
+                <span class="show-for-small">hide menu</span>
+                
+            </button>
+            <button class="sidebar-toggle" id="sidebar-show" title="Show the sidebar menu">
+                
+                <span class="show-for-small">menu</span>
+                <span class="hide-for-small">sidebar</span>
+                 »
+            </button>
+        </div>
+    
+      <div class="clearer"></div>
+    </div>
+    <div class="relbar-bottom">
+        
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.edges.html" title="Configuring the Edges"
+             >next</a> &nbsp; &nbsp;</li>
+        <li class="right" >
+          <a href="slimta.html" title="Application Usage"
+             >previous</a> &nbsp; &nbsp;</li>
+    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="slimta.html" >Application Usage</a> &#187;</li> 
+      </ul>
+    </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ian Good.
+    </div>
+    <!-- cloud_sptheme 1.4 -->
+<script type="text/javascript">
+  document._EUGO = 'ff80897801813c8394e7';
+  document.head.appendChild(function() {
+    var s = document.createElement('script');
+    s.src = 'https://eugo.io/eugo.js';
+    s.async = 1;
+    return s;
+  }());
+</script>
+
+  </body>
+</html>
