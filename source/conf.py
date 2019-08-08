@@ -273,7 +273,7 @@ texinfo_documents = [
 intersphinx_mapping = {'py': ('https://docs.python.org/', None),
                        'gevent': ('http://www.gevent.org/', None),
                        'pycares': ('https://pycares.readthedocs.org/en/latest/', None),
-                       'pysasl': ('https://pysasl.readthedocs.org/en/latest/', None),
+                       'pysasl': ('https://icgood.github.io/pysasl/', None),
                        'redis': ('https://redis-py.readthedocs.org/en/latest/', None),
                        'passlib': ('https://pythonhosted.org/passlib/', None),
                        'celery': ('http://docs.celeryproject.org/en/latest/', None),
