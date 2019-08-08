@@ -13,4 +13,4 @@ deploy:
   on:
     branch: master
   local_dir: build/html
-  fqdn: slimta.org
+  fqdn: www.slimta.org

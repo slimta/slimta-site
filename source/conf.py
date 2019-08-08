@@ -31,6 +31,7 @@ import os
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.githubpages',
     'cloud_sptheme.ext.index_styling',
 ]
 
