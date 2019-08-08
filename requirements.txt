@@ -1,4 +1,4 @@
-sphinx
+sphinx < 2
 cloud_sptheme
 boto
 -e git+https://github.com/slimta/python-slimta.git#egg=python_slimta-dev
