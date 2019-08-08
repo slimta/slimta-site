@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>slimta.policy.forward &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -63,7 +65,7 @@
 recipients.</p>
 <dl class="class">
 <dt id="slimta.policy.forward.Forward">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.policy.forward.</code><code class="sig-name descname">Forward</code><a class="headerlink" href="#slimta.policy.forward.Forward" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.policy.forward.</code><code class="descname">Forward</code><a class="headerlink" href="#slimta.policy.forward.Forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>Each <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> recipient is run through <a class="reference external" href="https://docs.python.org/3/library/re.html#re.sub" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.sub()</span></code></a> to see if it
 is modified. If a recipient matches a mapping rule, no further mapping
@@ -71,39 +73,45 @@ rules are processed. Mapping rules are checked in the order that they were
 added.</p>
 <dl class="method">
 <dt id="slimta.policy.forward.Forward.add_mapping">
-<code class="sig-name descname">add_mapping</code><span class="sig-paren">(</span><em class="sig-param">pattern</em>, <em class="sig-param">repl</em><span class="optional">[</span>, <em class="sig-param">count=0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.forward.Forward.add_mapping" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_mapping</code><span class="sig-paren">(</span><em>pattern</em>, <em>repl</em><span class="optional">[</span>, <em>count=0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.forward.Forward.add_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a mapping rule.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">re.RegexObject</span></code>) – Pattern to check recipient against.</p></li>
-<li><p><strong>repl</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or function) – Replacement for <code class="docutils literal notranslate"><span class="pre">pattern</span></code> matches, as described by
-<a class="reference external" href="https://docs.python.org/3/library/re.html#re.sub" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.sub()</span></code></a>.</p></li>
-<li><p><strong>count</strong> – Max number of replacements per recipient string.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">re.RegexObject</span></code>) – Pattern to check recipient against.</li>
+<li><strong>repl</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or function) – Replacement for <code class="docutils literal notranslate"><span class="pre">pattern</span></code> matches, as described by
+<a class="reference external" href="https://docs.python.org/3/library/re.html#re.sub" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.sub()</span></code></a>.</li>
+<li><strong>count</strong> – Max number of replacements per recipient string.</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.policy.forward.Forward.apply">
-<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.forward.Forward.apply" title="Permalink to this definition">¶</a></dt>
+<code class="descname">apply</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.forward.Forward.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code> sub-classes must override this method, which
 will be called by the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> before storage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
 apply any changes to. This envelope object <em>may</em> be
 modified, though if new envelopes are returned this
-object is discarded.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
+object is discarded.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
 objects to replace the given <code class="docutils literal notranslate"><span class="pre">envelope</span></code> going forward.
 Returning <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty list will keep using
-<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</p>
-</dd>
-</dl>
+<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -130,11 +138,13 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
                           title="Next page">&rarr; slimta.policy.split</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

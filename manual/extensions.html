@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Extensions &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -65,8 +67,8 @@ here.</p>
 <div class="section" id="external-process-delivery">
 <span id="pipe-relay-extension"></span><h2>External Process Delivery<a class="headerlink" href="#external-process-delivery" title="Permalink to this headline">¶</a></h2>
 <div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>This extension was deprecated in python-slimta version 0.3.21 in favor of
+<p class="first admonition-title">Caution</p>
+<p class="last">This extension was deprecated in python-slimta version 0.3.21 in favor of
 the <a class="reference internal" href="../api/slimta.relay.pipe.html#module-slimta.relay.pipe" title="slimta.relay.pipe"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.relay.pipe</span></code></a> module.</p>
 </div>
 <p>This simple extension uses the <a class="reference external" href="https://github.com/bombela/gevent_subprocess">gevent_subprocess</a> library to initiate local
@@ -228,11 +230,11 @@ machine.</p>
 <p>Despite the name, a <em>queue</em> in the MTA sense is not a simple FIFO we learned
 about in our Computer Science course. It is responsible at a minimum for:</p>
 <ul class="simple">
-<li><p>Receiving new messages from the <em>edge</em> and persistently storing them.</p></li>
-<li><p>Requesting delivery from the <em>relay</em> service.</p></li>
-<li><p>Delaying message delivery retry after transient failures.</p></li>
-<li><p>Reporting permanent delivery failure back to the sender with a bounce
-message.</p></li>
+<li>Receiving new messages from the <em>edge</em> and persistently storing them.</li>
+<li>Requesting delivery from the <em>relay</em> service.</li>
+<li>Delaying message delivery retry after transient failures.</li>
+<li>Reporting permanent delivery failure back to the sender with a bounce
+message.</li>
 </ul>
 <p>If you’re familiar with the <a class="reference external" href="http://www.celeryproject.org/">Celery Distributed Task Queue</a>, it fits the bill
 perfectly.</p>
@@ -303,13 +305,13 @@ do this by creating a <a class="reference internal" href="../api/extra.spf.html#
 <a class="reference internal" href="../api/extra.spf.html#slimta.spf.EnforceSpf.set_enforcement" title="slimta.spf.EnforceSpf.set_enforcement"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_enforcement()</span></code></a> for each different results you
 want to act upon. These results are:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.1">none</a></p></li>
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.2">neutral</a></p></li>
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.3">pass</a></p></li>
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.4">fail</a></p></li>
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.5">softfail</a></p></li>
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.6">temperror</a></p></li>
-<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.7">permerror</a></p></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.1">none</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.2">neutral</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.3">pass</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.4">fail</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.5">softfail</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.6">temperror</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.7">permerror</a></li>
 </ul>
 <p>So we create our rules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spf</span> <span class="o">=</span> <span class="n">EnforceSpf</span><span class="p">()</span>
@@ -365,11 +367,13 @@ want to act upon. These results are:</p>
                           title="Next page">&rarr; Application Usage</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

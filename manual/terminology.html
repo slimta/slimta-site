@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Terminology &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -60,58 +62,58 @@
 <p>To get started working with <a class="reference external" href="https://slimta.org/">slimta</a>, there are a few terms to know. Someone
 familiar with SMTP and email servers will recognize many of them.</p>
 <hr class="docutils" />
-<dl class="simple">
-<dt><em>MTA</em></dt><dd><p>Mail Transfer Agent. This is a server application used to transfer email
-messages from a source to a destination along a series of hops.</p>
-</dd>
-<dt><em>MSA</em></dt><dd><p>Mail Submission Agent. This is a form of <em>MTA</em> that specializes in receiving
+<dl class="docutils">
+<dt><em>MTA</em></dt>
+<dd>Mail Transfer Agent. This is a server application used to transfer email
+messages from a source to a destination along a series of hops.</dd>
+<dt><em>MSA</em></dt>
+<dd>Mail Submission Agent. This is a form of <em>MTA</em> that specializes in receiving
 email from a user’s client application, like Mozilla Thunderbird or Apple
-Mail.</p>
-</dd>
-<dt><em>MDA</em></dt><dd><p>Mail Delivery Agent. This is a form of <em>MTA</em> that specializes in being the
+Mail.</dd>
+<dt><em>MDA</em></dt>
+<dd>Mail Delivery Agent. This is a form of <em>MTA</em> that specializes in being the
 final destination of a message: placing it in long-term storage, such as for
-access/download by IMAP or POP3.</p>
-</dd>
-<dt><em>Edge</em></dt><dd><p>This is a function of the <em>MTA</em> that receives email messages from the
-outside, generally by listening on a socket and receiving connections.</p>
-</dd>
-<dt><em>Queue</em></dt><dd><p>SMTP RFCs require <em>MTAs</em> to write email messages to persistent storage before
+access/download by IMAP or POP3.</dd>
+<dt><em>Edge</em></dt>
+<dd>This is a function of the <em>MTA</em> that receives email messages from the
+outside, generally by listening on a socket and receiving connections.</dd>
+<dt><em>Queue</em></dt>
+<dd>SMTP RFCs require <em>MTAs</em> to write email messages to persistent storage before
 acknowledging to the sender that the message has been received. The <em>queue</em>
-also takes responsibility for requesting delivery retries.</p>
-</dd>
-<dt><em>Relay</em></dt><dd><p>This is a function of the <em>MTA</em> that attempts to transfer the email message
-either to another <em>MTA</em> or into long-term storage if acting as an <em>MDA</em>.</p>
-</dd>
-<dt><em>MX</em></dt><dd><p>MX records are special DNS records used by SMTP to figure out where to
+also takes responsibility for requesting delivery retries.</dd>
+<dt><em>Relay</em></dt>
+<dd>This is a function of the <em>MTA</em> that attempts to transfer the email message
+either to another <em>MTA</em> or into long-term storage if acting as an <em>MDA</em>.</dd>
+<dt><em>MX</em></dt>
+<dd>MX records are special DNS records used by SMTP to figure out where to
 deliver a message. MX records are prioritized such that lower-numbers are
-higher priority.</p>
-</dd>
-<dt><em>Headers</em></dt><dd><p>Key-value data providing diagnostic information about an email’s various hops
+higher priority.</dd>
+<dt><em>Headers</em></dt>
+<dd>Key-value data providing diagnostic information about an email’s various hops
 from source to destination, as well as information to help present the email
-message to the user, such as who it was from and the subject.</p>
-</dd>
-<dt><em>Bounce</em></dt><dd><p>Once an email is accepted by the sender’s <em>MSA</em>, the sender’s client has no
+message to the user, such as who it was from and the subject.</dd>
+<dt><em>Bounce</em></dt>
+<dd>Once an email is accepted by the sender’s <em>MSA</em>, the sender’s client has no
 way of knowing whether the message made it to its destination. If a message
 fails delivery in some <em>MTA</em>, that <em>MTA</em> will send a new email message back
-to the sender describing why the message failed.</p>
-</dd>
-<dt><em>TLS</em></dt><dd><p>Encryption between an SMTP client and an SMTP server is done with <em>TLS</em>, a
+to the sender describing why the message failed.</dd>
+<dt><em>TLS</em></dt>
+<dd>Encryption between an SMTP client and an SMTP server is done with <em>TLS</em>, a
 system for encryption and validation of a socket session. <em>TLS</em> usually
 starts when the client says <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>, but it is still common for <em>MTAs</em>
-to have special ports that encrypt the entire session.</p>
-</dd>
-<dt><em>Authentication</em></dt><dd><p>To prevent unauthorized message delivery, many <em>MSAs</em> allow (and often
+to have special ports that encrypt the entire session.</dd>
+<dt><em>Authentication</em></dt>
+<dd>To prevent unauthorized message delivery, many <em>MSAs</em> allow (and often
 require) user clients to present their identity (a username) with a shared
 secret (a password). The <em>MSA</em> will announce which authentication mechanisms
 it supports, and plaintext mechanisms may not be allowed unless the socket
-session is encrypted.</p>
-</dd>
-<dt><em>Policies</em></dt><dd><p>A policy in an <em>MTA</em> is any behavior outside the standard receive, queue, and
+session is encrypted.</dd>
+<dt><em>Policies</em></dt>
+<dd>A policy in an <em>MTA</em> is any behavior outside the standard receive, queue, and
 deliver behaviors. Authentication and encryption are good examples of
 standardized, universal policies. Examples of more customized policies could
 be forms of spam filtering, inclusion or filtering of custom headers, or
-smart forms of routing not based on <em>MX</em> records.</p>
-</dd>
+smart forms of routing not based on <em>MX</em> records.</dd>
 </dl>
 </div>
 
@@ -135,11 +137,13 @@ smart forms of routing not based on <em>MX</em> records.</p>
                           title="Next page">&rarr; Python Library Usage</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

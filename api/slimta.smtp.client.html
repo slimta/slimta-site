@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>slimta.smtp.client &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -62,7 +64,7 @@
 <p>An SMTP client library that supports PIPELINING commands.</p>
 <dl class="class">
 <dt id="slimta.smtp.client.Client">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.smtp.client.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param">socket</em><span class="optional">[</span>, <em class="sig-param">address=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.smtp.client.</code><code class="descname">Client</code><span class="sig-paren">(</span><em>socket</em><span class="optional">[</span>, <em>address=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class whose methods perform various SMTP commands on a given socket. The
 return value from each command is a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object. Commands that are
@@ -70,295 +72,346 @@ pipelined may not have their replies filled until subsequent commands are
 executed.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">extensions</span></code> attribute contains the <a class="reference internal" href="slimta.smtp.extensions.html#slimta.smtp.extensions.Extensions" title="slimta.smtp.extensions.Extensions"><code class="xref py py-class docutils literal notranslate"><span class="pre">Extensions</span></code></a> object that are made
 available by the server.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>socket</strong> – Connected socket to use for the client.</p></li>
-<li><p><strong>address</strong> – Remote address associated with the socket, which will
-default to a call to <code class="xref py py-func docutils literal notranslate"><span class="pre">getpeername()</span></code>.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>socket</strong> – Connected socket to use for the client.</li>
+<li><strong>address</strong> – Remote address associated with the socket, which will
+default to a call to <code class="xref py py-func docutils literal notranslate"><span class="pre">getpeername()</span></code>.</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="slimta.smtp.client.Client.last_error">
-<code class="sig-name descname">last_error</code><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.client.Client.last_error" title="Permalink to this definition">¶</a></dt>
+<code class="descname">last_error</code><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.client.Client.last_error" title="Permalink to this definition">¶</a></dt>
 <dd><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> of the last error received from the server.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="slimta.smtp.client.Client.extensions">
-<code class="sig-name descname">extensions</code><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.client.Client.extensions" title="Permalink to this definition">¶</a></dt>
+<code class="descname">extensions</code><em class="property"> = None</em><a class="headerlink" href="#slimta.smtp.client.Client.extensions" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Extensions</span></code> object of the client, populated once the EHLO
 command returns its response.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.has_reply_waiting">
-<code class="sig-name descname">has_reply_waiting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.has_reply_waiting" title="Permalink to this definition">¶</a></dt>
+<code class="descname">has_reply_waiting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.has_reply_waiting" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the underlying socket has data waiting to be received,
 which means a reply is waiting to be read.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>True or False</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">True or False</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.get_reply">
-<code class="sig-name descname">get_reply</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">command=b'[TIMEOUT]'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.get_reply" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_reply</code><span class="sig-paren">(</span><span class="optional">[</span><em>command=b'[TIMEOUT]'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.get_reply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a reply from the server that was not triggered by the client
 sending a command. This is most useful for receiving timeout
 notifications.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>command</strong> – Optional command name to associate with the reply.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>command</strong> – Optional command name to associate with the reply.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.get_banner">
-<code class="sig-name descname">get_banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.get_banner" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_banner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.get_banner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Waits for the SMTP banner at the beginning of the connection.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.custom_command">
-<code class="sig-name descname">custom_command</code><span class="sig-paren">(</span><em class="sig-param">command</em><span class="optional">[</span>, <em class="sig-param">arg=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.custom_command" title="Permalink to this definition">¶</a></dt>
+<code class="descname">custom_command</code><span class="sig-paren">(</span><em>command</em><span class="optional">[</span>, <em>arg=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.custom_command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a custom command to the SMTP server and waits for the reply.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>command</strong> – The command to send.</p></li>
-<li><p><strong>arg</strong> – Optonal argument string to send with the command.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>command</strong> – The command to send.</li>
+<li><strong>arg</strong> – Optonal argument string to send with the command.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.ehlo">
-<code class="sig-name descname">ehlo</code><span class="sig-paren">(</span><em class="sig-param">ehlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.ehlo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ehlo</code><span class="sig-paren">(</span><em>ehlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.ehlo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the EHLO command with identifier string and waits for the
 reply. When this method returns, the <code class="docutils literal notranslate"><span class="pre">self.extensions</span></code> object will
 also be populated with the SMTP extensions the server supports.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ehlo_as</strong> – EHLO identifier string, usually an FQDN.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ehlo_as</strong> – EHLO identifier string, usually an FQDN.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.helo">
-<code class="sig-name descname">helo</code><span class="sig-paren">(</span><em class="sig-param">helo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.helo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">helo</code><span class="sig-paren">(</span><em>helo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.helo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the HELO command with identifier string and waits for the
 reply.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>helo_as</strong> – HELO identifier string, usually an FQDN.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>helo_as</strong> – HELO identifier string, usually an FQDN.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.encrypt">
-<code class="sig-name descname">encrypt</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">context=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.encrypt" title="Permalink to this definition">¶</a></dt>
+<code class="descname">encrypt</code><span class="sig-paren">(</span><span class="optional">[</span><em>context=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.encrypt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Encrypts the underlying socket. This call should only be used
 directly against servers that expect to be immediately encrypted. If
 encryption is negotiated with <a class="reference internal" href="#slimta.smtp.client.Client.starttls" title="slimta.smtp.client.Client.starttls"><code class="xref py py-meth docutils literal notranslate"><span class="pre">starttls()</span></code></a> there is no need to
 call this method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, rather than
-the default context.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, rather than
+the default context.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.starttls">
-<code class="sig-name descname">starttls</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">context=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.starttls" title="Permalink to this definition">¶</a></dt>
+<code class="descname">starttls</code><span class="sig-paren">(</span><span class="optional">[</span><em>context=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.starttls" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the STARTTLS command with identifier string and waits for the
 reply. When the reply is received and the code is 220, the socket
 encryption is negotiated. This should be followed by a another call to
 <a class="reference internal" href="#slimta.smtp.client.Client.ehlo" title="slimta.smtp.client.Client.ehlo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ehlo()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, rather than
-the default context.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, rather than
+the default context.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.auth">
-<code class="sig-name descname">auth</code><span class="sig-paren">(</span><em class="sig-param">authcid</em>, <em class="sig-param">secret</em><span class="optional">[</span>, <em class="sig-param">authzid=None</em><span class="optional">[</span>, <em class="sig-param">mechanism=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.auth" title="Permalink to this definition">¶</a></dt>
+<code class="descname">auth</code><span class="sig-paren">(</span><em>authcid</em>, <em>secret</em><span class="optional">[</span>, <em>authzid=None</em><span class="optional">[</span>, <em>mechanism=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.auth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Negotiates authentication for the current SMTP session. This
 transaction may involve several back-and-forth packets to the server,
 depending on the SASL mechanism used, and this function will only
 return once all have completed.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>authcid</strong> – The authentication identity, usually the username.</p></li>
-<li><p><strong>secret</strong> – The secret (i.e. password) string to send for the given
-authentication and authorization identities.</p></li>
-<li><p><strong>authzid</strong> – The authorization identity, if applicable.</p></li>
-<li><p><strong>mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – SASL mechanism name to use instead of the best
-available.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>authcid</strong> – The authentication identity, usually the username.</li>
+<li><strong>secret</strong> – The secret (i.e. password) string to send for the given
+authentication and authorization identities.</li>
+<li><strong>authzid</strong> – The authorization identity, if applicable.</li>
+<li><strong>mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – SASL mechanism name to use instead of the best
+available.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.mailfrom">
-<code class="sig-name descname">mailfrom</code><span class="sig-paren">(</span><em class="sig-param">address</em><span class="optional">[</span>, <em class="sig-param">data_size=None</em><span class="optional">[</span>, <em class="sig-param">auth=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.mailfrom" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mailfrom</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>data_size=None</em><span class="optional">[</span>, <em>auth=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.mailfrom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the MAIL command with the <code class="docutils literal notranslate"><span class="pre">address</span></code> and possibly the message
 size. The message size is sent if the server supports the SIZE
 extension. If the server does <em>not</em> support PIPELINING, the returned
 reply object is populated immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>address</strong> – The sender address to send.</p></li>
-<li><p><strong>data_size</strong> – Optional size of the message body.</p></li>
-<li><p><strong>auth</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Optionally indicates the message was originally submitted
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>address</strong> – The sender address to send.</li>
+<li><strong>data_size</strong> – Optional size of the message body.</li>
+<li><strong>auth</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Optionally indicates the message was originally submitted
 using the given authentication. Use <code class="docutils literal notranslate"><span class="pre">False</span></code> if
-authentication was missing or unknown.</p></li>
+authentication was missing or unknown.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
 once a non-pipelined command is called, or if the server does
 not support PIPELINING.</p>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.rcptto">
-<code class="sig-name descname">rcptto</code><span class="sig-paren">(</span><em class="sig-param">address</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.rcptto" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rcptto</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.rcptto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the RCPT command with the <code class="docutils literal notranslate"><span class="pre">address</span></code>. If the server
 does <em>not</em> support PIPELINING, the returned reply object is
 populated immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>address</strong> – The sender address to send.</p></li>
-<li><p><strong>data_size</strong> – Optional size of the message body.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>address</strong> – The sender address to send.</li>
+<li><strong>data_size</strong> – Optional size of the message body.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
 once a non-pipelined command is called, or if the server does
 not support PIPELINING.</p>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.data">
-<code class="sig-name descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the DATA command and waits for the response. If the response
 from the server is a 354, the server is respecting message data and
 should be sent <a class="reference internal" href="#slimta.smtp.client.Client.send_data" title="slimta.smtp.client.Client.send_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_data()</span></code></a> or <a class="reference internal" href="#slimta.smtp.client.Client.send_empty_data" title="slimta.smtp.client.Client.send_empty_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_empty_data()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.send_data">
-<code class="sig-name descname">send_data</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.send_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_data</code><span class="sig-paren">(</span><span class="optional">[</span><em>*data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Processes and sends message data. At the end of the message data,
 the client will send a line with a single <code class="docutils literal notranslate"><span class="pre">.</span></code> to indicate the end of
 the message.  If the server does <em>not</em> support PIPELINING, the returned
 reply object is populated immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The message data parts.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The message data parts.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
 once a non-pipelined command is called, or if the server does
-not support PIPELINING.</p>
-</dd>
-</dl>
+not support PIPELINING.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.send_empty_data">
-<code class="sig-name descname">send_empty_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.send_empty_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_empty_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.send_empty_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a line with a single <code class="docutils literal notranslate"><span class="pre">.</span></code> to indicate an empty message. If
 the server does <em>not</em> support PIPELINING, the returned reply object is
 populated immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
 once a non-pipelined command is called, or if the server does
-not support PIPELINING.</p>
-</dd>
-</dl>
+not support PIPELINING.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.rset">
-<code class="sig-name descname">rset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.rset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.rset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a RSET command and waits for the response. The intent of the
 RSET command is to reset any <code class="xref py py-meth docutils literal notranslate"><span class="pre">mail()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">rcpt()</span></code> commands that
 are pending.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.Client.quit">
-<code class="sig-name descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.quit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.Client.quit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the QUIT command and waits for the response. After the
 response is received (should be 221) the socket should be closed.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="slimta.smtp.client.LmtpClient">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.smtp.client.</code><code class="sig-name descname">LmtpClient</code><span class="sig-paren">(</span><em class="sig-param">socket</em><span class="optional">[</span>, <em class="sig-param">address=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.smtp.client.</code><code class="descname">LmtpClient</code><span class="sig-paren">(</span><em>socket</em><span class="optional">[</span>, <em>address=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.client.Client" title="slimta.smtp.client.Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.client.Client</span></code></a></p>
 <p>This sub-class has been modified to implement the LMTP protocol instead.
 The first primary difference is the <a class="reference internal" href="#slimta.smtp.client.LmtpClient.ehlo" title="slimta.smtp.client.LmtpClient.ehlo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ehlo()</span></code></a> and <a class="reference internal" href="#slimta.smtp.client.LmtpClient.helo" title="slimta.smtp.client.LmtpClient.helo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">helo()</span></code></a> are no
@@ -369,117 +422,135 @@ address from a successful <a class="reference internal" href="#slimta.smtp.clien
 is in the same order as the calls to <a class="reference internal" href="#slimta.smtp.client.LmtpClient.rcptto" title="slimta.smtp.client.LmtpClient.rcptto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rcptto()</span></code></a>.</p>
 <dl class="method">
 <dt id="slimta.smtp.client.LmtpClient.ehlo">
-<code class="sig-name descname">ehlo</code><span class="sig-paren">(</span><em class="sig-param">ehlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.ehlo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ehlo</code><span class="sig-paren">(</span><em>ehlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.ehlo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the EHLO command with identifier string and waits for the
 reply. When this method returns, the <code class="docutils literal notranslate"><span class="pre">self.extensions</span></code> object will
 also be populated with the SMTP extensions the server supports.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ehlo_as</strong> – EHLO identifier string, usually an FQDN.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ehlo_as</strong> – EHLO identifier string, usually an FQDN.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.LmtpClient.helo">
-<code class="sig-name descname">helo</code><span class="sig-paren">(</span><em class="sig-param">helo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.helo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">helo</code><span class="sig-paren">(</span><em>helo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.helo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the HELO command with identifier string and waits for the
 reply.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>helo_as</strong> – HELO identifier string, usually an FQDN.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>helo_as</strong> – HELO identifier string, usually an FQDN.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.LmtpClient.lhlo">
-<code class="sig-name descname">lhlo</code><span class="sig-paren">(</span><em class="sig-param">lhlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.lhlo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">lhlo</code><span class="sig-paren">(</span><em>lhlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.lhlo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the LHLO command with identifier string and waits for the
 reply. When this method returns, the <code class="docutils literal notranslate"><span class="pre">self.extensions</span></code> object will
 also be populated with the SMTP extensions the server supports.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>lhlo_as</strong> – LHLO identifier string, usually an FQDN.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lhlo_as</strong> – LHLO identifier string, usually an FQDN.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.LmtpClient.rcptto">
-<code class="sig-name descname">rcptto</code><span class="sig-paren">(</span><em class="sig-param">address</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.rcptto" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rcptto</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.rcptto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the RCPT command with the <code class="docutils literal notranslate"><span class="pre">address</span></code>. If the server
 does <em>not</em> support PIPELINING, the returned reply object is
 populated immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>address</strong> – The sender address to send.</p></li>
-<li><p><strong>data_size</strong> – Optional size of the message body.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>address</strong> – The sender address to send.</li>
+<li><strong>data_size</strong> – Optional size of the message body.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
 once a non-pipelined command is called, or if the server does
 not support PIPELINING.</p>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.LmtpClient.send_data">
-<code class="sig-name descname">send_data</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.send_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_data</code><span class="sig-paren">(</span><span class="optional">[</span><em>*data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.send_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Processes and sends message data. At the end of the message data,
 the client will send a line with a single <code class="docutils literal notranslate"><span class="pre">.</span></code> to indicate the end of
 the message.  If the server does <em>not</em> support PIPELINING, the returned
 reply object is populated immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The message data parts.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The message data parts.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
 once a non-pipelined command is called, or if the server does
-not support PIPELINING.</p>
-</dd>
-</dl>
+not support PIPELINING.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.LmtpClient.send_empty_data">
-<code class="sig-name descname">send_empty_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.send_empty_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">send_empty_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.send_empty_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a line with a single <code class="docutils literal notranslate"><span class="pre">.</span></code> to indicate an empty message. If
 the server does <em>not</em> support PIPELINING, the returned reply object is
 populated immediately.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object that will be populated with the response
 once a non-pipelined command is called, or if the server does
-not support PIPELINING.</p>
-</dd>
-</dl>
+not support PIPELINING.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.smtp.client.LmtpClient.rset">
-<code class="sig-name descname">rset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.rset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.client.LmtpClient.rset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a RSET command and waits for the response. The intent of the
 RSET command is to reset any <code class="xref py py-meth docutils literal notranslate"><span class="pre">mail()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">rcpt()</span></code> commands that
 are pending.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object populated with the response.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -506,11 +577,13 @@ are pending.</p>
                           title="Next page">&rarr; slimta.smtp.server</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

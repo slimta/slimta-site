@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>slimta.policy.headers &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -63,87 +65,96 @@
 standard RFC headers.</p>
 <dl class="class">
 <dt id="slimta.policy.headers.AddDateHeader">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.policy.headers.</code><code class="sig-name descname">AddDateHeader</code><a class="headerlink" href="#slimta.policy.headers.AddDateHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.policy.headers.</code><code class="descname">AddDateHeader</code><a class="headerlink" href="#slimta.policy.headers.AddDateHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>Checks for the existence of the RFC-specified <code class="docutils literal notranslate"><span class="pre">Date</span></code> header, adding it
 if it does not exist.</p>
 <dl class="method">
 <dt id="slimta.policy.headers.AddDateHeader.build_date">
-<code class="sig-name descname">build_date</code><span class="sig-paren">(</span><em class="sig-param">timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddDateHeader.build_date" title="Permalink to this definition">¶</a></dt>
+<code class="descname">build_date</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddDateHeader.build_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a date string in the format desired for the header. This
 method can be overridden to control the format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>timestamp</strong> – Timestamp (as returned by <a class="reference external" href="https://docs.python.org/3/library/time.html#time.time" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.time()</span></code></a>) to
-convert into date string.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Date string for the header.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> – Timestamp (as returned by <a class="reference external" href="https://docs.python.org/3/library/time.html#time.time" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.time()</span></code></a>) to
+convert into date string.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Date string for the header.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.policy.headers.AddDateHeader.apply">
-<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddDateHeader.apply" title="Permalink to this definition">¶</a></dt>
+<code class="descname">apply</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddDateHeader.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code> sub-classes must override this method, which
 will be called by the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> before storage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
 apply any changes to. This envelope object <em>may</em> be
 modified, though if new envelopes are returned this
-object is discarded.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
+object is discarded.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
 objects to replace the given <code class="docutils literal notranslate"><span class="pre">envelope</span></code> going forward.
 Returning <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty list will keep using
-<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</p>
-</dd>
-</dl>
+<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="slimta.policy.headers.AddMessageIdHeader">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.policy.headers.</code><code class="sig-name descname">AddMessageIdHeader</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">hostname=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.policy.headers.</code><code class="descname">AddMessageIdHeader</code><span class="sig-paren">(</span><span class="optional">[</span><em>hostname=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>Checks for the existence of the RFC-specified <code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> header,
 adding it if it does not exist.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hostname</strong> – The hostname to use in the generated headers. By default,
-<code class="xref py py-func docutils literal notranslate"><span class="pre">getfqdn()</span></code> is used.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hostname</strong> – The hostname to use in the generated headers. By default,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">getfqdn()</span></code> is used.</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="slimta.policy.headers.AddMessageIdHeader.apply">
-<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader.apply" title="Permalink to this definition">¶</a></dt>
+<code class="descname">apply</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code> sub-classes must override this method, which
 will be called by the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> before storage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
 apply any changes to. This envelope object <em>may</em> be
 modified, though if new envelopes are returned this
-object is discarded.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
+object is discarded.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
 objects to replace the given <code class="docutils literal notranslate"><span class="pre">envelope</span></code> going forward.
 Returning <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty list will keep using
-<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</p>
-</dd>
-</dl>
+<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="slimta.policy.headers.AddReceivedHeader">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.policy.headers.</code><code class="sig-name descname">AddReceivedHeader</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">date_format='%a</em>, <em class="sig-param">%d %b %Y %H:%M:%S +0000'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.policy.headers.</code><code class="descname">AddReceivedHeader</code><span class="sig-paren">(</span><span class="optional">[</span><em>date_format='%a</em>, <em>%d %b %Y %H:%M:%S +0000'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>Adds the RFC-specified <code class="docutils literal notranslate"><span class="pre">Received</span></code> header to the message. This header
 should be added for every hop from a message’s origination to its
@@ -152,23 +163,25 @@ destination.</p>
 <a class="reference external" href="http://cr.yp.to/immhf/envelope.html">http://cr.yp.to/immhf/envelope.html</a></p>
 <dl class="method">
 <dt id="slimta.policy.headers.AddReceivedHeader.apply">
-<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param">envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader.apply" title="Permalink to this definition">¶</a></dt>
+<code class="descname">apply</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader.apply" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code> sub-classes must override this method, which
 will be called by the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> before storage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object the policy execution should
 apply any changes to. This envelope object <em>may</em> be
 modified, though if new envelopes are returned this
-object is discarded.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
+object is discarded.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Optionally return or generate an iterable of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
 objects to replace the given <code class="docutils literal notranslate"><span class="pre">envelope</span></code> going forward.
 Returning <code class="docutils literal notranslate"><span class="pre">None</span></code> or an empty list will keep using
-<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</p>
-</dd>
-</dl>
+<code class="docutils literal notranslate"><span class="pre">envelope</span></code>.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -195,11 +208,13 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
                           title="Next page">&rarr; slimta.policy.forward</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

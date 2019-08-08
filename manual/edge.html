@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Edge Services &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -74,7 +76,8 @@ signify whether the message was successfully delivered, but rather that the
 clients using the SMTP protocol (<a class="reference external" href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc2821">RFC 2821</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc821">RFC 821</a>). An SMTP
 session delivering a message from a client to a server might look like this,
 with server (edge) replies back to the client bolded:</p>
-<pre class="literal-block"><strong>220 slimta.org ESMTP Mail Gateway</strong>
+<pre class="literal-block">
+<strong>220 slimta.org ESMTP Mail Gateway</strong>
 EHLO client.example.com
 <strong>250-Hello client.example.com</strong>
 <strong>250-8BITMIME</strong>
@@ -91,7 +94,8 @@ DATA
 .
 <strong>250 2.6.0 Message queued as e64820855322425486542d1bd59ba6cd</strong>
 QUIT
-<strong>221 2.0.0 Bye</strong></pre>
+<strong>221 2.0.0 Bye</strong>
+</pre>
 <p>SMTP edge services are somewhat unique in that they control not just the receipt
 of and response to the message, but also a lot of interim requests. A server may
 respond negatively to any command sent to it by the client, and often, crucial
@@ -143,7 +147,7 @@ successful authentication:</p>
 <div class="section" id="proxy-protocol-with-smtp-edge">
 <h3>Proxy Protocol with SMTP Edge<a class="headerlink" href="#proxy-protocol-with-smtp-edge" title="Permalink to this headline">¶</a></h3>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.0.0.</span></p>
+<p><span class="versionmodified">New in version 3.0.0.</span></p>
 </div>
 <p>When using a TCP proxy in front of <a class="reference external" href="https://slimta.org/">slimta</a>, it is common to lose information
 about the original source address of the connection. The <a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">PROXY protocol</a>
@@ -171,7 +175,8 @@ Unfortunately, no standards have been settled on, so HTTP mail reception and
 delivery can only really be used within controlled environments.</p>
 <p>An HTTP session delivering a message from a client to a server might look like
 this, with server (edge) replies back to the client bolded:</p>
-<pre class="literal-block">POST / HTTP/1.1
+<pre class="literal-block">
+POST / HTTP/1.1
 User-Agent: curl/7.29.0
 Host: localhost:8080
 Accept: */*
@@ -189,7 +194,8 @@ Test message!
 <strong>HTTP/1.1 200 OK
 X-Smtp-Reply: 250; message=&quot;2.6.0 Message accepted for delivery&quot;
 Date: Mon, 29 Jul 2013 20:11:55 GMT
-Content-Length: 0</strong></pre>
+Content-Length: 0</strong>
+</pre>
 <div class="section" id="creating-http-edge-objects">
 <h3>Creating HTTP Edge Objects<a class="headerlink" href="#creating-http-edge-objects" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.wsgi</span> <span class="k">import</span> <span class="n">WsgiEdge</span>
@@ -241,11 +247,13 @@ Content-Length: 0</strong></pre>
                           title="Next page">&rarr; Queue Services</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

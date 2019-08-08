@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>slimta.cloudstorage.rackspace &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -78,13 +80,13 @@ happening in the same process, <em>Cloud Queues</em> is unnecessary.</p>
 </div>
 <dl class="exception">
 <dt id="slimta.cloudstorage.rackspace.RackspaceError">
-<em class="property">exception </em><code class="sig-prename descclassname">slimta.cloudstorage.rackspace.</code><code class="sig-name descname">RackspaceError</code><span class="sig-paren">(</span><em class="sig-param">response</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">slimta.cloudstorage.rackspace.</code><code class="descname">RackspaceError</code><span class="sig-paren">(</span><em>response</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorageError" title="slimta.cloudstorage.CloudStorageError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.cloudstorage.CloudStorageError</span></code></a></p>
 <p>Thrown when an unexpected status has been returned from a Rackspace
 Cloud API request and the engine does not know how to continue.</p>
 <dl class="attribute">
 <dt id="slimta.cloudstorage.rackspace.RackspaceError.response">
-<code class="sig-name descname">response</code><em class="property"> = None</em><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceError.response" title="Permalink to this definition">¶</a></dt>
+<code class="descname">response</code><em class="property"> = None</em><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceError.response" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">HTTPResponse</span></code> object that triggered the
 exception.</p>
 </dd></dl>
@@ -93,15 +95,17 @@ exception.</p>
 
 <dl class="class">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudAuth">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.cloudstorage.rackspace.</code><code class="sig-name descname">RackspaceCloudAuth</code><span class="sig-paren">(</span><em class="sig-param">credentials</em><span class="optional">[</span>, <em class="sig-param">endpoint='https://identity....acecloud.com/v2.0/'</em><span class="optional">[</span>, <em class="sig-param">region=None</em><span class="optional">[</span>, <em class="sig-param">timeout=None</em><span class="optional">[</span>, <em class="sig-param">tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.cloudstorage.rackspace.</code><code class="descname">RackspaceCloudAuth</code><span class="sig-paren">(</span><em>credentials</em><span class="optional">[</span>, <em>endpoint='https://identity....acecloud.com/v2.0/'</em><span class="optional">[</span>, <em>region=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class implements and manages the creation of authentication tokens
 when <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudFiles</span></code></a> or <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudQueues</span></code></a> objects
 require them.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>credentials</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – <p>This dictionary defines how credentials are sent to the
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>credentials</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – <p>This dictionary defines how credentials are sent to the
 Auth API.</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">function</span></code> key is defined, it must be a
 callable that takes no arguments and returns a tuple.
@@ -116,105 +120,115 @@ key. With <code class="docutils literal notranslate"><span class="pre">username<
 <code class="docutils literal notranslate"><span class="pre">api_key</span></code> must be given.</p>
 <p>Optionally, <code class="docutils literal notranslate"><span class="pre">tenant_id</span></code> may also be provided for
 situations where it is necessary for authentication.</p>
-</p></li>
-<li><p><strong>endpoint</strong> – If given, this is the Rackspace Cloud Auth endpoint to hit
-when creating tokens.</p></li>
-<li><p><strong>region</strong> – When discovering API endpoints from the service catalog,
+</li>
+<li><strong>endpoint</strong> – If given, this is the Rackspace Cloud Auth endpoint to hit
+when creating tokens.</li>
+<li><strong>region</strong> – When discovering API endpoints from the service catalog,
 this is the endpoint region to use, e.g. <code class="docutils literal notranslate"><span class="pre">IAD</span></code> or <code class="docutils literal notranslate"><span class="pre">HKG</span></code>.
-If not given, the first region returned is used.</p></li>
-<li><p><strong>timeout</strong> – Timeout, in seconds, for requests to the Cloud Auth API to
-create a new token for the session.</p></li>
-<li><p><strong>tls</strong> – Optional dictionary of TLS settings passed directly as keyword
+If not given, the first region returned is used.</li>
+<li><strong>timeout</strong> – Timeout, in seconds, for requests to the Cloud Auth API to
+create a new token for the session.</li>
+<li><strong>tls</strong> – Optional dictionary of TLS settings passed directly as keyword
 arguments to <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.ssl.SSLSocket</span></code>. This is only used
-for URLs with the <code class="docutils literal notranslate"><span class="pre">https</span></code> scheme.</p></li>
+for URLs with the <code class="docutils literal notranslate"><span class="pre">https</span></code> scheme.</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="attribute">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudAuth.queues_endpoint">
-<code class="sig-name descname">queues_endpoint</code><em class="property"> = None</em><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.queues_endpoint" title="Permalink to this definition">¶</a></dt>
+<code class="descname">queues_endpoint</code><em class="property"> = None</em><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.queues_endpoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>The current Cloud Queues API endpoint in use by the mechanism. This
 should be populated automatically on authentication.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudAuth.files_endpoint">
-<code class="sig-name descname">files_endpoint</code><em class="property"> = None</em><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.files_endpoint" title="Permalink to this definition">¶</a></dt>
+<code class="descname">files_endpoint</code><em class="property"> = None</em><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.files_endpoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>The current Cloud Files API endpoint in use by the mechanism. This
 should be populated automatically on authentication.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="attribute">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudAuth.token_id">
-<em class="property">property </em><code class="sig-name descname">token_id</code><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.token_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">token_id</code><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.token_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>The current token in use by the mechanism.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudAuth.create_token">
-<code class="sig-name descname">create_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.create_token" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.create_token" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new token for use in future requests to Rackspace Cloud
 services. This method is called automatically in most cases. The new
-token is stored in the <code class="xref py py-attr docutils literal notranslate"><span class="pre">token_id</span></code> attribute.</p>
+token is stored in the <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth.token_id" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth.token_id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">token_id</span></code></a> attribute.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudFiles">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.cloudstorage.rackspace.</code><code class="sig-name descname">RackspaceCloudFiles</code><span class="sig-paren">(</span><em class="sig-param">auth</em><span class="optional">[</span>, <em class="sig-param">container='slimta-queue'</em><span class="optional">[</span>, <em class="sig-param">timeout=None</em><span class="optional">[</span>, <em class="sig-param">tls=None</em><span class="optional">[</span>, <em class="sig-param">prefix=''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.cloudstorage.rackspace.</code><code class="descname">RackspaceCloudFiles</code><span class="sig-paren">(</span><em>auth</em><span class="optional">[</span>, <em>container='slimta-queue'</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">[</span>, <em>prefix=''</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Instances of this class may be passed in to the
 <a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the <code class="docutils literal notranslate"><span class="pre">storage</span></code>
 parameter to use <a class="reference external" href="http://www.rackspace.com/cloud/files/">Cloud Files</a> as the storage backend.</p>
 <p>Keys added to the container are generated with
 <code class="docutils literal notranslate"><span class="pre">prefix</span> <span class="pre">+</span> <span class="pre">str(uuid.uuid4())</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>auth</strong> – The <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudAuth</span></code></a> object used to manage tokens
-this service.</p></li>
-<li><p><strong>container</strong> – The Cloud Files container name to use. The files in this
-container will be named with random UUID strings.</p></li>
-<li><p><strong>timeout</strong> – Timeout, in seconds, for all requests to the Cloud Files
-API to return before an exception is thrown.</p></li>
-<li><p><strong>tls</strong> – Optional dictionary of TLS settings passed directly as keyword
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth</strong> – The <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudAuth</span></code></a> object used to manage tokens
+this service.</li>
+<li><strong>container</strong> – The Cloud Files container name to use. The files in this
+container will be named with random UUID strings.</li>
+<li><strong>timeout</strong> – Timeout, in seconds, for all requests to the Cloud Files
+API to return before an exception is thrown.</li>
+<li><strong>tls</strong> – Optional dictionary of TLS settings passed directly as keyword
 arguments to <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.ssl.SSLSocket</span></code>. This is only used
-for URLs with the <code class="docutils literal notranslate"><span class="pre">https</span></code> scheme.</p></li>
-<li><p><strong>prefix</strong> – The string prefixed to every key added to the bucket.</p></li>
+for URLs with the <code class="docutils literal notranslate"><span class="pre">https</span></code> scheme.</li>
+<li><strong>prefix</strong> – The string prefixed to every key added to the bucket.</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="class">
 <dt id="slimta.cloudstorage.rackspace.RackspaceCloudQueues">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.cloudstorage.rackspace.</code><code class="sig-name descname">RackspaceCloudQueues</code><span class="sig-paren">(</span><em class="sig-param">auth</em><span class="optional">[</span>, <em class="sig-param">queue_name='slimta-queue'</em><span class="optional">[</span>, <em class="sig-param">client_id=None</em><span class="optional">[</span>, <em class="sig-param">timeout=None</em><span class="optional">[</span>, <em class="sig-param">poll_pause=1.0</em><span class="optional">[</span>, <em class="sig-param">tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.cloudstorage.rackspace.</code><code class="descname">RackspaceCloudQueues</code><span class="sig-paren">(</span><em>auth</em><span class="optional">[</span>, <em>queue_name='slimta-queue'</em><span class="optional">[</span>, <em>client_id=None</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>poll_pause=1.0</em><span class="optional">[</span>, <em>tls=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Instances of this class may be passed in to the
 <a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the
 <code class="docutils literal notranslate"><span class="pre">message_queue</span></code> parameter to use <a class="reference external" href="http://www.rackspace.com/cloud/queues/">Cloud Queues</a> as the message queue
 backend to alert other processes that a new message was stored.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>auth</strong> – The <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudAuth</span></code></a> object used to manage tokens
-this service.</p></li>
-<li><p><strong>queue_name</strong> – The Cloud Files queue name to use.</p></li>
-<li><p><strong>client_id</strong> – The <code class="docutils literal notranslate"><span class="pre">Client-ID</span></code> header passed in with all Cloud Queues
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>auth</strong> – The <a class="reference internal" href="#slimta.cloudstorage.rackspace.RackspaceCloudAuth" title="slimta.cloudstorage.rackspace.RackspaceCloudAuth"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudAuth</span></code></a> object used to manage tokens
+this service.</li>
+<li><strong>queue_name</strong> – The Cloud Files queue name to use.</li>
+<li><strong>client_id</strong> – The <code class="docutils literal notranslate"><span class="pre">Client-ID</span></code> header passed in with all Cloud Queues
 requests. By default, this is generated using
 <a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.uuid5" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">uuid5()</span></code></a> in conjunction with
-<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.getfqdn" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getfqdn()</span></code></a> to be consistent across restarts.</p></li>
-<li><p><strong>timeout</strong> – Timeout, in seconds, for all requests to the Cloud Queues
-API.</p></li>
-<li><p><strong>poll_pause</strong> – The time, in seconds, to idle between attempts to poll
-the queue for new messages.</p></li>
-<li><p><strong>tls</strong> – Optional dictionary of TLS settings passed directly as keyword
+<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.getfqdn" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getfqdn()</span></code></a> to be consistent across restarts.</li>
+<li><strong>timeout</strong> – Timeout, in seconds, for all requests to the Cloud Queues
+API.</li>
+<li><strong>poll_pause</strong> – The time, in seconds, to idle between attempts to poll
+the queue for new messages.</li>
+<li><strong>tls</strong> – Optional dictionary of TLS settings passed directly as keyword
 arguments to <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.ssl.SSLSocket</span></code>. This is only used
-for URLs with the <code class="docutils literal notranslate"><span class="pre">https</span></code> scheme.</p></li>
+for URLs with the <code class="docutils literal notranslate"><span class="pre">https</span></code> scheme.</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -239,11 +253,13 @@ for URLs with the <code class="docutils literal notranslate"><span class="pre">h
                           title="Next page">&rarr; slimta.cloudstorage.aws</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

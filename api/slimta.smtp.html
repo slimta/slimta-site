@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>slimta.smtp &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -61,21 +63,21 @@
 <p>Root package for <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> SMTP client and server libraries.</p>
 <dl class="exception">
 <dt id="slimta.smtp.SmtpError">
-<em class="property">exception </em><code class="sig-prename descclassname">slimta.smtp.</code><code class="sig-name descname">SmtpError</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*args</em><span class="optional">[</span>, <em class="sig-param">**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.SmtpError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">slimta.smtp.</code><code class="descname">SmtpError</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.SmtpError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.core.SlimtaError</span></code></p>
 <p>Base exception for all custom SMTP exceptions.</p>
 </dd></dl>
 
 <dl class="exception">
 <dt id="slimta.smtp.ConnectionLost">
-<em class="property">exception </em><code class="sig-prename descclassname">slimta.smtp.</code><code class="sig-name descname">ConnectionLost</code><a class="headerlink" href="#slimta.smtp.ConnectionLost" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">slimta.smtp.</code><code class="descname">ConnectionLost</code><a class="headerlink" href="#slimta.smtp.ConnectionLost" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
 <p>Thrown when the socket is closed prematurely.</p>
 </dd></dl>
 
 <dl class="exception">
 <dt id="slimta.smtp.MessageTooBig">
-<em class="property">exception </em><code class="sig-prename descclassname">slimta.smtp.</code><code class="sig-name descname">MessageTooBig</code><a class="headerlink" href="#slimta.smtp.MessageTooBig" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">slimta.smtp.</code><code class="descname">MessageTooBig</code><a class="headerlink" href="#slimta.smtp.MessageTooBig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
 <p>Thrown when a message exceeds the maximum size given by the SMTP
 <code class="docutils literal notranslate"><span class="pre">SIZE</span></code> extension, if supported.</p>
@@ -83,15 +85,18 @@
 
 <dl class="exception">
 <dt id="slimta.smtp.BadReply">
-<em class="property">exception </em><code class="sig-prename descclassname">slimta.smtp.</code><code class="sig-name descname">BadReply</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.BadReply" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">slimta.smtp.</code><code class="descname">BadReply</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.BadReply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
 <p>Thrown when an SMTP server replies with a syntax-invalid code.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> – The data that was expected to start with an SMTP code, made
-available in the <code class="docutils literal notranslate"><span class="pre">data</span></code> attribute.</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – The data that was expected to start with an SMTP code, made
+available in the <code class="docutils literal notranslate"><span class="pre">data</span></code> attribute.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <hr class="docutils" />
@@ -126,11 +131,13 @@ available in the <code class="docutils literal notranslate"><span class="pre">da
                           title="Next page">&rarr; slimta.smtp.client</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

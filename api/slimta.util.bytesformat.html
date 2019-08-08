@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>slimta.util.bytesformat &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -67,7 +69,7 @@ construction, so it is optimal to instantiate it once and then re-use
 <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a>.</p>
 <dl class="class">
 <dt id="slimta.util.bytesformat.BytesFormat">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.util.bytesformat.</code><code class="sig-name descname">BytesFormat</code><span class="sig-paren">(</span><em class="sig-param">template</em><span class="optional">[</span>, <em class="sig-param">mode='ignore'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.util.bytesformat.</code><code class="descname">BytesFormat</code><span class="sig-paren">(</span><em>template</em><span class="optional">[</span>, <em>mode='ignore'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Wraps a bytestring in a class with a <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method similar to
 <code class="xref py py-func docutils literal notranslate"><span class="pre">str.format()</span></code>.</p>
@@ -79,29 +81,36 @@ specified by <code class="docutils literal notranslate"><span class="pre">mode</
 <p>To match <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> arguments, you may use a positional argument’s
 number (e.g.  <code class="docutils literal notranslate"><span class="pre">{0}</span></code>) or a keyword argument’s key (e.g. <code class="docutils literal notranslate"><span class="pre">{recipient}</span></code>).
 Additional formatting options are not supported.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The template bytestring.</p></li>
-<li><p><strong>mode</strong> – If <code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>, any <code class="docutils literal notranslate"><span class="pre">{...}</span></code> that does not match a
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The template bytestring.</li>
+<li><strong>mode</strong> – If <code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>, any <code class="docutils literal notranslate"><span class="pre">{...}</span></code> that does not match a
 <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> argument is left in place as-is. If
 <code class="docutils literal notranslate"><span class="pre">'remove'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> are replaced with an empty
 string. If <code class="docutils literal notranslate"><span class="pre">'strict'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> will cause
-<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a> exceptions.</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a> exceptions.</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="slimta.util.bytesformat.BytesFormat.format">
-<code class="sig-name descname">format</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*args</em><span class="optional">[</span>, <em class="sig-param">**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat.format" title="Permalink to this definition">¶</a></dt>
+<code class="descname">format</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat.format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Substitutes in the given positional and keyword arguments into the
 original template string, replacing occurrences of <code class="docutils literal notranslate"><span class="pre">{...}</span></code> with the
 correct argument’s value.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -128,11 +137,13 @@ correct argument’s value.</p>
                           title="Next page">&rarr; slimta.util.dns</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

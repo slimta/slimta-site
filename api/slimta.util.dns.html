@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>slimta.util.dns &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -62,13 +64,13 @@
 <p>This module implements DNS resolution with <a class="reference external" href="https://pycares.readthedocs.io/en/latest/pycares.html#module-pycares" title="(in pycares v2.3.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycares</span></code></a>.</p>
 <dl class="exception">
 <dt id="slimta.util.dns.DNSError">
-<em class="property">exception </em><code class="sig-prename descclassname">slimta.util.dns.</code><code class="sig-name descname">DNSError</code><span class="sig-paren">(</span><em class="sig-param">errno</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">slimta.util.dns.</code><code class="descname">DNSError</code><span class="sig-paren">(</span><em>errno</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
 <p>Exception raised with DNS resolution failed. The exception message will
 contain more information.</p>
 <dl class="attribute">
 <dt id="slimta.util.dns.DNSError.errno">
-<code class="sig-name descname">errno</code><a class="headerlink" href="#slimta.util.dns.DNSError.errno" title="Permalink to this definition">¶</a></dt>
+<code class="descname">errno</code><a class="headerlink" href="#slimta.util.dns.DNSError.errno" title="Permalink to this definition">¶</a></dt>
 <dd><p>The error number, as per <code class="xref py py-mod docutils literal notranslate"><span class="pre">pycares.errno</span></code>.</p>
 </dd></dl>
 
@@ -76,36 +78,40 @@ contain more information.</p>
 
 <dl class="class">
 <dt id="slimta.util.dns.DNSResolver">
-<em class="property">class </em><code class="sig-prename descclassname">slimta.util.dns.</code><code class="sig-name descname">DNSResolver</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">*args</em><span class="optional">[</span>, <em class="sig-param">**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSResolver" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">slimta.util.dns.</code><code class="descname">DNSResolver</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSResolver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Manages all the active DNS queries using a single, static
 <a class="reference external" href="https://pycares.readthedocs.io/en/latest/channel.html#pycares.Channel" title="(in pycares v2.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycares.Channel</span></code></a> object.</p>
 <dl class="attribute">
 <dt id="slimta.util.dns.DNSResolver.channel">
-<code class="sig-name descname">channel</code><a class="headerlink" href="#slimta.util.dns.DNSResolver.channel" title="Permalink to this definition">¶</a></dt>
+<code class="descname">channel</code><a class="headerlink" href="#slimta.util.dns.DNSResolver.channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Before making any queries, this attribute may be set to override the
 default with a <a class="reference external" href="https://pycares.readthedocs.io/en/latest/channel.html#pycares.Channel" title="(in pycares v2.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pycares.Channel</span></code></a> object that will manage all DNS
 queries.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="classmethod">
 <dt id="slimta.util.dns.DNSResolver.query">
-<em class="property">classmethod </em><code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param">cls</em>, <em class="sig-param">name</em>, <em class="sig-param">query_type</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSResolver.query" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">query</code><span class="sig-paren">(</span><em>cls</em>, <em>name</em>, <em>query_type</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dns.DNSResolver.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Begin a DNS lookup. The result (or exception) will be in the
 returned <a class="reference external" href="http://www.gevent.org/api/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncResult</span></code></a> when it is available.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The DNS name to resolve.</p></li>
-<li><p><strong>query_type</strong> – The DNS query type, see
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The DNS name to resolve.</li>
+<li><strong>query_type</strong> – The DNS query type, see
 <a class="reference external" href="https://pycares.readthedocs.io/en/latest/channel.html#pycares.Channel.query" title="(in pycares v2.3.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pycares.Channel.query()</span></code></a> for options. A string
-may be given instead, e.g. <code class="docutils literal notranslate"><span class="pre">'MX'</span></code>.</p></li>
+may be given instead, e.g. <code class="docutils literal notranslate"><span class="pre">'MX'</span></code>.</li>
 </ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="http://www.gevent.org/api/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncResult</span></code></a></p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="http://www.gevent.org/api/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncResult</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -132,11 +138,13 @@ may be given instead, e.g. <code class="docutils literal notranslate"><span clas
                           title="Next page">&rarr; slimta.util.dnsbl</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>

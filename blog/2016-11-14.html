@@ -1,15 +1,17 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Version 4.0.0 Released &#8212; slimta 4.0.8 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
@@ -66,12 +68,12 @@ the new <code class="docutils literal notranslate"><span class="pre">context</sp
 <div class="section" id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>New <a class="reference internal" href="../api/slimta.util.html#module-slimta.util" title="slimta.util"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util</span></code></a> functions for limiting outbound connections to IPv4.</p>
+<li><p class="first">New <a class="reference internal" href="../api/slimta.util.html#module-slimta.util" title="slimta.util"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util</span></code></a> functions for limiting outbound connections to IPv4.</p>
 <p>The need for this change reflects some of the difficulty currently in
 delivering mail to hosts with IPv6 addresses configured. It is provided for
 convenience and not used by default.</p>
 </li>
-<li><p>New <a class="reference internal" href="../api/slimta.logging.socket.html#slimta.logging.socket.socket_error_log_level" title="slimta.logging.socket.socket_error_log_level"><code class="xref py py-attr docutils literal notranslate"><span class="pre">socket_error_log_level</span></code></a> variable for better
+<li><p class="first">New <a class="reference internal" href="../api/slimta.logging.socket.html#slimta.logging.socket.socket_error_log_level" title="slimta.logging.socket.socket_error_log_level"><code class="xref py py-attr docutils literal notranslate"><span class="pre">socket_error_log_level</span></code></a> variable for better
 log level control.</p>
 <p>This change was put in place for log systems that have special behavior
 configured for error-level events, such as monitoring alerts or other
@@ -83,7 +85,7 @@ it is often useful for them to be warning- or info-level logs.</p>
 <div class="section" id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>Constructors and functions that took a <code class="docutils literal notranslate"><span class="pre">tls</span></code> dictionary now take a
+<li><p class="first">Constructors and functions that took a <code class="docutils literal notranslate"><span class="pre">tls</span></code> dictionary now take a
 <code class="docutils literal notranslate"><span class="pre">context</span></code> argument that should be an <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a> object.
 This allows finer control of encryption behavior, as well as the ability to
 pre-load sensitive certificate data before daemonization.</p>
@@ -97,39 +99,41 @@ release is the switch to using <a class="reference external" href="https://docs.
 possible by the previous dropping of support for Python 2.6 and now 3.3 as
 well. Hopefully these changes help mail server implementations stay secure.</p>
 </li>
-<li><p>Client connections will now be opportunistic and try to use TLS if it is
+<li><p class="first">Client connections will now be opportunistic and try to use TLS if it is
 available, even if a key or cert have not been configured.</p>
 <p>Since client-side SSL sessions require little-to-no explicit configuration,
 it should be made the default behavior in most situations to use SSL when
 available.</p>
 </li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> SMTP extension will now advertise insecure authentication
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> SMTP extension will now advertise insecure authentication
 mechanisms without TLS, but trying to use them will fail.</p>
 <p>Some clients that are required to authenticate may look for the <code class="docutils literal notranslate"><span class="pre">AUTH</span></code>
 extension in the EHLO results before encrypting the session. Now, the
 extension will be advertized, but attempts to use insecure auth mechanisms
 such as <code class="docutils literal notranslate"><span class="pre">PLAIN</span></code> will fail as specified by the RFC.</p>
 </li>
-<li><p>Moved the <code class="docutils literal notranslate"><span class="pre">slimta.system</span></code> module to <a class="reference internal" href="../api/slimta.util.system.html#module-slimta.util.system" title="slimta.util.system"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util.system</span></code></a> to de-clutter
-the top-level namespace.</p></li>
+<li><p class="first">Moved the <code class="docutils literal notranslate"><span class="pre">slimta.system</span></code> module to <a class="reference internal" href="../api/slimta.util.system.html#module-slimta.util.system" title="slimta.util.system"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util.system</span></code></a> to de-clutter
+the top-level namespace.</p>
+</li>
 </ul>
 </div>
 <div class="section" id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>Fixed a possible race condition on enqueue.</p>
+<li><p class="first">Fixed a possible race condition on enqueue.</p>
 <p>Thanks to <a class="reference external" href="https://github.com/brycedrennan">Bryce Drennan</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/pull/107">pull
 request</a>!</p>
 </li>
-<li><p>Fixed exception when given empty EHLO/HELO string.</p>
+<li><p class="first">Fixed exception when given empty EHLO/HELO string.</p>
 <p>Thanks to <a class="reference external" href="https://github.com/toxinu">Geoffrey Lehée</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/pull/112">pull request</a>!</p>
 </li>
-<li><p>Fixed the fallback from EHLO to HELO in certain situations.</p>
+<li><p class="first">Fixed the fallback from EHLO to HELO in certain situations.</p>
 <p>Thanks to <a class="reference external" href="https://github.com/thestick613">thestick613</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/issues/103">pull
 request</a>!</p>
 </li>
-<li><p>The <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators.session" title="slimta.edge.smtp.SmtpValidators.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> <code class="docutils literal notranslate"><span class="pre">auth</span></code> attribute now
-correctly contains the tuple described in the documentation.</p></li>
+<li><p class="first">The <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators.session" title="slimta.edge.smtp.SmtpValidators.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> <code class="docutils literal notranslate"><span class="pre">auth</span></code> attribute now
+correctly contains the tuple described in the documentation.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -169,11 +173,13 @@ correctly contains the tuple described in the documentation.</p></li>
                           title="Next page">&rarr; A Little Bit of History</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
