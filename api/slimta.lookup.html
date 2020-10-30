@@ -217,6 +217,62 @@ transaction.</p>
 <div class="section" id="slimta-lookup-drivers-redis">
 <h3>slimta.lookup.drivers.redis<a class="headerlink" href="#slimta-lookup-drivers-redis" title="Permalink to this headline">¶</a></h3>
 <p>This module is available with the <code class="docutils literal notranslate"><span class="pre">python-slimta[redis]</span></code> package extra.</p>
+<span class="target" id="module-slimta.lookup.drivers.redis"></span><p>Implements slimta lookup against a redis data backend. By default, this
+driver expects records to be JSON-encoded <a class="reference external" href="http://redis.io/commands#string">string</a> values. It can be configured
+to use the <a class="reference external" href="http://redis.io/commands#hash">hash</a> data structure instead, but it is less flexible.</p>
+<dl class="class">
+<dt id="slimta.lookup.drivers.redis.RedisLookup">
+<em class="property">class </em><code class="descclassname">slimta.lookup.drivers.redis.</code><code class="descname">RedisLookup</code><span class="sig-paren">(</span><em>key_template</em><span class="optional">[</span>, <em>host='localhost'</em><span class="optional">[</span>, <em>port=6379</em><span class="optional">[</span>, <em>db=0</em><span class="optional">[</span>, <em>password=None</em><span class="optional">[</span>, <em>socket_timeout=None</em><span class="optional">[</span>, <em>use_hash=False</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.redis.RedisLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.lookup.drivers.LookupBase</span></code></a></p>
+<p>Implements the slimta lookup interface using the redis key-value storage
+as the backend layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key_template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – This template string is used to determine the key
+string to lookup. :The <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method
+is called with keyword arguments, given the keyword
+arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.redis.RedisLookup.lookup" title="slimta.lookup.drivers.redis.RedisLookup.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</li>
+<li><strong>host</strong> – Hostname of the redis server to connect to.</li>
+<li><strong>port</strong> – Port to connect to.</li>
+<li><strong>db</strong> – Database number to create keys in.</li>
+<li><strong>password</strong> – Optional password to authenticate with.</li>
+<li><strong>socket_timeout</strong> – Timeout, in seconds, for socket operations. If the
+timeout is hit, <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.timeout" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.timeout</span></code></a> is raised.
+<code class="docutils literal notranslate"><span class="pre">None</span></code> disables the timeout.</li>
+<li><strong>use_hash</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, keys will be looked up as hashes with
+<a class="reference external" href="http://redis.io/commands/hgetall">HGETALL</a> instead of as JSON-encoded strings. Hashes do not
+allow for complex values in results, and cannot
+distinguish missing records from empty records.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="slimta.lookup.drivers.redis.RedisLookup.lookup">
+<code class="descname">lookup</code><span class="sig-paren">(</span><span class="optional">[</span><em>**kwargs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.redis.RedisLookup.lookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>The keyword arguments will be used by the lookup driver to return a
+dictionary-like object that will be used to affect actions or policy.
+For some drivers, these keywords may be used with a template to produce
+a lookup key. For SQL-style drivers, they might be used in a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>
+clause of a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> query.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>keyword arguments</em>) – Used by the driver to lookup records.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary if a record was found, <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-slimta.lookup.drivers.dbapi2">
 <span id="slimta-lookup-drivers-dbapi2"></span><h3>slimta.lookup.drivers.dbapi2<a class="headerlink" href="#module-slimta.lookup.drivers.dbapi2" title="Permalink to this headline">¶</a></h3>

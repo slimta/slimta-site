@@ -1,0 +1,29 @@
+
+Extension Consolidation
+=======================
+
+October 30, 2020
+
+The release of 4.1.0 took the step of absorbing the following extensions into
+the core ``python-slimta`` codebase:
+
+* python-slimta-spf
+* python-slimta-lookup
+* python-slimta-diskstorage
+* python-slimta-redisstorage
+* python-slimta-cloudstorage
+
+Maintaining separate repositories, PyPI projects, and CI/CD had become
+cumbersome. Simplifying and centralizing was also a factor. The
+``python`-slimta`` package now includes a set of "extras" that will install
+relevant optional dependencies.
+
+To ease transition, here is a basic mapping of ``pip install`` changes:
+
+* ``python-slimta-spf`` becomes ``python-slimta[spf]``
+* ``python-slimta-lookup`` is unnecessary, unless using redis:
+  ``python-slimta[redis]``.
+* ``python-slimta-diskstorage`` becomes ``python-slimta[disk]``
+* ``python-slimta-redisstorage`` becomes ``python-slimta[redis]``
+* ``python-slimta-cloudstorage`` is unnecessary, unless using AWS:
+  ``python-slimta[aws]``.

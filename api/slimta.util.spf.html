@@ -63,8 +63,96 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="slimta-util-spf">
-<h1>slimta.util.spf<a class="headerlink" href="#slimta-util-spf" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-slimta.util.spf">
+<span id="slimta-util-spf"></span><h1>slimta.util.spf<a class="headerlink" href="#module-slimta.util.spf" title="Permalink to this headline">¶</a></h1>
+<p>This module provides classes to check the <a class="reference external" href="http://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a> records of the sending
+client address.</p>
+<dl class="class">
+<dt id="slimta.util.spf.EnforceSpf">
+<em class="property">class </em><code class="descclassname">slimta.util.spf.</code><code class="descname">EnforceSpf</code><span class="sig-paren">(</span><span class="optional">[</span><em>timeout=10.0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class used to check SPF records and enforce a policy against the
+results.  By default, results are logged but not acted upon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timeout</strong> – Timeout in seconds before giving up the check. An SPF check
+that times out is equivalent to a <code class="docutils literal notranslate"><span class="pre">'temperror'</span></code> result.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="slimta.util.spf.EnforceSpf.set_enforcement">
+<code class="descname">set_enforcement</code><span class="sig-paren">(</span><em>result</em><span class="optional">[</span>, <em>match_code='550'</em><span class="optional">[</span>, <em>match_message='5.7.1 Access denied'</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf.set_enforcement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an enforcement policy to a particular SPF result. If the given
+result is seen, the <code class="docutils literal notranslate"><span class="pre">MAIL</span> <span class="pre">FROM</span></code> reply is set accordingly.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>result</strong> – The result code, one of <code class="docutils literal notranslate"><span class="pre">'pass'</span></code>, <code class="docutils literal notranslate"><span class="pre">'permerror'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'fail'</span></code>, <code class="docutils literal notranslate"><span class="pre">'temperror'</span></code>, <code class="docutils literal notranslate"><span class="pre">'softfail'</span></code>, <code class="docutils literal notranslate"><span class="pre">'none'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'neutral'</span></code>.</li>
+<li><strong>match_code</strong> – When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> code
+to this string.</li>
+<li><strong>match_message</strong> – When the result code matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a>
+message to this string. You can use the
+<code class="docutils literal notranslate"><span class="pre">{reason}</span></code> template in your string.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.util.spf.EnforceSpf.query">
+<code class="descname">query</code><span class="sig-paren">(</span><em>sender</em>, <em>ip</em>, <em>ehlo_as</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a direct query to check the sender’s domain to see if the
+given IP and EHLO string are authorized to send for that domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sender</strong> – The sender address.</li>
+<li><strong>ip</strong> – The IP address string of the sending client.</li>
+<li><strong>ehlo_as</strong> – The EHLO string given by the sending client.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A tuple of the result and reason strings.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="slimta.util.spf.EnforceSpf.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorates <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> methods that are
+given a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object. It will check the current SMTP session’s
+connecting IP address and EHLO string against the given sender address.
+If enforcement policies are set for the result, the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> is modified
+before calling the validator method.</p>
+<p>This decorator can only be used on <code class="docutils literal notranslate"><span class="pre">handle_mail()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">handle_rcpt()</span></code>, and <code class="docutils literal notranslate"><span class="pre">handle_data()</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>f</strong> – The overloaded <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a>
+method to decorate.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

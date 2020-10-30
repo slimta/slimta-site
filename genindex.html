@@ -241,6 +241,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/slimta.util.dns.html#slimta.util.dns.DNSResolver.channel">channel <span class="category attribute"><span class="location">slimta.util.dns.DNSResolver</span> attribute</span></a>
 </li>
+      <li><a href="api/slimta.util.spf.html#slimta.util.spf.EnforceSpf.check">check() <span class="category method"><span class="location">slimta.util.spf.EnforceSpf</span> method</span></a>
+</li>
       <li><a href="api/slimta.util.dnsbl.html#slimta.util.dnsbl.check_dnsbl">check_dnsbl() <span class="category function">in module <span class="location">slimta.util.dnsbl</span></span></a>
 </li>
       <li><a href="api/slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay.choose_mx">choose_mx() <span class="category method"><span class="location">slimta.relay.smtp.mx.MxSmtpRelay</span> method</span></a>
@@ -259,10 +261,10 @@
 </li>
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorageError">CloudStorageError</a>
 </li>
-      <li><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.Reply.code">code <span class="category attribute"><span class="location">slimta.smtp.reply.Reply</span> attribute</span></a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.Reply.code">code <span class="category attribute"><span class="location">slimta.smtp.reply.Reply</span> attribute</span></a>
+</li>
       <li><a href="api/slimta.logging.socket.html#slimta.logging.socket.SocketLogger.connect">connect() <span class="category method"><span class="location">slimta.logging.socket.SocketLogger</span> method</span></a>
 </li>
       <li><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.connection_failed">connection_failed <span class="category function">in module <span class="location">slimta.smtp.reply</span></span></a>
@@ -301,10 +303,12 @@
 </li>
       <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage">DictStorage <span class="category class">class in <span class="location">slimta.queue.dict</span></span></a>
 </li>
-      <li><a href="api/slimta.util.dnsbl.html#slimta.util.dnsbl.DnsBlocklist">DnsBlocklist <span class="category class">class in <span class="location">slimta.util.dnsbl</span></span></a>
+      <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage">DiskStorage <span class="category class">class in <span class="location">slimta.diskstorage</span></span></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/slimta.util.dnsbl.html#slimta.util.dnsbl.DnsBlocklist">DnsBlocklist <span class="category class">class in <span class="location">slimta.util.dnsbl</span></span></a>
+</li>
       <li><a href="api/slimta.util.dnsbl.html#slimta.util.dnsbl.DnsBlocklistGroup">DnsBlocklistGroup <span class="category class">class in <span class="location">slimta.util.dnsbl</span></span></a>
 </li>
       <li><a href="api/slimta.util.dns.html#slimta.util.dns.DNSError">DNSError</a>
@@ -350,6 +354,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/slimta.smtp.server.html#slimta.smtp.server.Server.encrypted">encrypted <span class="category attribute"><span class="location">slimta.smtp.server.Server</span> attribute</span></a>
+</li>
+      <li><a href="api/slimta.util.spf.html#slimta.util.spf.EnforceSpf">EnforceSpf <span class="category class">class in <span class="location">slimta.util.spf</span></span></a>
 </li>
       <li><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.Reply.enhanced_status_code">enhanced_status_code <span class="category attribute"><span class="location">slimta.smtp.reply.Reply</span> attribute</span></a>
 </li>
@@ -404,9 +410,13 @@
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage.get">get() <span class="category method"><span class="location">slimta.cloudstorage.CloudStorage</span> method</span></a>
 
       <ul>
+        <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage.get"><span class="category method"><span class="location">slimta.diskstorage.DiskStorage</span> method</span></a>
+</li>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.get"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.get"><span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
+</li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.get"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.util.dnsbl.html#slimta.util.dnsbl.DnsBlocklist.get"><span class="category method"><span class="location">slimta.util.dnsbl.DnsBlocklist</span> method</span></a>
 </li>
@@ -417,14 +427,14 @@
 </li>
       <li><a href="api/slimta.http.html#slimta.http.get_connection">get_connection() <span class="category function">in module <span class="location">slimta.http</span></span></a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.get_info">get_info() <span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
 
       <ul>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.get_info"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/slimta.util.dnsbl.html#slimta.util.dnsbl.DnsBlocklist.get_reason">get_reason() <span class="category method"><span class="location">slimta.util.dnsbl.DnsBlocklist</span> method</span></a>
 </li>
       <li><a href="api/slimta.util.dnsbl.html#slimta.util.dnsbl.DnsBlocklistGroup.get_reasons">get_reasons() <span class="category method"><span class="location">slimta.util.dnsbl.DnsBlocklistGroup</span> method</span></a>
@@ -504,9 +514,13 @@
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage.increment_attempts">increment_attempts() <span class="category method"><span class="location">slimta.cloudstorage.CloudStorage</span> method</span></a>
 
       <ul>
+        <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage.increment_attempts"><span class="category method"><span class="location">slimta.diskstorage.DiskStorage</span> method</span></a>
+</li>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.increment_attempts"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.increment_attempts"><span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
+</li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.increment_attempts"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
 </li>
       </ul></li>
   </ul></td>
@@ -548,9 +562,13 @@
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage.load">load() <span class="category method"><span class="location">slimta.cloudstorage.CloudStorage</span> method</span></a>
 
       <ul>
+        <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage.load"><span class="category method"><span class="location">slimta.diskstorage.DiskStorage</span> method</span></a>
+</li>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.load"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.load"><span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
+</li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.load"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
 </li>
       </ul></li>
       <li><a href="api/slimta.lookup.html#slimta.lookup.drivers.LookupBase.log">log() <span class="category method"><span class="location">slimta.lookup.drivers.LookupBase</span> method</span></a>
@@ -565,6 +583,8 @@
         <li><a href="api/slimta.lookup.html#slimta.lookup.drivers.LookupBase.lookup"><span class="category method"><span class="location">slimta.lookup.drivers.LookupBase</span> method</span></a>
 </li>
         <li><a href="api/slimta.lookup.html#slimta.lookup.drivers.dict.DictLookup.lookup"><span class="category method"><span class="location">slimta.lookup.drivers.dict.DictLookup</span> method</span></a>
+</li>
+        <li><a href="api/slimta.lookup.html#slimta.lookup.drivers.redis.RedisLookup.lookup"><span class="category method"><span class="location">slimta.lookup.drivers.redis.RedisLookup</span> method</span></a>
 </li>
         <li><a href="api/slimta.lookup.html#slimta.lookup.drivers.regex.RegexLookup.lookup"><span class="category method"><span class="location">slimta.lookup.drivers.regex.RegexLookup</span> method</span></a>
 </li>
@@ -672,7 +692,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/slimta.util.dns.html#slimta.util.dns.DNSResolver.query">query() <span class="category method"><span class="location">slimta.util.dns.DNSResolver class</span> method</span></a>
+
+      <ul>
+        <li><a href="api/slimta.util.spf.html#slimta.util.spf.EnforceSpf.query"><span class="category method"><span class="location">slimta.util.spf.EnforceSpf</span> method</span></a>
 </li>
+      </ul></li>
       <li><a href="api/slimta.queue.html#slimta.queue.Queue">Queue <span class="category class">class in <span class="location">slimta.queue</span></span></a>
 </li>
       <li><a href="api/slimta.relay.pool.html#slimta.relay.pool.RelayPool.queue">queue <span class="category attribute"><span class="location">slimta.relay.pool.RelayPool</span> attribute</span></a>
@@ -743,9 +767,13 @@
         <li><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.Reply.recv"><span class="category method"><span class="location">slimta.smtp.reply.Reply</span> method</span></a>
 </li>
       </ul></li>
+      <li><a href="api/slimta.util.system.html#slimta.util.system.redirect_stdio">redirect_stdio() <span class="category function">in module <span class="location">slimta.util.system</span></span></a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/slimta.util.system.html#slimta.util.system.redirect_stdio">redirect_stdio() <span class="category function">in module <span class="location">slimta.util.system</span></span></a>
+      <li><a href="api/slimta.lookup.html#slimta.lookup.drivers.redis.RedisLookup">RedisLookup <span class="category class">class in <span class="location">slimta.lookup.drivers.redis</span></span></a>
+</li>
+      <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage">RedisStorage <span class="category class">class in <span class="location">slimta.redisstorage</span></span></a>
 </li>
       <li><a href="api/slimta.lookup.html#slimta.lookup.drivers.regex.RegexLookup">RegexLookup <span class="category class">class in <span class="location">slimta.lookup.drivers.regex</span></span></a>
 </li>
@@ -760,11 +788,15 @@
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage.remove">remove() <span class="category method"><span class="location">slimta.cloudstorage.CloudStorage</span> method</span></a>
 
       <ul>
+        <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage.remove"><span class="category method"><span class="location">slimta.diskstorage.DiskStorage</span> method</span></a>
+</li>
         <li><a href="api/slimta.logging.queuestorage.html#slimta.logging.queuestorage.QueueStorageLogger.remove"><span class="category method"><span class="location">slimta.logging.queuestorage.QueueStorageLogger</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.remove"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.remove"><span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
+</li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.remove"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
 </li>
       </ul></li>
       <li><a href="api/slimta.smtp.reply.html#slimta.smtp.reply.Reply">Reply <span class="category class">class in <span class="location">slimta.smtp.reply</span></span></a>
@@ -827,20 +859,30 @@
 </li>
       <li><a href="api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators.session">session <span class="category attribute"><span class="location">slimta.edge.smtp.SmtpValidators</span> attribute</span></a>
 </li>
+      <li><a href="api/slimta.util.spf.html#slimta.util.spf.EnforceSpf.set_enforcement">set_enforcement() <span class="category method"><span class="location">slimta.util.spf.EnforceSpf</span> method</span></a>
+</li>
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage.set_recipients_delivered">set_recipients_delivered() <span class="category method"><span class="location">slimta.cloudstorage.CloudStorage</span> method</span></a>
 
       <ul>
+        <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage.set_recipients_delivered"><span class="category method"><span class="location">slimta.diskstorage.DiskStorage</span> method</span></a>
+</li>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.set_recipients_delivered"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.set_recipients_delivered"><span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
+</li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.set_recipients_delivered"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
 </li>
       </ul></li>
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage.set_timestamp">set_timestamp() <span class="category method"><span class="location">slimta.cloudstorage.CloudStorage</span> method</span></a>
 
       <ul>
+        <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage.set_timestamp"><span class="category method"><span class="location">slimta.diskstorage.DiskStorage</span> method</span></a>
+</li>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.set_timestamp"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.set_timestamp"><span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
+</li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.set_timestamp"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
 </li>
       </ul></li>
       <li><a href="api/slimta.logging.socket.html#slimta.logging.socket.SocketLogger.shutdown">shutdown() <span class="category method"><span class="location">slimta.logging.socket.SocketLogger</span> method</span></a>
@@ -858,6 +900,8 @@
       <li><a href="api/slimta.cloudstorage.aws.html#module-slimta.cloudstorage.aws">slimta.cloudstorage.aws <span class="category module">module</span></a>
 </li>
       <li><a href="api/slimta.cloudstorage.rackspace.html#module-slimta.cloudstorage.rackspace">slimta.cloudstorage.rackspace <span class="category module">module</span></a>
+</li>
+      <li><a href="api/slimta.diskstorage.html#module-slimta.diskstorage">slimta.diskstorage <span class="category module">module</span></a>
 </li>
       <li><a href="api/slimta.edge.html#module-slimta.edge">slimta.edge <span class="category module">module</span></a>
 </li>
@@ -887,10 +931,12 @@
 </li>
       <li><a href="api/slimta.lookup.html#module-slimta.lookup.drivers.dict">slimta.lookup.drivers.dict <span class="category module">module</span></a>
 </li>
-      <li><a href="api/slimta.lookup.html#module-slimta.lookup.drivers.regex">slimta.lookup.drivers.regex <span class="category module">module</span></a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/slimta.lookup.html#module-slimta.lookup.drivers.redis">slimta.lookup.drivers.redis <span class="category module">module</span></a>
+</li>
+      <li><a href="api/slimta.lookup.html#module-slimta.lookup.drivers.regex">slimta.lookup.drivers.regex <span class="category module">module</span></a>
+</li>
       <li><a href="api/slimta.lookup.html#module-slimta.lookup.policy">slimta.lookup.policy <span class="category module">module</span></a>
 </li>
       <li><a href="api/slimta.policy.html#module-slimta.policy">slimta.policy <span class="category module">module</span></a>
@@ -908,6 +954,8 @@
       <li><a href="api/slimta.queue.dict.html#module-slimta.queue.dict">slimta.queue.dict <span class="category module">module</span></a>
 </li>
       <li><a href="api/slimta.queue.proxy.html#module-slimta.queue.proxy">slimta.queue.proxy <span class="category module">module</span></a>
+</li>
+      <li><a href="api/slimta.redisstorage.html#module-slimta.redisstorage">slimta.redisstorage <span class="category module">module</span></a>
 </li>
       <li><a href="api/slimta.relay.html#module-slimta.relay">slimta.relay <span class="category module">module</span></a>
 </li>
@@ -946,6 +994,8 @@
       <li><a href="api/slimta.util.proxyproto.html#module-slimta.util.proxyproto">slimta.util.proxyproto <span class="category module">module</span></a>
 </li>
       <li><a href="api/slimta.util.ptrlookup.html#module-slimta.util.ptrlookup">slimta.util.ptrlookup <span class="category module">module</span></a>
+</li>
+      <li><a href="api/slimta.util.spf.html#module-slimta.util.spf">slimta.util.spf <span class="category module">module</span></a>
 </li>
       <li><a href="api/slimta.util.system.html#module-slimta.util.system">slimta.util.system <span class="category module">module</span></a>
 </li>
@@ -1038,15 +1088,21 @@
       <ul>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.wait"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.wait"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
+</li>
       </ul></li>
       <li><a href="api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage.write">write() <span class="category method"><span class="location">slimta.cloudstorage.CloudStorage</span> method</span></a>
 
       <ul>
+        <li><a href="api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage.write"><span class="category method"><span class="location">slimta.diskstorage.DiskStorage</span> method</span></a>
+</li>
         <li><a href="api/slimta.logging.queuestorage.html#slimta.logging.queuestorage.QueueStorageLogger.write"><span class="category method"><span class="location">slimta.logging.queuestorage.QueueStorageLogger</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.html#slimta.queue.QueueStorage.write"><span class="category method"><span class="location">slimta.queue.QueueStorage</span> method</span></a>
 </li>
         <li><a href="api/slimta.queue.dict.html#slimta.queue.dict.DictStorage.write"><span class="category method"><span class="location">slimta.queue.dict.DictStorage</span> method</span></a>
+</li>
+        <li><a href="api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage.write"><span class="category method"><span class="location">slimta.redisstorage.RedisStorage</span> method</span></a>
 </li>
       </ul></li>
   </ul></td>

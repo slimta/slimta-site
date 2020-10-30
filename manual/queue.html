@@ -126,7 +126,7 @@ and testing, but probably should be avoided for live systems.</p>
 </div>
 <div class="section" id="local-disk">
 <h3>Local Disk<a class="headerlink" href="#local-disk" title="Permalink to this headline">¶</a></h3>
-<p>In the fashion of traditional MTAs, <code class="xref py py-mod docutils literal notranslate"><span class="pre">diskstorage</span></code> writes
+<p>In the fashion of traditional MTAs, <a class="reference internal" href="../api/slimta.diskstorage.html#module-slimta.diskstorage" title="slimta.diskstorage"><code class="xref py py-mod docutils literal notranslate"><span class="pre">diskstorage</span></code></a> writes
 <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> data and queue metadata directly to disk to configurable
 directories. This functionality relies on <a class="reference external" href="https://github.com/felipecruz/pyaio">pyaio</a> to asynchronously write and
 read files on disk, and as such it is <em>only available on Linux</em>.</p>
@@ -141,12 +141,12 @@ arguments, respectively).</p>
 the suffix <code class="docutils literal notranslate"><span class="pre">.env</span></code>. The files created in the meta directory will be identified
 by the same uuid string as its corresponding envelope file, but with the suffix
 <code class="docutils literal notranslate"><span class="pre">.meta</span></code>. The envelope and meta directories can be the same, but two
-<code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code> should not share directories.</p>
+<a class="reference internal" href="../api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code></a> should not share directories.</p>
 <p>To use this storage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-slimta[disk]
 </pre></div>
 </div>
-<p>And to initialize a new <code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code>:</p>
+<p>And to initialize a new <a class="reference internal" href="../api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.diskstorage</span> <span class="kn">import</span> <span class="n">DiskStorage</span>
 
 <span class="n">queue_dir</span> <span class="o">=</span> <span class="s1">&#39;/var/spool/slimta/queue&#39;</span>
@@ -157,7 +157,7 @@ by the same uuid string as its corresponding envelope file, but with the suffix
 <div class="section" id="redis">
 <h3>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h3>
 <p>Taking advantage of the advanced data structures and ease of use of the <a class="reference external" href="http://redis.io/">redis</a>
-database, <code class="xref py py-mod docutils literal notranslate"><span class="pre">redisstorage</span></code> simply creates a hash key for each queued
+database, <a class="reference internal" href="../api/slimta.redisstorage.html#module-slimta.redisstorage" title="slimta.redisstorage"><code class="xref py py-mod docutils literal notranslate"><span class="pre">redisstorage</span></code></a> simply creates a hash key for each queued
 message, containing its delivery metadata and a pickled version of the
 <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>.</p>
 <p>The keys created in redis will look like the following:</p>
@@ -185,7 +185,7 @@ message, containing its delivery metadata and a pickled version of the
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-slimta[redis]
 </pre></div>
 </div>
-<p>And to initialize a new <code class="xref py py-class docutils literal notranslate"><span class="pre">RedisStorage</span></code>:</p>
+<p>And to initialize a new <a class="reference internal" href="../api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage" title="slimta.redisstorage.RedisStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">RedisStorage</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.redisstorage</span> <span class="kn">import</span> <span class="n">RedisStorage</span>
 
 <span class="n">store</span> <span class="o">=</span> <span class="n">RedisStorage</span><span class="p">(</span><span class="s1">&#39;redis.example.com&#39;</span><span class="p">)</span>
