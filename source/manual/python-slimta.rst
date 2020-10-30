@@ -15,7 +15,6 @@ Python Library Usage
    integrating
    mda
    msa
-   extensions
 
 The :doc:`/api/index` provides great information on how to use each piece of
 the *python-slimta* library, but it rarely helps decide when and how to put the
@@ -58,13 +57,3 @@ arguments it takes and what they mean.
 
   * :doc:`mda`
   * :doc:`msa`
-
-* :doc:`extensions`
-
-  * :ref:`External Process Delivery <pipe-relay-extension>`
-  * :ref:`Cloud Storage <cloud-storage>`
-  * :ref:`Disk Storage <disk-storage>`
-  * :ref:`Redis Storage <redis-storage>`
-  * :ref:`Celery Queuing <celery-queue>`
-  * :ref:`Sender Policy Framework (SPF) <enforce-spf>`
-
