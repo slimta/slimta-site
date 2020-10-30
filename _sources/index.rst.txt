@@ -26,6 +26,7 @@ traditional application or as a software library.
 #. `Continuous Integration <https://travis-ci.org/slimta/>`_ |buildstatus|
 #. News
 
+   - :doc:`blog/2020-10-30`
    - :doc:`blog/2016-11-14`
    - :doc:`blog/2016-11-14-2`
 
