@@ -4,8 +4,7 @@
 slimta.redisstorage
 ===================
 
-This module is available in the ``python-slimta-redisstorage`` extension
-package.
+This module is available with the ``python-slimta[redis]`` package extra.
 
 .. automodule:: slimta.redisstorage
    :members:

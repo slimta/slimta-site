@@ -3,10 +3,4 @@ cloud_sptheme
 boto
 -e git+https://github.com/slimta/python-slimta.git#egg=python_slimta-dev
 -e git+https://github.com/slimta/python-slimta-celeryqueue.git#egg=python_slimta_celeryqueue-dev
--e git+https://github.com/slimta/python-slimta-diskstorage.git#egg=python_slimta_diskstorage-dev
--e git+https://github.com/slimta/python-slimta-spf.git#egg=python_slimta_spf-dev
--e git+https://github.com/slimta/python-slimta-redisstorage.git#egg=python_slimta_redisstorage-dev
--e git+https://github.com/slimta/python-slimta-cloudstorage.git#egg=python_slimta_cloudstorage-dev
--e git+https://github.com/slimta/python-slimta-lookup.git#egg=python_slimta_lookup-dev
--e git+https://github.com/slimta/python-slimta-lists.git#egg=python_slimta_lists-dev
 -e git+https://github.com/slimta/slimta.git#egg=slimta-dev

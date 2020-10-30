@@ -154,9 +154,3 @@ example of delivery to the ``maildrop`` command::
 
 For more information, the :doc:`mda` tutorial and :mod:`~slimta.relay.pipe`
 module documentation may be useful.
-
-.. note::
-
-   Prior to version 0.3.21, this functionality was provided by the
-   :ref:`python-slimta-piperelay <pipe-relay-extension>` extension.
-

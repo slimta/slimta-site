@@ -100,6 +100,42 @@ If you have not already, you'll need to attach your validators to your
 :class:`~slimta.edge.smtp.SmtpEdge` by passing in
 ``validator_class=MyValidators`` to its constructor.
 
+Sender Policy Framework (SPF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _SPF: https://en.wikipedia.org/wiki/Sender_Policy_Framework
+
+SPF_ is a tool that, at its most basic, allows domains to explicitly list the
+outbound hosts/IPs from which they are legitimately sending mail. Domains may
+set DNS records of special formats that email receivers query and compare
+against the information they know about the sending client.
+
+To set it up, you need to create rules for the different types of results. You
+do this by creating a :class:`~slimta.spf.EnforceSpf` object and calling
+:meth:`~slimta.spf.EnforceSpf.set_enforcement` for each different results you
+want to act upon. These results are:
+
+* `none <https://tools.ietf.org/html/rfc4408#section-2.5.1>`_
+* `neutral <https://tools.ietf.org/html/rfc4408#section-2.5.2>`_
+* `pass <https://tools.ietf.org/html/rfc4408#section-2.5.3>`_
+* `fail <https://tools.ietf.org/html/rfc4408#section-2.5.4>`_
+* `softfail <https://tools.ietf.org/html/rfc4408#section-2.5.5>`_
+* `temperror <https://tools.ietf.org/html/rfc4408#section-2.5.6>`_
+* `permerror <https://tools.ietf.org/html/rfc4408#section-2.5.7>`_
+
+So we create our rules::
+
+    spf = EnforceSpf()
+    spf.set_enforcement('fail', match_message='5.7.1 Access denied: {reason}')
+    spf.set_enforcement('softfail', match_code='250', match_message='2.0.0 Ok; {reason}')
+
+And then in our :class:`~slimta.edge.smtp.SmtpValidators` class, use the
+:meth:`~slimta.spf.EnforceSpf.check` decorator::
+
+    @spf.check
+    def handle_mail(self, reply, sender, params):
+        pass
+
 Proxy Protocol with SMTP Edge
 '''''''''''''''''''''''''''''
 

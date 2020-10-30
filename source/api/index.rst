@@ -16,5 +16,4 @@ the `master branch`_ upon commit using `Read The Docs`_.
 .. toctree::
 
    slimta
-   extra
 

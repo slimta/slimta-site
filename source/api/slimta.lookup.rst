@@ -4,8 +4,6 @@
 slimta.lookup
 =============
 
-This module is available in the ``python-slimta-lookup`` extension package.
-
 slimta.lookup.policy
 --------------------
 
@@ -24,6 +22,8 @@ slimta.lookup.drivers
 
 slimta.lookup.drivers.redis
 """""""""""""""""""""""""""
+
+This module is available with the ``python-slimta[redis]`` package extra.
 
 .. automodule:: slimta.lookup.drivers.redis
    :members:
