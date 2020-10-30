@@ -4,7 +4,6 @@
 Configuring the Edges
 =====================
 
-.. _python-slimta-lookup: https://github.com/slimta/python-slimta-lookup
 .. _PROXY protocol: http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt
 
 The next big section in ``slimta.conf`` is ``edge``, which allows you to setup
@@ -62,8 +61,8 @@ consistent options. This sub-section is defined as:
 
 .. _lookup-section:
 
-Some options can use `python-slimta-lookup`_ to query an external source for
-its data. These sections must have the following option:
+Some options can  query an external source for its data. These sections must
+have the following option:
 
 * ``type``: String, required
 

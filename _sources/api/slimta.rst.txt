@@ -24,4 +24,8 @@ slimta
    slimta.policy
    slimta.logging
    slimta.util
+   slimta.lookup
+   slimta.cloudstorage
+   slimta.diskstorage
+   slimta.redisstorage
 

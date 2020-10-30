@@ -4,7 +4,7 @@
 slimta.diskstorage
 ==================
 
-This module is available in the ``python-slimta-diskstorage`` extension package.
+This module is available with the ``python-slimta[disk]`` package extra.
 
 .. automodule:: slimta.diskstorage
    :members:

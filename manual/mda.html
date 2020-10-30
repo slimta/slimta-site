@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Mail Delivery Agent &#8212; slimta 4.0.8 documentation</title>
+    <title>Mail Delivery Agent &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="integrating.html" title="Integrating Everything"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li> 
@@ -66,7 +81,7 @@
 on <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> and <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> depends on <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a>. For this example, we’ll be using
 <a class="reference internal" href="../api/slimta.relay.pipe.html#slimta.relay.pipe.DovecotLdaRelay" title="slimta.relay.pipe.DovecotLdaRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">DovecotLdaRelay</span></code></a>, though you could just as easily
 substitute one of the other classes in <a class="reference internal" href="../api/slimta.relay.html#module-slimta.relay" title="slimta.relay"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.relay</span></code></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.relay.pipe</span> <span class="k">import</span> <span class="n">DovecotLdaRelay</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.relay.pipe</span> <span class="kn">import</span> <span class="n">DovecotLdaRelay</span>
 
 <span class="n">relay</span> <span class="o">=</span> <span class="n">DovecotLdaRelay</span><span class="p">(</span><span class="s1">&#39;/usr/lib/dovecot/dovecot-lda&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 </pre></div>
@@ -80,10 +95,10 @@ too long to finish.</p>
 <p>Now that we have a <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a>, we can create the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a> and <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>
 objects. The simplest <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a> sub-class is
 <a class="reference internal" href="../api/slimta.queue.dict.html#slimta.queue.dict.DictStorage" title="slimta.queue.dict.DictStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">DictStorage</span></code></a>, which stores message contents and meta
-in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> objects. However, this can be made persistent using
-<a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>:</p>
+in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> objects. However, this can be made persistent using
+<a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shelve</span>
-<span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="k">import</span> <span class="n">DictStorage</span>
+<span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="kn">import</span> <span class="n">DictStorage</span>
 
 <span class="n">env_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;envelope.db&#39;</span><span class="p">)</span>
 <span class="n">meta_db</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;meta.db&#39;</span><span class="p">)</span>
@@ -92,13 +107,13 @@ in <a class="reference external" href="https://docs.python.org/3/library/stdtype
 </div>
 <p>The resulting <code class="docutils literal notranslate"><span class="pre">storage</span></code> variable along with <code class="docutils literal notranslate"><span class="pre">relay</span></code> from <em>Step 1</em> can create
 our <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.queue</span> <span class="k">import</span> <span class="n">Queue</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.queue</span> <span class="kn">import</span> <span class="n">Queue</span>
 
 <span class="n">queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">relay</span><span class="p">)</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Because queue objects inherit <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.Greenlet</span></code></a>, they must call their
+<p>Because queue objects inherit <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v20.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.Greenlet</span></code></a>, they must call their
 <code class="docutils literal notranslate"><span class="pre">.start()</span></code> method to function properly.</p>
 </div>
 <div class="section" id="step-3-add-queue-policies">
@@ -106,7 +121,7 @@ our <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Qu
 <p>Now that we have our <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>, we will most likely want to add various
 <a class="reference internal" href="../api/slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code></a> and <a class="reference internal" href="../api/slimta.policy.html#slimta.policy.RelayPolicy" title="slimta.policy.RelayPolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPolicy</span></code></a> rules to affect behavior. MDAs should add
 various headers, such as <code class="docutils literal notranslate"><span class="pre">Date</span></code> and <code class="docutils literal notranslate"><span class="pre">Received</span></code>, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddDateHeader</span><span class="p">())</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
@@ -118,7 +133,7 @@ is likely you will want to scan this mail from spam. The
 <a class="reference internal" href="../api/slimta.policy.spamassassin.html#slimta.policy.spamassassin.SpamAssassin" title="slimta.policy.spamassassin.SpamAssassin"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpamAssassin</span></code></a> policy will add
 the <code class="docutils literal notranslate"><span class="pre">X-Spam-Status</span></code> set to <code class="docutils literal notranslate"><span class="pre">YES</span></code> or <code class="docutils literal notranslate"><span class="pre">NO</span></code> for each message, which can be
 used by maildrop to filter to a spam quarantine:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.spamassassin</span> <span class="k">import</span> <span class="n">SpamAssassin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.spamassassin</span> <span class="kn">import</span> <span class="n">SpamAssassin</span>
 
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">SpamAssassin</span><span class="p">())</span>
 </pre></div>
@@ -136,7 +151,7 @@ filesystem. Most MDAs will use <a class="reference internal" href="../api/slimta
 RFC-specified port 25.</p>
 <p>Creating an <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> can be very simple if you are not worried about how messages
 are received or from whom:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="k">import</span> <span class="n">SmtpEdge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
 
 <span class="n">tls_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;keyfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/key.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;certfile&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/cert.pem&#39;</span><span class="p">}</span>
 <span class="n">edge</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">,</span> <span class="n">tls</span><span class="o">=</span><span class="n">tls_args</span><span class="p">)</span>
@@ -148,7 +163,7 @@ send it to the <a class="reference internal" href="../api/slimta.queue.html#slim
 to recipients we host. To do this, we will sub-class
 <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> and restrict the addresses allowed by
 the <code class="docutils literal notranslate"><span class="pre">RCPT</span> <span class="pre">TO:&lt;...&gt;</span></code> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="k">import</span> <span class="n">SmtpValidators</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpValidators</span>
 
 <span class="k">class</span> <span class="nc">MyValidators</span><span class="p">(</span><span class="n">SmtpValidators</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">handle_rcpt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">recipient</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
@@ -177,7 +192,7 @@ address is not on the <code class="docutils literal notranslate"><span class="pr
 running. There are some daemonization tools in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.system</span></code> module.
 Their usage is relatively simple:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gevent</span>
-<span class="kn">from</span> <span class="nn">slimta</span> <span class="k">import</span> <span class="n">system</span>
+<span class="kn">from</span> <span class="nn">slimta</span> <span class="kn">import</span> <span class="n">system</span>
 
 <span class="n">gevent</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">system</span><span class="o">.</span><span class="n">drop_privileges</span><span class="p">(</span><span class="s1">&#39;smtp-user&#39;</span><span class="p">,</span> <span class="s1">&#39;smtp-user&#39;</span><span class="p">)</span>
@@ -188,7 +203,7 @@ Their usage is relatively simple:</p>
 <p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">drop_privileges()</span></code> command is only necessary if you
 ran your MTA as <code class="docutils literal notranslate"><span class="pre">root</span></code>, which is necessary to create servers listening on
 privileged ports such as 25, 587 or 465.</p>
-<p>The <a class="reference external" href="http://www.gevent.org/api/gevent.html#gevent.sleep" title="(in gevent v1.5a2.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gevent.sleep()</span></code></a> call is not always necessary, but sometimes gevent
+<p>The <a class="reference external" href="http://www.gevent.org/api/gevent.html#gevent.sleep" title="(in gevent v20.9.1.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gevent.sleep()</span></code></a> call is not always necessary, but sometimes gevent
 will not have opened the ports by the time you drop privileges and then it will
 fail, so calling a short sleep will make sure everything is ready.</p>
 </div>
@@ -287,7 +302,7 @@ fail, so calling a short sleep will make sure everything is ready.</p>
         <li class="right" >
           <a href="integrating.html" title="Integrating Everything"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li> 
@@ -297,7 +312,7 @@ fail, so calling a short sleep will make sure everything is ready.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

@@ -8,23 +8,38 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.lookup &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.lookup &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="slimta.diskstorage" href="extra.diskstorage.html" />
-    <link rel="prev" title="Available Extensions" href="extra.html" /> 
+    <link rel="next" title="slimta.cloudstorage" href="slimta.cloudstorage.html" />
+    <link rel="prev" title="slimta.util.system" href="slimta.util.system.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
     <div class="relbar-top">
@@ -39,15 +54,15 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.diskstorage.html" title="slimta.diskstorage"
+          <a href="slimta.cloudstorage.html" title="slimta.cloudstorage"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.html" title="Available Extensions"
+          <a href="slimta.util.system.html" title="slimta.util.system"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="extra.html" accesskey="U">Available Extensions</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li> 
       </ul>
     </div>
     </div>
@@ -60,7 +75,6 @@
             
   <div class="section" id="slimta-lookup">
 <h1>slimta.lookup<a class="headerlink" href="#slimta-lookup" title="Permalink to this headline">¶</a></h1>
-<p>This module is available in the <code class="docutils literal notranslate"><span class="pre">python-slimta-lookup</span></code> extension package.</p>
 <div class="section" id="module-slimta.lookup.policy">
 <span id="slimta-lookup-policy"></span><h2>slimta.lookup.policy<a class="headerlink" href="#module-slimta.lookup.policy" title="Permalink to this headline">¶</a></h2>
 <p>Provides an implementation of the <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code></a> interface that enforces
@@ -88,9 +102,9 @@ queued using <a class="reference internal" href="slimta.queue.html#slimta.queue.
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>lookup</strong> – The slimta lookup driver, implementing the
 <a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">LookupBase</span></code></a> interface.</li>
-<li><strong>on_sender</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the envelope sender is looked up and has
+<li><strong>on_sender</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the envelope sender is looked up and has
 policies applied.</li>
-<li><strong>on_rcpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the envelope recipients are looked up, each
+<li><strong>on_rcpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the envelope recipients are looked up, each
 one applying any policies found in the record.</li>
 </ul>
 </td>
@@ -132,7 +146,7 @@ not modify their backend data source.</p>
 <dl class="class">
 <dt id="slimta.lookup.drivers.LookupBase">
 <em class="property">class </em><code class="descclassname">slimta.lookup.drivers.</code><code class="descname">LookupBase</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.LookupBase" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Inherit this class to implement a slimta lookup driver. Only the
 <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a> method must be overridden.</p>
 <dl class="method">
@@ -166,7 +180,7 @@ it is substringed and passed in as the <code class="docutils literal notranslate
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – An address to lookup, either as the full address or as
+<li><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – An address to lookup, either as the full address or as
 its domain part.</li>
 <li><strong>extra</strong> (<em>keyword arguments</em>) – Additional keyword arguments to pass in to
 <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</li>
@@ -187,8 +201,8 @@ transaction.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The module name, e.g. <code class="docutils literal notranslate"><span class="pre">__name__</span></code>.</li>
-<li><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The keyword arguments given to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The module name, e.g. <code class="docutils literal notranslate"><span class="pre">__name__</span></code>.</li>
+<li><strong>kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.9)"><em>dict</em></a>) – The keyword arguments given to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</li>
 <li><strong>ret</strong> – The return value of the lookup, e.g. a dictionary or
 <code class="docutils literal notranslate"><span class="pre">None</span></code>.</li>
 </ul>
@@ -200,64 +214,9 @@ transaction.</p>
 
 </dd></dl>
 
-<div class="section" id="module-slimta.lookup.drivers.redis">
-<span id="slimta-lookup-drivers-redis"></span><h3>slimta.lookup.drivers.redis<a class="headerlink" href="#module-slimta.lookup.drivers.redis" title="Permalink to this headline">¶</a></h3>
-<p>Implements slimta lookup against a redis data backend. By default, this
-driver expects records to be JSON-encoded <a class="reference external" href="http://redis.io/commands#string">string</a> values. It can be configured
-to use the <a class="reference external" href="http://redis.io/commands#hash">hash</a> data structure instead, but it is less flexible.</p>
-<dl class="class">
-<dt id="slimta.lookup.drivers.redis.RedisLookup">
-<em class="property">class </em><code class="descclassname">slimta.lookup.drivers.redis.</code><code class="descname">RedisLookup</code><span class="sig-paren">(</span><em>key_template</em><span class="optional">[</span>, <em>host='localhost'</em><span class="optional">[</span>, <em>port=6379</em><span class="optional">[</span>, <em>db=0</em><span class="optional">[</span>, <em>password=None</em><span class="optional">[</span>, <em>socket_timeout=None</em><span class="optional">[</span>, <em>use_hash=False</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.redis.RedisLookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.LookupBase" title="slimta.lookup.drivers.LookupBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.lookup.drivers.LookupBase</span></code></a></p>
-<p>Implements the slimta lookup interface using the redis key-value storage
-as the backend layer.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>key_template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – This template string is used to determine the key
-string to lookup. :The <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method
-is called with keyword arguments, given the keyword
-arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.redis.RedisLookup.lookup" title="slimta.lookup.drivers.redis.RedisLookup.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</li>
-<li><strong>host</strong> – Hostname of the redis server to connect to.</li>
-<li><strong>port</strong> – Port to connect to.</li>
-<li><strong>db</strong> – Database number to create keys in.</li>
-<li><strong>password</strong> – Optional password to authenticate with.</li>
-<li><strong>socket_timeout</strong> – Timeout, in seconds, for socket operations. If the
-timeout is hit, <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.timeout" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.timeout</span></code></a> is raised.
-<code class="docutils literal notranslate"><span class="pre">None</span></code> disables the timeout.</li>
-<li><strong>use_hash</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, keys will be looked up as hashes with
-<a class="reference external" href="http://redis.io/commands/hgetall">HGETALL</a> instead of as JSON-encoded strings. Hashes do not
-allow for complex values in results, and cannot
-distinguish missing records from empty records.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="slimta.lookup.drivers.redis.RedisLookup.lookup">
-<code class="descname">lookup</code><span class="sig-paren">(</span><span class="optional">[</span><em>**kwargs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.redis.RedisLookup.lookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>The keyword arguments will be used by the lookup driver to return a
-dictionary-like object that will be used to affect actions or policy.
-For some drivers, these keywords may be used with a template to produce
-a lookup key. For SQL-style drivers, they might be used in a <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>
-clause of a <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> query.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>keyword arguments</em>) – Used by the driver to lookup records.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary if a record was found, <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="slimta-lookup-drivers-redis">
+<h3>slimta.lookup.drivers.redis<a class="headerlink" href="#slimta-lookup-drivers-redis" title="Permalink to this headline">¶</a></h3>
+<p>This module is available with the <code class="docutils literal notranslate"><span class="pre">python-slimta[redis]</span></code> package extra.</p>
 </div>
 <div class="section" id="module-slimta.lookup.drivers.dbapi2">
 <span id="slimta-lookup-drivers-dbapi2"></span><h3>slimta.lookup.drivers.dbapi2<a class="headerlink" href="#module-slimta.lookup.drivers.dbapi2" title="Permalink to this headline">¶</a></h3>
@@ -281,8 +240,8 @@ specification.</p>
 an open database connection, and cleans it up
 afterwards. This allows flexibility in how connections
 are managed or pooled.</li>
-<li><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The query string used to lookup records in the database.</li>
-<li><strong>query_param_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – If <code class="docutils literal notranslate"><span class="pre">query</span></code> uses positional parameters, this
+<li><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The query string used to lookup records in the database.</li>
+<li><strong>query_param_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><em>list</em></a>) – If <code class="docutils literal notranslate"><span class="pre">query</span></code> uses positional parameters, this
 must be a list of keywords from the
 <a class="reference internal" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup" title="slimta.lookup.drivers.dbapi2.DBAPI2Lookup.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a> to translate from keywords to
 positional arguments.</li>
@@ -325,7 +284,7 @@ clause of a <code class="docutils literal notranslate"><span class="pre">SELECT<
 <dt id="slimta.lookup.drivers.dbapi2.SQLite3Lookup">
 <em class="property">class </em><code class="descclassname">slimta.lookup.drivers.dbapi2.</code><code class="descname">SQLite3Lookup</code><span class="sig-paren">(</span><em>database</em>, <em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.dbapi2.SQLite3Lookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.lookup.drivers.dbapi2.DBAPI2Lookup" title="slimta.lookup.drivers.dbapi2.DBAPI2Lookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.lookup.drivers.dbapi2.DBAPI2Lookup</span></code></a></p>
-<p>Implements the slimta lookup interface using the <a class="reference external" href="https://docs.python.org/3/library/sqlite3.html#module-sqlite3" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sqlite3</span></code></a>
+<p>Implements the slimta lookup interface using the <a class="reference external" href="https://docs.python.org/3/library/sqlite3.html#module-sqlite3" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sqlite3</span></code></a>
 module. The connection object is created immediately and kept open for all
 calls to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.lookup" title="slimta.lookup.drivers.LookupBase.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -333,9 +292,9 @@ calls to <a class="reference internal" href="#slimta.lookup.drivers.LookupBase.l
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>database</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The database filename, as given in
-<a class="reference external" href="https://docs.python.org/3/library/sqlite3.html#sqlite3.connect" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlite3.connect()</span></code></a>.</li>
-<li><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The query string used to lookup records in the database. This
+<li><strong>database</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The database filename, as given in
+<a class="reference external" href="https://docs.python.org/3/library/sqlite3.html#sqlite3.connect" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlite3.connect()</span></code></a>.</li>
+<li><strong>query</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – The query string used to lookup records in the database. This
 query must use named-style placeholders (e.g.
 <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">=</span> <span class="pre">:keyword</span></code>.</li>
 </ul>
@@ -350,7 +309,7 @@ query must use named-style placeholders (e.g.
 <span id="slimta-lookup-drivers-dict"></span><h3>slimta.lookup.drivers.dict<a class="headerlink" href="#module-slimta.lookup.drivers.dict" title="Permalink to this headline">¶</a></h3>
 <p>Implements slimta lookup against a standard Python dictionary-like object.
 This object should be given pre-populated in the constructor, or be a proxy to
-a persistent backend like <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>.</p>
+a persistent backend like <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>.</p>
 <dl class="class">
 <dt id="slimta.lookup.drivers.dict.DictLookup">
 <em class="property">class </em><code class="descclassname">slimta.lookup.drivers.dict.</code><code class="descname">DictLookup</code><span class="sig-paren">(</span><em>backend</em>, <em>key_template</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.lookup.drivers.dict.DictLookup" title="Permalink to this definition">¶</a></dt>
@@ -365,8 +324,8 @@ be used as a slimta lookup interface.</p>
 <li><strong>backend</strong> (<em>collections.Mapping</em>) – The backend dictionary-like object that will be queried for
 data lookups. The values in this mapping <strong>must</strong> also be
 dictionary-like objects.</li>
-<li><strong>key_template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – This template string is used to determine the key
-string to lookup. The <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> method is
+<li><strong>key_template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – This template string is used to determine the key
+string to lookup. The <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> method is
 called with keyword arguments, given the keyword
 arguments passed in to <a class="reference internal" href="#slimta.lookup.drivers.dict.DictLookup.lookup" title="slimta.lookup.drivers.dict.DictLookup.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</li>
 </ul>
@@ -410,9 +369,9 @@ a slimta lookup interface.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>str_template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – This template string is used to determine the string
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>str_template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><em>str</em></a>) – This template string is used to determine the string
 to match against the regular expressions. The
-<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> method is called with keyword
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> method is called with keyword
 arguments, given the keyword arguments passed in to
 <a class="reference internal" href="#slimta.lookup.drivers.regex.RegexLookup.lookup" title="slimta.lookup.drivers.regex.RegexLookup.lookup"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lookup()</span></code></a>.</td>
 </tr>
@@ -427,7 +386,7 @@ arguments, given the keyword arguments passed in to
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">re.RegexObject</span></code>) – Pattern to check the lookup string against.</li>
+<li><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">re.RegexObject</span></code>) – Pattern to check the lookup string against.</li>
 <li><strong>value</strong> – The value to return on successful lookup.</li>
 </ul>
 </td>
@@ -476,7 +435,7 @@ clause of a <code class="docutils literal notranslate"><span class="pre">SELECT<
 <li><a class="reference internal" href="#">slimta.lookup</a><ul>
 <li><a class="reference internal" href="#module-slimta.lookup.policy">slimta.lookup.policy</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers">slimta.lookup.drivers</a><ul>
-<li><a class="reference internal" href="#module-slimta.lookup.drivers.redis">slimta.lookup.drivers.redis</a></li>
+<li><a class="reference internal" href="#slimta-lookup-drivers-redis">slimta.lookup.drivers.redis</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.dbapi2">slimta.lookup.drivers.dbapi2</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.dict">slimta.lookup.drivers.dict</a></li>
 <li><a class="reference internal" href="#module-slimta.lookup.drivers.regex">slimta.lookup.drivers.regex</a></li>
@@ -489,13 +448,13 @@ clause of a <code class="docutils literal notranslate"><span class="pre">SELECT<
   </div>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="extra.html"
-                          title="Previous page">&larr; Available Extensions</a></p>
+    <p class="topless"><a href="slimta.util.system.html"
+                          title="Previous page">&larr; slimta.util.system</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="extra.diskstorage.html"
-                          title="Next page">&rarr; slimta.diskstorage</a></p>
+    <p class="topless"><a href="slimta.cloudstorage.html"
+                          title="Next page">&rarr; slimta.cloudstorage</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
@@ -542,22 +501,22 @@ clause of a <code class="docutils literal notranslate"><span class="pre">SELECT<
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.diskstorage.html" title="slimta.diskstorage"
+          <a href="slimta.cloudstorage.html" title="slimta.cloudstorage"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.html" title="Available Extensions"
+          <a href="slimta.util.system.html" title="slimta.util.system"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li> 
       </ul>
     </div>
     </div>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

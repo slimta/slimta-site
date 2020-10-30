@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.util.ptrlookup &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.util.ptrlookup &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="slimta.util.proxyproto.html" title="slimta.util.proxyproto"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -70,15 +85,15 @@ in DNS. If it exists, a PTR record will map an IP address to an arbitrary
 hostname.</p>
 <p>However, it is not usually desired to slow down a client’s request just because
 their PTR record lookup has not yet finished. This module implements a
-<a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread that will look up a client’s PTR record will
+<a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v20.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread that will look up a client’s PTR record will
 its request is being processed. If the request finishes before the PTR record
 lookup, the lookup is stopped.</p>
 <dl class="class">
 <dt id="slimta.util.ptrlookup.PtrLookup">
 <em class="property">class </em><code class="descclassname">slimta.util.ptrlookup.</code><code class="descname">PtrLookup</code><span class="sig-paren">(</span><em>ip</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent._greenlet.Greenlet</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent._gevent_cgreenlet.Greenlet</span></code></p>
 <p>Asynchronously looks up the PTR record of an IP address, implemented as
-a <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread.</p>
+a <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v20.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -91,7 +106,7 @@ a <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.
 <dt id="slimta.util.ptrlookup.PtrLookup.from_getpeername">
 <em class="property">classmethod </em><code class="descname">from_getpeername</code><span class="sig-paren">(</span><em>cls</em>, <em>sock</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.from_getpeername" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object based on the IP address of the
-socket’s remote address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</p>
+socket’s remote address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -99,7 +114,7 @@ socket’s remote address, using <a class="reference external" href="https://doc
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sock</strong> – The <code class="xref py py-class docutils literal notranslate"><span class="pre">socket</span></code> object to use.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A tuple containing the new <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object and the
-port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</td>
+port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -109,7 +124,7 @@ port number from <a class="reference external" href="https://docs.python.org/3/l
 <dt id="slimta.util.ptrlookup.PtrLookup.from_getsockname">
 <em class="property">classmethod </em><code class="descname">from_getsockname</code><span class="sig-paren">(</span><em>cls</em>, <em>sock</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.from_getsockname" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object based on the IP address of the
-socket’s local address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</p>
+socket’s local address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -117,7 +132,7 @@ socket’s local address, using <a class="reference external" href="https://docs
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sock</strong> – The <code class="xref py py-class docutils literal notranslate"><span class="pre">socket</span></code> object to use.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A tuple containing the new <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object and the
-port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.7)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</td>
+port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -129,7 +144,7 @@ port number from <a class="reference external" href="https://docs.python.org/3/l
 <dd><p>Starts the PTR lookup thread.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet.start" title="(in gevent v1.5a2.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gevent.Greenlet.start()</span></code></a></p>
+<p class="last"><a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet.start" title="(in gevent v20.9.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gevent.Greenlet.start()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -138,13 +153,13 @@ port number from <a class="reference external" href="https://docs.python.org/3/l
 <code class="descname">finish</code><span class="sig-paren">(</span><span class="optional">[</span><em>runtime=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.finish" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to get the results of the PTR lookup. If the results are
 not available, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned instead.</p>
-<p>When this method returns, the <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v1.5a2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> executing the
+<p>When this method returns, the <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v20.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> executing the
 lookup is killed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>runtime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – If this many seconds have not passed since the lookup
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>runtime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – If this many seconds have not passed since the lookup
 started, the method call blocks the remaining time. For
 example, if 3.5 seconds have elapsed since calling
 <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup.start" title="slimta.util.ptrlookup.PtrLookup.start"><code class="xref py py-meth docutils literal notranslate"><span class="pre">start()</span></code></a> and you pass in <code class="docutils literal notranslate"><span class="pre">5.0</span></code>, this method
@@ -230,7 +245,7 @@ in.</td>
         <li class="right" >
           <a href="slimta.util.proxyproto.html" title="slimta.util.proxyproto"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -241,7 +256,7 @@ in.</td>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.relay.smtp.mx &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.relay.smtp.mx &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="slimta.relay.smtp.static.html" title="slimta.relay.smtp.static"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -81,9 +96,9 @@ destination to recycle and limit connections.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, when <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>
+<li><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, when <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>
 is advertised, rather than the default context.</li>
-<li><strong>auth_mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – Force the use of the given <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> mechanism,
+<li><strong>auth_mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><em>bytes</em></a>) – Force the use of the given <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> mechanism,
 instead of the best available.</li>
 <li><strong>tls_immediately</strong> – If True, the socket will be encrypted
 immediately on connection rather than looking for
@@ -104,13 +119,13 @@ timeout expires, the connection will be re-used. By
 default, QUIT is sent immediately and connections are
 never re-used.</li>
 <li><strong>socket_creator</strong> – Optional function to use instead of
-<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_connection()</span></code></a> for creating
+<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_connection()</span></code></a> for creating
 sockets.</li>
 <li><strong>ehlo_as</strong> – The string to send as the EHLO or HELO string. Defaults to
 the FQDN of the system. This may also be given as a
 function that will be executed with the destination address
 at the beginning of each connection.</li>
-<li><strong>binary_encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used as
+<li><strong>binary_encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used as
 an argument to
 <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.encode_7bit" title="slimta.envelope.Envelope.encode_7bit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">encode_7bit()</span></code></a> when
 conversion is necessary for the remote server.</li>
@@ -160,7 +175,7 @@ undergone.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The <code class="docutils literal notranslate"><span class="pre">host</span></code> that was picked from the list.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)">str</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
 </td>
 </tr>
 </tbody>
@@ -295,7 +310,7 @@ relay result (successful or failing).</p>
         <li class="right" >
           <a href="slimta.relay.smtp.static.html" title="slimta.relay.smtp.static"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -307,7 +322,7 @@ relay result (successful or failing).</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Policy Implementation &#8212; slimta 4.0.8 documentation</title>
+    <title>Policy Implementation &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="relay.html" title="Relay Services"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li> 
@@ -78,7 +93,7 @@ original message lacks one. The header generally uses local time-zones written
 as acronyms, for better human-readability.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Date:</span></code> header addition is a queue policy, given by the
 <a class="reference internal" href="../api/slimta.policy.headers.html#slimta.policy.headers.AddDateHeader" title="slimta.policy.headers.AddDateHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AddDateHeader</span></code></a> class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="k">import</span> <span class="n">AddDateHeader</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="n">AddDateHeader</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddDateHeader</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -96,7 +111,7 @@ other messages the MTA has or will handle. This uniqueness is usually attained
 by concatenating a randomly-generated UUID to a timestamp.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Message-Id:</span></code> header addition is a queue policy, given by the
 <a class="reference internal" href="../api/slimta.policy.headers.html#slimta.policy.headers.AddMessageIdHeader" title="slimta.policy.headers.AddMessageIdHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AddMessageIdHeader</span></code></a> class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="k">import</span> <span class="n">AddMessageIdHeader</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="n">AddMessageIdHeader</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddMessageIdHeader</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -111,7 +126,7 @@ recommendation that fits what <em>most</em> good MTAs will do, and <a class="ref
 follow.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Received:</span></code> header addition is a queue policy, given by the
 <a class="reference internal" href="../api/slimta.policy.headers.html#slimta.policy.headers.AddReceivedHeader" title="slimta.policy.headers.AddReceivedHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">AddReceivedHeader</span></code></a> class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="k">import</span> <span class="n">AddReceivedHeader</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.headers</span> <span class="kn">import</span> <span class="n">AddReceivedHeader</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">AddReceivedHeader</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -125,7 +140,7 @@ expression-based substitution.</p>
 <p>Because the mappings are static and thus will never become stale like a database
 lookup might, this is implemented as a queue policy, given by the
 <a class="reference internal" href="../api/slimta.policy.forward.html#slimta.policy.forward.Forward" title="slimta.policy.forward.Forward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code></a> class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.forward</span> <span class="k">import</span> <span class="n">Forward</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.forward</span> <span class="kn">import</span> <span class="n">Forward</span>
 
 <span class="n">fwd</span> <span class="o">=</span> <span class="n">Forward</span><span class="p">()</span>
 <span class="n">fwd</span><span class="o">.</span><span class="n">add_mapping</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(ian|icg)@example.com&#39;</span><span class="p">,</span> <span class="s1">&#39;admin@example.com&#39;</span><span class="p">)</span>
@@ -142,7 +157,7 @@ and a <code class="docutils literal notranslate"><span class="pre">X-Spam-Status
 also added with the symbols used in the match.</p>
 <p>SpamAssassin is an expensive operation, so it is implemented as a queue policy,
 given by the <a class="reference internal" href="../api/slimta.policy.spamassassin.html#slimta.policy.spamassassin.SpamAssassin" title="slimta.policy.spamassassin.SpamAssassin"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpamAssassin</span></code></a> class:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.spamassassin</span> <span class="k">import</span> <span class="n">SpamAssassin</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.policy.spamassassin</span> <span class="kn">import</span> <span class="n">SpamAssassin</span>
 <span class="n">queue</span><span class="o">.</span><span class="n">add_policy</span><span class="p">(</span><span class="n">SpamAssassin</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -231,7 +246,7 @@ given by the <a class="reference internal" href="../api/slimta.policy.spamassass
         <li class="right" >
           <a href="relay.html" title="Relay Services"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li> 
@@ -241,7 +256,7 @@ given by the <a class="reference internal" href="../api/slimta.policy.spamassass
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

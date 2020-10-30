@@ -8,23 +8,38 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.cloudstorage.aws &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.cloudstorage.aws &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="slimta.redisstorage" href="extra.redisstorage.html" />
-    <link rel="prev" title="slimta.cloudstorage.rackspace" href="extra.cloudstorage.rackspace.html" /> 
+    <link rel="next" title="slimta.diskstorage" href="slimta.diskstorage.html" />
+    <link rel="prev" title="slimta.cloudstorage.rackspace" href="slimta.cloudstorage.rackspace.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
     <div class="relbar-top">
@@ -39,16 +54,16 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.redisstorage.html" title="slimta.redisstorage"
+          <a href="slimta.diskstorage.html" title="slimta.diskstorage"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
+          <a href="slimta.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="extra.cloudstorage.html" accesskey="U">slimta.cloudstorage</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.cloudstorage.html" accesskey="U">slimta.cloudstorage</a> &#187;</li> 
       </ul>
     </div>
     </div>
@@ -59,9 +74,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-slimta.cloudstorage.aws">
-<span id="slimta-cloudstorage-aws"></span><h1>slimta.cloudstorage.aws<a class="headerlink" href="#module-slimta.cloudstorage.aws" title="Permalink to this headline">¶</a></h1>
-<p>This module defines the queue storage mechanism specific to the <a class="reference external" href="http://aws.amazon.com/">Amazon Web
+  <div class="section" id="slimta-cloudstorage-aws">
+<h1>slimta.cloudstorage.aws<a class="headerlink" href="#slimta-cloudstorage-aws" title="Permalink to this headline">¶</a></h1>
+<p>This module is available with the <code class="docutils literal notranslate"><span class="pre">python-slimta[aws]</span></code> package extra.</p>
+<span class="target" id="module-slimta.cloudstorage.aws"></span><p>This module defines the queue storage mechanism specific to the <a class="reference external" href="http://aws.amazon.com/">Amazon Web
 Services</a> hosting service. It requires an account as well as the <a class="reference external" href="http://aws.amazon.com/s3/">Simple
 Storage Service (S3)</a> and optionally the <a class="reference external" href="http://aws.amazon.com/sqs/">Simple Queue Service (SQS)</a>
 services.</p>
@@ -74,7 +90,7 @@ the same process, <em>SQS</em> is unnecessary.</p>
 <p><strong>NOTE:</strong> This module uses the <a class="reference external" href="http://boto.readthedocs.org/en/latest/">boto</a> library to communicate with <em>AWS</em>. To
 avoid performance issues, you must use gevent <a class="reference external" href="http://gevent.org/intro.html#monkey-patching">monkey patching</a> before using
 it!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="k">import</span> <span class="n">monkey</span><span class="p">;</span> <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gevent</span> <span class="kn">import</span> <span class="n">monkey</span><span class="p">;</span> <span class="n">monkey</span><span class="o">.</span><span class="n">patch_all</span><span class="p">()</span>
 
 <span class="n">s3_conn</span> <span class="o">=</span> <span class="n">boto</span><span class="o">.</span><span class="n">connect_s3</span><span class="p">()</span>
 <span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">s3_conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="s1">&#39;slimta-queue&#39;</span><span class="p">)</span>
@@ -90,9 +106,9 @@ it!</p>
 <dl class="class">
 <dt id="slimta.cloudstorage.aws.SimpleStorageService">
 <em class="property">class </em><code class="descclassname">slimta.cloudstorage.aws.</code><code class="descname">SimpleStorageService</code><span class="sig-paren">(</span><em>bucket</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>prefix=''</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.aws.SimpleStorageService" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Instances of this class may be passed in to the
-<a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the <code class="docutils literal notranslate"><span class="pre">storage</span></code>
+<a class="reference internal" href="slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the <code class="docutils literal notranslate"><span class="pre">storage</span></code>
 parameter to use <em>S3</em> as the storage backend.</p>
 <p>Keys added to the bucket are generated with <code class="docutils literal notranslate"><span class="pre">prefix</span> <span class="pre">+</span> <span class="pre">str(uuid.uuid4())</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -102,7 +118,7 @@ parameter to use <em>S3</em> as the storage backend.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>bucket</strong> (<a class="reference external" href="https://boto.readthedocs.io/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.49.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">boto.s3.bucket.Bucket</span></code></a>) – The S3 bucket object in which all message contents and
 metadata will be written. Each created S3 object will use a
-<a class="reference external" href="https://docs.python.org/3/library/uuid.html#module-uuid" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uuid</span></code></a> string as its key.</li>
+<a class="reference external" href="https://docs.python.org/3/library/uuid.html#module-uuid" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uuid</span></code></a> string as its key.</li>
 <li><strong>timeout</strong> – Timeout, in seconds, before requests to <em>S3</em> will fail and
 raise an exception.</li>
 <li><strong>prefix</strong> – The string prefixed to every key added to the bucket.</li>
@@ -116,9 +132,9 @@ raise an exception.</li>
 <dl class="class">
 <dt id="slimta.cloudstorage.aws.SimpleQueueService">
 <em class="property">class </em><code class="descclassname">slimta.cloudstorage.aws.</code><code class="descname">SimpleQueueService</code><span class="sig-paren">(</span><em>queue</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>poll_pause=1.0</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.aws.SimpleQueueService" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Instances of this class may be passed in to the
-<a class="reference internal" href="extra.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the
+<a class="reference internal" href="slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a> constructor for the
 <code class="docutils literal notranslate"><span class="pre">message_queue</span></code> parameter to use <em>SQS</em> as the message queue backend to
 alert other processes that a new message was stored.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -152,13 +168,13 @@ the queue for new messages.</li>
         </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="extra.cloudstorage.rackspace.html"
+    <p class="topless"><a href="slimta.cloudstorage.rackspace.html"
                           title="Previous page">&larr; slimta.cloudstorage.rackspace</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="extra.redisstorage.html"
-                          title="Next page">&rarr; slimta.redisstorage</a></p>
+    <p class="topless"><a href="slimta.diskstorage.html"
+                          title="Next page">&rarr; slimta.diskstorage</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
@@ -205,23 +221,23 @@ the queue for new messages.</li>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.redisstorage.html" title="slimta.redisstorage"
+          <a href="slimta.diskstorage.html" title="slimta.diskstorage"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
+          <a href="slimta.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="extra.cloudstorage.html" >slimta.cloudstorage</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="slimta.cloudstorage.html" >slimta.cloudstorage</a> &#187;</li> 
       </ul>
     </div>
     </div>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

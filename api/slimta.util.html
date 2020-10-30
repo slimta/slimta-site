@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.util &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.util &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="slimta.logging.queuestorage.html" title="slimta.logging.queuestorage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li> 
@@ -66,7 +81,7 @@ belong anywhere else.</p>
 <dt id="slimta.util.build_ipv4_socket_creator">
 <code class="descclassname">slimta.util.</code><code class="descname">build_ipv4_socket_creator</code><span class="sig-paren">(</span><span class="optional">[</span><em>only_ports=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.build_ipv4_socket_creator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a function that will act like
-<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.create_connection()</span></code></a> but only using IPv4 addresses. This
+<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.create_connection()</span></code></a> but only using IPv4 addresses. This
 function can be used as the <code class="docutils literal notranslate"><span class="pre">socket_creator</span></code> argument to some classes
 like <a class="reference internal" href="slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">MxSmtpRelay</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -84,7 +99,7 @@ be IPv6.</td>
 <dl class="function">
 <dt id="slimta.util.create_connection_ipv4">
 <code class="descclassname">slimta.util.</code><code class="descname">create_connection_ipv4</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>source_address=None</em><span class="optional">[</span>, <em>only_ports=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.create_connection_ipv4" title="Permalink to this definition">¶</a></dt>
-<dd><p>Attempts to mimick to <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.create_connection()</span></code></a>, but
+<dd><p>Attempts to mimick to <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.create_connection()</span></code></a>, but
 connections are only made to IPv4 addresses.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -101,7 +116,7 @@ be IPv6.</td>
 <dl class="function">
 <dt id="slimta.util.create_listeners">
 <code class="descclassname">slimta.util.</code><code class="descname">create_listeners</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>family=&lt;AddressFamily.AF_UNSPEC: 0&gt;</em><span class="optional">[</span>, <em>socktype=&lt;SocketKind.SOCK_STREAM: 1&gt;</em><span class="optional">[</span>, <em>proto=0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.create_listeners" title="Permalink to this definition">¶</a></dt>
-<dd><p>Uses <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.getaddrinfo" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.getaddrinfo()</span></code></a> to create listening sockets for
+<dd><p>Uses <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.getaddrinfo" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.getaddrinfo()</span></code></a> to create listening sockets for
 available socket parameters. For example, giving <em>address</em> as
 <code class="docutils literal notranslate"><span class="pre">('localhost',</span> <span class="pre">80)</span></code> on a system with IPv6 would return one socket bound
 to <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> and one bound to <a href="#id1"><span class="problematic" id="id2">``</span></a>::1`.</p>
@@ -206,7 +221,7 @@ single unix domain socket listening on that path.</p>
         <li class="right" >
           <a href="slimta.logging.queuestorage.html" title="slimta.logging.queuestorage"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li> 
@@ -216,7 +231,7 @@ single unix domain socket listening on that path.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

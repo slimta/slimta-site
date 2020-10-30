@@ -8,23 +8,38 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.diskstorage &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.cloudstorage &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="slimta.cloudstorage" href="extra.cloudstorage.html" />
-    <link rel="prev" title="slimta.lookup" href="extra.lookup.html" /> 
+    <link rel="next" title="slimta.cloudstorage.rackspace" href="slimta.cloudstorage.rackspace.html" />
+    <link rel="prev" title="slimta.lookup" href="slimta.lookup.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
     <div class="relbar-top">
@@ -39,15 +54,15 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.html" title="slimta.cloudstorage"
+          <a href="slimta.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.lookup.html" title="slimta.lookup"
+          <a href="slimta.lookup.html" title="slimta.lookup"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="extra.html" accesskey="U">Available Extensions</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li> 
       </ul>
     </div>
     </div>
@@ -58,39 +73,51 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="slimta-diskstorage">
-<h1>slimta.diskstorage<a class="headerlink" href="#slimta-diskstorage" title="Permalink to this headline">¶</a></h1>
-<p>This module is available in the <code class="docutils literal notranslate"><span class="pre">python-slimta-diskstorage</span></code> extension package.</p>
-<span class="target" id="module-slimta.diskstorage"></span><p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code></a> storage system on disk. Disk
-reads and writes are built using the <a class="reference external" href="http://www.kernel.org/doc/man-pages/online/pages/man7/aio.7.html">aio</a> interface, provided in python by the
-<a class="reference external" href="https://github.com/felipecruz/pyaio">pyaio</a> project.</p>
+  <div class="section" id="module-slimta.cloudstorage">
+<span id="slimta-cloudstorage"></span><h1>slimta.cloudstorage<a class="headerlink" href="#module-slimta.cloudstorage" title="Permalink to this headline">¶</a></h1>
+<p>Package containing a module for the different cloud service providers along
+with any necessary helper modules.</p>
+<dl class="exception">
+<dt id="slimta.cloudstorage.CloudStorageError">
+<em class="property">exception </em><code class="descclassname">slimta.cloudstorage.</code><code class="descname">CloudStorageError</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorageError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.queue.QueueError</span></code></a></p>
+<p>Base exception for all exceptions in the package.</p>
+</dd></dl>
+
 <dl class="class">
-<dt id="slimta.diskstorage.DiskStorage">
-<em class="property">class </em><code class="descclassname">slimta.diskstorage.</code><code class="descname">DiskStorage</code><span class="sig-paren">(</span><em>env_dir</em>, <em>meta_dir</em><span class="optional">[</span>, <em>tmp_dir=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage">
+<em class="property">class </em><code class="descclassname">slimta.cloudstorage.</code><code class="descname">CloudStorage</code><span class="sig-paren">(</span><em>object_store</em><span class="optional">[</span>, <em>message_queue=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.queue.QueueStorage</span></code></a></p>
-<p><a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a> mechanism that stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> and queue metadata in
-two separate files on disk.</p>
+<p>This class implements a <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a> backend that
+uses cloud services to store messages. It coordinates the storage of
+messages and metadata (using <a class="reference external" href="http://www.rackspace.com/cloud/files/">Cloud Files</a> or <a class="reference external" href="http://aws.amazon.com/s3/">S3</a>) with the optional
+message queue mechanisms (using <a class="reference external" href="http://www.rackspace.com/cloud/queues/">Cloud Queues</a> or <a class="reference external" href="http://aws.amazon.com/sqs/">SQS</a>) that can alert
+other <em>slimta</em> processes that a new message is available in the object
+store.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>env_dir</strong> – Directory where queue envelope files are stored. These
-files may be large and will not be modified after initial
-writing.</li>
-<li><strong>meta_dir</strong> – Directory where queue meta files are stored. These files
-will be small and volatile.</li>
-<li><strong>tmp_dir</strong> – Directory that may be used as scratch space. New files are
-written here and then moved to their final destination.
-System temp directories are used by default.</li>
+<li><strong>object_store</strong> – The object used as the backend for storing message
+contents and metadata in the cloud. Currently this can
+be an instance of
+<a class="reference internal" href="slimta.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudFiles" title="slimta.cloudstorage.rackspace.RackspaceCloudFiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudFiles</span></code></a> or
+<a class="reference internal" href="slimta.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleStorageService</span></code></a>.</li>
+<li><strong>message_queue</strong> – The optional object used
+as the backend for alerting other processes that a
+new message is in the object store. Currently this
+can be an instance of
+<a class="reference internal" href="slimta.cloudstorage.rackspace.html#slimta.cloudstorage.rackspace.RackspaceCloudQueues" title="slimta.cloudstorage.rackspace.RackspaceCloudQueues"><code class="xref py py-class docutils literal notranslate"><span class="pre">RackspaceCloudQueues</span></code></a> or
+<a class="reference internal" href="slimta.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleQueueService</span></code></a>.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="slimta.diskstorage.DiskStorage.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>envelope</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage.write" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>envelope</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes the given envelope to storage, along with the timestamp of
 its next delivery attempt. The number of delivery attempts asociated
 with the message should start at zero.</p>
@@ -115,8 +142,8 @@ with the message should start at zero.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="slimta.diskstorage.DiskStorage.set_timestamp">
-<code class="descname">set_timestamp</code><span class="sig-paren">(</span><em>id</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage.set_timestamp" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage.set_timestamp">
+<code class="descname">set_timestamp</code><span class="sig-paren">(</span><em>id</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.set_timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a new timestamp for the message’s next delivery attempt.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -136,8 +163,8 @@ with the message should start at zero.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="slimta.diskstorage.DiskStorage.increment_attempts">
-<code class="descname">increment_attempts</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage.increment_attempts" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage.increment_attempts">
+<code class="descname">increment_attempts</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.increment_attempts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Increments the number of delivery attempts associated with the
 message.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -155,8 +182,8 @@ message.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="slimta.diskstorage.DiskStorage.set_recipients_delivered">
-<code class="descname">set_recipients_delivered</code><span class="sig-paren">(</span><em>id</em>, <em>rcpt_indexes</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage.set_recipients_delivered" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage.set_recipients_delivered">
+<code class="descname">set_recipients_delivered</code><span class="sig-paren">(</span><em>id</em>, <em>rcpt_indexes</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.set_recipients_delivered" title="Permalink to this definition">¶</a></dt>
 <dd><div class="versionadded">
 <p><span class="versionmodified">New in version 1.1.0.</span></p>
 </div>
@@ -183,8 +210,8 @@ to mark as delivered.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="slimta.diskstorage.DiskStorage.load">
-<code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage.load" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage.load">
+<code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads all queued messages from the storage engine, such that the
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> can be aware of all upcoming delivery attempts.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -201,12 +228,12 @@ for each message in storage.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="slimta.diskstorage.DiskStorage.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage.get" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object associated with the given unique
 identifier sring.</p>
 <p>The envelope’s <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> should not
-include those marked as delivered by <a class="reference internal" href="#slimta.diskstorage.DiskStorage.set_recipients_delivered" title="slimta.diskstorage.DiskStorage.set_recipients_delivered"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_recipients_delivered()</span></code></a>.</p>
+include those marked as delivered by <a class="reference internal" href="#slimta.cloudstorage.CloudStorage.set_recipients_delivered" title="slimta.cloudstorage.CloudStorage.set_recipients_delivered"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_recipients_delivered()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -215,15 +242,15 @@ include those marked as delivered by <a class="reference internal" href="#slimta
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple with the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object and number of attempts.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="slimta.diskstorage.DiskStorage.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.diskstorage.DiskStorage.remove" title="Permalink to this definition">¶</a></dt>
+<dt id="slimta.cloudstorage.CloudStorage.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> associated with the given unique identifier
 string from queue storage. This is typically used when the message has
 been successfully delivered or delivery has permanently failed.</p>
@@ -239,8 +266,35 @@ been successfully delivered or delivery has permanently failed.</p>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="slimta.cloudstorage.CloudStorage.wait">
+<code class="descname">wait</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.cloudstorage.CloudStorage.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>If messages are not being delivered from the same process in which
+they were received, the storage mechanism needs a way to wait until it
+is notified that a new message has been stored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An iterable or generator producing tuples with the timestamp
+and unique identifier string of a new message in storage.
+When the iterable or generator is exhausted, <a class="reference internal" href="#slimta.cloudstorage.CloudStorage.wait" title="slimta.cloudstorage.CloudStorage.wait"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wait()</span></code></a> is
+simply called again.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
+</dd></dl>
+
+<hr class="docutils" />
+<p><strong>Sub-Modules:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slimta.cloudstorage.rackspace.html">slimta.cloudstorage.rackspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.cloudstorage.aws.html">slimta.cloudstorage.aws</a></li>
+</ul>
+</div>
 </div>
 
 
@@ -254,13 +308,13 @@ been successfully delivered or delivery has permanently failed.</p>
         </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
-    <p class="topless"><a href="extra.lookup.html"
+    <p class="topless"><a href="slimta.lookup.html"
                           title="Previous page">&larr; slimta.lookup</a></p>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="extra.cloudstorage.html"
-                          title="Next page">&rarr; slimta.cloudstorage</a></p>
+    <p class="topless"><a href="slimta.cloudstorage.rackspace.html"
+                          title="Next page">&rarr; slimta.cloudstorage.rackspace</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
@@ -307,22 +361,22 @@ been successfully delivered or delivery has permanently failed.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.cloudstorage.html" title="slimta.cloudstorage"
+          <a href="slimta.cloudstorage.rackspace.html" title="slimta.cloudstorage.rackspace"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.lookup.html" title="slimta.lookup"
+          <a href="slimta.lookup.html" title="slimta.lookup"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="extra.html" >Available Extensions</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li> 
       </ul>
     </div>
     </div>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

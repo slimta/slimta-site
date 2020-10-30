@@ -8,22 +8,37 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.util.system &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.util.system &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Available Extensions" href="extra.html" />
+    <link rel="next" title="slimta.lookup" href="slimta.lookup.html" />
     <link rel="prev" title="slimta.util.ptrlookup" href="slimta.util.ptrlookup.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head><body>
@@ -39,12 +54,12 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.html" title="Available Extensions"
+          <a href="slimta.lookup.html" title="slimta.lookup"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="slimta.util.ptrlookup.html" title="slimta.util.ptrlookup"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -103,7 +118,7 @@ blank leaves that stream alone.</p>
 <dl class="function">
 <dt id="slimta.util.system.drop_privileges">
 <code class="descclassname">slimta.util.system.</code><code class="descname">drop_privileges</code><span class="sig-paren">(</span><span class="optional">[</span><em>user=None</em><span class="optional">[</span>, <em>group=None</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.system.drop_privileges" title="Permalink to this definition">¶</a></dt>
-<dd><p>Uses the system calls <a class="reference external" href="https://docs.python.org/3/library/os.html#os.setuid" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setuid()</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/os.html#os.setgid" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setgid()</span></code></a> to drop
+<dd><p>Uses the system calls <a class="reference external" href="https://docs.python.org/3/library/os.html#os.setuid" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setuid()</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/os.html#os.setgid" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">setgid()</span></code></a> to drop
 root privileges to the given user and group. This is useful for security
 purposes, once root-only ports like 25 are opened.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -123,13 +138,13 @@ purposes, once root-only ports like 25 are opened.</p>
 <dl class="class">
 <dt id="slimta.util.system.PidFile">
 <em class="property">class </em><code class="descclassname">slimta.util.system.</code><code class="descname">PidFile</code><span class="sig-paren">(</span><span class="optional">[</span><em>filename=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.system.PidFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 0.3.13.</span></p>
 </div>
 <p>Context manager which creates a PID file containing the current process id,
 runs the context, and then removes the PID file.</p>
-<p>An <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> exceptions when creating the PID file will be
+<p>An <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> exceptions when creating the PID file will be
 propogated without executing the context.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -161,8 +176,8 @@ created.</td>
   </div>
   <div class="sphinxnext">
     <h4>Next page</h4>
-    <p class="topless"><a href="extra.html"
-                          title="Next page">&rarr; Available Extensions</a></p>
+    <p class="topless"><a href="slimta.lookup.html"
+                          title="Next page">&rarr; slimta.lookup</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
@@ -209,12 +224,12 @@ created.</td>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
         <li class="right" >
-          <a href="extra.html" title="Available Extensions"
+          <a href="slimta.lookup.html" title="slimta.lookup"
              >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="slimta.util.ptrlookup.html" title="slimta.util.ptrlookup"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -225,7 +240,7 @@ created.</td>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

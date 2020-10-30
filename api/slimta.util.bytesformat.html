@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.util.bytesformat &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.util.bytesformat &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="slimta.util.html" title="slimta.util"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -64,13 +79,13 @@
 <p>Provides a class that is capable of basic bytestring templating, similar to
 the <code class="xref py py-func docutils literal notranslate"><span class="pre">str.format()</span></code> method. This is needed in Python 3 before 3.5+, but
 should work in all supported versions.</p>
-<p>This class does the heavy lifting (a <a class="reference external" href="https://docs.python.org/3/library/re.html#re.finditer" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.finditer()</span></code></a> loop) during
+<p>This class does the heavy lifting (a <a class="reference external" href="https://docs.python.org/3/library/re.html#re.finditer" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.finditer()</span></code></a> loop) during
 construction, so it is optimal to instantiate it once and then re-use
 <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a>.</p>
 <dl class="class">
 <dt id="slimta.util.bytesformat.BytesFormat">
 <em class="property">class </em><code class="descclassname">slimta.util.bytesformat.</code><code class="descname">BytesFormat</code><span class="sig-paren">(</span><em>template</em><span class="optional">[</span>, <em>mode='ignore'</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Wraps a bytestring in a class with a <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method similar to
 <code class="xref py py-func docutils literal notranslate"><span class="pre">str.format()</span></code>.</p>
 <p>During construction, the template string is scanned for matching <code class="docutils literal notranslate"><span class="pre">{...}</span></code>
@@ -86,12 +101,12 @@ Additional formatting options are not supported.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The template bytestring.</li>
+<li><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The template bytestring.</li>
 <li><strong>mode</strong> – If <code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>, any <code class="docutils literal notranslate"><span class="pre">{...}</span></code> that does not match a
 <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> argument is left in place as-is. If
 <code class="docutils literal notranslate"><span class="pre">'remove'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> are replaced with an empty
 string. If <code class="docutils literal notranslate"><span class="pre">'strict'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> will cause
-<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a> exceptions.</li>
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a> exceptions.</li>
 </ul>
 </td>
 </tr>
@@ -107,7 +122,7 @@ correct argument’s value.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></td>
 </tr>
 </tbody>
 </table>
@@ -186,7 +201,7 @@ correct argument’s value.</p>
         <li class="right" >
           <a href="slimta.util.html" title="slimta.util"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -197,7 +212,7 @@ correct argument’s value.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

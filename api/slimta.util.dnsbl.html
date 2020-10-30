@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.util.dnsbl &#8212; slimta 4.0.8 documentation</title>
+    <title>slimta.util.dnsbl &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="slimta.util.dns.html" title="slimta.util.dns"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -66,7 +81,7 @@ These lists can be hugely helpful and inexpensive ways of filtering spam.</p>
 <dl class="class">
 <dt id="slimta.util.dnsbl.DnsBlocklist">
 <em class="property">class </em><code class="descclassname">slimta.util.dnsbl.</code><code class="descname">DnsBlocklist</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class to check one DNSBL. This object provides <code class="docutils literal notranslate"><span class="pre">__contains__</span></code> and
 <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> protocols, so it supports simpler usage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;123.4.56.7&#39;</span> <span class="ow">in</span> <span class="n">dnsbl</span><span class="p">:</span>
@@ -76,7 +91,7 @@ These lists can be hugely helpful and inexpensive ways of filtering spam.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Because <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> simply calls <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get_reason" title="slimta.util.dnsbl.DnsBlocklist.get_reason"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_reason()</span></code></a>, it
-will never raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> and should only be used after using
+will never raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> and should only be used after using
 <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get" title="slimta.util.dnsbl.DnsBlocklist.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> or <code class="docutils literal notranslate"><span class="pre">__contains__</span></code>.</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -141,7 +156,7 @@ should only be called after <a class="reference internal" href="#slimta.util.dns
 <dl class="class">
 <dt id="slimta.util.dnsbl.DnsBlocklistGroup">
 <em class="property">class </em><code class="descclassname">slimta.util.dnsbl.</code><code class="descname">DnsBlocklistGroup</code><span class="sig-paren">(</span><span class="optional">[</span><em>pool=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Allows a group of DNSBLs to be queried simultaneously.</p>
 <dl class="method">
 <dt id="slimta.util.dnsbl.DnsBlocklistGroup.add_dnsbl">
@@ -302,7 +317,7 @@ code to this string.</li>
         <li class="right" >
           <a href="slimta.util.dns.html" title="slimta.util.dns"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -313,7 +328,7 @@ code to this string.</li>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

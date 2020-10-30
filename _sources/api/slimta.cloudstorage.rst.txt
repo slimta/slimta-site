@@ -4,9 +4,6 @@
 slimta.cloudstorage
 ===================
 
-This module is available in the ``python-slimta-cloudstorage`` extension
-package.
-
 .. automodule:: slimta.cloudstorage
    :members:
    :show-inheritance:
@@ -17,6 +14,6 @@ package.
 
 .. toctree::
 
-   extra.cloudstorage.rackspace
-   extra.cloudstorage.aws
+   slimta.cloudstorage.rackspace
+   slimta.cloudstorage.aws
 

@@ -8,18 +8,33 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Edge Services &#8212; slimta 4.0.8 documentation</title>
+    <title>Edge Services &#8212; slimta 4.1.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
-    <script type="text/javascript" src="../_static/cloud.base.js"></script>
-    <script type="text/javascript" src="../_static/cloud.js"></script>
+
+    
+    
+     
+        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+    
+
+    
+     
+        <script type="text/javascript" src="../_static/cloud.js"></script>
+    
+
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -44,7 +59,7 @@
         <li class="right" >
           <a href="envelopes.html" title="Envelope Objects"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li> 
@@ -105,7 +120,7 @@ limit the amount of memory and CPU cycles they consume by rejecting before the
 before <code class="docutils literal notranslate"><span class="pre">DATA</span></code>.</p>
 <div class="section" id="creating-smtp-edge-objects">
 <h3>Creating SMTP Edge Objects<a class="headerlink" href="#creating-smtp-edge-objects" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="k">import</span> <span class="n">SmtpEdge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
 
 <span class="n">smtp</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
 <span class="n">smtp</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
@@ -120,8 +135,8 @@ the <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge
 <p>By default, any credentials will successfully authenticate, so the next step is
 adding a <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> class that implements the
 <code class="docutils literal notranslate"><span class="pre">handle_auth</span></code> method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="k">import</span> <span class="n">SmtpValidators</span>
-<span class="kn">from</span> <span class="nn">slimta.smtp.reply</span> <span class="k">import</span> <span class="n">invalid_credentials</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpValidators</span>
+<span class="kn">from</span> <span class="nn">slimta.smtp.reply</span> <span class="kn">import</span> <span class="n">invalid_credentials</span>
 
 <span class="k">class</span> <span class="nc">MyValidators</span><span class="p">(</span><span class="n">SmtpValidators</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">handle_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">creds</span><span class="p">):</span>
@@ -143,6 +158,39 @@ successful authentication:</p>
 <p>If you have not already, you’ll need to attach your validators to your
 <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code></a> by passing in
 <code class="docutils literal notranslate"><span class="pre">validator_class=MyValidators</span></code> to its constructor.</p>
+<div class="section" id="sender-policy-framework-spf">
+<h4>Sender Policy Framework (SPF)<a class="headerlink" href="#sender-policy-framework-spf" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a> is a tool that, at its most basic, allows domains to explicitly list the
+outbound hosts/IPs from which they are legitimately sending mail. Domains may
+set DNS records of special formats that email receivers query and compare
+against the information they know about the sending client.</p>
+<p>To set it up, you need to create rules for the different types of results. You
+do this by creating a <code class="xref py py-class docutils literal notranslate"><span class="pre">EnforceSpf</span></code> object and calling
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_enforcement()</span></code> for each different results you
+want to act upon. These results are:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.1">none</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.2">neutral</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.3">pass</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.4">fail</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.5">softfail</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.6">temperror</a></li>
+<li><a class="reference external" href="https://tools.ietf.org/html/rfc4408#section-2.5.7">permerror</a></li>
+</ul>
+<p>So we create our rules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spf</span> <span class="o">=</span> <span class="n">EnforceSpf</span><span class="p">()</span>
+<span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s1">&#39;fail&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s1">&#39;5.7.1 Access denied: </span><span class="si">{reason}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s1">&#39;softfail&#39;</span><span class="p">,</span> <span class="n">match_code</span><span class="o">=</span><span class="s1">&#39;250&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s1">&#39;2.0.0 Ok; </span><span class="si">{reason}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And then in our <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> class, use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">check()</span></code> decorator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@spf</span><span class="o">.</span><span class="n">check</span>
+<span class="k">def</span> <span class="nf">handle_mail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="proxy-protocol-with-smtp-edge">
 <h3>Proxy Protocol with SMTP Edge<a class="headerlink" href="#proxy-protocol-with-smtp-edge" title="Permalink to this headline">¶</a></h3>
@@ -153,8 +201,8 @@ successful authentication:</p>
 about the original source address of the connection. The <a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">PROXY protocol</a>
 adds a header to each connection where the client posts information about the
 request’s original connection information. To use the proxy protocol:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="k">import</span> <span class="n">SmtpEdge</span>
-<span class="kn">from</span> <span class="nn">slimta.util.proxyproto</span> <span class="k">import</span> <span class="n">ProxyProtocolV1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
+<span class="kn">from</span> <span class="nn">slimta.util.proxyproto</span> <span class="kn">import</span> <span class="n">ProxyProtocolV1</span>
 
 <span class="k">class</span> <span class="nc">MyEdge</span><span class="p">(</span><span class="n">ProxyProtocolV1</span><span class="p">,</span> <span class="n">SmtpEdge</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -198,7 +246,7 @@ Content-Length: 0</strong>
 </pre>
 <div class="section" id="creating-http-edge-objects">
 <h3>Creating HTTP Edge Objects<a class="headerlink" href="#creating-http-edge-objects" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.wsgi</span> <span class="k">import</span> <span class="n">WsgiEdge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.wsgi</span> <span class="kn">import</span> <span class="n">WsgiEdge</span>
 
 <span class="n">wsgi</span> <span class="o">=</span> <span class="n">WsgiEdge</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
 <span class="n">http</span> <span class="o">=</span> <span class="n">wsgi</span><span class="o">.</span><span class="n">build_server</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">8025</span><span class="p">))</span>
@@ -223,7 +271,10 @@ Content-Length: 0</strong>
 <li><a class="reference internal" href="#">Edge Services</a><ul>
 <li><a class="reference internal" href="#smtp-edge-services">SMTP Edge Services</a><ul>
 <li><a class="reference internal" href="#creating-smtp-edge-objects">Creating SMTP Edge Objects</a></li>
-<li><a class="reference internal" href="#authentication-with-smtp-edge">Authentication with SMTP Edge</a></li>
+<li><a class="reference internal" href="#authentication-with-smtp-edge">Authentication with SMTP Edge</a><ul>
+<li><a class="reference internal" href="#sender-policy-framework-spf">Sender Policy Framework (SPF)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#proxy-protocol-with-smtp-edge">Proxy Protocol with SMTP Edge</a></li>
 </ul>
 </li>
@@ -296,7 +347,7 @@ Content-Length: 0</strong>
         <li class="right" >
           <a href="envelopes.html" title="Envelope Objects"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.0.8 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li> 
@@ -306,7 +357,7 @@ Content-Length: 0</strong>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, Ian Good.
+        &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">
