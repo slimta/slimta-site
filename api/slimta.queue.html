@@ -1,38 +1,37 @@
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.queue &#8212; slimta 4.1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>slimta.queue &#8212; slimta 4.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
 
     
     
      
-        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+        <script src="../_static/jquery.cookie.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+        <script src="../_static/cloud.base.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.js"></script>
+        <script src="../_static/cloud.js"></script>
     
 
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
@@ -59,10 +58,11 @@
         <li class="right" >
           <a href="slimta.edge.wsgi.html" title="slimta.edge.wsgi"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.queue</a></li> 
       </ul>
     </div>
     </div>
@@ -73,207 +73,269 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-slimta.queue">
+  <section id="module-slimta.queue">
 <span id="slimta-queue"></span><h1>slimta.queue<a class="headerlink" href="#module-slimta.queue" title="Permalink to this headline">¶</a></h1>
 <p>Package defining common functionality for SMTP queuing. According to the
 SMTP RFCs, a server must persistently store a message before telling the client
 it accepts the message. Rather than being a traditional queue data structure,
 SMTP queues will retry messages after certain periods of time.</p>
-<dl class="exception">
-<dt id="slimta.queue.QueueError">
-<em class="property">exception </em><code class="descclassname">slimta.queue.</code><code class="descname">QueueError</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueError" title="Permalink to this definition">¶</a></dt>
+<dl class="py exception">
+<dt class="sig sig-object py" id="slimta.queue.QueueError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.queue.</span></span><span class="sig-name descname"><span class="pre">QueueError</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.core.SlimtaError</span></code></p>
 <p>Base exception for errors in the queue package.</p>
-<dl class="attribute">
-<dt id="slimta.queue.QueueError.reply">
-<code class="descname">reply</code><a class="headerlink" href="#slimta.queue.QueueError.reply" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="slimta.queue.QueueError.reply">
+<span class="sig-name descname"><span class="pre">reply</span></span><a class="headerlink" href="#slimta.queue.QueueError.reply" title="Permalink to this definition">¶</a></dt>
 <dd><p>If set, <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> services may use this as the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object to return to
 clients when queuing fails.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="slimta.queue.QueueStorage">
-<em class="property">class </em><code class="descclassname">slimta.queue.</code><code class="descname">QueueStorage</code><a class="headerlink" href="#slimta.queue.QueueStorage" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="slimta.queue.Queue">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.queue.</span></span><span class="sig-name descname"><span class="pre">Queue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">store</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">relay=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">backoff=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">bounce_factory=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">bounce_queue=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">store_pool=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">relay_pool=None</span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent._gevent_cgreenlet.Greenlet</span></code></p>
+<p>Manages the queue of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> objects waiting for delivery. This is
+not a standard FIFO queue, a message’s place in the queue depends entirely
+on the timestamp of its next delivery attempt.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>store</strong> – Object implementing <a class="reference internal" href="#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a>.</p></li>
+<li><p><strong>relay</strong> – <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> object used to attempt message deliveries. If this
+is not given, no deliveries will be attempted on received
+messages.</p></li>
+<li><p><strong>backoff</strong> – Function that, given an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> and number of delivery
+attempts, will return the number of seconds before the next
+attempt. If it returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, the message will be
+permanently failed. The default backoff function simply
+returns <code class="docutils literal notranslate"><span class="pre">None</span></code> and messages are never retried.</p></li>
+<li><p><strong>bounce_factory</strong> – Function that produces a <a class="reference internal" href="slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code></a> object given the
+same parameters as the <a class="reference internal" href="slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code></a> constructor. If the
+function returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, no bounce is delivered.
+By default, a new <a class="reference internal" href="slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code></a> is created in every case.</p></li>
+<li><p><strong>bounce_queue</strong> – <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> object that will be used for delivering bounce
+messages. The default is <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p></li>
+<li><p><strong>store_pool</strong> – Number of simultaneous operations performable against
+the <code class="docutils literal notranslate"><span class="pre">store</span></code> object. Default is unlimited.</p></li>
+<li><p><strong>relay_pool</strong> – Number of simultaneous operations performable against
+the <code class="docutils literal notranslate"><span class="pre">relay</span></code> object. Default is unlimited.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.Queue.add_policy">
+<span class="sig-name descname"><span class="pre">add_policy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.add_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code></a> to be executed before messages are persisted
+to storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>policy</strong> – <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code></a> object to execute.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.Queue.enqueue">
+<span class="sig-name descname"><span class="pre">enqueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">envelope</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.enqueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops a new message in the queue for delivery. The first delivery
+attempt is made immediately (depending on relay pool availability).
+This method is not typically called directly, <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> objects use it
+when they receive new messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>envelope</strong> – <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object to enqueue.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Zipped list of envelopes and their respective queue IDs (or
+thrown <a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QueueError</span></code></a> objects).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.Queue.flush">
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to immediately flush all messages waiting in the queue,
+regardless of their retry timers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This can be a very expensive operation, use with care.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.Queue.kill">
+<span class="sig-name descname"><span class="pre">kill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used by <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> and <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>-like objects to properly
+end any associated services (such as running <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.1.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a>
+threads) and close resources.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.queue.</span></span><span class="sig-name descname"><span class="pre">QueueStorage</span></span><a class="headerlink" href="#slimta.queue.QueueStorage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class to show the interface that classes must implement to be a
 storage mechanism for <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>.</p>
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>envelope</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.write" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">envelope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.write" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes the given envelope to storage, along with the timestamp of
 its next delivery attempt. The number of delivery attempts asociated
 with the message should start at zero.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>envelope</strong> – <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object to write.</li>
-<li><strong>timestamp</strong> – Timestamp of message’s next delivery attempt.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>envelope</strong> – <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object to write.</p></li>
+<li><p><strong>timestamp</strong> – Timestamp of message’s next delivery attempt.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Unique identifier string for the message in queue.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Unique identifier string for the message in queue.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.set_timestamp">
-<code class="descname">set_timestamp</code><span class="sig-paren">(</span><em>id</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.set_timestamp" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.set_timestamp">
+<span class="sig-name descname"><span class="pre">set_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.set_timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a new timestamp for the message’s next delivery attempt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id</strong> – The unique identifier string for the message.</li>
-<li><strong>timestamp</strong> – The new delivery attempt timestamp.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – The unique identifier string for the message.</p></li>
+<li><p><strong>timestamp</strong> – The new delivery attempt timestamp.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.increment_attempts">
-<code class="descname">increment_attempts</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.increment_attempts" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.increment_attempts">
+<span class="sig-name descname"><span class="pre">increment_attempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.increment_attempts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Increments the number of delivery attempts associated with the
 message.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> – The unique identifier string for the message.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The new number of message delivery attempts.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> – The unique identifier string for the message.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The new number of message delivery attempts.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.set_recipients_delivered">
-<code class="descname">set_recipients_delivered</code><span class="sig-paren">(</span><em>id</em>, <em>rcpt_indexes</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.set_recipients_delivered" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.set_recipients_delivered">
+<span class="sig-name descname"><span class="pre">set_recipients_delivered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcpt_indexes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.set_recipients_delivered" title="Permalink to this definition">¶</a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified">New in version 1.1.0.</span></p>
+<p><span class="versionmodified added">New in version 1.1.0.</span></p>
 </div>
 <p>Marks the given recipients from the original envelope as
 already-delivered, meaning they will be skipped by future relay
 attempts.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>id</strong> – The unique identifier string for the message.</li>
-<li><strong>rcpt_indexes</strong> – List of indexes in the original envelope’s
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – The unique identifier string for the message.</p></li>
+<li><p><strong>rcpt_indexes</strong> – List of indexes in the original envelope’s
 <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> list
-to mark as delivered.</li>
+to mark as delivered.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.load">
-<code class="descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.load" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads all queued messages from the storage engine, such that the
 <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> can be aware of all upcoming delivery attempts.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Iterable that yields tuples of the form <code class="docutils literal notranslate"><span class="pre">(timestamp,</span> <span class="pre">id)</span></code>
-for each message in storage.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Iterable that yields tuples of the form <code class="docutils literal notranslate"><span class="pre">(timestamp,</span> <span class="pre">id)</span></code>
+for each message in storage.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.get" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object associated with the given unique
 identifier sring.</p>
 <p>The envelope’s <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> should not
 include those marked as delivered by <a class="reference internal" href="#slimta.queue.QueueStorage.set_recipients_delivered" title="slimta.queue.QueueStorage.set_recipients_delivered"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_recipients_delivered()</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> – The unique identifier string of the requested <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple with the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object and number of attempts.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a>, <a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> – The unique identifier string of the requested <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Tuple with the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object and number of attempts.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a>, <a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.remove" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> associated with the given unique identifier
 string from queue storage. This is typically used when the message has
 been successfully delivered or delivery has permanently failed.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> – The unique identifier string of the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> to remove.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> – The unique identifier string of the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> to remove.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.wait">
-<code class="descname">wait</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.wait" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.wait" title="Permalink to this definition">¶</a></dt>
 <dd><p>If messages are not being delivered from the same process in which
 they were received, the storage mechanism needs a way to wait until it
 is notified that a new message has been stored.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">An iterable or generator producing tuples with the timestamp
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An iterable or generator producing tuples with the timestamp
 and unique identifier string of a new message in storage.
 When the iterable or generator is exhausted, <a class="reference internal" href="#slimta.queue.QueueStorage.wait" title="slimta.queue.QueueStorage.wait"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wait()</span></code></a> is
-simply called again.</td>
-</tr>
-</tbody>
-</table>
+simply called again.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.queue.QueueStorage.get_info">
-<code class="descname">get_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.get_info" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.queue.QueueStorage.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.QueueStorage.get_info" title="Permalink to this definition">¶</a></dt>
 <dd><div class="versionadded">
-<p><span class="versionmodified">New in version 0.3.20.</span></p>
+<p><span class="versionmodified added">New in version 0.3.20.</span></p>
 </div>
 <p>Queries the storage backend for relevant information about the
 contents of the queue. The result is a <a class="reference internal" href="slimta.queue.dict.html#module-slimta.queue.dict" title="slimta.queue.dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">dict()</span></code></a> containing required
@@ -281,108 +343,13 @@ keys along with any other custom keys dependent on the particular
 backend.</p>
 <p>Only one key is required in the result:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">size</span></code>: The number of messages currently in the queue.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: The number of messages currently in the queue.</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="slimta.queue.dict.html#module-slimta.queue.dict" title="slimta.queue.dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">dict()</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="slimta.queue.Queue">
-<em class="property">class </em><code class="descclassname">slimta.queue.</code><code class="descname">Queue</code><span class="sig-paren">(</span><em>store</em><span class="optional">[</span>, <em>relay=None</em><span class="optional">[</span>, <em>backoff=None</em><span class="optional">[</span>, <em>bounce_factory=None</em><span class="optional">[</span>, <em>bounce_queue=None</em><span class="optional">[</span>, <em>store_pool=None</em><span class="optional">[</span>, <em>relay_pool=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent._gevent_cgreenlet.Greenlet</span></code></p>
-<p>Manages the queue of <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> objects waiting for delivery. This is
-not a standard FIFO queue, a message’s place in the queue depends entirely
-on the timestamp of its next delivery attempt.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>store</strong> – Object implementing <a class="reference internal" href="#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a>.</li>
-<li><strong>relay</strong> – <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> object used to attempt message deliveries. If this
-is not given, no deliveries will be attempted on received
-messages.</li>
-<li><strong>backoff</strong> – Function that, given an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> and number of delivery
-attempts, will return the number of seconds before the next
-attempt. If it returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, the message will be
-permanently failed. The default backoff function simply
-returns <code class="docutils literal notranslate"><span class="pre">None</span></code> and messages are never retried.</li>
-<li><strong>bounce_factory</strong> – Function that produces a <a class="reference internal" href="slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code></a> object given the
-same parameters as the <a class="reference internal" href="slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code></a> constructor. If the
-function returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, no bounce is delivered.
-By default, a new <a class="reference internal" href="slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code></a> is created in every case.</li>
-<li><strong>bounce_queue</strong> – <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> object that will be used for delivering bounce
-messages. The default is <code class="docutils literal notranslate"><span class="pre">self</span></code>.</li>
-<li><strong>store_pool</strong> – Number of simultaneous operations performable against
-the <code class="docutils literal notranslate"><span class="pre">store</span></code> object. Default is unlimited.</li>
-<li><strong>relay_pool</strong> – Number of simultaneous operations performable against
-the <code class="docutils literal notranslate"><span class="pre">relay</span></code> object. Default is unlimited.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="slimta.queue.Queue.add_policy">
-<code class="descname">add_policy</code><span class="sig-paren">(</span><em>policy</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.add_policy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code></a> to be executed before messages are persisted
-to storage.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>policy</strong> – <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code></a> object to execute.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="slimta.queue.Queue.enqueue">
-<code class="descname">enqueue</code><span class="sig-paren">(</span><em>envelope</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.enqueue" title="Permalink to this definition">¶</a></dt>
-<dd><p>Drops a new message in the queue for delivery. The first delivery
-attempt is made immediately (depending on relay pool availability).
-This method is not typically called directly, <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> objects use it
-when they receive new messages.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>envelope</strong> – <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object to enqueue.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Zipped list of envelopes and their respective queue IDs (or
-thrown <a class="reference internal" href="#slimta.queue.QueueError" title="slimta.queue.QueueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">QueueError</span></code></a> objects).</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="slimta.queue.Queue.flush">
-<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.flush" title="Permalink to this definition">¶</a></dt>
-<dd><p>Attempts to immediately flush all messages waiting in the queue,
-regardless of their retry timers.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This can be a very expensive operation, use with care.</p>
-</div>
-</dd></dl>
-
-<dl class="method">
-<dt id="slimta.queue.Queue.kill">
-<code class="descname">kill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.Queue.kill" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method is used by <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> and <a class="reference internal" href="#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>-like objects to properly
-end any associated services (such as running <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v20.9.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a>
-threads) and close resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="slimta.queue.dict.html#module-slimta.queue.dict" title="slimta.queue.dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">dict()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -395,9 +362,10 @@ threads) and close resources.</p>
 <li class="toctree-l1"><a class="reference internal" href="slimta.queue.proxy.html">slimta.queue.proxy</a></li>
 </ul>
 </div>
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -417,17 +385,15 @@ threads) and close resources.</p>
                           title="Next page">&rarr; slimta.queue.dict</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
     
@@ -466,10 +432,11 @@ threads) and close resources.</p>
         <li class="right" >
           <a href="slimta.edge.wsgi.html" title="slimta.edge.wsgi"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.queue</a></li> 
       </ul>
     </div>
     </div>

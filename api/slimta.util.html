@@ -1,38 +1,37 @@
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.util &#8212; slimta 4.1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>slimta.util &#8212; slimta 4.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
 
     
     
      
-        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+        <script src="../_static/jquery.cookie.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+        <script src="../_static/cloud.base.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.js"></script>
+        <script src="../_static/cloud.js"></script>
     
 
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
@@ -59,10 +58,11 @@
         <li class="right" >
           <a href="slimta.logging.queuestorage.html" title="slimta.logging.queuestorage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.util</a></li> 
       </ul>
     </div>
     </div>
@@ -73,69 +73,59 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-slimta.util">
+  <section id="module-slimta.util">
 <span id="slimta-util"></span><h1>slimta.util<a class="headerlink" href="#module-slimta.util" title="Permalink to this headline">¶</a></h1>
 <p>Package containing a variety of useful modules utilities that didn’t really
 belong anywhere else.</p>
-<dl class="function">
-<dt id="slimta.util.build_ipv4_socket_creator">
-<code class="descclassname">slimta.util.</code><code class="descname">build_ipv4_socket_creator</code><span class="sig-paren">(</span><span class="optional">[</span><em>only_ports=None</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.build_ipv4_socket_creator" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="slimta.util.build_ipv4_socket_creator">
+<span class="sig-prename descclassname"><span class="pre">slimta.util.</span></span><span class="sig-name descname"><span class="pre">build_ipv4_socket_creator</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">only_ports=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.build_ipv4_socket_creator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a function that will act like
 <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.create_connection()</span></code></a> but only using IPv4 addresses. This
 function can be used as the <code class="docutils literal notranslate"><span class="pre">socket_creator</span></code> argument to some classes
 like <a class="reference internal" href="slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">MxSmtpRelay</span></code></a>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>only_ports</strong> – If given, can be a list to limit which ports are
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>only_ports</strong> – If given, can be a list to limit which ports are
 restricted to IPv4. Connections to all other ports may
-be IPv6.</td>
-</tr>
-</tbody>
-</table>
+be IPv6.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="slimta.util.create_connection_ipv4">
-<code class="descclassname">slimta.util.</code><code class="descname">create_connection_ipv4</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>timeout=None</em><span class="optional">[</span>, <em>source_address=None</em><span class="optional">[</span>, <em>only_ports=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.create_connection_ipv4" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="slimta.util.create_connection_ipv4">
+<span class="sig-prename descclassname"><span class="pre">slimta.util.</span></span><span class="sig-name descname"><span class="pre">create_connection_ipv4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">address</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">timeout=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">source_address=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">only_ports=None</span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.create_connection_ipv4" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to mimick to <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.create_connection()</span></code></a>, but
 connections are only made to IPv4 addresses.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>only_ports</strong> – If given, can be a list to limit which ports are
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>only_ports</strong> – If given, can be a list to limit which ports are
 restricted to IPv4. Connections to all other ports may
-be IPv6.</td>
-</tr>
-</tbody>
-</table>
+be IPv6.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="slimta.util.create_listeners">
-<code class="descclassname">slimta.util.</code><code class="descname">create_listeners</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>family=&lt;AddressFamily.AF_UNSPEC: 0&gt;</em><span class="optional">[</span>, <em>socktype=&lt;SocketKind.SOCK_STREAM: 1&gt;</em><span class="optional">[</span>, <em>proto=0</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.create_listeners" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="slimta.util.create_listeners">
+<span class="sig-prename descclassname"><span class="pre">slimta.util.</span></span><span class="sig-name descname"><span class="pre">create_listeners</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">address</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">family=&lt;AddressFamily.AF_UNSPEC:</span> <span class="pre">0&gt;</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">socktype=&lt;SocketKind.SOCK_STREAM:</span> <span class="pre">1&gt;</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">proto=0</span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.create_listeners" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.getaddrinfo" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">socket.getaddrinfo()</span></code></a> to create listening sockets for
 available socket parameters. For example, giving <em>address</em> as
 <code class="docutils literal notranslate"><span class="pre">('localhost',</span> <span class="pre">80)</span></code> on a system with IPv6 would return one socket bound
 to <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> and one bound to <a href="#id1"><span class="problematic" id="id2">``</span></a>::1`.</p>
 <p>May also be used for <code class="docutils literal notranslate"><span class="pre">socket.AF_UNIX</span></code> with a file path to produce a
 single unix domain socket listening on that path.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>address</strong> – A <code class="docutils literal notranslate"><span class="pre">(host,</span> <span class="pre">port)</span></code> tuple to listen on.</li>
-<li><strong>family</strong> – the socket family, default <code class="docutils literal notranslate"><span class="pre">AF_UNSPEC</span></code>.</li>
-<li><strong>socktype</strong> – the socket type, default <code class="docutils literal notranslate"><span class="pre">SOCK_STREAM</span></code>.</li>
-<li><strong>proto</strong> – the socket protocol, default <code class="docutils literal notranslate"><span class="pre">IPPROTO_IP</span></code>.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – A <code class="docutils literal notranslate"><span class="pre">(host,</span> <span class="pre">port)</span></code> tuple to listen on.</p></li>
+<li><p><strong>family</strong> – the socket family, default <code class="docutils literal notranslate"><span class="pre">AF_UNSPEC</span></code>.</p></li>
+<li><p><strong>socktype</strong> – the socket type, default <code class="docutils literal notranslate"><span class="pre">SOCK_STREAM</span></code>.</p></li>
+<li><p><strong>proto</strong> – the socket protocol, default <code class="docutils literal notranslate"><span class="pre">IPPROTO_IP</span></code>.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <hr class="docutils" />
@@ -150,9 +140,10 @@ single unix domain socket listening on that path.</p>
 <li class="toctree-l1"><a class="reference internal" href="slimta.util.system.html">slimta.util.system</a></li>
 </ul>
 </div>
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -172,17 +163,15 @@ single unix domain socket listening on that path.</p>
                           title="Next page">&rarr; slimta.util.bytesformat</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
     
@@ -221,10 +210,11 @@ single unix domain socket listening on that path.</p>
         <li class="right" >
           <a href="slimta.logging.queuestorage.html" title="slimta.logging.queuestorage"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.util</a></li> 
       </ul>
     </div>
     </div>

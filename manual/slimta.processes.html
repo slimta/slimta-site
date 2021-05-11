@@ -1,38 +1,37 @@
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring the Processes &#8212; slimta 4.1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Configuring the Processes &#8212; slimta 4.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
 
     
     
      
-        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+        <script src="../_static/jquery.cookie.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+        <script src="../_static/cloud.base.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.js"></script>
+        <script src="../_static/cloud.js"></script>
     
 
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
@@ -59,10 +58,11 @@
         <li class="right" >
           <a href="slimta.html" title="Application Usage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">Application Usage</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">Application Usage</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Configuring the Processes</a></li> 
       </ul>
     </div>
     </div>
@@ -73,7 +73,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="configuring-the-processes">
+  <section id="configuring-the-processes">
 <h1>Configuring the Processes<a class="headerlink" href="#configuring-the-processes" title="Permalink to this headline">¶</a></h1>
 <p>The first section in <code class="docutils literal notranslate"><span class="pre">slimta.conf</span></code> is <code class="docutils literal notranslate"><span class="pre">process</span></code>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">process</span><span class="p">:</span>
@@ -86,38 +86,38 @@
 <code class="docutils literal notranslate"><span class="pre">slimta</span></code> executables. You can use the <code class="docutils literal notranslate"><span class="pre">--process-name</span></code> command-line option
 to control this behavior. Each sub-section shares the same possible settings:</p>
 <ul>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">daemon</span></code>: Boolean</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">daemon</span></code>: Boolean</p>
 <p>Whether or not the executables should daemonize on startup. This option can be
 overriden by the <code class="docutils literal notranslate"><span class="pre">--no-daemon</span></code> command-line option. This value is False by
 default.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">user</span></code>: String</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">user</span></code>: String</p>
 <p>If given, the process will attempt to drop root privileges to this username.
 This is useful for when using privileged ports 25, 465, and/or 587. By
 default, privileges are not dropped by the process.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">group</span></code>: String</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">group</span></code>: String</p>
 <p>Like the <code class="docutils literal notranslate"><span class="pre">user</span></code> option, the process will attempt to drop privileges to this
 group name. By default, privileges are not dropped by the process.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">stdout</span></code>: String</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">stdout</span></code>: String</p>
 <p>If given, this path will be opened in append-mode (and created if necessary)
 and all standard output will be written to it instead of the console. This is
 particularly useful when daemonized. By default, the standard output stream is
 not redirected.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">stderr</span></code>: String</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">stderr</span></code>: String</p>
 <p>Like the <code class="docutils literal notranslate"><span class="pre">stdout</span></code> option, this redirects the standard error stream to the
 given path in append mode. By default, the standard error stream is not
 redirected.</p>
 </li>
-<li><p class="first"><code class="docutils literal notranslate"><span class="pre">logging</span></code>: Dictionary</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">logging</span></code>: Dictionary</p>
 <p>See the section on logging below. It’s often convenient to put logging configs
 in a separate config file, like in the example above. By default, debug-level
 logging is written to standard output.</p>
 </li>
 </ul>
-<div class="section" id="logging-configuration">
+<section id="logging-configuration">
 <h2>Logging Configuration<a class="headerlink" href="#logging-configuration" title="Permalink to this headline">¶</a></h2>
 <p>Because the <code class="docutils literal notranslate"><span class="pre">logging</span></code> sub-section is parsed into a dictionary-like object, it
 is compatible with the <a class="reference external" href="https://docs.python.org/3/library/logging.config.html#logging.config.dictConfig" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.config.dictConfig()</span></code></a> function. The
@@ -158,10 +158,11 @@ readable and parseable format might look like this:</p>
   <span class="nt">handlers</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">file</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -190,17 +191,15 @@ readable and parseable format might look like this:</p>
                           title="Next page">&rarr; Configuring the Edges</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
     
@@ -239,10 +238,11 @@ readable and parseable format might look like this:</p>
         <li class="right" >
           <a href="slimta.html" title="Application Usage"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="slimta.html" >Application Usage</a> &#187;</li> 
+          <li class="nav-item nav-item-2"><a href="slimta.html" >Application Usage</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Configuring the Processes</a></li> 
       </ul>
     </div>
     </div>

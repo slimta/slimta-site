@@ -1,38 +1,37 @@
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.util.proxyproto &#8212; slimta 4.1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>slimta.util.proxyproto &#8212; slimta 4.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
 
     
     
      
-        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+        <script src="../_static/jquery.cookie.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+        <script src="../_static/cloud.base.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.js"></script>
+        <script src="../_static/cloud.js"></script>
     
 
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
@@ -59,11 +58,12 @@
         <li class="right" >
           <a href="slimta.util.dnsbl.html" title="slimta.util.dnsbl"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="slimta.util.html" accesskey="U">slimta.util</a> &#187;</li> 
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" accesskey="U">slimta.util</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.util.proxyproto</a></li> 
       </ul>
     </div>
     </div>
@@ -74,13 +74,49 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-slimta.util.proxyproto">
+  <section id="module-slimta.util.proxyproto">
 <span id="slimta-util-proxyproto"></span><h1>slimta.util.proxyproto<a class="headerlink" href="#module-slimta.util.proxyproto" title="Permalink to this headline">¶</a></h1>
 <p>Package providing support for the <a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">PROXY protocol</a> on various edge
 services.</p>
-<dl class="class">
-<dt id="slimta.util.proxyproto.ProxyProtocolV1">
-<em class="property">class </em><code class="descclassname">slimta.util.proxyproto.</code><code class="descname">ProxyProtocolV1</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocol">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.util.proxyproto.</span></span><span class="sig-name descname"><span class="pre">ProxyProtocol</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Reads the first 8 bytes from the socket to determine which version of
+the proxy protocol is active before handing processing off to either
+<a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocolV1" title="slimta.util.proxyproto.ProxyProtocolV1"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocolV1</span></code></a> or <a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocolV2" title="slimta.util.proxyproto.ProxyProtocolV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocolV2</span></code></a>.</p>
+<p>Mix-in before an implementation of <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a> to
+expect every connection to begin with a proxy protocol header. The
+<code class="docutils literal notranslate"><span class="pre">address</span></code> argument passed in to the
+<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a> method will contain information
+about the original connection source, before proxying.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocol.mixin">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">mixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocol.mixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamically mix-in the <a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocol" title="slimta.util.proxyproto.ProxyProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocol</span></code></a> class as a base of the
+given edge object. Use with caution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edge</strong> (<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>) – the edge object to use proxy protocol on.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocol.handle">
+<span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocol.handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Intercepts calls to <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a>, reads
+the proxy protocol header, and then resumes the original call.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocolV1">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.util.proxyproto.</span></span><span class="sig-name descname"><span class="pre">ProxyProtocolV1</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Implements version 1 of the proxy protocol, to avoid losing information
 about the original connection when routing traffic through a proxy. This
@@ -91,55 +127,51 @@ expect every connection to begin with a proxy protocol header. The
 <code class="docutils literal notranslate"><span class="pre">address</span></code> argument passed in to the
 <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a> method will contain information
 about the original connection source, before proxying.</p>
-<dl class="classmethod">
-<dt id="slimta.util.proxyproto.ProxyProtocolV1.parse_pp_line">
-<em class="property">classmethod </em><code class="descname">parse_pp_line</code><span class="sig-paren">(</span><em>cls</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1.parse_pp_line" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocolV1.parse_pp_line">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">parse_pp_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1.parse_pp_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a bytestring containing a single line ending in CRLF, parse
 into two source and destination address tuples of the form
 <code class="docutils literal notranslate"><span class="pre">(ip,</span> <span class="pre">port)</span></code> and return them.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> – Bytestring ending in CRLF</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Two tuples for source and destination addresses, as might be
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>line</strong> – Bytestring ending in CRLF</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Two tuples for source and destination addresses, as might be
 returned by <code class="xref py py-func docutils literal notranslate"><span class="pre">getpeername()</span></code> and
-<code class="xref py py-func docutils literal notranslate"><span class="pre">getsockname()</span></code>.</td>
-</tr>
-</tbody>
-</table>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">getsockname()</span></code>.</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="classmethod">
-<dt id="slimta.util.proxyproto.ProxyProtocolV1.mixin">
-<em class="property">classmethod </em><code class="descname">mixin</code><span class="sig-paren">(</span><em>cls</em>, <em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1.mixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocolV1.mixin">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">mixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1.mixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dynamically mix-in the <a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocolV1" title="slimta.util.proxyproto.ProxyProtocolV1"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocolV1</span></code></a> class as a base of
 the given edge object. Use with caution.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>edge</strong> (<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>) – the edge object to use proxy protocol on.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edge</strong> (<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>) – the edge object to use proxy protocol on.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>ValueError</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.util.proxyproto.ProxyProtocolV1.handle">
-<code class="descname">handle</code><span class="sig-paren">(</span><em>sock</em>, <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1.handle" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocolV1.handle">
+<span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV1.handle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Intercepts calls to <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a>, reads
 the proxy protocol header, and then resumes the original call.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="slimta.util.proxyproto.ProxyProtocolV2">
-<em class="property">class </em><code class="descclassname">slimta.util.proxyproto.</code><code class="descname">ProxyProtocolV2</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV2" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocolV2">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.util.proxyproto.</span></span><span class="sig-name descname"><span class="pre">ProxyProtocolV2</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Implements version 2 of the proxy protocol, to avoid losing information
 about the original connection when routing traffic through a proxy. This
@@ -149,73 +181,34 @@ expect every connection to begin with a proxy protocol header. The
 <code class="docutils literal notranslate"><span class="pre">address</span></code> argument passed in to the
 <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a> method will contain information
 about the original connection source, before proxying.</p>
-<dl class="classmethod">
-<dt id="slimta.util.proxyproto.ProxyProtocolV2.mixin">
-<em class="property">classmethod </em><code class="descname">mixin</code><span class="sig-paren">(</span><em>cls</em>, <em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV2.mixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocolV2.mixin">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">mixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV2.mixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dynamically mix-in the <a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocolV2" title="slimta.util.proxyproto.ProxyProtocolV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocolV2</span></code></a> class as a base of
 the given edge object. Use with caution.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>edge</strong> (<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>) – the edge object to use proxy protocol on.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>edge</strong> (<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>) – the edge object to use proxy protocol on.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>ValueError</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="slimta.util.proxyproto.ProxyProtocolV2.handle">
-<code class="descname">handle</code><span class="sig-paren">(</span><em>sock</em>, <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV2.handle" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.util.proxyproto.ProxyProtocolV2.handle">
+<span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sock</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocolV2.handle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Intercepts calls to <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a>, reads
 the proxy protocol header, and then resumes the original call.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="slimta.util.proxyproto.ProxyProtocol">
-<em class="property">class </em><code class="descclassname">slimta.util.proxyproto.</code><code class="descname">ProxyProtocol</code><span class="sig-paren">(</span><span class="optional">[</span><em>*args</em><span class="optional">[</span>, <em>**kwargs</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocol" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Reads the first 8 bytes from the socket to determine which version of
-the proxy protocol is active before handing processing off to either
-<a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocolV1" title="slimta.util.proxyproto.ProxyProtocolV1"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocolV1</span></code></a> or <a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocolV2" title="slimta.util.proxyproto.ProxyProtocolV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocolV2</span></code></a>.</p>
-<p>Mix-in before an implementation of <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a> to
-expect every connection to begin with a proxy protocol header. The
-<code class="docutils literal notranslate"><span class="pre">address</span></code> argument passed in to the
-<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a> method will contain information
-about the original connection source, before proxying.</p>
-<dl class="classmethod">
-<dt id="slimta.util.proxyproto.ProxyProtocol.mixin">
-<em class="property">classmethod </em><code class="descname">mixin</code><span class="sig-paren">(</span><em>cls</em>, <em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocol.mixin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dynamically mix-in the <a class="reference internal" href="#slimta.util.proxyproto.ProxyProtocol" title="slimta.util.proxyproto.ProxyProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyProtocol</span></code></a> class as a base of the
-given edge object. Use with caution.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>edge</strong> (<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>) – the edge object to use proxy protocol on.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ValueError</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="slimta.util.proxyproto.ProxyProtocol.handle">
-<code class="descname">handle</code><span class="sig-paren">(</span><em>sock</em>, <em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.proxyproto.ProxyProtocol.handle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Intercepts calls to <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer.handle" title="slimta.edge.EdgeServer.handle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handle()</span></code></a>, reads
-the proxy protocol header, and then resumes the original call.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -235,17 +228,15 @@ the proxy protocol header, and then resumes the original call.</p>
                           title="Next page">&rarr; slimta.util.ptrlookup</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
     
@@ -284,11 +275,12 @@ the proxy protocol header, and then resumes the original call.</p>
         <li class="right" >
           <a href="slimta.util.dnsbl.html" title="slimta.util.dnsbl"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="slimta.util.html" >slimta.util</a> &#187;</li> 
+          <li class="nav-item nav-item-3"><a href="slimta.util.html" >slimta.util</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.util.proxyproto</a></li> 
       </ul>
     </div>
     </div>

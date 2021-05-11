@@ -1,38 +1,37 @@
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Version 4.0.0 Released &#8212; slimta 4.1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Version 4.0.0 Released &#8212; slimta 4.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
 
     
     
      
-        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+        <script src="../_static/jquery.cookie.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+        <script src="../_static/cloud.base.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.js"></script>
+        <script src="../_static/cloud.js"></script>
     
 
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
@@ -59,9 +58,10 @@
         <li class="right" >
           <a href="2020-10-30.html" title="Extension Consolidation"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Slimta Blog</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Slimta Blog</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Version 4.0.0 Released</a></li> 
       </ul>
     </div>
     </div>
@@ -72,23 +72,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="version-4-0-0-released">
+  <section id="version-4-0-0-released">
 <h1>Version 4.0.0 Released<a class="headerlink" href="#version-4-0-0-released" title="Permalink to this headline">¶</a></h1>
 <p>November 14, 2016</p>
 <p>The release of 4.0.0 introduces some changes that are not backwards-compatible
 with previous versions, focusing mainly on the API to control SSL behavior with
 the new <code class="docutils literal notranslate"><span class="pre">context</span></code> pattern described below.</p>
-<div class="section" id="change-log-in-detail">
+<section id="change-log-in-detail">
 <h2>Change Log In Detail<a class="headerlink" href="#change-log-in-detail" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="added">
+<section id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">New <a class="reference internal" href="../api/slimta.util.html#module-slimta.util" title="slimta.util"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util</span></code></a> functions for limiting outbound connections to IPv4.</p>
+<li><p>New <a class="reference internal" href="../api/slimta.util.html#module-slimta.util" title="slimta.util"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util</span></code></a> functions for limiting outbound connections to IPv4.</p>
 <p>The need for this change reflects some of the difficulty currently in
 delivering mail to hosts with IPv6 addresses configured. It is provided for
 convenience and not used by default.</p>
 </li>
-<li><p class="first">New <a class="reference internal" href="../api/slimta.logging.socket.html#slimta.logging.socket.socket_error_log_level" title="slimta.logging.socket.socket_error_log_level"><code class="xref py py-attr docutils literal notranslate"><span class="pre">socket_error_log_level</span></code></a> variable for better
+<li><p>New <a class="reference internal" href="../api/slimta.logging.socket.html#slimta.logging.socket.socket_error_log_level" title="slimta.logging.socket.socket_error_log_level"><code class="xref py py-attr docutils literal notranslate"><span class="pre">socket_error_log_level</span></code></a> variable for better
 log level control.</p>
 <p>This change was put in place for log systems that have special behavior
 configured for error-level events, such as monitoring alerts or other
@@ -96,11 +96,11 @@ metrics. Because socket errors are non-fatal and often simply informative,
 it is often useful for them to be warning- or info-level logs.</p>
 </li>
 </ul>
-</div>
-<div class="section" id="changed">
+</section>
+<section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Constructors and functions that took a <code class="docutils literal notranslate"><span class="pre">tls</span></code> dictionary now take a
+<li><p>Constructors and functions that took a <code class="docutils literal notranslate"><span class="pre">tls</span></code> dictionary now take a
 <code class="docutils literal notranslate"><span class="pre">context</span></code> argument that should be an <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a> object.
 This allows finer control of encryption behavior, as well as the ability to
 pre-load sensitive certificate data before daemonization.</p>
@@ -114,47 +114,46 @@ release is the switch to using <a class="reference external" href="https://docs.
 possible by the previous dropping of support for Python 2.6 and now 3.3 as
 well. Hopefully these changes help mail server implementations stay secure.</p>
 </li>
-<li><p class="first">Client connections will now be opportunistic and try to use TLS if it is
+<li><p>Client connections will now be opportunistic and try to use TLS if it is
 available, even if a key or cert have not been configured.</p>
 <p>Since client-side SSL sessions require little-to-no explicit configuration,
 it should be made the default behavior in most situations to use SSL when
 available.</p>
 </li>
-<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> SMTP extension will now advertise insecure authentication
+<li><p>The <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> SMTP extension will now advertise insecure authentication
 mechanisms without TLS, but trying to use them will fail.</p>
 <p>Some clients that are required to authenticate may look for the <code class="docutils literal notranslate"><span class="pre">AUTH</span></code>
 extension in the EHLO results before encrypting the session. Now, the
 extension will be advertized, but attempts to use insecure auth mechanisms
 such as <code class="docutils literal notranslate"><span class="pre">PLAIN</span></code> will fail as specified by the RFC.</p>
 </li>
-<li><p class="first">Moved the <code class="docutils literal notranslate"><span class="pre">slimta.system</span></code> module to <a class="reference internal" href="../api/slimta.util.system.html#module-slimta.util.system" title="slimta.util.system"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util.system</span></code></a> to de-clutter
-the top-level namespace.</p>
-</li>
+<li><p>Moved the <code class="docutils literal notranslate"><span class="pre">slimta.system</span></code> module to <a class="reference internal" href="../api/slimta.util.system.html#module-slimta.util.system" title="slimta.util.system"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util.system</span></code></a> to de-clutter
+the top-level namespace.</p></li>
 </ul>
-</div>
-<div class="section" id="fixed">
+</section>
+<section id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Fixed a possible race condition on enqueue.</p>
+<li><p>Fixed a possible race condition on enqueue.</p>
 <p>Thanks to <a class="reference external" href="https://github.com/brycedrennan">Bryce Drennan</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/pull/107">pull
 request</a>!</p>
 </li>
-<li><p class="first">Fixed exception when given empty EHLO/HELO string.</p>
+<li><p>Fixed exception when given empty EHLO/HELO string.</p>
 <p>Thanks to <a class="reference external" href="https://github.com/toxinu">Geoffrey Lehée</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/pull/112">pull request</a>!</p>
 </li>
-<li><p class="first">Fixed the fallback from EHLO to HELO in certain situations.</p>
+<li><p>Fixed the fallback from EHLO to HELO in certain situations.</p>
 <p>Thanks to <a class="reference external" href="https://github.com/thestick613">thestick613</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/issues/103">pull
 request</a>!</p>
 </li>
-<li><p class="first">The <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators.session" title="slimta.edge.smtp.SmtpValidators.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> <code class="docutils literal notranslate"><span class="pre">auth</span></code> attribute now
-correctly contains the tuple described in the documentation.</p>
-</li>
+<li><p>The <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators.session" title="slimta.edge.smtp.SmtpValidators.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> <code class="docutils literal notranslate"><span class="pre">auth</span></code> attribute now
+correctly contains the tuple described in the documentation.</p></li>
 </ul>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -188,17 +187,15 @@ correctly contains the tuple described in the documentation.</p>
                           title="Next page">&rarr; A Little Bit of History</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
     
@@ -237,9 +234,10 @@ correctly contains the tuple described in the documentation.</p>
         <li class="right" >
           <a href="2020-10-30.html" title="Extension Consolidation"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Slimta Blog</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Slimta Blog</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Version 4.0.0 Released</a></li> 
       </ul>
     </div>
     </div>

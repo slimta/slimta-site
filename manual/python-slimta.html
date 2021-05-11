@@ -1,38 +1,37 @@
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Python Library Usage &#8212; slimta 4.1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Python Library Usage &#8212; slimta 4.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
 
     
     
      
-        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+        <script src="../_static/jquery.cookie.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+        <script src="../_static/cloud.base.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.js"></script>
+        <script src="../_static/cloud.js"></script>
     
 
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
@@ -59,9 +58,10 @@
         <li class="right" >
           <a href="terminology.html" title="Terminology"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Usage Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Usage Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Python Library Usage</a></li> 
       </ul>
     </div>
     </div>
@@ -72,7 +72,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="python-library-usage">
+  <section id="python-library-usage">
 <h1>Python Library Usage<a class="headerlink" href="#python-library-usage" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
@@ -85,42 +85,48 @@ and decided it’s what you want, you can use the
 <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code></a> reference page for details on exactly what
 arguments it takes and what they mean.</p>
 <ul class="simple">
-<li><a class="reference internal" href="system.html"><span class="doc">System Helpers</span></a></li>
-<li><a class="reference internal" href="envelopes.html"><span class="doc">Envelope Objects</span></a><ul>
-<li><a class="reference internal" href="envelopes.html#envelope-bounces"><span class="std std-ref">Bounces</span></a></li>
+<li><p><a class="reference internal" href="system.html"><span class="doc">System Helpers</span></a></p></li>
+<li><p><a class="reference internal" href="envelopes.html"><span class="doc">Envelope Objects</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="envelopes.html#envelope-bounces"><span class="std std-ref">Bounces</span></a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="edge.html"><span class="doc">Edge Services</span></a><ul>
-<li><a class="reference internal" href="edge.html#edge-smtp"><span class="std std-ref">SMTP</span></a></li>
-<li><a class="reference internal" href="edge.html#edge-http"><span class="std std-ref">HTTP</span></a></li>
+<li><p><a class="reference internal" href="edge.html"><span class="doc">Edge Services</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="edge.html#edge-smtp"><span class="std std-ref">SMTP</span></a></p></li>
+<li><p><a class="reference internal" href="edge.html#edge-http"><span class="std std-ref">HTTP</span></a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="queue.html"><span class="doc">Queue Services</span></a></li>
-<li><a class="reference internal" href="relay.html"><span class="doc">Relay Services</span></a><ul>
-<li><a class="reference internal" href="relay.html#relay-smtp-smarthost"><span class="std std-ref">SMTP Smart-Hosting</span></a></li>
-<li><a class="reference internal" href="relay.html#relay-smtp-mx"><span class="std std-ref">SMTP MX</span></a></li>
-<li><a class="reference internal" href="relay.html#relay-lmtp"><span class="std std-ref">LMTP</span></a></li>
-<li><a class="reference internal" href="relay.html#relay-http"><span class="std std-ref">HTTP</span></a></li>
-<li><a class="reference internal" href="relay.html#relay-pipe"><span class="std std-ref">External Processes</span></a></li>
+<li><p><a class="reference internal" href="queue.html"><span class="doc">Queue Services</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html"><span class="doc">Relay Services</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="relay.html#relay-smtp-smarthost"><span class="std std-ref">SMTP Smart-Hosting</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-smtp-mx"><span class="std std-ref">SMTP MX</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-lmtp"><span class="std std-ref">LMTP</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-http"><span class="std std-ref">HTTP</span></a></p></li>
+<li><p><a class="reference internal" href="relay.html#relay-pipe"><span class="std std-ref">External Processes</span></a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="policies.html"><span class="doc">Policy Implementation</span></a><ul>
-<li><a class="reference internal" href="policies.html#policy-add-date-header"><span class="std std-ref">Date Header</span></a></li>
-<li><a class="reference internal" href="policies.html#policy-add-message-id-header"><span class="std std-ref">Message-Id Header</span></a></li>
-<li><a class="reference internal" href="policies.html#policy-add-received-header"><span class="std std-ref">Received Header</span></a></li>
-<li><a class="reference internal" href="policies.html#policy-forwarding"><span class="std std-ref">Recipient Forwarding</span></a></li>
-<li><a class="reference internal" href="policies.html#policy-spamassassin"><span class="std std-ref">SpamAssassin</span></a></li>
+<li><p><a class="reference internal" href="policies.html"><span class="doc">Policy Implementation</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="policies.html#policy-add-date-header"><span class="std std-ref">Date Header</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-add-message-id-header"><span class="std std-ref">Message-Id Header</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-add-received-header"><span class="std std-ref">Received Header</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-forwarding"><span class="std std-ref">Recipient Forwarding</span></a></p></li>
+<li><p><a class="reference internal" href="policies.html#policy-spamassassin"><span class="std std-ref">SpamAssassin</span></a></p></li>
 </ul>
 </li>
-<li><a class="reference internal" href="integrating.html"><span class="doc">Integrating Everything</span></a><ul>
-<li><a class="reference internal" href="mda.html"><span class="doc">Mail Delivery Agent</span></a></li>
-<li><a class="reference internal" href="msa.html"><span class="doc">Mail Submission Agent</span></a></li>
+<li><p><a class="reference internal" href="integrating.html"><span class="doc">Integrating Everything</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="mda.html"><span class="doc">Mail Delivery Agent</span></a></p></li>
+<li><p><a class="reference internal" href="msa.html"><span class="doc">Mail Submission Agent</span></a></p></li>
 </ul>
 </li>
 </ul>
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -140,17 +146,15 @@ arguments it takes and what they mean.</p>
                           title="Next page">&rarr; System Helpers</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
     
@@ -189,9 +193,10 @@ arguments it takes and what they mean.</p>
         <li class="right" >
           <a href="terminology.html" title="Terminology"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Python Library Usage</a></li> 
       </ul>
     </div>
     </div>

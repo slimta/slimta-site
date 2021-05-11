@@ -1,38 +1,37 @@
 
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slimta.edge.smtp &#8212; slimta 4.1.1 documentation</title>
-    <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>slimta.edge.smtp &#8212; slimta 4.2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
 
     
     
      
-        <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
+        <script src="../_static/jquery.cookie.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.base.js"></script>
+        <script src="../_static/cloud.base.js"></script>
     
 
     
      
-        <script type="text/javascript" src="../_static/cloud.js"></script>
+        <script src="../_static/cloud.js"></script>
     
 
     <link rel="shortcut icon" href="../_static/slimta.ico"/>
@@ -59,11 +58,12 @@
         <li class="right" >
           <a href="slimta.edge.html" title="slimta.edge"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="slimta.edge.html" accesskey="U">slimta.edge</a> &#187;</li> 
+          <li class="nav-item nav-item-3"><a href="slimta.edge.html" accesskey="U">slimta.edge</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.edge.smtp</a></li> 
       </ul>
     </div>
     </div>
@@ -74,13 +74,70 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-slimta.edge.smtp">
+  <section id="module-slimta.edge.smtp">
 <span id="slimta-edge-smtp"></span><h1>slimta.edge.smtp<a class="headerlink" href="#module-slimta.edge.smtp" title="Permalink to this headline">¶</a></h1>
 <p>Implements an <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> that receives messages with the SMTP protocol.
 Attempts to follow the SMTP server RFCs.</p>
-<dl class="class">
-<dt id="slimta.edge.smtp.SmtpValidators">
-<em class="property">class </em><code class="descclassname">slimta.edge.smtp.</code><code class="descname">SmtpValidators</code><span class="sig-paren">(</span><em>session</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpValidators" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="slimta.edge.smtp.SmtpEdge">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.edge.smtp.</span></span><span class="sig-name descname"><span class="pre">SmtpEdge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">listener</span></em>, <em class="sig-param"><span class="pre">queue</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">pool=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">max_size=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">validator_class=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">auth=False</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">context=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">tls_immediately=False</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">command_timeout=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">data_timeout=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">hostname=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">session_class=None</span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpEdge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.edge.EdgeServer</span></code></a></p>
+<p>Class that uses <a class="reference internal" href="slimta.smtp.server.html#module-slimta.smtp.server" title="slimta.smtp.server"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.smtp.server</span></code></a> to implement an edge
+service to receive messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>listener</strong> – <code class="docutils literal notranslate"><span class="pre">(ip,</span> <span class="pre">port)</span></code> tuple to listen on, as described in
+<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>.</p></li>
+<li><p><strong>queue</strong> – <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> object for handing off messages, as described in
+<a class="reference internal" href="slimta.edge.html#slimta.edge.Edge.handoff" title="slimta.edge.Edge.handoff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handoff()</span></code></a>.</p></li>
+<li><p><strong>pool</strong> – Optional greenlet pool, as described in <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a>.</p></li>
+<li><p><strong>max_size</strong> – Maximum size of incoming messages.</p></li>
+<li><p><strong>validator_class</strong> – <a class="reference internal" href="#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> sub-class to validate
+commands and alter replies.</p></li>
+<li><p><strong>auth</strong> – If True, enable authentication with default mechanisms. May
+also be given as a list of SASL mechanism names to support,
+e.g. <code class="docutils literal notranslate"><span class="pre">['PLAIN',</span> <span class="pre">'LOGIN',</span> <span class="pre">'CRAM-MD5']</span></code>.</p></li>
+<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Enables SSL encryption on connected sockets using the
+information given in the context.</p></li>
+<li><p><strong>tls_immediately</strong> – If True, connections will be encrypted
+immediately before the SMTP banner, rather than
+advertising the <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code> extension.</p></li>
+<li><p><strong>command_timeout</strong> – Seconds before the connection times out waiting
+for a command.</p></li>
+<li><p><strong>data_timeout</strong> – Seconds before the connection times out while
+receiving data. This is a cumulative timeout that
+is not tricked by the client sending data.</p></li>
+<li><p><strong>hostname</strong> – String identifying the local machine. See <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> for more
+details.</p></li>
+<li><p><strong>session_class</strong> – Optional <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpSession</span></code> sub-class to be used
+instead of the default one.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="slimta.edge.smtp.SmtpEdge.handle">
+<span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpEdge.handle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this function to receive messages on the socket and call
+<a class="reference internal" href="slimta.edge.html#slimta.edge.Edge.handoff" title="slimta.edge.Edge.handoff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handoff()</span></code></a> with each received <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>socket</strong> – The socket for the connected client.</p></li>
+<li><p><strong>address</strong> – The address of the connected client.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="slimta.edge.smtp.SmtpValidators">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.edge.smtp.</span></span><span class="sig-name descname"><span class="pre">SmtpValidators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpValidators" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class for implementing SMTP command validators.</p>
 <p>Sub-classes may implement some or all of the following functions. Leaving
@@ -88,57 +145,56 @@ the <cite>reply</cite> argument untouched will return the default, successful re
 from the command. Setting the response code to <code class="docutils literal notranslate"><span class="pre">421</span></code> or <code class="docutils literal notranslate"><span class="pre">221</span></code> will
 close the connection.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference external" href="https://tools.ietf.org/html/rfc2821#section-4.2">RFC 2821 4.2</a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc2821#section-4.2">RFC 2821 4.2</a></p>
 </div>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">handle_banner(reply,</span> <span class="pre">address)</span></code>: Validate connecting address before
-sending the SMTP banner.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_ehlo(reply,</span> <span class="pre">ehlo_as)</span></code>: Validate the EHLO string.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_helo(reply,</span> <span class="pre">helo_as)</span></code>: Validate the HELO string.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_auth(reply,</span> <span class="pre">creds)</span></code>: Validate an authentication attempt, given
-a <code class="xref py py-class docutils literal notranslate"><span class="pre">AuthenticationCredentials</span></code> object.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_mail(reply,</span> <span class="pre">sender,</span> <span class="pre">params)</span></code>: Validate the sender address.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_rcpt(reply,</span> <span class="pre">recipient,</span> <span class="pre">params)</span></code>: Validate one recipient
-address.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_data(reply)</span></code>: Any remaining validation before receiving data.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_have_data(reply,</span> <span class="pre">data)</span></code>: Validate the received message data.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_queued(reply,</span> <span class="pre">results)</span></code>: Once the message has been queued,
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_banner(reply,</span> <span class="pre">address)</span></code>: Validate connecting address before
+sending the SMTP banner.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_ehlo(reply,</span> <span class="pre">ehlo_as)</span></code>: Validate the EHLO string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_helo(reply,</span> <span class="pre">helo_as)</span></code>: Validate the HELO string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_auth(reply,</span> <span class="pre">creds)</span></code>: Validate an authentication attempt, given
+a <code class="xref py py-class docutils literal notranslate"><span class="pre">AuthenticationCredentials</span></code> object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_mail(reply,</span> <span class="pre">sender,</span> <span class="pre">params)</span></code>: Validate the sender address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_rcpt(reply,</span> <span class="pre">recipient,</span> <span class="pre">params)</span></code>: Validate one recipient
+address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_data(reply)</span></code>: Any remaining validation before receiving data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_have_data(reply,</span> <span class="pre">data)</span></code>: Validate the received message data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_queued(reply,</span> <span class="pre">results)</span></code>: Once the message has been queued,
 modify the returned <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> using the <code class="docutils literal notranslate"><span class="pre">results</span></code> from calling
-<a class="reference internal" href="slimta.queue.html#slimta.queue.Queue.enqueue" title="slimta.queue.Queue.enqueue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">enqueue()</span></code></a>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_rset(reply)</span></code>: Called before replying to an RSET command.</li>
-<li><code class="docutils literal notranslate"><span class="pre">handle_tls()</span></code>: Called after a successful TLS handshake. This may be at
-the beginning of the session or after a <cite>STARTTLS</cite> command.</li>
+<a class="reference internal" href="slimta.queue.html#slimta.queue.Queue.enqueue" title="slimta.queue.Queue.enqueue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">enqueue()</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_rset(reply)</span></code>: Called before replying to an RSET command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_tls()</span></code>: Called after a successful TLS handshake. This may be at
+the beginning of the session or after a <cite>STARTTLS</cite> command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handle_tls2(ssl_socket)</span></code>: Identical to <code class="docutils literal notranslate"><span class="pre">handle_tls()</span></code> except the new
+<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLSocket" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLSocket</span></code></a> is passed in as an argument.</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>session</strong> – When sub-classes are instantiated, instances are passed
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>session</strong> – When sub-classes are instantiated, instances are passed
 this object, stored and described in <a class="reference internal" href="#slimta.edge.smtp.SmtpValidators.session" title="slimta.edge.smtp.SmtpValidators.session"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session</span></code></a> below,
-that have useful information about the current session.</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="slimta.edge.smtp.SmtpValidators.session">
-<code class="descname">session</code><em class="property"> = None</em><a class="headerlink" href="#slimta.edge.smtp.SmtpValidators.session" title="Permalink to this definition">¶</a></dt>
+that have useful information about the current session.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="slimta.edge.smtp.SmtpValidators.session">
+<span class="sig-name descname"><span class="pre">session</span></span><a class="headerlink" href="#slimta.edge.smtp.SmtpValidators.session" title="Permalink to this definition">¶</a></dt>
 <dd><p>This instance attribute is an object that has its own set of
 attributes which may be useful in validation:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">address</span></code>: The address tuple of the connecting client.</li>
-<li><code class="docutils literal notranslate"><span class="pre">extended_smtp</span></code>: The client used EHLO instead of HELO.</li>
-<li><code class="docutils literal notranslate"><span class="pre">security</span></code>: Security of connection, <code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">'TLS'</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">ehlo_as</span></code>: The EHLO or HELO string given by the client.</li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">auth</span></code>: A tuple of the form <code class="docutils literal notranslate"><span class="pre">(authcid,</span> <span class="pre">authzid)</span></code> if the</dt>
-<dd>client has authenticated.</dd>
+<li><p><code class="docutils literal notranslate"><span class="pre">address</span></code>: The address tuple of the connecting client.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extended_smtp</span></code>: The client used EHLO instead of HELO.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">security</span></code>: Security of connection, <code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">'TLS'</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ehlo_as</span></code>: The EHLO or HELO string given by the client.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">auth</span></code>: A tuple of the form <code class="docutils literal notranslate"><span class="pre">(authcid,</span> <span class="pre">authzid)</span></code> if the</dt><dd><p>client has authenticated.</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">envelope</span></code>: The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> being pieced together to send by the</dt>
-<dd>connecting client.</dd>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">envelope</span></code>: The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> being pieced together to send by the</dt><dd><p>connecting client.</p>
+</dd>
 </dl>
 </li>
 </ul>
@@ -147,74 +203,10 @@ attributes which may be useful in validation:</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="slimta.edge.smtp.SmtpEdge">
-<em class="property">class </em><code class="descclassname">slimta.edge.smtp.</code><code class="descname">SmtpEdge</code><span class="sig-paren">(</span><em>listener</em>, <em>queue</em><span class="optional">[</span>, <em>pool=None</em><span class="optional">[</span>, <em>max_size=None</em><span class="optional">[</span>, <em>validator_class=None</em><span class="optional">[</span>, <em>auth=False</em><span class="optional">[</span>, <em>context=None</em><span class="optional">[</span>, <em>tls_immediately=False</em><span class="optional">[</span>, <em>command_timeout=None</em><span class="optional">[</span>, <em>data_timeout=None</em><span class="optional">[</span>, <em>hostname=None</em><span class="optional">[</span>, <em>session_class=None</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpEdge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.edge.EdgeServer</span></code></a></p>
-<p>Class that uses <a class="reference internal" href="slimta.smtp.server.html#module-slimta.smtp.server" title="slimta.smtp.server"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.smtp.server</span></code></a> to implement an edge
-service to receive messages.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>listener</strong> – <code class="docutils literal notranslate"><span class="pre">(ip,</span> <span class="pre">port)</span></code> tuple to listen on, as described in
-<a class="reference internal" href="slimta.edge.html#slimta.edge.EdgeServer" title="slimta.edge.EdgeServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">EdgeServer</span></code></a>.</li>
-<li><strong>queue</strong> – <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> object for handing off messages, as described in
-<a class="reference internal" href="slimta.edge.html#slimta.edge.Edge.handoff" title="slimta.edge.Edge.handoff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handoff()</span></code></a>.</li>
-<li><strong>pool</strong> – Optional greenlet pool, as described in <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a>.</li>
-<li><strong>max_size</strong> – Maximum size of incoming messages.</li>
-<li><strong>validator_class</strong> – <a class="reference internal" href="#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> sub-class to validate
-commands and alter replies.</li>
-<li><strong>auth</strong> – If True, enable authentication with default mechanisms. May
-also be given as a list of SASL mechanism names to support,
-e.g. <code class="docutils literal notranslate"><span class="pre">['PLAIN',</span> <span class="pre">'LOGIN',</span> <span class="pre">'CRAM-MD5']</span></code>.</li>
-<li><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Enables SSL encryption on connected sockets using the
-information given in the context.</li>
-<li><strong>tls_immediately</strong> – If True, connections will be encrypted
-immediately before the SMTP banner, rather than
-advertising the <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code> extension.</li>
-<li><strong>command_timeout</strong> – Seconds before the connection times out waiting
-for a command.</li>
-<li><strong>data_timeout</strong> – Seconds before the connection times out while
-receiving data. This is a cumulative timeout that
-is not tricked by the client sending data.</li>
-<li><strong>hostname</strong> – String identifying the local machine. See <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> for more
-details.</li>
-<li><strong>session_class</strong> – Optional <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpSession</span></code> sub-class to be used
-instead of the default one.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="method">
-<dt id="slimta.edge.smtp.SmtpEdge.handle">
-<code class="descname">handle</code><span class="sig-paren">(</span><em>socket</em>, <em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.edge.smtp.SmtpEdge.handle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Override this function to receive messages on the socket and call
-<a class="reference internal" href="slimta.edge.html#slimta.edge.Edge.handoff" title="slimta.edge.Edge.handoff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handoff()</span></code></a> with each received <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>socket</strong> – The socket for the connected client.</li>
-<li><strong>address</strong> – The address of the connected client.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code></a></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -234,17 +226,15 @@ instead of the default one.</li>
                           title="Next page">&rarr; slimta.edge.wsgi</a></p>
   </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
     
@@ -283,11 +273,12 @@ instead of the default one.</li>
         <li class="right" >
           <a href="slimta.edge.html" title="slimta.edge"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.1.1 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="slimta.edge.html" >slimta.edge</a> &#187;</li> 
+          <li class="nav-item nav-item-3"><a href="slimta.edge.html" >slimta.edge</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">slimta.edge.smtp</a></li> 
       </ul>
     </div>
     </div>
