@@ -1,10 +1,5 @@
-sphinx < 2
+sphinx
 cloud_sptheme
-pyspf
-py3dns
-redis
-pyaio
-boto
--e git+https://github.com/slimta/python-slimta.git#egg=python_slimta-dev
--e git+https://github.com/slimta/python-slimta-celeryqueue.git#egg=python_slimta_celeryqueue-dev
--e git+https://github.com/slimta/slimta.git#egg=slimta-dev
+
+python-slimta[spf,redis,aws,disk]
+slimta
