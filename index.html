@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta: Mail Transfer Library &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta: Mail Transfer Library &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -54,7 +54,7 @@
         <li class="right" >
           <a href="license.html" title="MIT License"
              accesskey="N">next</a> &nbsp; &nbsp;</li>
-    <li><a href="#">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="#">slimta 5.0.0 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">slimta: Mail Transfer Library</a></li> 
       </ul>
@@ -152,39 +152,39 @@ the useful, built-in features needed for a normal mail system setup.</p>
 <li><p><a class="reference external" href="https://github.com/slimta/slimta/issues">Bug Reports</a></p></li>
 <li><p><a class="reference internal" href="manual/slimta.html"><span class="doc">Configuration and Setup Guide</span></a></p></li>
 </ol>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">process</span><span class="p">:</span>
-  <span class="nt">slimta</span><span class="p">:</span>
-    <span class="nt">daemon</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">process</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">slimta</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">daemon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
-<span class="nt">tls</span><span class="p">:</span>
-  <span class="nt">main</span><span class="p">:</span> <span class="nl">&amp;tls_main</span>
-    <span class="nt">certfile</span><span class="p">:</span> <span class="s">&#39;/path/to/cert.pem&#39;</span>
-    <span class="nt">keyfile</span><span class="p">:</span> <span class="s">&#39;/path/to/key.pem&#39;</span>
+<span class="nt">tls</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">main</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;tls_main</span><span class="w"></span>
+<span class="w">    </span><span class="nt">certfile</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/path/to/cert.pem&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">keyfile</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/path/to/key.pem&#39;</span><span class="w"></span>
 
-<span class="nt">edge</span><span class="p">:</span>
-  <span class="nt">outbound</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">smtp</span>
-    <span class="nt">queue</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">outbound</span>
-    <span class="nt">listener</span><span class="p">:</span>
-      <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;127.0.0.1&#39;</span>
-      <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">587</span>
-    <span class="nt">tls</span><span class="p">:</span> <span class="nv">*tls_main</span>
-    <span class="nt">rules</span><span class="p">:</span> <span class="kt">!include</span> <span class="l l-Scalar l-Scalar-Plain">rules.yaml</span>
+<span class="nt">edge</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">outbound</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">smtp</span><span class="w"></span>
+<span class="w">    </span><span class="nt">queue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound</span><span class="w"></span>
+<span class="w">    </span><span class="nt">listener</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;127.0.0.1&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">587</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span><span class="w"> </span><span class="nv">*tls_main</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rules</span><span class="p">:</span><span class="w"> </span><span class="kt">!include</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rules.yaml</span><span class="w"></span>
 
-<span class="nt">queue</span><span class="p">:</span>
-  <span class="nt">outbound</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">memory</span>
-    <span class="nt">relay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">outbound</span>
-    <span class="nt">policies</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">add_date_header</span> <span class="p p-Indicator">}</span>
-      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">add_messageid_header</span> <span class="p p-Indicator">}</span>
-      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">add_received_header</span> <span class="p p-Indicator">}</span>
-      <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span> <span class="nv">recipient_domain_split</span> <span class="p p-Indicator">}</span>
+<span class="nt">queue</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">outbound</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span><span class="w"></span>
+<span class="w">    </span><span class="nt">relay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound</span><span class="w"></span>
+<span class="w">    </span><span class="nt">policies</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">add_date_header</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">add_messageid_header</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">add_received_header</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">recipient_domain_split</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
 
-<span class="nt">relay</span><span class="p">:</span>
-  <span class="nt">outbound</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mx</span>
-    <span class="nt">tls</span><span class="p">:</span> <span class="nv">*tls_main</span>
+<span class="nt">relay</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">outbound</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mx</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tls</span><span class="p">:</span><span class="w"> </span><span class="nv">*tls_main</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -219,7 +219,7 @@ the useful, built-in features needed for a normal mail system setup.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -260,7 +260,7 @@ the useful, built-in features needed for a normal mail system setup.</p>
         <li class="right" >
           <a href="license.html" title="MIT License"
              >next</a> &nbsp; &nbsp;</li>
-    <li><a href="#">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="#">slimta 5.0.0 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">slimta: Mail Transfer Library</a></li> 
       </ul>

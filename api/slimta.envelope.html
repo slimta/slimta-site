@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.envelope &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.envelope &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.http.wsgi.html" title="slimta.http.wsgi"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
@@ -79,8 +79,8 @@
 metadata.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.envelope.Envelope">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.envelope.</span></span><span class="sig-name descname"><span class="pre">Envelope</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">sender=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">recipients=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">headers=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">message=None</span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.envelope.</span></span><span class="sig-name descname"><span class="pre">Envelope</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">sender=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">recipients=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">headers=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">message=None</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class containing message data and metadata. This class acts like an
 envelope with the sending address, recipient(s), and the actual message.</p>
 <dl class="field-list simple">
@@ -88,8 +88,8 @@ envelope with the sending address, recipient(s), and the actual message.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sender</strong> – The address that sent the message.</p></li>
 <li><p><strong>recipients</strong> – List of addresses to receive the message.</p></li>
-<li><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a>) – The message headers.</p></li>
-<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – String containing the message contents after the headers.</p></li>
+<li><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a>) – The message headers.</p></li>
+<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – String containing the message contents after the headers.</p></li>
 </ul>
 </dd>
 </dl>
@@ -108,7 +108,7 @@ envelope with the sending address, recipient(s), and the actual message.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="slimta.envelope.Envelope.headers">
 <span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#slimta.envelope.Envelope.headers" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a> object for accessing and modifying
+<dd><p><a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a> object for accessing and modifying
 message headers.</p>
 </dd></dl>
 
@@ -178,7 +178,7 @@ prepending.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.envelope.Envelope.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">new_rcpts=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.copy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">new_rcpts=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Builds and returns an exact copy if the current object. This method
 uses a deep-copying so internal datastructures are not shared.</p>
 <dl class="field-list simple">
@@ -205,7 +205,7 @@ this value in the new object.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.envelope.Envelope.encode_7bit">
-<span class="sig-name descname"><span class="pre">encode_7bit</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">encoder=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.encode_7bit" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">encode_7bit</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">encoder=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.encode_7bit" title="Permalink to this definition">¶</a></dt>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 0.3.12.</span></p>
 </div>
@@ -213,12 +213,12 @@ this value in the new object.</p>
 servers that do not support the <code class="docutils literal notranslate"><span class="pre">8BITMIME</span></code> extension.</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">encoder</span></code> function is not given, this function is relatively
 cheap and will just check the message body for 8-bit characters
-(raising <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UnicodeDecodeError" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">UnicodeDecodeError</span></code></a> if any are found).  Otherwise,
+(raising <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UnicodeDecodeError" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">UnicodeDecodeError</span></code></a> if any are found).  Otherwise,
 this method can be very expensive. It will parse the entire message
 into MIME parts in order to encode parts that are not 7-bit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used to
+<dd class="field-odd"><p><strong>encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used to
 encode MIME parts that are not 7-bit.</p>
 </dd>
 <dt class="field-even">Raises</dt>
@@ -230,11 +230,11 @@ encode MIME parts that are not 7-bit.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.envelope.Envelope.parse_msg">
 <span class="sig-name descname"><span class="pre">parse_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.parse_msg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses the given <a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a> to
+<dd><p>Parses the given <a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a> to
 populate the <a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">headers</span></code></a> and <a class="reference internal" href="#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><code class="xref py py-attr docutils literal notranslate"><span class="pre">message</span></code></a> attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a>) – The complete message, headers and message body.</p>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a>) – The complete message, headers and message body.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -246,7 +246,7 @@ populate the <a class="reference internal" href="#slimta.envelope.Envelope.heade
 <a class="reference internal" href="#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><code class="xref py py-attr docutils literal notranslate"><span class="pre">message</span></code></a> attributes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The complete message, headers and message body.</p>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The complete message, headers and message body.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -279,7 +279,7 @@ populate the <a class="reference internal" href="#slimta.envelope.Envelope.heade
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -323,7 +323,7 @@ populate the <a class="reference internal" href="#slimta.envelope.Envelope.heade
         <li class="right" >
           <a href="slimta.http.wsgi.html" title="slimta.http.wsgi"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

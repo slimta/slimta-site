@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.smtp.extensions &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.smtp.extensions &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.smtp.server.html" title="slimta.smtp.server"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -79,15 +79,14 @@
 <p>Manages the SMTP extensions offered by a server or available to a client.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.smtp.extensions.Extensions">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.extensions.</span></span><span class="sig-name descname"><span class="pre">Extensions</span></span><a class="headerlink" href="#slimta.smtp.extensions.Extensions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.extensions.</span></span><span class="sig-name descname"><span class="pre">Extensions</span></span><a class="headerlink" href="#slimta.smtp.extensions.Extensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class that simplifies the usage of SMTP extensions. Along with an
 extension, a simple string parameter can be stored if necessary.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.smtp.extensions.Extensions.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.smtp.extensions.Extensions.reset">
@@ -113,7 +112,7 @@ desired extension, e.g. <code class="docutils literal notranslate"><span class="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.smtp.extensions.Extensions.getparam">
-<span class="sig-name descname"><span class="pre">getparam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">ext</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">filter=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.getparam" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">getparam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">filter=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.getparam" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the parameter associated with an extension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -133,7 +132,7 @@ doesn’t have a parameter, or the filter function raises
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.smtp.extensions.Extensions.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">ext</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">param=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.add" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">param=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.extensions.Extensions.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a new supported extension. This is useful for servers to
 advertise their offered extensions.</p>
 <dl class="field-list simple">
@@ -188,7 +187,7 @@ to a EHLO command, without the code prefixed to each line.</p>
 free-form message response for the EHLO command.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -227,7 +226,7 @@ free-form message response for the EHLO command.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -271,7 +270,7 @@ free-form message response for the EHLO command.</p>
         <li class="right" >
           <a href="slimta.smtp.server.html" title="slimta.smtp.server"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

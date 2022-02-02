@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.util.spf &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.util.spf &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -50,7 +50,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">slimta.util.spf</a></li> 
       </ul>
@@ -69,8 +69,8 @@
 client address.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.util.spf.EnforceSpf">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.util.spf.</span></span><span class="sig-name descname"><span class="pre">EnforceSpf</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">timeout=10.0</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.util.spf.</span></span><span class="sig-name descname"><span class="pre">EnforceSpf</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">timeout=10.0</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Class used to check SPF records and enforce a policy against the
 results.  By default, results are logged but not acted upon.</p>
 <dl class="field-list simple">
@@ -81,7 +81,7 @@ that times out is equivalent to a <code class="docutils literal notranslate"><sp
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.util.spf.EnforceSpf.set_enforcement">
-<span class="sig-name descname"><span class="pre">set_enforcement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">result</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">match_code='550'</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">match_message='5.7.1</span> <span class="pre">Access</span> <span class="pre">denied'</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf.set_enforcement" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_enforcement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">match_code='550'</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">match_message='5.7.1</span> <span class="pre">Access</span> <span class="pre">denied'</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.spf.EnforceSpf.set_enforcement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an enforcement policy to a particular SPF result. If the given
 result is seen, the <code class="docutils literal notranslate"><span class="pre">MAIL</span> <span class="pre">FROM</span></code> reply is set accordingly.</p>
 <dl class="field-list simple">
@@ -155,7 +155,7 @@ method to decorate.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -193,7 +193,7 @@ method to decorate.</p>
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">slimta.util.spf</a></li> 
       </ul>

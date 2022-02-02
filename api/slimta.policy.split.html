@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.policy.split &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.policy.split &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.policy.forward.html" title="slimta.policy.forward"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -81,7 +81,7 @@ logical groups. This is useful for relayers that may not handle multi-recipient
 messages well, such as <a class="reference internal" href="slimta.relay.smtp.mx.html#slimta.relay.smtp.mx.MxSmtpRelay" title="slimta.relay.smtp.mx.MxSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">MxSmtpRelay</span></code></a>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.policy.split.RecipientSplit">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.policy.split.</span></span><span class="sig-name descname"><span class="pre">RecipientSplit</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.split.RecipientSplit" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.policy.split.</span></span><span class="sig-name descname"><span class="pre">RecipientSplit</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">*args</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.split.RecipientSplit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>If a given <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> has more than one recipient, this policy splits
 it, generating a list of new <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object copies where each has
@@ -113,7 +113,7 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
 
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.policy.split.RecipientDomainSplit">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.policy.split.</span></span><span class="sig-name descname"><span class="pre">RecipientDomainSplit</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.split.RecipientDomainSplit" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.policy.split.</span></span><span class="sig-name descname"><span class="pre">RecipientDomainSplit</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">*args</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.split.RecipientDomainSplit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>If a given <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> recipients of more than one unique domain (case-
 insensitive), this policy splits it generating a list of new
@@ -171,7 +171,7 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -215,7 +215,7 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
         <li class="right" >
           <a href="slimta.policy.forward.html" title="slimta.policy.forward"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.http.wsgi &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.http.wsgi &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.http.html" title="slimta.http"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -80,15 +80,15 @@
 automatically logged with <a class="reference internal" href="slimta.logging.http.html#module-slimta.logging.http" title="slimta.logging.http"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.logging.http</span></code></a>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.http.wsgi.WsgiServer">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.http.wsgi.</span></span><span class="sig-name descname"><span class="pre">WsgiServer</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.http.wsgi.</span></span><span class="sig-name descname"><span class="pre">WsgiServer</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">*args</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Implements the base class for a WSGI server that logs its requests and
 responses and can easily be deployed as a functioning HTTP server.</p>
 <p>Instances of this class can be used as applications in WSGI server engines,
 or <a class="reference internal" href="#slimta.http.wsgi.WsgiServer.build_server" title="slimta.http.wsgi.WsgiServer.build_server"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build_server()</span></code></a> can be used.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.http.wsgi.WsgiServer.build_server">
-<span class="sig-name descname"><span class="pre">build_server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">listener</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">pool=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">ssl_args=None</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer.build_server" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">build_server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listener</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">pool=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">ssl_args=None</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.http.wsgi.WsgiServer.build_server" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs and returns a WSGI server engine, configured to use the
 current object as its application.</p>
 <dl class="field-list simple">
@@ -96,15 +96,15 @@ current object as its application.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>listener</strong> – Usually a <code class="docutils literal notranslate"><span class="pre">(ip,</span> <span class="pre">port)</span></code> tuple defining the interface
 and port upon which to listen for connections.</p></li>
-<li><p><strong>pool</strong> – If given, defines a specific <a class="reference external" href="http://www.gevent.org/api/gevent.pool.html#gevent.pool.Pool" title="(in gevent v21.1.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pool.Pool</span></code></a> to
+<li><p><strong>pool</strong> – If given, defines a specific <a class="reference external" href="http://www.gevent.org/api/gevent.pool.html#gevent.pool.Pool" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pool.Pool</span></code></a> to
 use for new greenlets.</p></li>
 <li><p><strong>ssl_args</strong> – Optional dictionary of TLS settings, causing sockets
 to be encrypted on connection. See
-<a class="reference external" href="http://www.gevent.org/api/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v21.1.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">WSGIServer</span></code></a> for details.</p></li>
+<a class="reference external" href="http://www.gevent.org/api/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">WSGIServer</span></code></a> for details.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference external" href="http://www.gevent.org/api/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v21.1.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pywsgi.WSGIServer</span></code></a></p>
+<dd class="field-even"><p><a class="reference external" href="http://www.gevent.org/api/gevent.pywsgi.html#gevent.pywsgi.WSGIServer" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.pywsgi.WSGIServer</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -171,7 +171,7 @@ request is then proxied to <a class="reference internal" href="#slimta.http.wsgi
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -215,7 +215,7 @@ request is then proxied to <a class="reference internal" href="#slimta.http.wsgi
         <li class="right" >
           <a href="slimta.http.html" title="slimta.http"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

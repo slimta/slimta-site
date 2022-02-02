@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.smtp &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.smtp &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.relay.http.html" title="slimta.relay.http"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
@@ -78,21 +78,21 @@
 <p>Root package for <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> SMTP client and server libraries.</p>
 <dl class="py exception">
 <dt class="sig sig-object py" id="slimta.smtp.SmtpError">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">SmtpError</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.SmtpError" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">SmtpError</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">*args</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.SmtpError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.core.SlimtaError</span></code></p>
 <p>Base exception for all custom SMTP exceptions.</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="slimta.smtp.ConnectionLost">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">ConnectionLost</span></span><a class="headerlink" href="#slimta.smtp.ConnectionLost" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">ConnectionLost</span></span><a class="headerlink" href="#slimta.smtp.ConnectionLost" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
 <p>Thrown when the socket is closed prematurely.</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="slimta.smtp.MessageTooBig">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">MessageTooBig</span></span><a class="headerlink" href="#slimta.smtp.MessageTooBig" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">MessageTooBig</span></span><a class="headerlink" href="#slimta.smtp.MessageTooBig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
 <p>Thrown when a message exceeds the maximum size given by the SMTP
 <code class="docutils literal notranslate"><span class="pre">SIZE</span></code> extension, if supported.</p>
@@ -100,7 +100,7 @@
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="slimta.smtp.BadReply">
-<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">BadReply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.BadReply" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">BadReply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.BadReply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
 <p>Thrown when an SMTP server replies with a syntax-invalid code.</p>
 <dl class="field-list simple">
@@ -147,7 +147,7 @@ available in the <code class="docutils literal notranslate"><span class="pre">da
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -191,7 +191,7 @@ available in the <code class="docutils literal notranslate"><span class="pre">da
         <li class="right" >
           <a href="slimta.relay.http.html" title="slimta.relay.http"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

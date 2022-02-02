@@ -14,6 +14,5 @@ slimta.cloudstorage
 
 .. toctree::
 
-   slimta.cloudstorage.rackspace
    slimta.cloudstorage.aws
 

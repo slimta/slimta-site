@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.logging.socket &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.logging.socket &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.logging.html" title="slimta.logging"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -79,27 +79,27 @@
 <p>Utilities to make logging consistent and easy for any socket interaction.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.logging.socket.socket_error_log_level">
-<span class="sig-prename descclassname"><span class="pre">slimta.logging.socket.</span></span><span class="sig-name descname"><span class="pre">socket_error_log_level</span></span><em class="property"> <span class="pre">=</span> <span class="pre">40</span></em><a class="headerlink" href="#slimta.logging.socket.socket_error_log_level" title="Permalink to this definition">¶</a></dt>
-<dd><p>The log level for logging <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.error" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.error</span></code></a> exceptions. The default log
+<span class="sig-prename descclassname"><span class="pre">slimta.logging.socket.</span></span><span class="sig-name descname"><span class="pre">socket_error_log_level</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#slimta.logging.socket.socket_error_log_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>The log level for logging <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.error" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.error</span></code></a> exceptions. The default log
 level is <code class="docutils literal notranslate"><span class="pre">logging.ERROR</span></code>.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.logging.socket.</span></span><span class="sig-name descname"><span class="pre">SocketLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.logging.socket.</span></span><span class="sig-name descname"><span class="pre">SocketLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Provides a limited set of log methods that <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> packages may
 use. This prevents free-form logs from mixing in with standard, machine-
 parseable logs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>log</strong> – <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a> object to log through.</p>
+<dd class="field-odd"><p><strong>log</strong> – <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a> object to log through.</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger.send">
 <span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.send" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.send" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send()</span></code></a> operation along with the
+<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.send" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send()</span></code></a> operation along with the
 peer the socket is connected to.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -114,7 +114,7 @@ peer the socket is connected to.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger.recv">
 <span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.recv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.recv" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">recv()</span></code></a> operation along with the
+<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.recv" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">recv()</span></code></a> operation along with the
 peer the socket is connected to.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -128,8 +128,8 @@ peer the socket is connected to.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger.accept">
-<span class="sig-name descname"><span class="pre">accept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">server</span></em>, <em class="sig-param"><span class="pre">client</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">address=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.accept" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.accept" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accept()</span></code></a> operation along with
+<span class="sig-name descname"><span class="pre">accept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">address=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.accept" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accept()</span></code></a> operation along with
 the server that received it and the peer that initiated it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -144,8 +144,8 @@ the server that received it and the peer that initiated it.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">socket</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">address=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.connect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.connect" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect()</span></code></a> operation along with
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">address=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.connect" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect()</span></code></a> operation along with
 the peer the socket is connected to. Logged at the <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -167,7 +167,7 @@ server.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>socket</strong> – The socket that was shutdown.</p></li>
-<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – The SSL context that was used.</p></li>
+<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – The SSL context that was used.</p></li>
 </ul>
 </dd>
 </dl>
@@ -176,7 +176,7 @@ server.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger.shutdown">
 <span class="sig-name descname"><span class="pre">shutdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.shutdown" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.shutdown" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shutdown()</span></code></a> operation along
+<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.shutdown" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">shutdown()</span></code></a> operation along
 with which part of the socket was shut down. Logged at the
 <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> level.</p>
 <dl class="field-list simple">
@@ -192,7 +192,7 @@ with which part of the socket was shut down. Logged at the
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger.close">
 <span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.close" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.close" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> operation along with
+<dd><p>Logs a socket <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.close" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> operation along with
 the peer the socket was connected to. Logged at the <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -203,8 +203,8 @@ the peer the socket was connected to. Logged at the <code class="docutils litera
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.logging.socket.SocketLogger.error">
-<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">socket</span></em>, <em class="sig-param"><span class="pre">exc</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">address=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.error" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.error" title="(in Python v3.9)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.error</span></code></a> exception. Logged at the <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>
+<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">address=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.socket.SocketLogger.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs a <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.error" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.error</span></code></a> exception. Logged at the <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>
 level and does not include a stack trace.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -283,7 +283,7 @@ connection from the proxy itself, to perform a health check.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -327,7 +327,7 @@ connection from the proxy itself, to perform a health check.</p>
         <li class="right" >
           <a href="slimta.logging.html" title="slimta.logging"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

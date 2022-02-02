@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.util.ptrlookup &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.util.ptrlookup &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.util.proxyproto.html" title="slimta.util.proxyproto"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -85,15 +85,15 @@ in DNS. If it exists, a PTR record will map an IP address to an arbitrary
 hostname.</p>
 <p>However, it is not usually desired to slow down a client’s request just because
 their PTR record lookup has not yet finished. This module implements a
-<a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.1.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread that will look up a client’s PTR record will
+<a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread that will look up a client’s PTR record will
 its request is being processed. If the request finishes before the PTR record
 lookup, the lookup is stopped.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.util.ptrlookup.PtrLookup">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.util.ptrlookup.</span></span><span class="sig-name descname"><span class="pre">PtrLookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.util.ptrlookup.</span></span><span class="sig-name descname"><span class="pre">PtrLookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent._gevent_cgreenlet.Greenlet</span></code></p>
 <p>Asynchronously looks up the PTR record of an IP address, implemented as
-a <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.1.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread.</p>
+a <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> thread.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>ip</strong> – The IP address to query.</p>
@@ -101,32 +101,32 @@ a <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.util.ptrlookup.PtrLookup.from_getpeername">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_getpeername</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.from_getpeername" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_getpeername</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.from_getpeername" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object based on the IP address of the
-socket’s remote address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</p>
+socket’s remote address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sock</strong> – The <code class="xref py py-class docutils literal notranslate"><span class="pre">socket</span></code> object to use.</p>
+<dd class="field-odd"><p><strong>sock</strong> – The <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">socket</span></code></a> object to use.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A tuple containing the new <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object and the
-port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</p>
+port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getpeername" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getpeername()</span></code></a>.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.util.ptrlookup.PtrLookup.from_getsockname">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_getsockname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.from_getsockname" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_getsockname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.from_getsockname" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object based on the IP address of the
-socket’s local address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</p>
+socket’s local address, using <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sock</strong> – The <code class="xref py py-class docutils literal notranslate"><span class="pre">socket</span></code> object to use.</p>
+<dd class="field-odd"><p><strong>sock</strong> – The <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">socket</span></code></a> object to use.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A tuple containing the new <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup" title="slimta.util.ptrlookup.PtrLookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PtrLookup</span></code></a> object and the
-port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.9)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</p>
+port number from <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.getsockname" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getsockname()</span></code></a>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -137,20 +137,20 @@ port number from <a class="reference external" href="https://docs.python.org/3/l
 <dd><p>Starts the PTR lookup thread.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet.start" title="(in gevent v21.1.3.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gevent.Greenlet.start()</span></code></a></p>
+<p><a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet.start" title="(in gevent v21.12.1.dev0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gevent.Greenlet.start()</span></code></a></p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.util.ptrlookup.PtrLookup.finish">
-<span class="sig-name descname"><span class="pre">finish</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">runtime=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.finish" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">finish</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">runtime=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.ptrlookup.PtrLookup.finish" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to get the results of the PTR lookup. If the results are
 not available, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned instead.</p>
-<p>When this method returns, the <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.1.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> executing the
+<p>When this method returns, the <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a> executing the
 lookup is killed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>runtime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><em>float</em></a>) – If this many seconds have not passed since the lookup
+<dd class="field-odd"><p><strong>runtime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – If this many seconds have not passed since the lookup
 started, the method call blocks the remaining time. For
 example, if 3.5 seconds have elapsed since calling
 <a class="reference internal" href="#slimta.util.ptrlookup.PtrLookup.start" title="slimta.util.ptrlookup.PtrLookup.start"><code class="xref py py-meth docutils literal notranslate"><span class="pre">start()</span></code></a> and you pass in <code class="docutils literal notranslate"><span class="pre">5.0</span></code>, this method
@@ -191,7 +191,7 @@ in.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -235,7 +235,7 @@ in.</p>
         <li class="right" >
           <a href="slimta.util.proxyproto.html" title="slimta.util.proxyproto"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

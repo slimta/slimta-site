@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.policy.headers &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.policy.headers &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.policy.html" title="slimta.policy"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -80,7 +80,7 @@
 standard RFC headers.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.policy.headers.AddDateHeader">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.policy.headers.</span></span><span class="sig-name descname"><span class="pre">AddDateHeader</span></span><a class="headerlink" href="#slimta.policy.headers.AddDateHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.policy.headers.</span></span><span class="sig-name descname"><span class="pre">AddDateHeader</span></span><a class="headerlink" href="#slimta.policy.headers.AddDateHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>Checks for the existence of the RFC-specified <code class="docutils literal notranslate"><span class="pre">Date</span></code> header, adding it
 if it does not exist.</p>
@@ -91,7 +91,7 @@ if it does not exist.</p>
 method can be overridden to control the format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>timestamp</strong> – Timestamp (as returned by <a class="reference external" href="https://docs.python.org/3/library/time.html#time.time" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.time()</span></code></a>) to
+<dd class="field-odd"><p><strong>timestamp</strong> – Timestamp (as returned by <a class="reference external" href="https://docs.python.org/3/library/time.html#time.time" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.time()</span></code></a>) to
 convert into date string.</p>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -125,14 +125,14 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
 
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.policy.headers.AddMessageIdHeader">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.policy.headers.</span></span><span class="sig-name descname"><span class="pre">AddMessageIdHeader</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">hostname=None</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.policy.headers.</span></span><span class="sig-name descname"><span class="pre">AddMessageIdHeader</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">hostname=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddMessageIdHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>Checks for the existence of the RFC-specified <code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> header,
 adding it if it does not exist.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>hostname</strong> – The hostname to use in the generated headers. By default,
-<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.getfqdn" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getfqdn()</span></code></a> is used.</p>
+<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.getfqdn" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getfqdn()</span></code></a> is used.</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -160,7 +160,7 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
 
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.policy.headers.AddReceivedHeader">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.policy.headers.</span></span><span class="sig-name descname"><span class="pre">AddReceivedHeader</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">date_format='%a</span></em>, <em class="sig-param"><span class="pre">%d</span> <span class="pre">%b</span> <span class="pre">%Y</span> <span class="pre">%H:%M:%S</span> <span class="pre">+0000'</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.policy.headers.</span></span><span class="sig-name descname"><span class="pre">AddReceivedHeader</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">date_format='%a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">%d</span> <span class="pre">%b</span> <span class="pre">%Y</span> <span class="pre">%H:%M:%S</span> <span class="pre">+0000'</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.policy.headers.AddReceivedHeader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.policy.html#slimta.policy.QueuePolicy" title="slimta.policy.QueuePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.policy.QueuePolicy</span></code></a></p>
 <p>Adds the RFC-specified <code class="docutils literal notranslate"><span class="pre">Received</span></code> header to the message. This header
 should be added for every hop from a message’s origination to its
@@ -216,7 +216,7 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -260,7 +260,7 @@ Returning <code class="docutils literal notranslate"><span class="pre">None</spa
         <li class="right" >
           <a href="slimta.policy.html" title="slimta.policy"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

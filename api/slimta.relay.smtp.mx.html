@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.relay.smtp.mx &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.relay.smtp.mx &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.relay.smtp.static.html" title="slimta.relay.smtp.static"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -84,7 +84,7 @@ for the domain MX email routing records. If multiple records exist, the pick is
 made by using the number of delivery attempts to cycle through the options.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.relay.smtp.mx.MxSmtpRelay">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.relay.smtp.mx.</span></span><span class="sig-name descname"><span class="pre">MxSmtpRelay</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">context=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**client_kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.mx.MxSmtpRelay" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.relay.smtp.mx.</span></span><span class="sig-name descname"><span class="pre">MxSmtpRelay</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">context=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**client_kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.mx.MxSmtpRelay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.relay.Relay</span></code></a></p>
 <p>Delivers messages based on the MX records of their recipients. Keeps an
 expiring cache of resolved MX records to prevent DNS overuse, and uses a
@@ -94,9 +94,9 @@ destination to recycle and limit connections.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, when <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>
+<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, when <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>
 is advertised, rather than the default context.</p></li>
-<li><p><strong>auth_mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><em>bytes</em></a>) – Force the use of the given <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> mechanism,
+<li><p><strong>auth_mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><em>bytes</em></a>) – Force the use of the given <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> mechanism,
 instead of the best available.</p></li>
 <li><p><strong>tls_immediately</strong> – If True, the socket will be encrypted
 immediately on connection rather than looking for
@@ -117,13 +117,13 @@ timeout expires, the connection will be re-used. By
 default, QUIT is sent immediately and connections are
 never re-used.</p></li>
 <li><p><strong>socket_creator</strong> – Optional function to use instead of
-<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_connection()</span></code></a> for creating
+<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_connection()</span></code></a> for creating
 sockets.</p></li>
 <li><p><strong>ehlo_as</strong> – The string to send as the EHLO or HELO string. Defaults to
 the FQDN of the system. This may also be given as a
 function that will be executed with the destination address
 at the beginning of each connection.</p></li>
-<li><p><strong>binary_encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used as
+<li><p><strong>binary_encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used as
 an argument to
 <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.encode_7bit" title="slimta.envelope.Envelope.encode_7bit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">encode_7bit()</span></code></a> when
 conversion is necessary for the remote server.</p></li>
@@ -165,14 +165,14 @@ undergone.</p></li>
 <dd class="field-even"><p>The <code class="docutils literal notranslate"><span class="pre">host</span></code> that was picked from the list.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.relay.smtp.mx.MxSmtpRelay.force_mx">
-<span class="sig-name descname"><span class="pre">force_mx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">domain</span></em>, <em class="sig-param"><span class="pre">destination</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">port=25</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.mx.MxSmtpRelay.force_mx" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">force_mx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">port=25</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.mx.MxSmtpRelay.force_mx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do not do MX record lookups for the given <code class="docutils literal notranslate"><span class="pre">domain</span></code>, instead always
 use <code class="docutils literal notranslate"><span class="pre">destination</span></code> for delivery.</p>
 <dl class="field-list simple">
@@ -245,7 +245,7 @@ relay result (successful or failing).</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -289,7 +289,7 @@ relay result (successful or failing).</p>
         <li class="right" >
           <a href="slimta.relay.smtp.static.html" title="slimta.relay.smtp.static"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

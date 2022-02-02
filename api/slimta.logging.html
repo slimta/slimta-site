@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.logging &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.logging &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.policy.spamassassin.html" title="slimta.policy.spamassassin"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
@@ -79,12 +79,12 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="slimta.logging.getSocketLogger">
 <span class="sig-prename descclassname"><span class="pre">slimta.logging.</span></span><span class="sig-name descname"><span class="pre">getSocketLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.getSocketLogger" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
+<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
 <a class="reference internal" href="slimta.logging.socket.html#slimta.logging.socket.SocketLogger" title="slimta.logging.socket.SocketLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SocketLogger</span></code></a> object to provide limited and
 consistent logging output for socket operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
+<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="slimta.logging.socket.html#slimta.logging.socket.SocketLogger" title="slimta.logging.socket.SocketLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SocketLogger</span></code></a></p>
@@ -95,13 +95,13 @@ consistent logging output for socket operations.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="slimta.logging.getSubprocessLogger">
 <span class="sig-prename descclassname"><span class="pre">slimta.logging.</span></span><span class="sig-name descname"><span class="pre">getSubprocessLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.getSubprocessLogger" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
+<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
 <a class="reference internal" href="slimta.logging.subprocess.html#slimta.logging.subprocess.SubprocessLogger" title="slimta.logging.subprocess.SubprocessLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubprocessLogger</span></code></a> object to provide
 limited and consistent
 logging output for subprocess operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
+<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="slimta.logging.subprocess.html#slimta.logging.subprocess.SubprocessLogger" title="slimta.logging.subprocess.SubprocessLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubprocessLogger</span></code></a></p>
@@ -112,12 +112,12 @@ logging output for subprocess operations.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="slimta.logging.getQueueStorageLogger">
 <span class="sig-prename descclassname"><span class="pre">slimta.logging.</span></span><span class="sig-name descname"><span class="pre">getQueueStorageLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.getQueueStorageLogger" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
+<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
 <a class="reference internal" href="slimta.logging.queuestorage.html#slimta.logging.queuestorage.QueueStorageLogger" title="slimta.logging.queuestorage.QueueStorageLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorageLogger</span></code></a> object to provide
 limited and consistent logging output for <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a> operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
+<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="slimta.logging.queuestorage.html#slimta.logging.queuestorage.QueueStorageLogger" title="slimta.logging.queuestorage.QueueStorageLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorageLogger</span></code></a></p>
@@ -128,13 +128,13 @@ limited and consistent logging output for <a class="reference internal" href="sl
 <dl class="py function">
 <dt class="sig sig-object py" id="slimta.logging.getHttpLogger">
 <span class="sig-prename descclassname"><span class="pre">slimta.logging.</span></span><span class="sig-name descname"><span class="pre">getHttpLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.getHttpLogger" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
+<dd><p>Wraps the result of <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a> in a
 <a class="reference internal" href="slimta.logging.http.html#slimta.logging.http.HttpLogger" title="slimta.logging.http.HttpLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpLogger</span></code></a> object to provide limited and
 consistent logging output for WSGI-style requests and responses and other
 HTTP-related logs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
+<dd class="field-odd"><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><a class="reference internal" href="slimta.logging.http.html#slimta.logging.http.HttpLogger" title="slimta.logging.http.HttpLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpLogger</span></code></a></p>
@@ -144,14 +144,14 @@ HTTP-related logs.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="slimta.logging.log_exception">
-<span class="sig-prename descclassname"><span class="pre">slimta.logging.</span></span><span class="sig-name descname"><span class="pre">log_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.log_exception" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.logging.</span></span><span class="sig-name descname"><span class="pre">log_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.log_exception" title="Permalink to this definition">¶</a></dt>
 <dd><p>Logs an exception, along with relevant information such as message,
 traceback, and anything provided pertinent to the situation. This function
 does nothing unless called while an exception is being handled.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p></li>
+<li><p><strong>name</strong> – <code class="docutils literal notranslate"><span class="pre">name</span></code> as passed in to <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.getLogger" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.getLogger()</span></code></a>.</p></li>
 <li><p><strong>kwargs</strong> – Other keywords may be passed in and will be included in the
 produced log line.</p></li>
 </ul>
@@ -216,7 +216,7 @@ four-tuple of the following:</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -260,7 +260,7 @@ four-tuple of the following:</p>
         <li class="right" >
           <a href="slimta.policy.spamassassin.html" title="slimta.policy.spamassassin"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

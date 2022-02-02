@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.util.bytesformat &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.util.bytesformat &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.util.html" title="slimta.util"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -79,13 +79,13 @@
 <p>Provides a class that is capable of basic bytestring templating, similar to
 the <code class="xref py py-func docutils literal notranslate"><span class="pre">str.format()</span></code> method. This is needed in Python 3 before 3.5+, but
 should work in all supported versions.</p>
-<p>This class does the heavy lifting (a <a class="reference external" href="https://docs.python.org/3/library/re.html#re.finditer" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.finditer()</span></code></a> loop) during
+<p>This class does the heavy lifting (a <a class="reference external" href="https://docs.python.org/3/library/re.html#re.finditer" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.finditer()</span></code></a> loop) during
 construction, so it is optimal to instantiate it once and then re-use
 <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.util.bytesformat.BytesFormat">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.util.bytesformat.</span></span><span class="sig-name descname"><span class="pre">BytesFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">template</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">mode='ignore'</span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.util.bytesformat.</span></span><span class="sig-name descname"><span class="pre">BytesFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">mode='ignore'</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Wraps a bytestring in a class with a <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> method similar to
 <code class="xref py py-func docutils literal notranslate"><span class="pre">str.format()</span></code>.</p>
 <p>During construction, the template string is scanned for matching <code class="docutils literal notranslate"><span class="pre">{...}</span></code>
@@ -99,24 +99,24 @@ Additional formatting options are not supported.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The template bytestring.</p></li>
+<li><p><strong>template</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The template bytestring.</p></li>
 <li><p><strong>mode</strong> – If <code class="docutils literal notranslate"><span class="pre">'ignore'</span></code>, any <code class="docutils literal notranslate"><span class="pre">{...}</span></code> that does not match a
 <a class="reference internal" href="#slimta.util.bytesformat.BytesFormat.format" title="slimta.util.bytesformat.BytesFormat.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">format()</span></code></a> argument is left in place as-is. If
 <code class="docutils literal notranslate"><span class="pre">'remove'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> are replaced with an empty
 string. If <code class="docutils literal notranslate"><span class="pre">'strict'</span></code>, these <code class="docutils literal notranslate"><span class="pre">{...}</span></code> will cause
-<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a> exceptions.</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IndexError" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a> exceptions.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="slimta.util.bytesformat.BytesFormat.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">*args</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat.format" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">*args</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.bytesformat.BytesFormat.format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Substitutes in the given positional and keyword arguments into the
 original template string, replacing occurrences of <code class="docutils literal notranslate"><span class="pre">{...}</span></code> with the
 correct argument’s value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.9)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -149,7 +149,7 @@ correct argument’s value.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -193,7 +193,7 @@ correct argument’s value.</p>
         <li class="right" >
           <a href="slimta.util.html" title="slimta.util"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

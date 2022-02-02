@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>slimta.queue.dict &#8212; slimta 4.2.0 documentation</title>
+    <title>slimta.queue.dict &#8212; slimta 5.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
@@ -58,7 +58,7 @@
         <li class="right" >
           <a href="slimta.queue.html" title="slimta.queue"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -77,11 +77,11 @@
   <section id="module-slimta.queue.dict">
 <span id="slimta-queue-dict"></span><h1>slimta.queue.dict<a class="headerlink" href="#module-slimta.queue.dict" title="Permalink to this headline">¶</a></h1>
 <p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.queue</span></code></a> system on top of a
-<code class="xref py py-func docutils literal notranslate"><span class="pre">dict()</span></code> backend. This backend can be implemented as a <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> to
+<code class="xref py py-func docutils literal notranslate"><span class="pre">dict()</span></code> backend. This backend can be implemented as a <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> to
 provide basic persistence.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="slimta.queue.dict.DictStorage">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">slimta.queue.dict.</span></span><span class="sig-name descname"><span class="pre">DictStorage</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="pre">envelope_db=None</span></em><span class="optional">[</span>, <em class="sig-param"><span class="pre">meta_db=None</span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.dict.DictStorage" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.queue.dict.</span></span><span class="sig-name descname"><span class="pre">DictStorage</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">envelope_db=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">meta_db=None</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.dict.DictStorage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.queue.QueueStorage</span></code></a></p>
 <p>Stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> and queue metadata in two basic dictionary objects.</p>
 <dl class="field-list simple">
@@ -207,7 +207,7 @@ include those marked as delivered by <a class="reference internal" href="#slimta
 <dd class="field-even"><p>Tuple with the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object and number of attempts.</p>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -277,7 +277,7 @@ backend.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -321,7 +321,7 @@ backend.</p>
         <li class="right" >
           <a href="slimta.queue.html" title="slimta.queue"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 4.2.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
