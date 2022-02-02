@@ -161,58 +161,6 @@ across processes. This queue type is configured with the following keys:
   redis storage engines to run in the same database, or just to make keys more
   recognizable. By default, ``slimta:`` is used.
 
-``rackspace`` Queues
-""""""""""""""""""""
-
-.. _Rackspace Cloud: https://www.rackspace.com/cloud/
-
-This queue type stores messages and their metadata in `Rackspace Cloud`_
-services. To do so, it needs the following information:
-
-* ``endoint``: String
-
-  The authentication endpoint used to create an access token and lookup the
-  service catalog. This must be the *v2.0* auth API. The default endpoint is
-  ``https://identity.api.rackspacecloud.com/v2.0/`` which normally is what you
-  want to use.
-
-* ``username``: String, required
-
-  The username to pass in to the Rackspace Cloud Auth API.
-
-* ``api_key``: String
-
-  If given, the API key is combined with the username to serve as credentials
-  when creating an access token. Either an API key or a password are required.
-
-* ``password``: String
-
-  If given, the password is combined with the username to serve as credentials
-  when creating an access token. Either a password or an API key are required.
-
-* ``region``: String
-
-  Used as the default `region
-  <https://www.rackspace.com/knowledge_center/article/about-regions>`_ when
-  processing the service catalog.
-
-* ``tls``: Dictionary
-
-  This mapping, which takes the same keys as the keyword parameters to
-  :func:`~ssl.wrap_socket`, configures TLS encryption to the Rackspace Cloud API
-  endpoints. By default, standard TLS settings are used only when endpoints
-  begin with ``https://``.
-
-* ``container_name``: String, required
-
-  The *Rackspace Cloud Files* container name to create storage objects
-  containing the |Envelope| and queue metadata.
-
-* ``queue_name``: String
-
-  The *Rackspace Cloud Queues* queue name used by the storage engine. If this
-  value is not given, *Rackspace Cloud Queues* will not be used.
-
 ``aws`` Queues
 """"""""""""""
 

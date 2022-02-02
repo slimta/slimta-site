@@ -144,28 +144,16 @@ And to initialize a new :class:`~slimta.redisstorage.RedisStorage`::
 Cloud Storage
 '''''''''''''
 
-.. _Rackspace Cloud: https://www.rackspace.com/cloud/
 .. _AWS: https://aws.amazon.com/
 
-The :mod:`slimta.cloudstorage` module makes available connectors to two cloud
-service providers, `Rackspace Cloud`_ and `AWS`_. |Envelope| data and queue
-metadata are written to a cloud object store. Optionally, a reference to their
-location in the object store is then written to a cloud message queue, which
-can alert relayers in other processes of the availability of a new message in
-the object store.
+The :mod:`slimta.cloudstorage` module makes available connectors to the cloud
+service providers `AWS`_. |Envelope| data and queue metadata are written to a
+cloud object store. Optionally, a reference to their location in the object
+store is then written to a cloud message queue, which can alert relayers in
+other processes of the availability of a new message in the object store.
 
-To use `Rackspace Cloud`_ services, you need instances of the
-:class:`~slimta.cloudstorage.rackspace.RackspaceCloudAuth`,
-:class:`~slimta.cloudstorage.rackspace.RackspaceCloudFiles`, and optionally
-:class:`~slimta.cloudstorage.rackspace.RackspaceCloudQueues`::
-
-    auth = RackspaceCloudAuth({'username': 'slimta', 'api_key': 'XXXXXXXXXXXX'},
-                              region='IAD')
-    cloud_files = RackspaceCloudFiles(auth)
-    cloud_queues = RackspaceCloudQueues(auth)
-
-Using `AWS`_ services is a bit different. First, it requires installation and
-configuration of the :mod:`boto` library::
+To use `AWS`_ requires installation and configuration of the :mod:`boto`
+library::
 
     $ pip install python-slimta[aws]
 
