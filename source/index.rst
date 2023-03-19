@@ -19,7 +19,7 @@ technologies and methodologies to scale horizontally in a virtualized
 environment. Along with that, *slimta* is designed to work either as a
 traditional application or as a software library.
 
-.. |buildstatus| image:: https://travis-ci.org/slimta/python-slimta.svg?branch=master
+.. |buildstatus| image:: https://travis-ci.org/slimta/python-slimta.svg?branch=main
 
 #. :doc:`license`
 #. :doc:`manual/terminology`
@@ -46,11 +46,11 @@ incorporate any protocol or policy -- custom or built-in. An MTA built with
 *python-slimta* can integrate with other Python libraries and take advantage of
 Python's great community.
 
-#. `README <https://github.com/slimta/python-slimta/blob/master/README.md>`_
+#. `README <https://github.com/slimta/python-slimta/blob/main/README.md>`_
 #. `Download <https://github.com/slimta/python-slimta/tags>`_ [`Repository <https://github.com/slimta/python-slimta>`_]
 #. `Bug Reports <https://github.com/slimta/python-slimta/issues>`_
-#. `Change Log <https://github.com/slimta/python-slimta/blob/master/CHANGELOG.md>`_
-#. `Installation <https://github.com/slimta/python-slimta/blob/master/README.md#getting-started>`_
+#. `Change Log <https://github.com/slimta/python-slimta/blob/main/CHANGELOG.md>`_
+#. `Installation <https://github.com/slimta/python-slimta/blob/main/README.md#getting-started>`_
 #. :doc:`api/index`
 #. :doc:`manual/python-slimta`
 
@@ -66,7 +66,7 @@ The *slimta* project is a traditional application built on top of the
 *python-slimta* library. It allows a more "out-of-the-box" MTA_ that offers all
 the useful, built-in features needed for a normal mail system setup.
 
-#. `README <https://github.com/slimta/slimta/blob/master/README.md>`_
+#. `README <https://github.com/slimta/slimta/blob/main/README.md>`_
 #. `Download <https://github.com/slimta/slimta/tags>`_ [`Repository <https://github.com/slimta/slimta>`_]
 #. `Bug Reports <https://github.com/slimta/slimta/issues>`_
 #. :doc:`Configuration and Setup Guide <manual/slimta>`
