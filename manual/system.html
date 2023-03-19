@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>System Helpers &#8212; slimta 5.0.0 documentation</title>
+    <title>System Helpers &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Envelope Objects" href="envelopes.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="python-slimta.html" title="Python Library Usage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li>
@@ -74,13 +73,13 @@
           <div class="body" role="main">
             
   <section id="system-helpers">
-<h1>System Helpers<a class="headerlink" href="#system-helpers" title="Permalink to this headline">¶</a></h1>
+<h1>System Helpers<a class="headerlink" href="#system-helpers" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>Long-running applications usually require some special tricks for management and
 security.</p>
 <section id="daemonization">
-<h2>Daemonization<a class="headerlink" href="#daemonization" title="Permalink to this headline">¶</a></h2>
+<h2>Daemonization<a class="headerlink" href="#daemonization" title="Permalink to this heading">¶</a></h2>
 <p>Running <a class="reference external" href="https://slimta.org/">slimta</a> in the background as a daemon is relatively easy:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pid</span> <span class="o">=</span> <span class="n">slimta</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">daemonize</span><span class="p">()</span>
 </pre></div>
@@ -101,7 +100,7 @@ Before calling <code class="xref py py-func docutils literal notranslate"><span 
 <code class="xref py py-func docutils literal notranslate"><span class="pre">slimta.system.redirect_stdio()</span></code>.</p>
 </section>
 <section id="dropping-system-privileges">
-<h2>Dropping System Privileges<a class="headerlink" href="#dropping-system-privileges" title="Permalink to this headline">¶</a></h2>
+<h2>Dropping System Privileges<a class="headerlink" href="#dropping-system-privileges" title="Permalink to this heading">¶</a></h2>
 <p>Most ports that <a class="reference external" href="https://slimta.org/">slimta</a> systems will often need to open require root
 privileges, such as port 25. However, once these sockets are open, there is
 little reason to retain those privileges.</p>
@@ -116,10 +115,7 @@ opening all ports, if running <a class="reference external" href="https://slimta
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        <div class="sphinxsidebarwrapper"><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">System Helpers</a><ul>
@@ -149,7 +145,7 @@ opening all ports, if running <a class="reference external" href="https://slimta
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -188,7 +184,7 @@ opening all ports, if running <a class="reference external" href="https://slimta
         <li class="right" >
           <a href="python-slimta.html" title="Python Library Usage"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li>

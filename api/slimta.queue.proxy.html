@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.queue.proxy &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.queue.proxy &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.relay" href="slimta.relay.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.queue.dict.html" title="slimta.queue.dict"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -75,24 +74,11 @@
           <div class="body" role="main">
             
   <section id="module-slimta.queue.proxy">
-<span id="slimta-queue-proxy"></span><h1>slimta.queue.proxy<a class="headerlink" href="#module-slimta.queue.proxy" title="Permalink to this headline">¶</a></h1>
-<p>Package providing an alternative to the standard <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> class, such that
-messages are not written to storage but instead immediately relayed. An <a class="reference internal" href="slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a>
+<span id="slimta-queue-proxy"></span><h1>slimta.queue.proxy<a class="headerlink" href="#module-slimta.queue.proxy" title="Permalink to this heading">¶</a></h1>
+<p>Package providing an alternative to the standard <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> class, such that
+messages are not written to storage but instead immediately relayed. An <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code>
 service will have to wait for a message to finish relaying before its reply can
 be issued.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.queue.proxy.ProxyQueue">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.queue.proxy.</span></span><span class="sig-name descname"><span class="pre">ProxyQueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relay</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.queue.proxy.ProxyQueue" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class implementing the same interface as <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>, but proxies a message
-to a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> service instead of storing and trying/retrying delivery.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>relay</strong> – <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> object used to attempt message deliveries.</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
@@ -102,9 +88,6 @@ to a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" t
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.queue.dict.html"
@@ -124,7 +107,7 @@ to a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" t
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -163,7 +146,7 @@ to a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" t
         <li class="right" >
           <a href="slimta.queue.dict.html" title="slimta.queue.dict"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

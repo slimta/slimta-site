@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.relay.http &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.relay.http &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.smtp" href="slimta.smtp.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.relay.smtp.mx.html" title="slimta.relay.smtp.mx"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -75,92 +74,11 @@
           <div class="body" role="main">
             
   <section id="module-slimta.relay.http">
-<span id="slimta-relay-http"></span><h1>slimta.relay.http<a class="headerlink" href="#module-slimta.relay.http" title="Permalink to this headline">¶</a></h1>
-<p>This module contains a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> class that delivers mail using the HTTP or
+<span id="slimta-relay-http"></span><h1>slimta.relay.http<a class="headerlink" href="#module-slimta.relay.http" title="Permalink to this heading">¶</a></h1>
+<p>This module contains a <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> class that delivers mail using the HTTP or
 HTTPS protocols. This is done in the same way that
 <a class="reference internal" href="slimta.edge.wsgi.html#module-slimta.edge.wsgi" title="slimta.edge.wsgi"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.edge.wsgi</span></code></a> receives mail, making the two compatible
 for exchanging mail.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.relay.http.HttpRelay">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.relay.http.</span></span><span class="sig-name descname"><span class="pre">HttpRelay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">pool_size=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">context=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">ehlo_as=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">timeout=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">idle_timeout=None</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.http.HttpRelay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.relay.pool.html#slimta.relay.pool.RelayPool" title="slimta.relay.pool.RelayPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.relay.pool.RelayPool</span></code></a></p>
-<p>Implements a <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> that attempts to deliver mail with an HTTP or HTTPS
-request. This request contains all the information that would usually go
-through an SMTP session as headers: the EHLO string, envelope sender and
-recipients.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> (or similar) response from the server will inform the caller
-that the message was successfully delivered. In other cases, the class
-makes its best guess about whether to raise a
-<a class="reference internal" href="slimta.relay.html#slimta.relay.PermanentRelayError" title="slimta.relay.PermanentRelayError"><code class="xref py py-class docutils literal notranslate"><span class="pre">PermanentRelayError</span></code></a> or
-<a class="reference internal" href="slimta.relay.html#slimta.relay.TransientRelayError" title="slimta.relay.TransientRelayError"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransientRelayError</span></code></a>. If the server’s response
-includes a <code class="docutils literal notranslate"><span class="pre">X-Smtp-Reply</span></code> header, it will be used. This header looks
-like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">-</span><span class="n">Smtp</span><span class="o">-</span><span class="n">Reply</span><span class="p">:</span> <span class="mi">550</span><span class="p">;</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;5.0.0 Some error message&quot;</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>url</strong> – URL string to make requests against. This string is parsed with
-<code class="xref py py-func docutils literal notranslate"><span class="pre">urlparse.urlsplit()</span></code> with <code class="docutils literal notranslate"><span class="pre">'http'</span></code> as the default
-scheme.</p></li>
-<li><p><strong>pool_size</strong> – At most this many simultaneous connections will be open
-to the destination. If this limit is reached and no
-connections are idle, new attempts will block.</p></li>
-<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, when <code class="docutils literal notranslate"><span class="pre">https</span></code>
-URLs are used, rather than the default context.</p></li>
-<li><p><strong>ehlo_as</strong> – The string to send as the EHLO string in a header. Defaults
-to the FQDN of the system. This may also be given as a
-function that will be executed with no arguments at the
-beginning of each connection.</p></li>
-<li><p><strong>timeout</strong> – This is the maximum time in seconds to wait for the entire
-session: connection, request, and response. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
-there is no timeout.</p></li>
-<li><p><strong>idle_timeout</strong> – Timeout in seconds that a connection is held open
-waiting for another delivery request to process. By
-default, connections are closed immediately and not
-reused.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.relay.http.HttpRelay.http_verb">
-<span class="sig-name descname"><span class="pre">http_verb</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'POST'</span></em><a class="headerlink" href="#slimta.relay.http.HttpRelay.http_verb" title="Permalink to this definition">¶</a></dt>
-<dd><p>The HTTP verb to use with the requests.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.relay.http.HttpRelay.sender_header">
-<span class="sig-name descname"><span class="pre">sender_header</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'X-Envelope-Sender'</span></em><a class="headerlink" href="#slimta.relay.http.HttpRelay.sender_header" title="Permalink to this definition">¶</a></dt>
-<dd><p>The header name used to send the base64-encoded sender address.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.relay.http.HttpRelay.recipient_header">
-<span class="sig-name descname"><span class="pre">recipient_header</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'X-Envelope-Recipient'</span></em><a class="headerlink" href="#slimta.relay.http.HttpRelay.recipient_header" title="Permalink to this definition">¶</a></dt>
-<dd><p>The header name used to send each base64-encoded recipient address.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.relay.http.HttpRelay.ehlo_header">
-<span class="sig-name descname"><span class="pre">ehlo_header</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'X-Ehlo'</span></em><a class="headerlink" href="#slimta.relay.http.HttpRelay.ehlo_header" title="Permalink to this definition">¶</a></dt>
-<dd><p>The header name used to send the EHLO string.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.relay.http.HttpRelay.add_client">
-<span class="sig-name descname"><span class="pre">add_client</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.http.HttpRelay.add_client" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sub-classes must override this method to create and return a new
-<code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPoolClient</span></code> object that will poll for delivery requests.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPoolClient</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 
 
@@ -170,9 +88,6 @@ reused.</p></li>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.relay.smtp.mx.html"
@@ -192,7 +107,7 @@ reused.</p></li>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -231,7 +146,7 @@ reused.</p></li>
         <li class="right" >
           <a href="slimta.relay.smtp.mx.html" title="slimta.relay.smtp.mx"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

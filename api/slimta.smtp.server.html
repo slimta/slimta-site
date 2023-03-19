@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.smtp.server &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.smtp.server &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.smtp.extensions" href="slimta.smtp.extensions.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.smtp.client.html" title="slimta.smtp.client"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -75,61 +74,10 @@
           <div class="body" role="main">
             
   <section id="module-slimta.smtp.server">
-<span id="slimta-smtp-server"></span><h1>slimta.smtp.server<a class="headerlink" href="#module-slimta.smtp.server" title="Permalink to this headline">¶</a></h1>
+<span id="slimta-smtp-server"></span><h1>slimta.smtp.server<a class="headerlink" href="#module-slimta.smtp.server" title="Permalink to this heading">¶</a></h1>
 <p>Package defining a generic SMTP server class that can be used on a
 pre-connected socket. This works by calling optionally-defined callbacks in
 certain situations (typically when a client sends various commands).</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.smtp.server.Server">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.server.</span></span><span class="sig-name descname"><span class="pre">Server</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">socket</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handlers</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">address=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">auth=False</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">context=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">tls_immediately=False</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">command_timeout=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">data_timeout=None</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.server.Server" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class that implements an SMTP server given a connected socket. This
-object has an <code class="docutils literal notranslate"><span class="pre">extensions</span></code> attribute that is an <a class="reference internal" href="slimta.smtp.extensions.html#slimta.smtp.extensions.Extensions" title="slimta.smtp.extensions.Extensions"><code class="xref py py-class docutils literal notranslate"><span class="pre">Extensions</span></code></a> object that
-contains the SMTP extensions the server supports.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>socket</strong> (<a class="reference external" href="http://www.gevent.org/api/gevent.socket.html#gevent.socket.socket" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.socket.socket</span></code></a>) – Connected socket for the session.</p></li>
-<li><p><strong>handlers</strong> – Object with methods that will be called when
-corresponding SMTP commands are received. These methods
-can modify the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> before the command response is
-sent.</p></li>
-<li><p><strong>address</strong> – The address of the connected client.</p></li>
-<li><p><strong>auth</strong> – If True, enable authentication with default mechanisms. May
-also be given as a list of SASL mechanism names to support,
-e.g. <code class="docutils literal notranslate"><span class="pre">['PLAIN',</span> <span class="pre">'LOGIN',</span> <span class="pre">'CRAM-MD5']</span></code>.</p></li>
-<li><p><strong>context</strong> – Enables SSL encryption on connected sockets using the
-information given in the context.</p></li>
-<li><p><strong>tls_immediately</strong> – If True, the socket will be encrypted
-immediately on connection rather than advertising
-<code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code>.</p></li>
-<li><p><strong>command_timeout</strong> – Optional timeout waiting for a command to be
-sent from the client.</p></li>
-<li><p><strong>data_timeout</strong> – Optional timeout waiting for data to be sent from
-the client.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py property">
-<dt class="sig sig-object py" id="slimta.smtp.server.Server.encrypted">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encrypted</span></span><a class="headerlink" href="#slimta.smtp.server.Server.encrypted" title="Permalink to this definition">¶</a></dt>
-<dd><p>True if the session transport is encrypted, False otherwise.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.smtp.server.Server.handle">
-<span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.server.Server.handle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs through the SMTP session, receiving commands, calling handlers,
-and sending responses.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference internal" href="slimta.smtp.html#slimta.smtp.ConnectionLost" title="slimta.smtp.ConnectionLost"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionLost</span></code></a> or unhandled exceptions.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 
 
@@ -139,9 +87,6 @@ and sending responses.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.smtp.client.html"
@@ -161,7 +106,7 @@ and sending responses.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -200,7 +145,7 @@ and sending responses.</p>
         <li class="right" >
           <a href="slimta.smtp.client.html" title="slimta.smtp.client"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

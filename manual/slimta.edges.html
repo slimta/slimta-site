@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Configuring the Edges &#8212; slimta 5.0.0 documentation</title>
+    <title>Configuring the Edges &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Configuring the Queues" href="slimta.queues.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.processes.html" title="Configuring the Processes"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">Application Usage</a> &#187;</li>
@@ -74,7 +73,7 @@
           <div class="body" role="main">
             
   <section id="configuring-the-edges">
-<h1>Configuring the Edges<a class="headerlink" href="#configuring-the-edges" title="Permalink to this headline">¶</a></h1>
+<h1>Configuring the Edges<a class="headerlink" href="#configuring-the-edges" title="Permalink to this heading">¶</a></h1>
 <p>The next big section in <code class="docutils literal notranslate"><span class="pre">slimta.conf</span></code> is <code class="docutils literal notranslate"><span class="pre">edge</span></code>, which allows you to setup
 as many different inbound edge listeners as you need. In the <code class="docutils literal notranslate"><span class="pre">edge</span></code> section,
 each key provides an arbitrary, free-form name for the edge, and the value is
@@ -116,7 +115,7 @@ UNIX socket is created. There is no default value.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">backlog</span></code>: Integer</p>
 <p>For <code class="docutils literal notranslate"><span class="pre">tcp</span></code> and <code class="docutils literal notranslate"><span class="pre">unix</span></code> types, this setting defines the size of the
-backlog of unaccepted connections. See the <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.listen" title="(in Python v3.10)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">listen()</span></code></a>
+backlog of unaccepted connections. See the <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.socket.listen" title="(in Python v3.11)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">listen()</span></code></a>
 method for more information. The default is <code class="docutils literal notranslate"><span class="pre">256</span></code>.</p>
 </li>
 </ul>
@@ -134,8 +133,8 @@ have the following option:</p>
 definitions in <a class="reference internal" href="../api/slimta.lookup.html#slimta-lookup-drivers"><span class="std std-ref">slimta.lookup.drivers</span></a> for more
 information on these options.</p>
 <section id="smtp-edges">
-<h2><code class="docutils literal notranslate"><span class="pre">smtp</span></code> Edges<a class="headerlink" href="#smtp-edges" title="Permalink to this headline">¶</a></h2>
-<p>SMTP Edges produce an <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code></a> object from the extra keys given in the edge
+<h2><code class="docutils literal notranslate"><span class="pre">smtp</span></code> Edges<a class="headerlink" href="#smtp-edges" title="Permalink to this heading">¶</a></h2>
+<p>SMTP Edges produce an <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code> object from the extra keys given in the edge
 sub-section. These keys are:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">listener</span></code>: Dictionary</p>
@@ -153,7 +152,7 @@ edge. Larger messages are rejected. By default, there is no size limit.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tls</span></code>: Dictionary</p>
 <p>This mapping, which takes the same keys as the keyword parameters to
-<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
+<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
 SMTP edge. By default, TLS is not enabled.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tls_immediately</span></code>: Boolean</p>
@@ -234,8 +233,8 @@ format.</p>
 </ul>
 </section>
 <section id="http-edges">
-<h2><code class="docutils literal notranslate"><span class="pre">http</span></code> Edges<a class="headerlink" href="#http-edges" title="Permalink to this headline">¶</a></h2>
-<p>HTTP Edges produce an <a class="reference internal" href="../api/slimta.edge.wsgi.html#slimta.edge.wsgi.WsgiEdge" title="slimta.edge.wsgi.WsgiEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">WsgiEdge</span></code></a> object that is then
+<h2><code class="docutils literal notranslate"><span class="pre">http</span></code> Edges<a class="headerlink" href="#http-edges" title="Permalink to this heading">¶</a></h2>
+<p>HTTP Edges produce an <code class="xref py py-class docutils literal notranslate"><span class="pre">WsgiEdge</span></code> object that is then
 configured to receive mail. It supports the following options:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">listener</span></code>: Dictionary</p>
@@ -254,7 +253,7 @@ are accepted.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tls</span></code>: Dictionary</p>
 <p>This mapping, which takes the same keys as the keyword parameters to
-<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
+<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
 HTTP edge. All inbound requests must be HTTPS. By default, TLS is not
 enabled.</p>
 </li>
@@ -289,16 +288,16 @@ source.</p>
 </ul>
 </section>
 <section id="custom-edges">
-<h2><code class="docutils literal notranslate"><span class="pre">custom</span></code> Edges<a class="headerlink" href="#custom-edges" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">custom</span></code> Edges<a class="headerlink" href="#custom-edges" title="Permalink to this heading">¶</a></h2>
 <p>Only one additional key is required by the <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code> edge type:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">factory</span></code>: String, required</p>
 <p>This is a string of the form <code class="docutils literal notranslate"><span class="pre">package.module:symbol</span></code>. The package and
-module portion are imported with <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>, and then
-the symbol is fetched from the loaded module with <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a>.</p>
+module portion are imported with <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>, and then
+the symbol is fetched from the loaded module with <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a>.</p>
 <p>The result of loading the symbol must be a function that takes two arguments,
 the options object (that contains the <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">queue</span></code>, and <code class="docutils literal notranslate"><span class="pre">factory</span></code>
-keys as well as any others as necessary) and the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> object that the edge
+keys as well as any others as necessary) and the <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> object that the edge
 should delivery received messages to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">edge_factory</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">queue</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;foo&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
@@ -318,10 +317,7 @@ should delivery received messages to:</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        <div class="sphinxsidebarwrapper"><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Configuring the Edges</a><ul>
@@ -352,7 +348,7 @@ should delivery received messages to:</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -391,7 +387,7 @@ should delivery received messages to:</p>
         <li class="right" >
           <a href="slimta.processes.html" title="Configuring the Processes"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >Application Usage</a> &#187;</li>

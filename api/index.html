@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>API Reference &#8212; slimta 5.0.0 documentation</title>
+    <title>API Reference &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta" href="slimta.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="../versions.html" title="Versions"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">API Reference</a></li> 
       </ul>
@@ -72,12 +71,12 @@
           <div class="body" role="main">
             
   <section id="api-reference">
-<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading">¶</a></h1>
 <p>These pages are intended to serve as usage reference for the modules included
 in <em>python-slimta</em>.  The prototypes in these docs are generated directly from
 the source code, with docstrings used for descriptions and parameter
 information. Documentation for the <code class="docutils literal notranslate"><span class="pre">latest/</span></code> version are generated based on
-the <a class="reference external" href="https://github.com/slimta/python-slimta/tree/master">master branch</a> upon commit using <a class="reference external" href="https://readthedocs.org/">Read The Docs</a>.</p>
+the <a class="reference external" href="https://github.com/slimta/python-slimta/tree/main">main branch</a> upon commit using <a class="reference external" href="https://readthedocs.org/">Read The Docs</a>.</p>
 <p><strong>Modules:</strong></p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -108,7 +107,18 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
 <li class="toctree-l3"><a class="reference internal" href="slimta.smtp.client.html">slimta.smtp.client</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slimta.smtp.server.html">slimta.smtp.server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slimta.smtp.extensions.html">slimta.smtp.extensions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="slimta.smtp.reply.html">slimta.smtp.reply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.smtp.reply.html">slimta.smtp.reply</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.unknown_command"><code class="docutils literal notranslate"><span class="pre">unknown_command</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.unknown_parameter"><code class="docutils literal notranslate"><span class="pre">unknown_parameter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.bad_sequence"><code class="docutils literal notranslate"><span class="pre">bad_sequence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.bad_arguments"><code class="docutils literal notranslate"><span class="pre">bad_arguments</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.timed_out"><code class="docutils literal notranslate"><span class="pre">timed_out</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.unhandled_error"><code class="docutils literal notranslate"><span class="pre">unhandled_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.connection_failed"><code class="docutils literal notranslate"><span class="pre">connection_failed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.tls_failure"><code class="docutils literal notranslate"><span class="pre">tls_failure</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.invalid_credentials"><code class="docutils literal notranslate"><span class="pre">invalid_credentials</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="slimta.http.html">slimta.http</a><ul>
@@ -125,7 +135,10 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="slimta.logging.html">slimta.logging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="slimta.logging.socket.html">slimta.logging.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slimta.logging.socket.html">slimta.logging.socket</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="slimta.logging.socket.html#slimta.logging.socket.socket_error_log_level"><code class="docutils literal notranslate"><span class="pre">socket_error_log_level</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="slimta.logging.http.html">slimta.logging.http</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slimta.logging.subprocess.html">slimta.logging.subprocess</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slimta.logging.queuestorage.html">slimta.logging.queuestorage</a></li>
@@ -170,9 +183,6 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="../versions.html"
@@ -192,7 +202,7 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -231,7 +241,7 @@ the <a class="reference external" href="https://github.com/slimta/python-slimta/
         <li class="right" >
           <a href="../versions.html" title="Versions"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">API Reference</a></li> 
       </ul>

@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Integrating Everything &#8212; slimta 5.0.0 documentation</title>
+    <title>Integrating Everything &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mail Delivery Agent" href="mda.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="policies.html" title="Policy Implementation"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li>
@@ -74,20 +73,20 @@
           <div class="body" role="main">
             
   <section id="integrating-everything">
-<h1>Integrating Everything<a class="headerlink" href="#integrating-everything" title="Permalink to this headline">¶</a></h1>
+<h1>Integrating Everything<a class="headerlink" href="#integrating-everything" title="Permalink to this heading">¶</a></h1>
 <figure class="align-right" id="id1" style="width: 400px">
 <a class="reference external image-reference" href="https://slimta.org/en/latest/_static/reception-to-delivery.png"><img alt="https://slimta.org/en/latest/_static/reception-to-delivery.png" src="https://slimta.org/en/latest/_static/reception-to-delivery.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-text">Diagram of an <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object’s path from reception to delivery.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Diagram of an <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object’s path from reception to delivery.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Piecing together the building blocks described in previous section is the last
 crucial step in setting up your MTA. Nearly everything in <a class="reference external" href="https://slimta.org/">slimta</a> starts with
-an <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> service which receives messages. They hand messages off to a <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>
-service which talks to a <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a> object to persistently store messages.
-The queue initiates delivery attempts with a <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> object.</p>
+an <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code> service which receives messages. They hand messages off to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code>
+service which talks to a <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code> object to persistently store messages.
+The queue initiates delivery attempts with a <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> object.</p>
 <section id="types-of-mta-servers">
-<h2>Types of MTA Servers<a class="headerlink" href="#types-of-mta-servers" title="Permalink to this headline">¶</a></h2>
+<h2>Types of MTA Servers<a class="headerlink" href="#types-of-mta-servers" title="Permalink to this heading">¶</a></h2>
 <p>If you read the <a class="reference internal" href="terminology.html"><span class="doc">Terminology</span></a> page, there are <a class="reference external" href="https://en.wikipedia.org/wiki/Message_transfer_agent">MTAs</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Mail_delivery_agent">MDAs</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Mail_submission_agent">MSAs</a>,
 as well as other special configurations like <a class="reference external" href="https://en.wikipedia.org/wiki/Smart_host">Smart hosts</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/SMTP_proxy">SMTP proxies</a>,
 or <a class="reference external" href="https://en.wikipedia.org/wiki/E-mail_hub">Mail hubs</a>. Depending on how you sub-class the different building blocks
@@ -101,16 +100,16 @@ Thunderbird and delivering it to its next hop on the Internet. Check out the
 something like <a class="reference external" href="http://www.courier-mta.org/maildrop/">maildrop</a> or <a class="reference external" href="http://wiki.dovecot.org/LDA">dovecot</a>. Check out the <a class="reference internal" href="mda.html"><span class="doc">Mail Delivery Agent</span></a> page.</p></li>
 <li><p><strong>Smart Host</strong>: A smart host takes messages and delivers them to a specific
 destination, rather then dynamically looking up the recipient’s destination.
-Use a <a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticSmtpRelay</span></code></a> object.</p></li>
-<li><p><strong>SMTP proxy</strong>: An SMTP proxy skips the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> altogether, taking <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>
-from the <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a> and directly attempting delivery with a <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> and returning
+Use a <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticSmtpRelay</span></code> object.</p></li>
+<li><p><strong>SMTP proxy</strong>: An SMTP proxy skips the <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> altogether, taking <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code>
+from the <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code> and directly attempting delivery with a <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> and returning
 the success or failure back to the edge client. SMTP proxies are not yet
 supported by <a class="reference external" href="https://slimta.org/">slimta</a>, but they are on the radar.</p></li>
 <li><p><strong>Mail Hubs</strong>: A mail hub is a pretty generic term, but one particular use
-could be a dedicated spam scanner. It receives messages by any <a class="reference internal" href="../api/slimta.edge.html#slimta.edge.Edge" title="slimta.edge.Edge"><code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code></a>, calls
-the <a class="reference internal" href="../api/slimta.policy.spamassassin.html#slimta.policy.spamassassin.SpamAssassin" title="slimta.policy.spamassassin.SpamAssassin"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpamAssassin</span></code></a> policy, and delivers
+could be a dedicated spam scanner. It receives messages by any <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code>, calls
+the <code class="xref py py-class docutils literal notranslate"><span class="pre">SpamAssassin</span></code> policy, and delivers
 the result to another MTA with a
-<a class="reference internal" href="../api/slimta.relay.smtp.static.html#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticSmtpRelay</span></code></a> for further processing.</p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">StaticSmtpRelay</span></code> for further processing.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -122,10 +121,7 @@ the result to another MTA with a
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        <div class="sphinxsidebarwrapper"><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Integrating Everything</a><ul>
@@ -154,7 +150,7 @@ the result to another MTA with a
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -193,7 +189,7 @@ the result to another MTA with a
         <li class="right" >
           <a href="policies.html" title="Policy Implementation"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li>

@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.smtp &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.smtp &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.smtp.client" href="slimta.smtp.client.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.relay.http.html" title="slimta.relay.http"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
@@ -74,43 +73,8 @@
           <div class="body" role="main">
             
   <section id="module-slimta.smtp">
-<span id="slimta-smtp"></span><h1>slimta.smtp<a class="headerlink" href="#module-slimta.smtp" title="Permalink to this headline">¶</a></h1>
+<span id="slimta-smtp"></span><h1>slimta.smtp<a class="headerlink" href="#module-slimta.smtp" title="Permalink to this heading">¶</a></h1>
 <p>Root package for <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> SMTP client and server libraries.</p>
-<dl class="py exception">
-<dt class="sig sig-object py" id="slimta.smtp.SmtpError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">SmtpError</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">*args</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.SmtpError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.core.SlimtaError</span></code></p>
-<p>Base exception for all custom SMTP exceptions.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="slimta.smtp.ConnectionLost">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">ConnectionLost</span></span><a class="headerlink" href="#slimta.smtp.ConnectionLost" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
-<p>Thrown when the socket is closed prematurely.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="slimta.smtp.MessageTooBig">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">MessageTooBig</span></span><a class="headerlink" href="#slimta.smtp.MessageTooBig" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
-<p>Thrown when a message exceeds the maximum size given by the SMTP
-<code class="docutils literal notranslate"><span class="pre">SIZE</span></code> extension, if supported.</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="slimta.smtp.BadReply">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.smtp.</span></span><span class="sig-name descname"><span class="pre">BadReply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.smtp.BadReply" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#slimta.smtp.SmtpError" title="slimta.smtp.SmtpError"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.smtp.SmtpError</span></code></a></p>
-<p>Thrown when an SMTP server replies with a syntax-invalid code.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> – The data that was expected to start with an SMTP code, made
-available in the <code class="docutils literal notranslate"><span class="pre">data</span></code> attribute.</p>
-</dd>
-</dl>
-</dd></dl>
-
 <hr class="docutils" />
 <p><strong>Sub-Modules:</strong></p>
 <div class="toctree-wrapper compound">
@@ -118,7 +82,18 @@ available in the <code class="docutils literal notranslate"><span class="pre">da
 <li class="toctree-l1"><a class="reference internal" href="slimta.smtp.client.html">slimta.smtp.client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slimta.smtp.server.html">slimta.smtp.server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="slimta.smtp.extensions.html">slimta.smtp.extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slimta.smtp.reply.html">slimta.smtp.reply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slimta.smtp.reply.html">slimta.smtp.reply</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.unknown_command"><code class="docutils literal notranslate"><span class="pre">unknown_command</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.unknown_parameter"><code class="docutils literal notranslate"><span class="pre">unknown_parameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.bad_sequence"><code class="docutils literal notranslate"><span class="pre">bad_sequence</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.bad_arguments"><code class="docutils literal notranslate"><span class="pre">bad_arguments</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.timed_out"><code class="docutils literal notranslate"><span class="pre">timed_out</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.unhandled_error"><code class="docutils literal notranslate"><span class="pre">unhandled_error</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.connection_failed"><code class="docutils literal notranslate"><span class="pre">connection_failed</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.tls_failure"><code class="docutils literal notranslate"><span class="pre">tls_failure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.invalid_credentials"><code class="docutils literal notranslate"><span class="pre">invalid_credentials</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -130,9 +105,6 @@ available in the <code class="docutils literal notranslate"><span class="pre">da
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.relay.http.html"
@@ -152,7 +124,7 @@ available in the <code class="docutils literal notranslate"><span class="pre">da
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -191,7 +163,7 @@ available in the <code class="docutils literal notranslate"><span class="pre">da
         <li class="right" >
           <a href="slimta.relay.http.html" title="slimta.relay.http"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

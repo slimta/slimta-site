@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Queue Services &#8212; slimta 5.0.0 documentation</title>
+    <title>Queue Services &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Relay Services" href="relay.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="edge.html" title="Edge Services"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li>
@@ -74,7 +73,7 @@
           <div class="body" role="main">
             
   <section id="queue-services">
-<h1>Queue Services<a class="headerlink" href="#queue-services" title="Permalink to this headline">¶</a></h1>
+<h1>Queue Services<a class="headerlink" href="#queue-services" title="Permalink to this heading">¶</a></h1>
 <p>When a client sends an email, that email may go through several email servers
 before arriving at its final destination. Each server is designed to take
 responsibility for delivering the message to the next one, retrying if
@@ -84,19 +83,19 @@ client (or server) may disconnect.</p>
 persistently somewhere (in case of catastrophic failure) and that delivery is
 tried and retried with due diligence.</p>
 <section id="delivery-attempts">
-<h2>Delivery Attempts<a class="headerlink" href="#delivery-attempts" title="Permalink to this headline">¶</a></h2>
-<p>Delivery attempts for a queue are performed with the <a class="reference internal" href="../api/slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> object passed in to
-the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> constructor. The delivery attempt will ultimately produce a <a class="reference internal" href="../api/slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a>
+<h2>Delivery Attempts<a class="headerlink" href="#delivery-attempts" title="Permalink to this heading">¶</a></h2>
+<p>Delivery attempts for a queue are performed with the <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> object passed in to
+the <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> constructor. The delivery attempt will ultimately produce a <code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code>
 object indicating its success or failure. If delivery was successful, the queue
 will remove the message from persistent storage.</p>
 <p>If delivery failed permanently, with a <code class="docutils literal notranslate"><span class="pre">5xx</span></code> code or too many <code class="docutils literal notranslate"><span class="pre">4xx</span></code> codes,
-a <a class="reference internal" href="../api/slimta.bounce.html#slimta.bounce.Bounce" title="slimta.bounce.Bounce"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code></a> envelope is created from the original message, which is delivered
+a <code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code> envelope is created from the original message, which is delivered
 back to the original message sender. The original message is removed from
 storage and not retried.</p>
 <p>If delivery failed transiently, with a <code class="docutils literal notranslate"><span class="pre">4xx</span></code> code (which usually includes
 connectivity issues), the message is left in storage and a new delivery attempt
 is scheduled in the future. The time between delivery attempts is managed by the
-<code class="docutils literal notranslate"><span class="pre">backoff</span></code> function passed in to the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> constructor. If this <code class="docutils literal notranslate"><span class="pre">backoff</span></code>
+<code class="docutils literal notranslate"><span class="pre">backoff</span></code> function passed in to the <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> constructor. If this <code class="docutils literal notranslate"><span class="pre">backoff</span></code>
 function returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, the message is permanently failed.</p>
 <p>Here is an example <code class="docutils literal notranslate"><span class="pre">backoff</span></code> function that makes 5 delivery attempts with an
 exponentially increasing backoff time:</p>
@@ -108,45 +107,45 @@ exponentially increasing backoff time:</p>
 </div>
 </section>
 <section id="persistent-storage">
-<h2>Persistent Storage<a class="headerlink" href="#persistent-storage" title="Permalink to this headline">¶</a></h2>
-<p>A storage mechanism should store the entirety of an <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object, such that
+<h2>Persistent Storage<a class="headerlink" href="#persistent-storage" title="Permalink to this heading">¶</a></h2>
+<p>A storage mechanism should store the entirety of an <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object, such that
 it can be recreated on restart. Along with the envelope, queue services must
 also keep track of when a message’s next delivery attempt should be and how many
 attempts a message has undergone. In essence, a queue’s storage mechanism allows
 <a class="reference external" href="https://slimta.org/">slimta</a> to be stopped and restarted without losing state.</p>
 <section id="in-memory">
-<h3>In-Memory<a class="headerlink" href="#in-memory" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference internal" href="../api/slimta.queue.dict.html#slimta.queue.dict.DictStorage" title="slimta.queue.dict.DictStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">DictStorage</span></code></a> class is a simple storage mechanism
+<h3>In-Memory<a class="headerlink" href="#in-memory" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">DictStorage</span></code> class is a simple storage mechanism
 that, by itself, <em>does not</em> provide on-disk persistence. By default, it creates
-two dicts in memory for queue data, but passing in <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> objects will
-allow basic persistence. Be aware, however, that <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> may not handle
+two dicts in memory for queue data, but passing in <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> objects will
+allow basic persistence. Be aware, however, that <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> may not handle
 system or process failure and could leave corruption.</p>
-<p>The <a class="reference internal" href="../api/slimta.queue.dict.html#slimta.queue.dict.DictStorage" title="slimta.queue.dict.DictStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">DictStorage</span></code></a> class is very useful for development
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">DictStorage</span></code> class is very useful for development
 and testing, but probably should be avoided for live systems.</p>
 </section>
 <section id="local-disk">
-<h3>Local Disk<a class="headerlink" href="#local-disk" title="Permalink to this headline">¶</a></h3>
+<h3>Local Disk<a class="headerlink" href="#local-disk" title="Permalink to this heading">¶</a></h3>
 <p>In the fashion of traditional MTAs, <a class="reference internal" href="../api/slimta.diskstorage.html#module-slimta.diskstorage" title="slimta.diskstorage"><code class="xref py py-mod docutils literal notranslate"><span class="pre">diskstorage</span></code></a> writes
-<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> data and queue metadata directly to disk to configurable
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> data and queue metadata directly to disk to configurable
 directories. This functionality relies on <a class="reference external" href="https://github.com/felipecruz/pyaio">pyaio</a> to asynchronously write and
 read files on disk, and as such it is <em>only available on Linux</em>.</p>
 <p>To ensure file creation and modification is atomic, files are
-first written to a scratch directory and then <a class="reference external" href="https://docs.python.org/3/library/os.html#os.rename" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.rename()</span></code></a> moves them to
+first written to a scratch directory and then <a class="reference external" href="https://docs.python.org/3/library/os.html#os.rename" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.rename()</span></code></a> moves them to
 their final destination. For this reason, it is important that the scratch
 directory (<code class="docutils literal notranslate"><span class="pre">tmp_dir</span></code> argument in the constructor) reside on the same
 filesystem as the envelope and meta directories (<code class="docutils literal notranslate"><span class="pre">env_dir</span></code> and <code class="docutils literal notranslate"><span class="pre">meta_dir</span></code>
 arguments, respectively).</p>
 <p>The files created in the envelope directory will be identified by a
-<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.uuid4" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">uuid4()</span></code></a> <a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID.hex" title="(in Python v3.10)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">hexadecimal</span> <span class="pre">string</span></code></a> appended with
+<a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.uuid4" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">uuid4()</span></code></a> <a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID.hex" title="(in Python v3.11)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">hexadecimal</span> <span class="pre">string</span></code></a> appended with
 the suffix <code class="docutils literal notranslate"><span class="pre">.env</span></code>. The files created in the meta directory will be identified
 by the same uuid string as its corresponding envelope file, but with the suffix
 <code class="docutils literal notranslate"><span class="pre">.meta</span></code>. The envelope and meta directories can be the same, but two
-<a class="reference internal" href="../api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code></a> should not share directories.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code> should not share directories.</p>
 <p>To use this storage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-slimta[disk]
 </pre></div>
 </div>
-<p>And to initialize a new <a class="reference internal" href="../api/slimta.diskstorage.html#slimta.diskstorage.DiskStorage" title="slimta.diskstorage.DiskStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code></a>:</p>
+<p>And to initialize a new <code class="xref py py-class docutils literal notranslate"><span class="pre">DiskStorage</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.diskstorage</span> <span class="kn">import</span> <span class="n">DiskStorage</span>
 
 <span class="n">queue_dir</span> <span class="o">=</span> <span class="s1">&#39;/var/spool/slimta/queue&#39;</span>
@@ -155,11 +154,11 @@ by the same uuid string as its corresponding envelope file, but with the suffix
 </div>
 </section>
 <section id="redis">
-<h3>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h3>
+<h3>Redis<a class="headerlink" href="#redis" title="Permalink to this heading">¶</a></h3>
 <p>Taking advantage of the advanced data structures and ease of use of the <a class="reference external" href="http://redis.io/">redis</a>
 database, <a class="reference internal" href="../api/slimta.redisstorage.html#module-slimta.redisstorage" title="slimta.redisstorage"><code class="xref py py-mod docutils literal notranslate"><span class="pre">redisstorage</span></code></a> simply creates a hash key for each queued
 message, containing its delivery metadata and a pickled version of the
-<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code>.</p>
 <p>The keys created in redis will look like the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">redis</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="o">&gt;</span> <span class="n">KEYS</span> <span class="o">*</span>
 <span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;slimta:28195d3b0a5847f9853e5b0173c85151&quot;</span>
@@ -179,13 +178,13 @@ message, containing its delivery metadata and a pickled version of the
 <span class="n">redis</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>On startup, the <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> will scan the keyspace (using the customizable prefix
+<p>On startup, the <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> will scan the keyspace (using the customizable prefix
 <code class="docutils literal notranslate"><span class="pre">slimta:</span></code>) and populate the queue with existing messages for delivery.</p>
 <p>To use redis you must install:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-slimta[redis]
 </pre></div>
 </div>
-<p>And to initialize a new <a class="reference internal" href="../api/slimta.redisstorage.html#slimta.redisstorage.RedisStorage" title="slimta.redisstorage.RedisStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">RedisStorage</span></code></a>:</p>
+<p>And to initialize a new <code class="xref py py-class docutils literal notranslate"><span class="pre">RedisStorage</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.redisstorage</span> <span class="kn">import</span> <span class="n">RedisStorage</span>
 
 <span class="n">store</span> <span class="o">=</span> <span class="n">RedisStorage</span><span class="p">(</span><span class="s1">&#39;redis.example.com&#39;</span><span class="p">)</span>
@@ -193,9 +192,9 @@ message, containing its delivery metadata and a pickled version of the
 </div>
 </section>
 <section id="cloud-storage">
-<h3>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Permalink to this headline">¶</a></h3>
+<h3>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Permalink to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="../api/slimta.cloudstorage.html#module-slimta.cloudstorage" title="slimta.cloudstorage"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.cloudstorage</span></code></a> module makes available connectors to the cloud
-service providers <a class="reference external" href="https://aws.amazon.com/">AWS</a>. <a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> data and queue metadata are written to a
+service providers <a class="reference external" href="https://aws.amazon.com/">AWS</a>. <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> data and queue metadata are written to a
 cloud object store. Optionally, a reference to their location in the object
 store is then written to a cloud message queue, which can alert relayers in
 other processes of the availability of a new message in the object store.</p>
@@ -207,8 +206,8 @@ library:</p>
 <p>Using the <a class="reference external" href="https://boto.readthedocs.io/en/latest/ref/boto.html#module-boto" title="(in boto v2.49.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boto</span></code></a> library, we need to come up with references to a
 <a class="reference external" href="https://boto.readthedocs.io/en/latest/ref/s3.html#boto.s3.bucket.Bucket" title="(in boto v2.49.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bucket</span></code></a> and optionally a
 <a class="reference external" href="https://boto.readthedocs.io/en/latest/ref/sqs.html#boto.sqs.queue.Queue" title="(in boto v2.49.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>. Then, use them to create
-<a class="reference internal" href="../api/slimta.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleStorageService" title="slimta.cloudstorage.aws.SimpleStorageService"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleStorageService</span></code></a> and
-<a class="reference internal" href="../api/slimta.cloudstorage.aws.html#slimta.cloudstorage.aws.SimpleQueueService" title="slimta.cloudstorage.aws.SimpleQueueService"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleQueueService</span></code></a> objects:</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleStorageService</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleQueueService</span></code> objects:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">boto.s3.connection</span> <span class="kn">import</span> <span class="n">S3Connection</span>
 <span class="n">s3_conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="s1">&#39;1A2B3C4D5E&#39;</span><span class="p">,</span> <span class="s1">&#39;XXXXXXXXXXXX&#39;</span><span class="p">)</span>
 <span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">s3_conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="s1">&#39;slimta-queue&#39;</span><span class="p">)</span>
@@ -225,7 +224,7 @@ library:</p>
 </pre></div>
 </div>
 <p>Once you have these objects created for your cloud service, link them together
-into a queue storage driver using <a class="reference internal" href="../api/slimta.cloudstorage.html#slimta.cloudstorage.CloudStorage" title="slimta.cloudstorage.CloudStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code></a>:</p>
+into a queue storage driver using <code class="xref py py-class docutils literal notranslate"><span class="pre">CloudStorage</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.cloudstorage</span> <span class="kn">import</span> <span class="n">CloudStorage</span>
 
 <span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">cloud_files</span><span class="p">,</span> <span class="n">cloud_queues</span><span class="p">)</span>
@@ -233,7 +232,7 @@ into a queue storage driver using <a class="reference internal" href="../api/sli
 <span class="n">storage</span> <span class="o">=</span> <span class="n">CloudStorage</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="n">sqs</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This object can then be used anywhere a <a class="reference internal" href="../api/slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a>
+<p>This object can then be used anywhere a <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code>
 object is required.</p>
 </section>
 </section>
@@ -245,10 +244,7 @@ object is required.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        <div class="sphinxsidebarwrapper"><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Queue Services</a><ul>
@@ -284,7 +280,7 @@ object is required.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -323,7 +319,7 @@ object is required.</p>
         <li class="right" >
           <a href="edge.html" title="Edge Services"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li>

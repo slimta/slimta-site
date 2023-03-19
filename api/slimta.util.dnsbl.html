@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.util.dnsbl &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.util.dnsbl &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.util.proxyproto" href="slimta.util.proxyproto.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.util.dns.html" title="slimta.util.dns"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -75,151 +74,9 @@
           <div class="body" role="main">
             
   <section id="module-slimta.util.dnsbl">
-<span id="slimta-util-dnsbl"></span><h1>slimta.util.dnsbl<a class="headerlink" href="#module-slimta.util.dnsbl" title="Permalink to this headline">¶</a></h1>
+<span id="slimta-util-dnsbl"></span><h1>slimta.util.dnsbl<a class="headerlink" href="#module-slimta.util.dnsbl" title="Permalink to this heading">¶</a></h1>
 <p>This module provides classes to check <a class="reference external" href="http://en.wikipedia.org/wiki/DNSBL">DNSBLs</a> for IP addresses or hosts.
 These lists can be hugely helpful and inexpensive ways of filtering spam.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.DnsBlocklist">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.util.dnsbl.</span></span><span class="sig-name descname"><span class="pre">DnsBlocklist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class to check one DNSBL. This object provides <code class="docutils literal notranslate"><span class="pre">__contains__</span></code> and
-<code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> protocols, so it supports simpler usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s1">&#39;123.4.56.7&#39;</span> <span class="ow">in</span> <span class="n">dnsbl</span><span class="p">:</span>
-    <span class="n">reason</span> <span class="o">=</span> <span class="n">dnsbl</span><span class="p">[</span><span class="s1">&#39;123.4.56.7&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Because <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> simply calls <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get_reason" title="slimta.util.dnsbl.DnsBlocklist.get_reason"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_reason()</span></code></a>, it
-will never raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a> and should only be used after using
-<a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get" title="slimta.util.dnsbl.DnsBlocklist.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> or <code class="docutils literal notranslate"><span class="pre">__contains__</span></code>.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>address</strong> – The DNSBL domain name.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.DnsBlocklist.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">timeout=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">strict=False</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks this DNSBL for the given IP address. This method does not
-check the answer, only that the response was not <code class="docutils literal notranslate"><span class="pre">NXDOMAIN</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ip</strong> – The IP address string to check.</p></li>
-<li><p><strong>timeout</strong> – A timeout in seconds before <code class="docutils literal notranslate"><span class="pre">False</span></code> is returned.</p></li>
-<li><p><strong>strict</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, DNS exceptions that are not <code class="docutils literal notranslate"><span class="pre">NXDOMAIN</span></code>
-(including timeouts) will also  result in a <code class="docutils literal notranslate"><span class="pre">True</span></code>
-return value.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the DNSBL had an entry for the given IP address,
-<code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.DnsBlocklist.get_reason">
-<span class="sig-name descname"><span class="pre">get_reason</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">timeout=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklist.get_reason" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the TXT record for the IP address on this DNSBL. This is
-usually a reason for why the IP address matched. As such, this function
-should only be called after <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist.get" title="slimta.util.dnsbl.DnsBlocklist.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ip</strong> – The IP address to get a match reason for.</p></li>
-<li><p><strong>timeout</strong> – A timeout in seconds before giving up.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A string with the reason, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.DnsBlocklistGroup">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.util.dnsbl.</span></span><span class="sig-name descname"><span class="pre">DnsBlocklistGroup</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">pool=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Allows a group of DNSBLs to be queried simultaneously.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.DnsBlocklistGroup.add_dnsbl">
-<span class="sig-name descname"><span class="pre">add_dnsbl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup.add_dnsbl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a DNSBL domain name to the list of DNSBLs to check.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>address</strong> – The DNSBL domain name.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.DnsBlocklistGroup.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">timeout=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Queries all DNSBLs in the group for matches.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ip</strong> – The IP address to check for.</p></li>
-<li><p><strong>timeout</strong> – Timeout in seconds before canceling remaining queries.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">set()</span></code> containing the DNSBL domain names that
-matched a record for the IP address.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.DnsBlocklistGroup.get_reasons">
-<span class="sig-name descname"><span class="pre">get_reasons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matches</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">timeout=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.DnsBlocklistGroup.get_reasons" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets the reasons for each matching DNSBL for the IP address.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>matches</strong> – The DNSBL matches, as returned by <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklistGroup.get" title="slimta.util.dnsbl.DnsBlocklistGroup.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a>.</p></li>
-<li><p><strong>ip</strong> – The IP address to get reasons for.</p></li>
-<li><p><strong>timeout</strong> – Timeout in seconds before canceling remaining queries.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">dict()</span></code> keyed by the DNSBL domain names from
-the <code class="docutils literal notranslate"><span class="pre">matches</span></code> argument with the values being the reasons
-each DNSBL matched or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="slimta.util.dnsbl.check_dnsbl">
-<span class="sig-prename descclassname"><span class="pre">slimta.util.dnsbl.</span></span><span class="sig-name descname"><span class="pre">check_dnsbl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">match_code='550'</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">match_message='5.7.1</span> <span class="pre">Access</span> <span class="pre">denied'</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">timeout=10.0</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.util.dnsbl.check_dnsbl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decorator for <a class="reference internal" href="slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> methods that are
-given a <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object. It will check the current SMTP session’s connecting
-IP address against the DNSBL provided at domain name <code class="docutils literal notranslate"><span class="pre">address</span></code>. If the IP
-matches, set the reply and do not call the validator method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>address</strong> – <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklist" title="slimta.util.dnsbl.DnsBlocklist"><code class="xref py py-class docutils literal notranslate"><span class="pre">DnsBlocklist</span></code></a> object, <a class="reference internal" href="#slimta.util.dnsbl.DnsBlocklistGroup" title="slimta.util.dnsbl.DnsBlocklistGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">DnsBlocklistGroup</span></code></a>
-object, or DNSBL domain name string.</p></li>
-<li><p><strong>match_code</strong> – When the connecting IP address matches, set the <a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a>
-code to this string.</p></li>
-<li><p><strong>match_message</strong> – When the connecting IP address matches, set the
-<a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> message to this string.</p></li>
-<li><p><strong>timeout</strong> – Timeout in seconds before giving up the check.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
@@ -229,9 +86,6 @@ code to this string.</p></li>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.util.dns.html"
@@ -251,7 +105,7 @@ code to this string.</p></li>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -290,7 +144,7 @@ code to this string.</p></li>
         <li class="right" >
           <a href="slimta.util.dns.html" title="slimta.util.dns"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

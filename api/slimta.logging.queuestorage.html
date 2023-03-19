@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.logging.queuestorage &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.logging.queuestorage &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.util" href="slimta.util.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.logging.subprocess.html" title="slimta.logging.subprocess"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -75,64 +74,9 @@
           <div class="body" role="main">
             
   <section id="module-slimta.logging.queuestorage">
-<span id="slimta-logging-queuestorage"></span><h1>slimta.logging.queuestorage<a class="headerlink" href="#module-slimta.logging.queuestorage" title="Permalink to this headline">¶</a></h1>
-<p>Utilities to make logging consistent and easy for any <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a>
+<span id="slimta-logging-queuestorage"></span><h1>slimta.logging.queuestorage<a class="headerlink" href="#module-slimta.logging.queuestorage" title="Permalink to this heading">¶</a></h1>
+<p>Utilities to make logging consistent and easy for any <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code>
 interaction.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.logging.queuestorage.QueueStorageLogger">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.logging.queuestorage.</span></span><span class="sig-name descname"><span class="pre">QueueStorageLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Provides a limited set of log methods that <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> packages may
-use. This prevents free-form logs from mixing in with standard, machine-
-parseable logs.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>log</strong> – <a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></a> object to log through.</p>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.logging.queuestorage.QueueStorageLogger.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envelope</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs a new <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> being written to the queue storage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> – The ID string that identifies the message in storage.</p></li>
-<li><p><strong>envelope</strong> – The <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> being written to storage.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.logging.queuestorage.QueueStorageLogger.update_meta">
-<span class="sig-name descname"><span class="pre">update_meta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**what</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger.update_meta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs operations that modify the metadata associated with an
-<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> in queue storage.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> – The ID string that identifies the message in storage.</p></li>
-<li><p><strong>what</strong> – What is being changed in the metadata.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.logging.queuestorage.QueueStorageLogger.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.logging.queuestorage.QueueStorageLogger.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs when an <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> is removed from the queue, which could be
-because of success or failure.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – The ID string that identifies the message in storage.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 
 
@@ -142,9 +86,6 @@ because of success or failure.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.logging.subprocess.html"
@@ -164,7 +105,7 @@ because of success or failure.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -203,7 +144,7 @@ because of success or failure.</p>
         <li class="right" >
           <a href="slimta.logging.subprocess.html" title="slimta.logging.subprocess"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

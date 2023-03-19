@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Deciphering Message Delivery Responses &#8212; slimta 5.0.0 documentation</title>
+    <title>Deciphering Message Delivery Responses &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +49,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">Deciphering Message Delivery Responses</a></li> 
       </ul>
@@ -64,10 +63,10 @@
           <div class="body" role="main">
             
   <section id="deciphering-message-delivery-responses">
-<h1>Deciphering Message Delivery Responses<a class="headerlink" href="#deciphering-message-delivery-responses" title="Permalink to this headline">¶</a></h1>
+<h1>Deciphering Message Delivery Responses<a class="headerlink" href="#deciphering-message-delivery-responses" title="Permalink to this heading">¶</a></h1>
 <p>Because <a class="reference external" href="https://slimta.org/">slimta</a> is an email server, responses are always given as or translated
 to SMTP-style code and message. That is, a 3-digit code and a free-form message
-describing the success or what caused the failure. The <a class="reference internal" href="../api/slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> objects that
+describing the success or what caused the failure. The <code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code> objects that
 represent the responses have <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">message</span></code> properties for accessing
 ad setting these values.</p>
 <p>The 3-digit code will start with <em>2</em> for responses indicating success, such as
@@ -92,9 +91,6 @@ response message should be parsed programmatically.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -104,7 +100,7 @@ response message should be parsed programmatically.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -137,7 +133,7 @@ response message should be parsed programmatically.</p>
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
         <li class="nav-item nav-item-this"><a href="">Deciphering Message Delivery Responses</a></li> 
       </ul>

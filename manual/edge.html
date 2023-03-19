@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Edge Services &#8212; slimta 5.0.0 documentation</title>
+    <title>Edge Services &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Queue Services" href="queue.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="envelopes.html" title="Envelope Objects"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" accesskey="U">Python Library Usage</a> &#187;</li>
@@ -74,19 +73,19 @@
           <div class="body" role="main">
             
   <section id="edge-services">
-<h1>Edge Services<a class="headerlink" href="#edge-services" title="Permalink to this headline">¶</a></h1>
+<h1>Edge Services<a class="headerlink" href="#edge-services" title="Permalink to this heading">¶</a></h1>
 <p>The term <em>edge</em> is not necessarily common among other <em>MTAs</em>. It was adapted
 loosely by <a class="reference external" href="https://slimta.org/">slimta</a> from the <a class="reference external" href="https://technet.microsoft.com/en-us/library/bb124701.aspx">Edge Transport Server Role</a> in Microsoft
 Exchange, but the name is about where the similarities end.</p>
 <p>In <a class="reference external" href="https://slimta.org/">slimta</a>, an edge service are those that are listening for new messages
 entering the system. The protocol does not matter, an edge service produces an
-<a class="reference internal" href="../api/slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object and hands it off to the next stage of delivery.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object and hands it off to the next stage of delivery.</p>
 <p>Edge services (usually) send their requests to and receive their responses from
 a <em>queue</em> service. That means the response delivered to the client does not
 signify whether the message was successfully delivered, but rather that the
 <em>queue</em> service has taken responsibility for its delivery.</p>
 <section id="smtp-edge-services">
-<span id="edge-smtp"></span><h2>SMTP Edge Services<a class="headerlink" href="#smtp-edge-services" title="Permalink to this headline">¶</a></h2>
+<span id="edge-smtp"></span><h2>SMTP Edge Services<a class="headerlink" href="#smtp-edge-services" title="Permalink to this heading">¶</a></h2>
 <p>Traditionally, email <em>MTAs</em> receive messages from other <em>MTAs</em> or user email
 clients using the SMTP protocol (<a class="reference external" href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc2821">RFC 2821</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc821">RFC 821</a>). An SMTP
 session delivering a message from a client to a server might look like this,
@@ -117,7 +116,7 @@ to accept messages from a certain IP (e.g. known spammers) you would want to
 limit the amount of memory and CPU cycles they consume by rejecting before the
 before <code class="docutils literal notranslate"><span class="pre">DATA</span></code>.</p>
 <section id="creating-smtp-edge-objects">
-<h3>Creating SMTP Edge Objects<a class="headerlink" href="#creating-smtp-edge-objects" title="Permalink to this headline">¶</a></h3>
+<h3>Creating SMTP Edge Objects<a class="headerlink" href="#creating-smtp-edge-objects" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
 
 <span class="n">smtp</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
@@ -126,12 +125,12 @@ before <code class="docutils literal notranslate"><span class="pre">DATA</span><
 </div>
 </section>
 <section id="authentication-with-smtp-edge">
-<h3>Authentication with SMTP Edge<a class="headerlink" href="#authentication-with-smtp-edge" title="Permalink to this headline">¶</a></h3>
+<h3>Authentication with SMTP Edge<a class="headerlink" href="#authentication-with-smtp-edge" title="Permalink to this heading">¶</a></h3>
 <p>There are a few steps involved with adding authentication to the edge. The first
 is exposing the <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> SMTP extensions to clients by passing <code class="docutils literal notranslate"><span class="pre">auth=True</span></code> to
-the <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code></a> constructor.</p>
+the <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code> constructor.</p>
 <p>By default, any credentials will successfully authenticate, so the next step is
-adding a <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> class that implements the
+adding a <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code> class that implements the
 <code class="docutils literal notranslate"><span class="pre">handle_auth</span></code> method:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpValidators</span>
 <span class="kn">from</span> <span class="nn">slimta.smtp.reply</span> <span class="kn">import</span> <span class="n">invalid_credentials</span>
@@ -154,10 +153,10 @@ successful authentication:</p>
 </pre></div>
 </div>
 <p>If you have not already, you’ll need to attach your validators to your
-<a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpEdge" title="slimta.edge.smtp.SmtpEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code></a> by passing in
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code> by passing in
 <code class="docutils literal notranslate"><span class="pre">validator_class=MyValidators</span></code> to its constructor.</p>
 <section id="sender-policy-framework-spf">
-<h4>Sender Policy Framework (SPF)<a class="headerlink" href="#sender-policy-framework-spf" title="Permalink to this headline">¶</a></h4>
+<h4>Sender Policy Framework (SPF)<a class="headerlink" href="#sender-policy-framework-spf" title="Permalink to this heading">¶</a></h4>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a> is a tool that, at its most basic, allows domains to explicitly list the
 outbound hosts/IPs from which they are legitimately sending mail. Domains may
 set DNS records of special formats that email receivers query and compare
@@ -181,7 +180,7 @@ want to act upon. These results are:</p>
 <span class="n">spf</span><span class="o">.</span><span class="n">set_enforcement</span><span class="p">(</span><span class="s1">&#39;softfail&#39;</span><span class="p">,</span> <span class="n">match_code</span><span class="o">=</span><span class="s1">&#39;250&#39;</span><span class="p">,</span> <span class="n">match_message</span><span class="o">=</span><span class="s1">&#39;2.0.0 Ok; </span><span class="si">{reason}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And then in our <a class="reference internal" href="../api/slimta.edge.smtp.html#slimta.edge.smtp.SmtpValidators" title="slimta.edge.smtp.SmtpValidators"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code></a> class, use the
+<p>And then in our <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpValidators</span></code> class, use the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">check()</span></code> decorator:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@spf</span><span class="o">.</span><span class="n">check</span>
 <span class="k">def</span> <span class="nf">handle_mail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
@@ -191,7 +190,7 @@ want to act upon. These results are:</p>
 </section>
 </section>
 <section id="proxy-protocol-with-smtp-edge">
-<h3>Proxy Protocol with SMTP Edge<a class="headerlink" href="#proxy-protocol-with-smtp-edge" title="Permalink to this headline">¶</a></h3>
+<h3>Proxy Protocol with SMTP Edge<a class="headerlink" href="#proxy-protocol-with-smtp-edge" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.0.</span></p>
 </div>
@@ -214,7 +213,7 @@ behind a proxy that is configured to use <a class="reference external" href="htt
 </section>
 </section>
 <section id="http-edge-services">
-<span id="edge-http"></span><h2>HTTP Edge Services<a class="headerlink" href="#http-edge-services" title="Permalink to this headline">¶</a></h2>
+<span id="edge-http"></span><h2>HTTP Edge Services<a class="headerlink" href="#http-edge-services" title="Permalink to this heading">¶</a></h2>
 <p>A very common desire these days is to be able to submit emails to an MTA using
 HTTP or HTTPS protocols, due to the simplicity and ubiquity of these protocols.
 Unfortunately, no standards have been settled on, so HTTP mail reception and
@@ -241,7 +240,7 @@ X-Smtp-Reply: 250; message=&quot;2.6.0 Message accepted for delivery&quot;
 Date: Mon, 29 Jul 2013 20:11:55 GMT
 Content-Length: 0</strong></pre>
 <section id="creating-http-edge-objects">
-<h3>Creating HTTP Edge Objects<a class="headerlink" href="#creating-http-edge-objects" title="Permalink to this headline">¶</a></h3>
+<h3>Creating HTTP Edge Objects<a class="headerlink" href="#creating-http-edge-objects" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.wsgi</span> <span class="kn">import</span> <span class="n">WsgiEdge</span>
 
 <span class="n">wsgi</span> <span class="o">=</span> <span class="n">WsgiEdge</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
@@ -259,10 +258,7 @@ Content-Length: 0</strong></pre>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p><div class="sphinx-toc sphinxlocaltoc">
+        <div class="sphinxsidebarwrapper"><div class="sphinx-toc sphinxlocaltoc">
     <h3><a href="../index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Edge Services</a><ul>
@@ -303,7 +299,7 @@ Content-Length: 0</strong></pre>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -342,7 +338,7 @@ Content-Length: 0</strong></pre>
         <li class="right" >
           <a href="envelopes.html" title="Envelope Objects"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Usage Manual</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="python-slimta.html" >Python Library Usage</a> &#187;</li>

@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.relay.smtp.static &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.relay.smtp.static &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.relay.smtp.mx" href="slimta.relay.smtp.mx.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.relay.smtp.html" title="slimta.relay.smtp"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -76,89 +75,10 @@
           <div class="body" role="main">
             
   <section id="module-slimta.relay.smtp.static">
-<span id="slimta-relay-smtp-static"></span><h1>slimta.relay.smtp.static<a class="headerlink" href="#module-slimta.relay.smtp.static" title="Permalink to this headline">¶</a></h1>
+<span id="slimta-relay-smtp-static"></span><h1>slimta.relay.smtp.static<a class="headerlink" href="#module-slimta.relay.smtp.static" title="Permalink to this heading">¶</a></h1>
 <p>Implements a pool of connections to a single destination. If an existing
 connection is available, it is re-used by subsequent connections until it times
 out.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.relay.smtp.static.StaticSmtpRelay">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.relay.smtp.static.</span></span><span class="sig-name descname"><span class="pre">StaticSmtpRelay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">port=25</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">pool_size=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">client_class=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">context=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**client_kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.static.StaticSmtpRelay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.relay.pool.html#slimta.relay.pool.RelayPool" title="slimta.relay.pool.RelayPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.relay.pool.RelayPool</span></code></a></p>
-<p>Manages the relaying of messages to a specific <code class="docutils literal notranslate"><span class="pre">host:port</span></code>.
-Connections may be recycled when possible, to send multiple messages over a
-single channel.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>host</strong> – Host string to connect to.</p></li>
-<li><p><strong>port</strong> – Port to connect to.</p></li>
-<li><p><strong>pool_size</strong> – At most this many simultaneous connections will be open
-to the destination. If this limit is reached and no
-connections are idle, new attempts will block.</p></li>
-<li><p><strong>context</strong> (<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a>) – Used to wrap sockets with SSL encryption, rather than the
-default context.</p></li>
-<li><p><strong>auth_mechanism</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><em>bytes</em></a>) – Force the use of the given <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> mechanism,
-instead of the best available.</p></li>
-<li><p><strong>tls_immediately</strong> – If True, the socket will be encrypted
-immediately on connection rather than looking for
-the <code class="docutils literal notranslate"><span class="pre">STARTTLS</span></code> extension.</p></li>
-<li><p><strong>tls_required</strong> – If given and True, it should be considered a delivery
-failure if TLS cannot be negotiated by the client.</p></li>
-<li><p><strong>connect_timeout</strong> – Timeout in seconds to wait for a client connection
-to be successful before issuing a transient
-failure.</p></li>
-<li><p><strong>command_timeout</strong> – Timeout in seconds to wait for a reply to each SMTP
-command before issuing a transient failure.</p></li>
-<li><p><strong>data_timeout</strong> – Timeout in seconds to wait for a reply to message data
-before issuing a transient failure.</p></li>
-<li><p><strong>idle_timeout</strong> – Timeout in seconds after a message is delivered before
-a QUIT command is sent and the connection terminated.
-If another message should be delivered before this
-timeout expires, the connection will be re-used. By
-default, QUIT is sent immediately and connections are
-never re-used.</p></li>
-<li><p><strong>credentials</strong> – Information used to authenticate the created SMTP
-sessions. This can be an iterable or a callable that
-returns or generates an iterable. The iterable will be
-passed as the arguments into the
-<a class="reference internal" href="slimta.smtp.client.html#slimta.smtp.client.Client.auth" title="slimta.smtp.client.Client.auth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">auth()</span></code></a> method of the
-session. By default, no authentication is attempted.</p></li>
-<li><p><strong>socket_creator</strong> – Optional function to use instead of
-<a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.create_connection" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_connection()</span></code></a> for creating
-sockets.</p></li>
-<li><p><strong>ehlo_as</strong> – The string to send as the EHLO or HELO string. Defaults to
-the FQDN of the system. This may also be given as a
-function that will be executed with the destination address
-at the beginning of each connection.</p></li>
-<li><p><strong>binary_encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used as
-an argument to
-<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.encode_7bit" title="slimta.envelope.Envelope.encode_7bit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">encode_7bit()</span></code></a> when
-conversion is necessary for the remote server.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.relay.smtp.static.StaticSmtpRelay.add_client">
-<span class="sig-name descname"><span class="pre">add_client</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.static.StaticSmtpRelay.add_client" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sub-classes must override this method to create and return a new
-<code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPoolClient</span></code> object that will poll for delivery requests.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPoolClient</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.relay.smtp.static.StaticLmtpRelay">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.relay.smtp.static.</span></span><span class="sig-name descname"><span class="pre">StaticLmtpRelay</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">host='localhost'</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">port=24</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">pool_size=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">**client_kwargs</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.smtp.static.StaticLmtpRelay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.relay.smtp.static.StaticSmtpRelay</span></code></a></p>
-<p>Exactly like <a class="reference internal" href="#slimta.relay.smtp.static.StaticSmtpRelay" title="slimta.relay.smtp.static.StaticSmtpRelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">StaticSmtpRelay</span></code></a>, except that the LMTP protocol is
-used by default instead.</p>
-</dd></dl>
-
 </section>
 
 
@@ -168,9 +88,6 @@ used by default instead.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.relay.smtp.html"
@@ -190,7 +107,7 @@ used by default instead.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -229,7 +146,7 @@ used by default instead.</p>
         <li class="right" >
           <a href="slimta.relay.smtp.html" title="slimta.relay.smtp"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

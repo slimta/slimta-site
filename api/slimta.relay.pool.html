@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.relay.pool &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.relay.pool &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.relay.blackhole" href="slimta.relay.blackhole.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.relay.html" title="slimta.relay"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
@@ -75,133 +74,7 @@
           <div class="body" role="main">
             
   <section id="module-slimta.relay.pool">
-<span id="slimta-relay-pool"></span><h1>slimta.relay.pool<a class="headerlink" href="#module-slimta.relay.pool" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPool">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.relay.pool.</span></span><span class="sig-name descname"><span class="pre">RelayPool</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">pool_size=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pool.RelayPool" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.relay.Relay</span></code></a></p>
-<p>Base class that inherits <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> to add the ability to create bounded,
-cached pools of outbound clients. It maintains a queue of messages to be
-delivered such that idle clients in the pool pick them up.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>pool_size</strong> – At most this many simultaneous connections will be open
-to a destination. If this limit is reached and no
-connections are idle, new attempts will block.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPool.queue">
-<span class="sig-name descname"><span class="pre">queue</span></span><a class="headerlink" href="#slimta.relay.pool.RelayPool.queue" title="Permalink to this definition">¶</a></dt>
-<dd><p>This attribute holds the queue object for providing delivery
-requests to idle clients in the pool.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPool.kill">
-<span class="sig-name descname"><span class="pre">kill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pool.RelayPool.kill" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method is used by <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a> and <a class="reference internal" href="slimta.relay.html#slimta.relay.Relay" title="slimta.relay.Relay"><code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code></a>-like objects to properly
-end associated services (such as running <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Greenlet</span></code></a>
-threads) and close resources.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPool.add_client">
-<span class="sig-name descname"><span class="pre">add_client</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pool.RelayPool.add_client" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sub-classes must override this method to create and return a new
-<a class="reference internal" href="#slimta.relay.pool.RelayPoolClient" title="slimta.relay.pool.RelayPoolClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPoolClient</span></code></a> object that will poll for delivery requests.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#slimta.relay.pool.RelayPoolClient" title="slimta.relay.pool.RelayPoolClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPoolClient</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPool.attempt">
-<span class="sig-name descname"><span class="pre">attempt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">envelope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pool.RelayPool.attempt" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method must be overridden by sub-classes in order to be passed
-in to the <a class="reference internal" href="slimta.queue.html#slimta.queue.Queue" title="slimta.queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> constructor.</p>
-<p>The result of a successful relay attempt is either <code class="docutils literal notranslate"><span class="pre">None</span></code> or a
-<a class="reference internal" href="slimta.smtp.reply.html#slimta.smtp.reply.Reply" title="slimta.smtp.reply.Reply"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code></a> object. The result of a failing relay attempt is either a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">PermanentRelayFailure</span></code> or
-<code class="xref py py-class docutils literal notranslate"><span class="pre">TransientRelayFailure</span></code> error.</p>
-<p>If the result applies to the entire <code class="docutils literal notranslate"><span class="pre">envelope</span></code> and all its
-recipients, implementations may return the successful result or raise
-the failure. If the result is different per-recipient, then
-implementations may return a dictionary where the key is a recipient
-from <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> and the value is the
-relay result (successful or failing).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>envelope</strong> – <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> to attempt delivery for.</p></li>
-<li><p><strong>attempts</strong> – Number of times the envelope has attempted delivery.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The relay result, as described above.</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">PermanentRelayError</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TransientRelayError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPoolClient">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.relay.pool.</span></span><span class="sig-name descname"><span class="pre">RelayPoolClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">idle_timeout=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">gevent._gevent_cgreenlet.Greenlet</span></code></p>
-<p>Base class for implementing clients for handling delivery requests in a
-<a class="reference internal" href="#slimta.relay.pool.RelayPool" title="slimta.relay.pool.RelayPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPool</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>queue</strong> – The queue on which delivery requests will be received.</p></li>
-<li><p><strong>idle_timeout</strong> – If the client can handle multiple, pipelined delivery
-requests, this is the timeout in seconds that a client
-will wait for subsequent requests.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPoolClient.idle_timeout">
-<span class="sig-name descname"><span class="pre">idle_timeout</span></span><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient.idle_timeout" title="Permalink to this definition">¶</a></dt>
-<dd><p>This attribute holds the idle timeout for handling multiple delivery
-requests on the client.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPoolClient.poll">
-<span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient.poll" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method can be used by clients to receive new delivery requests
-from the client pool. This method will block until a delivery request
-is received.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>A tuple containing the <a class="reference external" href="http://www.gevent.org/api/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncResult</span></code></a> and
-the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> that make up a
-delivery request. If no delivery requests are received before
-the <a class="reference internal" href="#slimta.relay.pool.RelayPoolClient.idle_timeout" title="slimta.relay.pool.RelayPoolClient.idle_timeout"><code class="xref py py-attr docutils literal notranslate"><span class="pre">idle_timeout</span></code></a> timeout, <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">None)</span></code> is
-returned.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.relay.pool.RelayPoolClient._run">
-<span class="sig-name descname"><span class="pre">_run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.relay.pool.RelayPoolClient._run" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method must be overridden by sub-classes to handle processing
-of delivery requests. It should call <a class="reference internal" href="#slimta.relay.pool.RelayPoolClient.poll" title="slimta.relay.pool.RelayPoolClient.poll"><code class="xref py py-meth docutils literal notranslate"><span class="pre">poll()</span></code></a> when it is ready for
-new delivery requests. The result of the delivery attempt should be
-written to the <a class="reference external" href="http://www.gevent.org/api/gevent.event.html#gevent.event.AsyncResult" title="(in gevent v21.12.1.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncResult</span></code></a> object provided in
-the request.</p>
-</dd></dl>
-
-</dd></dl>
-
+<span id="slimta-relay-pool"></span><h1>slimta.relay.pool<a class="headerlink" href="#module-slimta.relay.pool" title="Permalink to this heading">¶</a></h1>
 </section>
 
 
@@ -211,9 +84,6 @@ the request.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.relay.html"
@@ -233,7 +103,7 @@ the request.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -272,7 +142,7 @@ the request.</p>
         <li class="right" >
           <a href="slimta.relay.html" title="slimta.relay"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

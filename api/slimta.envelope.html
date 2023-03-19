@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.envelope &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.envelope &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="slimta.bounce" href="slimta.bounce.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.http.wsgi.html" title="slimta.http.wsgi"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
@@ -74,185 +73,9 @@
           <div class="body" role="main">
             
   <section id="module-slimta.envelope">
-<span id="slimta-envelope"></span><h1>slimta.envelope<a class="headerlink" href="#module-slimta.envelope" title="Permalink to this headline">¶</a></h1>
-<p>Module defining <a class="reference internal" href="#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> for holding message data along with
+<span id="slimta-envelope"></span><h1>slimta.envelope<a class="headerlink" href="#module-slimta.envelope" title="Permalink to this heading">¶</a></h1>
+<p>Module defining <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> for holding message data along with
 metadata.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.envelope.</span></span><span class="sig-name descname"><span class="pre">Envelope</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">sender=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">recipients=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">headers=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">message=None</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class containing message data and metadata. This class acts like an
-envelope with the sending address, recipient(s), and the actual message.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sender</strong> – The address that sent the message.</p></li>
-<li><p><strong>recipients</strong> – List of addresses to receive the message.</p></li>
-<li><p><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a>) – The message headers.</p></li>
-<li><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – String containing the message contents after the headers.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.sender">
-<span class="sig-name descname"><span class="pre">sender</span></span><a class="headerlink" href="#slimta.envelope.Envelope.sender" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sending address of the message.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.recipients">
-<span class="sig-name descname"><span class="pre">recipients</span></span><a class="headerlink" href="#slimta.envelope.Envelope.recipients" title="Permalink to this definition">¶</a></dt>
-<dd><p>List of recipient addresses of the message.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.headers">
-<span class="sig-name descname"><span class="pre">headers</span></span><a class="headerlink" href="#slimta.envelope.Envelope.headers" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a> object for accessing and modifying
-message headers.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.message">
-<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#slimta.envelope.Envelope.message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bytestring of message data, not including headers.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.client">
-<span class="sig-name descname"><span class="pre">client</span></span><a class="headerlink" href="#slimta.envelope.Envelope.client" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dictionary of information about the client that sent the message.
-Utilized keys include:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ip</span></code>: The IP of the client.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">host</span></code>: The reverse-lookup of the client IP.</p></li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">name</span></code>: The client name, as given by its <code class="docutils literal notranslate"><span class="pre">EHLO</span></code> or</dt><dd><p>alternative.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">protocol</span></code>: The protocol used by the client, generally a variant</dt><dd><p>of <code class="docutils literal notranslate"><span class="pre">&quot;SMTP&quot;</span></code>.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">auth</span></code>: The name the client successfully authenticated with, or</dt><dd><p><code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.receiver">
-<span class="sig-name descname"><span class="pre">receiver</span></span><a class="headerlink" href="#slimta.envelope.Envelope.receiver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Hostname of the <a class="reference internal" href="slimta.html#module-slimta" title="slimta"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta</span></code></a> server that received the message.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.timestamp">
-<span class="sig-name descname"><span class="pre">timestamp</span></span><a class="headerlink" href="#slimta.envelope.Envelope.timestamp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Timestamp when the message was received.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.prepend_header">
-<span class="sig-name descname"><span class="pre">prepend_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.prepend_header" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method allows prepending a header to the message.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This method uses undocumented Python API because the
-<a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">headers</span></code></a> object does not directly support header
-prepending.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – The header name.</p></li>
-<li><p><strong>value</strong> – The header value string.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.copy">
-<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">new_rcpts=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.copy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Builds and returns an exact copy if the current object. This method
-uses a deep-copying so internal datastructures are not shared.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>new_rcpts</strong> – If given, overwrite the <a class="reference internal" href="#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> list with
-this value in the new object.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An exact, deep copy of the current object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.flatten">
-<span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.flatten" title="Permalink to this definition">¶</a></dt>
-<dd><p>Produces two strings representing the headers and message body.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Tuple of two bytestrings: <code class="docutils literal notranslate"><span class="pre">(header_data,</span> <span class="pre">message_data)</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.encode_7bit">
-<span class="sig-name descname"><span class="pre">encode_7bit</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">encoder=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.encode_7bit" title="Permalink to this definition">¶</a></dt>
-<dd><div class="versionadded">
-<p><span class="versionmodified added">New in version 0.3.12.</span></p>
-</div>
-<p>Forces the message into 7-bit encoding such that it can be sent to SMTP
-servers that do not support the <code class="docutils literal notranslate"><span class="pre">8BITMIME</span></code> extension.</p>
-<p>If the <code class="docutils literal notranslate"><span class="pre">encoder</span></code> function is not given, this function is relatively
-cheap and will just check the message body for 8-bit characters
-(raising <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UnicodeDecodeError" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">UnicodeDecodeError</span></code></a> if any are found).  Otherwise,
-this method can be very expensive. It will parse the entire message
-into MIME parts in order to encode parts that are not 7-bit.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>encoder</strong> – Optional function from <a class="reference external" href="https://docs.python.org/3/library/email.encoders.html#module-email.encoders" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code></a> used to
-encode MIME parts that are not 7-bit.</p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p>UnicodeDecodeError</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.parse_msg">
-<span class="sig-name descname"><span class="pre">parse_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.parse_msg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses the given <a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a> to
-populate the <a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">headers</span></code></a> and <a class="reference internal" href="#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><code class="xref py py-attr docutils literal notranslate"><span class="pre">message</span></code></a> attributes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a>) – The complete message, headers and message body.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.envelope.Envelope.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.envelope.Envelope.parse" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses the given string to populate the <a class="reference internal" href="#slimta.envelope.Envelope.headers" title="slimta.envelope.Envelope.headers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">headers</span></code></a> and
-<a class="reference internal" href="#slimta.envelope.Envelope.message" title="slimta.envelope.Envelope.message"><code class="xref py py-attr docutils literal notranslate"><span class="pre">message</span></code></a> attributes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code></a>) – The complete message, headers and message body.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 
 
@@ -262,9 +85,6 @@ populate the <a class="reference internal" href="#slimta.envelope.Envelope.heade
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.http.wsgi.html"
@@ -284,7 +104,7 @@ populate the <a class="reference internal" href="#slimta.envelope.Envelope.heade
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -323,7 +143,7 @@ populate the <a class="reference internal" href="#slimta.envelope.Envelope.heade
         <li class="right" >
           <a href="slimta.http.wsgi.html" title="slimta.http.wsgi"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>

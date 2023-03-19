@@ -3,20 +3,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>slimta.redisstorage &#8212; slimta 5.0.0 documentation</title>
+    <title>slimta.redisstorage &#8212; slimta 5.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
 
     
     
@@ -34,7 +33,7 @@
         <script src="../_static/cloud.js"></script>
     
 
-    <link rel="shortcut icon" href="../_static/slimta.ico"/>
+    <link rel="icon" href="../_static/slimta.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Usage Manual" href="../manual/index.html" />
@@ -58,7 +57,7 @@
         <li class="right" >
           <a href="slimta.diskstorage.html" title="slimta.diskstorage"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" accesskey="U">slimta</a> &#187;</li>
@@ -74,180 +73,9 @@
           <div class="body" role="main">
             
   <section id="slimta-redisstorage">
-<h1>slimta.redisstorage<a class="headerlink" href="#slimta-redisstorage" title="Permalink to this headline">¶</a></h1>
+<h1>slimta.redisstorage<a class="headerlink" href="#slimta-redisstorage" title="Permalink to this heading">¶</a></h1>
 <p>This module is available with the <code class="docutils literal notranslate"><span class="pre">python-slimta[redis]</span></code> package extra.</p>
 <span class="target" id="module-slimta.redisstorage"></span><p>Package implementing the <a class="reference internal" href="slimta.queue.html#module-slimta.queue" title="slimta.queue"><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code></a> storage system using <a class="reference external" href="http://redis.io/">redis</a>.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">slimta.redisstorage.</span></span><span class="sig-name descname"><span class="pre">RedisStorage</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">host='localhost'</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">port=6379</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">db=0</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">password=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">socket_timeout=None</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">prefix='slimta:'</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">slimta.queue.QueueStorage</span></code></a></p>
-<p><a class="reference internal" href="slimta.queue.html#slimta.queue.QueueStorage" title="slimta.queue.QueueStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code></a> mechanism that stores <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> and queue metadata in
-redis hashes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>host</strong> – Hostname of the redis server to connect to.</p></li>
-<li><p><strong>port</strong> – Port to connect to.</p></li>
-<li><p><strong>db</strong> – Database number to create keys in.</p></li>
-<li><p><strong>password</strong> – Optional password to authenticate with.</p></li>
-<li><p><strong>socket_timeout</strong> – Timeout, in seconds, for socket operations. If the
-timeout is hit, <a class="reference external" href="https://docs.python.org/3/library/socket.html#socket.timeout" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">socket.timeout</span></code></a> is raised.
-<code class="docutils literal notranslate"><span class="pre">None</span></code> disables the timeout.</p></li>
-<li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Any key created is prefixed with this string.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.write">
-<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">envelope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes the given envelope to storage, along with the timestamp of
-its next delivery attempt. The number of delivery attempts asociated
-with the message should start at zero.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>envelope</strong> – <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object to write.</p></li>
-<li><p><strong>timestamp</strong> – Timestamp of message’s next delivery attempt.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Unique identifier string for the message in queue.</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.set_timestamp">
-<span class="sig-name descname"><span class="pre">set_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.set_timestamp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets a new timestamp for the message’s next delivery attempt.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> – The unique identifier string for the message.</p></li>
-<li><p><strong>timestamp</strong> – The new delivery attempt timestamp.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.increment_attempts">
-<span class="sig-name descname"><span class="pre">increment_attempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.increment_attempts" title="Permalink to this definition">¶</a></dt>
-<dd><p>Increments the number of delivery attempts associated with the
-message.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – The unique identifier string for the message.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The new number of message delivery attempts.</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.set_recipients_delivered">
-<span class="sig-name descname"><span class="pre">set_recipients_delivered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcpt_indexes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.set_recipients_delivered" title="Permalink to this definition">¶</a></dt>
-<dd><div class="versionadded">
-<p><span class="versionmodified added">New in version 1.1.0.</span></p>
-</div>
-<p>Marks the given recipients from the original envelope as
-already-delivered, meaning they will be skipped by future relay
-attempts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> – The unique identifier string for the message.</p></li>
-<li><p><strong>rcpt_indexes</strong> – List of indexes in the original envelope’s
-<a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> list
-to mark as delivered.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.load">
-<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads all queued messages from the storage engine, such that the
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> can be aware of all upcoming delivery attempts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Iterable that yields tuples of the form <code class="docutils literal notranslate"><span class="pre">(timestamp,</span> <span class="pre">id)</span></code>
-for each message in storage.</p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object associated with the given unique
-identifier sring.</p>
-<p>The envelope’s <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope.recipients" title="slimta.envelope.Envelope.recipients"><code class="xref py py-attr docutils literal notranslate"><span class="pre">recipients</span></code></a> should not
-include those marked as delivered by <a class="reference internal" href="#slimta.redisstorage.RedisStorage.set_recipients_delivered" title="slimta.redisstorage.RedisStorage.set_recipients_delivered"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_recipients_delivered()</span></code></a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – The unique identifier string of the requested <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a>.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Tuple with the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> object and number of attempts.</p>
-</dd>
-<dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.remove">
-<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Removes the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> associated with the given unique identifier
-string from queue storage. This is typically used when the message has
-been successfully delivered or delivery has permanently failed.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>id</strong> – The unique identifier string of the <a class="reference internal" href="slimta.envelope.html#slimta.envelope.Envelope" title="slimta.envelope.Envelope"><code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code></a> to remove.</p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QueueError</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="slimta.redisstorage.RedisStorage.wait">
-<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#slimta.redisstorage.RedisStorage.wait" title="Permalink to this definition">¶</a></dt>
-<dd><p>If messages are not being delivered from the same process in which
-they were received, the storage mechanism needs a way to wait until it
-is notified that a new message has been stored.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>An iterable or generator producing tuples with the timestamp
-and unique identifier string of a new message in storage.
-When the iterable or generator is exhausted, <a class="reference internal" href="#slimta.redisstorage.RedisStorage.wait" title="slimta.redisstorage.RedisStorage.wait"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wait()</span></code></a> is
-simply called again.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 
 
@@ -257,9 +85,6 @@ simply called again.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-        <p class="logo"><a href="../index.html" title="index">
-          <img class="logo" src="../_static/slimta.svg" alt="Logo"/>
-        </a></p>
   <div class="sphinxprev">
     <h4>Previous page</h4>
     <p class="topless"><a href="slimta.diskstorage.html"
@@ -279,7 +104,7 @@ simply called again.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
     
@@ -318,7 +143,7 @@ simply called again.</p>
         <li class="right" >
           <a href="slimta.diskstorage.html" title="slimta.diskstorage"
              >previous</a> &nbsp; &nbsp;</li>
-    <li><a href="../index.html">slimta 5.0.0 documentation</a> &#187;</li>
+    <li><a href="../index.html">slimta 5.0.5 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >API Reference</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="slimta.html" >slimta</a> &#187;</li>
