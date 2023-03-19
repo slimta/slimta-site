@@ -32,7 +32,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.githubpages',
-    'cloud_sptheme.ext.index_styling',
+    # broken: 'cloud_sptheme.ext.index_styling',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
