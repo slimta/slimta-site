@@ -30,10 +30,6 @@ traditional application or as a software library.
    - :doc:`blog/2016-11-14`
    - :doc:`blog/2016-11-14-2`
 
-
-.. raw:: html
-   :file: donate.html
-
 .. rst-class:: html-toggle
 
 Python Library
