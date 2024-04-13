@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>slimta.smtp.reply &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -74,60 +73,60 @@
           <div class="body" role="main">
             
   <section id="module-slimta.smtp.reply">
-<span id="slimta-smtp-reply"></span><h1>slimta.smtp.reply<a class="headerlink" href="#module-slimta.smtp.reply" title="Permalink to this heading">¶</a></h1>
+<span id="slimta-smtp-reply"></span><h1>slimta.smtp.reply<a class="headerlink" href="#module-slimta.smtp.reply" title="Link to this heading">¶</a></h1>
 <p>Package defining the class containing a standard SMTP reply made up of a
 code and a message, as well as a few pre-defined standard replies.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.unknown_command">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">unknown_command</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='500'</span> <span class="pre">message='5.5.2</span> <span class="pre">Syntax</span> <span class="pre">error,</span> <span class="pre">command</span> <span class="pre">unrecognized'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.unknown_command" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">unknown_command</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='500'</span> <span class="pre">message='5.5.2</span> <span class="pre">Syntax</span> <span class="pre">error,</span> <span class="pre">command</span> <span class="pre">unrecognized'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.unknown_command" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when an unknown SMTP command is received by a server.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.unknown_parameter">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">unknown_parameter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='504'</span> <span class="pre">message='5.5.4</span> <span class="pre">Command</span> <span class="pre">parameter</span> <span class="pre">not</span> <span class="pre">implemented'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.unknown_parameter" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">unknown_parameter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='504'</span> <span class="pre">message='5.5.4</span> <span class="pre">Command</span> <span class="pre">parameter</span> <span class="pre">not</span> <span class="pre">implemented'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.unknown_parameter" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when a parameter is sent that is not supported.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.bad_sequence">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">bad_sequence</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='503'</span> <span class="pre">message='5.5.1</span> <span class="pre">Bad</span> <span class="pre">sequence</span> <span class="pre">of</span> <span class="pre">commands'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.bad_sequence" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">bad_sequence</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='503'</span> <span class="pre">message='5.5.1</span> <span class="pre">Bad</span> <span class="pre">sequence</span> <span class="pre">of</span> <span class="pre">commands'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.bad_sequence" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when commands are sent out of standard SMTP sequence.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.bad_arguments">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">bad_arguments</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='501'</span> <span class="pre">message='5.5.4</span> <span class="pre">Syntax</span> <span class="pre">error</span> <span class="pre">in</span> <span class="pre">parameters</span> <span class="pre">or</span> <span class="pre">arguments'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.bad_arguments" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">bad_arguments</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='501'</span> <span class="pre">message='5.5.4</span> <span class="pre">Syntax</span> <span class="pre">error</span> <span class="pre">in</span> <span class="pre">parameters</span> <span class="pre">or</span> <span class="pre">arguments'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.bad_arguments" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when an expected parameter is invalid.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.timed_out">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">timed_out</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='421'</span> <span class="pre">message='4.4.2</span> <span class="pre">Connection</span> <span class="pre">timed</span> <span class="pre">out'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.timed_out" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">timed_out</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='421'</span> <span class="pre">message='4.4.2</span> <span class="pre">Connection</span> <span class="pre">timed</span> <span class="pre">out'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.timed_out" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when the server times out waiting for data from the client.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.unhandled_error">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">unhandled_error</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='421'</span> <span class="pre">message='4.3.0</span> <span class="pre">Unhandled</span> <span class="pre">system</span> <span class="pre">error'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.unhandled_error" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">unhandled_error</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='421'</span> <span class="pre">message='4.3.0</span> <span class="pre">Unhandled</span> <span class="pre">system</span> <span class="pre">error'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.unhandled_error" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when an unhandled exception is raised in a command handler.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.connection_failed">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">connection_failed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='451'</span> <span class="pre">message='4.3.0</span> <span class="pre">Connection</span> <span class="pre">failed'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.connection_failed" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">connection_failed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='451'</span> <span class="pre">message='4.3.0</span> <span class="pre">Connection</span> <span class="pre">failed'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.connection_failed" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when a connection fails unexpectedly.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.tls_failure">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">tls_failure</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='421'</span> <span class="pre">message='4.7.0</span> <span class="pre">TLS</span> <span class="pre">negotiation</span> <span class="pre">failed'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.tls_failure" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">tls_failure</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='421'</span> <span class="pre">message='4.7.0</span> <span class="pre">TLS</span> <span class="pre">negotiation</span> <span class="pre">failed'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.tls_failure" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when a TLS negotiation error occurs.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="slimta.smtp.reply.invalid_credentials">
-<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">invalid_credentials</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='535'</span> <span class="pre">message='5.7.8</span> <span class="pre">Authentication</span> <span class="pre">credentials</span> <span class="pre">invalid'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.invalid_credentials" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">slimta.smtp.reply.</span></span><span class="sig-name descname"><span class="pre">invalid_credentials</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Reply</span> <span class="pre">code='535'</span> <span class="pre">message='5.7.8</span> <span class="pre">Authentication</span> <span class="pre">credentials</span> <span class="pre">invalid'&gt;</span></em><a class="headerlink" href="#slimta.smtp.reply.invalid_credentials" title="Link to this definition">¶</a></dt>
 <dd><p>Reply sent when an authentication attempt resulted in invalid credentials.</p>
 </dd></dl>
 
@@ -227,7 +226,7 @@ code and a message, as well as a few pre-defined standard replies.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

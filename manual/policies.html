@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Policy Implementation &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,7 +72,7 @@
           <div class="body" role="main">
             
   <section id="policy-implementation">
-<h1>Policy Implementation<a class="headerlink" href="#policy-implementation" title="Permalink to this heading">¶</a></h1>
+<h1>Policy Implementation<a class="headerlink" href="#policy-implementation" title="Link to this heading">¶</a></h1>
 <p>Many policies in <a class="reference external" href="https://slimta.org/">slimta</a> will be applied directly before queuing the message.
 These are called queue policies, and they are especially useful because they
 are executed <strong>once</strong> for every message and the results are persistently
@@ -86,7 +85,7 @@ recipient forwarding looked up from a database; you would want to make sure the
 latest forwarding rules are applied on each delivery attempt, to not use a
 stale rule. At the moment, no relay policies are included with <a class="reference external" href="https://slimta.org/">slimta</a>.</p>
 <section id="date-header">
-<span id="policy-add-date-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Date</span></code> Header<a class="headerlink" href="#date-header" title="Permalink to this heading">¶</a></h2>
+<span id="policy-add-date-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Date</span></code> Header<a class="headerlink" href="#date-header" title="Link to this heading">¶</a></h2>
 <p>Addition of a <code class="docutils literal notranslate"><span class="pre">Date:</span></code> header is a necessary policy for most MTAs, when the
 original message lacks one. The header generally uses local time-zones written
 as acronyms, for better human-readability.</p>
@@ -98,7 +97,7 @@ as acronyms, for better human-readability.</p>
 </div>
 </section>
 <section id="message-id-header">
-<span id="policy-add-message-id-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> Header<a class="headerlink" href="#message-id-header" title="Permalink to this heading">¶</a></h2>
+<span id="policy-add-message-id-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> Header<a class="headerlink" href="#message-id-header" title="Link to this heading">¶</a></h2>
 <p>A <code class="docutils literal notranslate"><span class="pre">Message-Id:</span></code> header should be added by the first <em>MTA</em> receiving the
 message from the client, if not by the client itself. The header should not be
 overridden by any subsequent MTA handling the message. A <code class="docutils literal notranslate"><span class="pre">Message-Id</span></code> will
@@ -116,7 +115,7 @@ by concatenating a randomly-generated UUID to a timestamp.</p>
 </div>
 </section>
 <section id="received-header">
-<span id="policy-add-received-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Received</span></code> Header<a class="headerlink" href="#received-header" title="Permalink to this heading">¶</a></h2>
+<span id="policy-add-received-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Received</span></code> Header<a class="headerlink" href="#received-header" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Received:</span></code> header is the most unique and complicated header of those that
 MTAs should add to a message. The header should be pre-pended to every message,
 so that the order that each MTA handled the message is preserved. The header
@@ -131,7 +130,7 @@ follow.</p>
 </div>
 </section>
 <section id="recipient-forwarding">
-<span id="policy-forwarding"></span><h2>Recipient Forwarding<a class="headerlink" href="#recipient-forwarding" title="Permalink to this heading">¶</a></h2>
+<span id="policy-forwarding"></span><h2>Recipient Forwarding<a class="headerlink" href="#recipient-forwarding" title="Link to this heading">¶</a></h2>
 <p>Forwarding policies range from quite simple to exorbitantly complex. The
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code> policy included with <a class="reference external" href="https://slimta.org/">slimta</a> can only
 handle <em>static</em> rules (e.g. not queried from a database) using regular
@@ -148,7 +147,7 @@ lookup might, this is implemented as a queue policy, given by the
 </div>
 </section>
 <section id="policy-spamassassin">
-<span id="id1"></span><h2>SpamAssassin<a class="headerlink" href="#policy-spamassassin" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h2>SpamAssassin<a class="headerlink" href="#policy-spamassassin" title="Link to this heading">¶</a></h2>
 <p>The included spam filtering mechanism uses <a class="reference external" href="https://spamassassin.apache.org/">SpamAssassin</a> by making a socket
 connection to a <code class="docutils literal notranslate"><span class="pre">spamd</span></code> server. When used as a policy, the message is scanned
 and a <code class="docutils literal notranslate"><span class="pre">X-Spam-Status:</span></code> header is added to the message with either <code class="docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code> or
@@ -252,7 +251,7 @@ given by the <code class="xref py py-class docutils literal notranslate"><span c
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

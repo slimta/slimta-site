@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Configuring the Queues &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,7 +72,7 @@
           <div class="body" role="main">
             
   <section id="configuring-the-queues">
-<h1>Configuring the Queues<a class="headerlink" href="#configuring-the-queues" title="Permalink to this heading">¶</a></h1>
+<h1>Configuring the Queues<a class="headerlink" href="#configuring-the-queues" title="Link to this heading">¶</a></h1>
 <p>With the mail queue being the heart of an MTA, the <code class="docutils literal notranslate"><span class="pre">queue</span></code> section of
 <code class="docutils literal notranslate"><span class="pre">slimta.conf</span></code> is both important and highly customizable. It also introduces
 the possibility of using the <code class="docutils literal notranslate"><span class="pre">slimta-worker</span></code> executable for some queue types.
@@ -97,7 +96,7 @@ which will be used to deliver bounce messages instead of the current queue.</p>
 </li>
 </ul>
 <section id="queue-policy-settings">
-<h2>Queue Policy Settings<a class="headerlink" href="#queue-policy-settings" title="Permalink to this heading">¶</a></h2>
+<h2>Queue Policy Settings<a class="headerlink" href="#queue-policy-settings" title="Link to this heading">¶</a></h2>
 <p>On entry into the queue, there are several <a class="reference internal" href="policies.html"><span class="doc">Policy Implementation</span></a> that can be applied
 to a message. To configure them, there is an additional, optional key available
 in a <code class="docutils literal notranslate"><span class="pre">queue</span></code> sub-section:</p>
@@ -125,7 +124,7 @@ considered spam, adding headers to the message with the results.</p></li>
 </ul>
 </section>
 <section id="delivery-retry-behavior">
-<h2>Delivery Retry Behavior<a class="headerlink" href="#delivery-retry-behavior" title="Permalink to this heading">¶</a></h2>
+<h2>Delivery Retry Behavior<a class="headerlink" href="#delivery-retry-behavior" title="Link to this heading">¶</a></h2>
 <p>Additionally, every <code class="docutils literal notranslate"><span class="pre">queue</span></code> type (<em>except</em> for <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;proxy&quot;</span></code>)
 honors the ability to configure message retrying with the following
 configuration settings:</p>
@@ -137,7 +136,7 @@ has two keys, <code class="docutils literal notranslate"><span class="pre">delay
 <li><p><code class="docutils literal notranslate"><span class="pre">delay</span></code>: String</p>
 <p>Defines an mathematic expression whose result is used as the number of
 seconds to delay between each delivery attempt of a message.  The string
-allows arithmetic operators and the use of any functions in the <a class="reference external" href="https://docs.python.org/3/library/math.html#module-math" title="(in Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code></a>
+allows arithmetic operators and the use of any functions in the <a class="reference external" href="https://docs.python.org/3/library/math.html#module-math" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code></a>
 module (without the <code class="docutils literal notranslate"><span class="pre">math.</span></code> prefix). The variable <code class="docutils literal notranslate"><span class="pre">x</span></code> may be used in the
 expression, and will be replaced with the number of delivery attempts the
 message has undergone.</p>
@@ -157,14 +156,14 @@ value is not given, messages are never retried.</p>
 </ul>
 </section>
 <section id="memory-queues">
-<h2><code class="docutils literal notranslate"><span class="pre">memory</span></code> Queues<a class="headerlink" href="#memory-queues" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">memory</span></code> Queues<a class="headerlink" href="#memory-queues" title="Link to this heading">¶</a></h2>
 <p>With this queue type, all queued messages and their metadata reside in memory.
 While this is fast and easy to setup, it is <em>not</em> safe for production usage, and
 can easily result in loss of mail. The <code class="docutils literal notranslate"><span class="pre">&quot;memory&quot;</span></code> queue type does not have any
 additional settings.</p>
 </section>
 <section id="disk-queues">
-<h2><code class="docutils literal notranslate"><span class="pre">disk</span></code> Queues<a class="headerlink" href="#disk-queues" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">disk</span></code> Queues<a class="headerlink" href="#disk-queues" title="Link to this heading">¶</a></h2>
 <p>With this queue type, messages and their metadata are spooled to disk before
 acceptance. This queue type requires three directories, which are configured
 with the following keys:</p>
@@ -172,12 +171,12 @@ with the following keys:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">tmp_dir</span></code>: String</p>
 <p>This directory is used as scratch space so that files can be created and
 written before being moved to their final destination. This allows for the use
-of the atomic <a class="reference external" href="https://docs.python.org/3/library/os.html#os.rename" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.rename()</span></code></a> operation, to help prevent data corruption. By
+of the atomic <a class="reference external" href="https://docs.python.org/3/library/os.html#os.rename" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.rename()</span></code></a> operation, to help prevent data corruption. By
 default, the OS-specific temporary directory is used.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">envelope_dir</span></code>: String, required</p>
 <p>In this directory, the message contents and envelope information are written
-to files that use the <code class="docutils literal notranslate"><span class="pre">.env</span></code> suffix in a Python <a class="reference external" href="https://docs.python.org/3/library/pickle.html#module-pickle" title="(in Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> format.</p>
+to files that use the <code class="docutils literal notranslate"><span class="pre">.env</span></code> suffix in a Python <a class="reference external" href="https://docs.python.org/3/library/pickle.html#module-pickle" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> format.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">meta_dir</span></code>: String, required</p>
 <p>In this directory, the message metadata is kept in files that end in
@@ -188,7 +187,7 @@ so that it can be written to often.</p>
 </ul>
 </section>
 <section id="redis-queues">
-<h2><code class="docutils literal notranslate"><span class="pre">redis</span></code> Queues<a class="headerlink" href="#redis-queues" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">redis</span></code> Queues<a class="headerlink" href="#redis-queues" title="Link to this heading">¶</a></h2>
 <p>With this queue type, messages and their metadata are stored as a hash in a
 local or remote redis instance. Additionally, a queue is maintained in redis of
 pending new message IDs, meaning this mechanism can receive and deliver messages
@@ -219,7 +218,7 @@ recognizable. By default, <code class="docutils literal notranslate"><span class
 </ul>
 </section>
 <section id="aws-queues">
-<h2><code class="docutils literal notranslate"><span class="pre">aws</span></code> Queues<a class="headerlink" href="#aws-queues" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">aws</span></code> Queues<a class="headerlink" href="#aws-queues" title="Link to this heading">¶</a></h2>
 <p>This queue type stores messages and their metadata in <a class="reference external" href="https://aws.amazon.com/">AWS</a> services. The
 <a class="reference external" href="https://boto.readthedocs.io/en/latest/ref/boto.html#module-boto" title="(in boto v2.49.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">boto</span></code></a> library must be installed from <em>PyPI</em> to use this queue type. It
 takes the following keys:</p>
@@ -246,20 +245,20 @@ and queue metadata.</p>
 </ul>
 </section>
 <section id="proxy-queues">
-<h2><code class="docutils literal notranslate"><span class="pre">proxy</span></code> Queues<a class="headerlink" href="#proxy-queues" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">proxy</span></code> Queues<a class="headerlink" href="#proxy-queues" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">&quot;proxy&quot;</span></code> queue type is not a queue at all, but rather a method of
 bypassing the queue step and immediately attempting message delivery. If
 delivery fails, the client gets immediate feedback from the edge service. There
 are no additional configuration settings for this queue type.</p>
 </section>
 <section id="custom-queues">
-<h2><code class="docutils literal notranslate"><span class="pre">custom</span></code> Queues<a class="headerlink" href="#custom-queues" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">custom</span></code> Queues<a class="headerlink" href="#custom-queues" title="Link to this heading">¶</a></h2>
 <p>Only one additional key is required by the <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code> queue type:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">factory</span></code>: String, required</p>
 <p>This is a string of the form <code class="docutils literal notranslate"><span class="pre">package.module:symbol</span></code>. The package and
-module portion are imported with <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>, and then
-the symbol is fetched from the loaded module with <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a>.</p>
+module portion are imported with <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>, and then
+the symbol is fetched from the loaded module with <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a>.</p>
 <p>The result of loading the symbol must be a function that takes two arguments,
 the options object (that contains the <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">relay</span></code>, and <code class="docutils literal notranslate"><span class="pre">factory</span></code>
 keys as well as any others as necessary) and the <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> object that the queue
@@ -368,7 +367,7 @@ should use for message delivery:</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

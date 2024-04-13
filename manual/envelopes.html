@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Envelope Objects &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,7 +72,7 @@
           <div class="body" role="main">
             
   <section id="envelope-objects">
-<h1>Envelope Objects<a class="headerlink" href="#envelope-objects" title="Permalink to this heading">¶</a></h1>
+<h1>Envelope Objects<a class="headerlink" href="#envelope-objects" title="Link to this heading">¶</a></h1>
 <p>In <a class="reference external" href="https://slimta.org/">slimta</a>, an email message is thought of like a ‘snail mail’ envelope, it’s
 not just the message contents but also sending and receiving addresses and other
 logistical information. An <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object represents all of this information.</p>
@@ -83,13 +82,13 @@ of the message and the list of intended recipients. The
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code> policy can be useful to modify the
 intended recipients of a message.</p>
 <section id="headers-and-contents">
-<h2>Headers and Contents<a class="headerlink" href="#headers-and-contents" title="Permalink to this heading">¶</a></h2>
+<h2>Headers and Contents<a class="headerlink" href="#headers-and-contents" title="Link to this heading">¶</a></h2>
 <p>The headers and body of the email contents are split up into the
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">headers</span></code> and
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">message</span></code> attributes. The <code class="docutils literal notranslate"><span class="pre">headers</span></code> attribute
-is a <a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a> object and can be used to view, add, and
+is a <a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">email.message.Message</span></code></a> object and can be used to view, add, and
 delete <em>headers only</em>, it does not contain the message payload as described by
-<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a> documentation. The <code class="docutils literal notranslate"><span class="pre">message</span></code> attribute of the
+<a class="reference external" href="https://docs.python.org/3/library/email.compat32-message.html#email.message.Message" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Message</span></code></a> documentation. The <code class="docutils literal notranslate"><span class="pre">message</span></code> attribute of the
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object is Python string containing the contents of the message,
 everything after the headers.</p>
 <p>For delivery, <a class="reference external" href="https://slimta.org/">slimta</a> <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> transports will call
@@ -99,7 +98,7 @@ message headers portion of the generated string is guaranteed to use <code class
 line endings.</p>
 </section>
 <section id="non-delivery-reports-bounces">
-<span id="envelope-bounces"></span><h2>Non-Delivery Reports (Bounces)<a class="headerlink" href="#non-delivery-reports-bounces" title="Permalink to this heading">¶</a></h2>
+<span id="envelope-bounces"></span><h2>Non-Delivery Reports (Bounces)<a class="headerlink" href="#non-delivery-reports-bounces" title="Link to this heading">¶</a></h2>
 <p>Because a client that sent a message to an <em>edge</em> service will disconnect once
 the message has been queued, there is no way of reporting to the client that the
 message was delivered (successfully or unsuccessfully).</p>
@@ -110,7 +109,7 @@ generate and deliver a <em>bounce</em> message back to the original sender addre
 the message. From this <em>bounce</em> message, the sender should be able to tell which
 message failed and why.</p>
 <section id="generating-bounce-messages">
-<h3>Generating Bounce Messages<a class="headerlink" href="#generating-bounce-messages" title="Permalink to this heading">¶</a></h3>
+<h3>Generating Bounce Messages<a class="headerlink" href="#generating-bounce-messages" title="Link to this heading">¶</a></h3>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code> objects are used to build <em>bounce</em> messages from the original
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object and that message’s <code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code> object.</p>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">Bounce</span></code> class allows for customization of the format of this bounce
@@ -217,7 +216,7 @@ of these attributes for information on how they work.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

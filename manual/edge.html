@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Edge Services &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,7 +72,7 @@
           <div class="body" role="main">
             
   <section id="edge-services">
-<h1>Edge Services<a class="headerlink" href="#edge-services" title="Permalink to this heading">¶</a></h1>
+<h1>Edge Services<a class="headerlink" href="#edge-services" title="Link to this heading">¶</a></h1>
 <p>The term <em>edge</em> is not necessarily common among other <em>MTAs</em>. It was adapted
 loosely by <a class="reference external" href="https://slimta.org/">slimta</a> from the <a class="reference external" href="https://technet.microsoft.com/en-us/library/bb124701.aspx">Edge Transport Server Role</a> in Microsoft
 Exchange, but the name is about where the similarities end.</p>
@@ -85,7 +84,7 @@ a <em>queue</em> service. That means the response delivered to the client does n
 signify whether the message was successfully delivered, but rather that the
 <em>queue</em> service has taken responsibility for its delivery.</p>
 <section id="smtp-edge-services">
-<span id="edge-smtp"></span><h2>SMTP Edge Services<a class="headerlink" href="#smtp-edge-services" title="Permalink to this heading">¶</a></h2>
+<span id="edge-smtp"></span><h2>SMTP Edge Services<a class="headerlink" href="#smtp-edge-services" title="Link to this heading">¶</a></h2>
 <p>Traditionally, email <em>MTAs</em> receive messages from other <em>MTAs</em> or user email
 clients using the SMTP protocol (<a class="reference external" href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc2821">RFC 2821</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc821">RFC 821</a>). An SMTP
 session delivering a message from a client to a server might look like this,
@@ -116,7 +115,7 @@ to accept messages from a certain IP (e.g. known spammers) you would want to
 limit the amount of memory and CPU cycles they consume by rejecting before the
 before <code class="docutils literal notranslate"><span class="pre">DATA</span></code>.</p>
 <section id="creating-smtp-edge-objects">
-<h3>Creating SMTP Edge Objects<a class="headerlink" href="#creating-smtp-edge-objects" title="Permalink to this heading">¶</a></h3>
+<h3>Creating SMTP Edge Objects<a class="headerlink" href="#creating-smtp-edge-objects" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.smtp</span> <span class="kn">import</span> <span class="n">SmtpEdge</span>
 
 <span class="n">smtp</span> <span class="o">=</span> <span class="n">SmtpEdge</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">queue</span><span class="p">)</span>
@@ -125,7 +124,7 @@ before <code class="docutils literal notranslate"><span class="pre">DATA</span><
 </div>
 </section>
 <section id="authentication-with-smtp-edge">
-<h3>Authentication with SMTP Edge<a class="headerlink" href="#authentication-with-smtp-edge" title="Permalink to this heading">¶</a></h3>
+<h3>Authentication with SMTP Edge<a class="headerlink" href="#authentication-with-smtp-edge" title="Link to this heading">¶</a></h3>
 <p>There are a few steps involved with adding authentication to the edge. The first
 is exposing the <code class="docutils literal notranslate"><span class="pre">AUTH</span></code> SMTP extensions to clients by passing <code class="docutils literal notranslate"><span class="pre">auth=True</span></code> to
 the <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code> constructor.</p>
@@ -156,7 +155,7 @@ successful authentication:</p>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code> by passing in
 <code class="docutils literal notranslate"><span class="pre">validator_class=MyValidators</span></code> to its constructor.</p>
 <section id="sender-policy-framework-spf">
-<h4>Sender Policy Framework (SPF)<a class="headerlink" href="#sender-policy-framework-spf" title="Permalink to this heading">¶</a></h4>
+<h4>Sender Policy Framework (SPF)<a class="headerlink" href="#sender-policy-framework-spf" title="Link to this heading">¶</a></h4>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a> is a tool that, at its most basic, allows domains to explicitly list the
 outbound hosts/IPs from which they are legitimately sending mail. Domains may
 set DNS records of special formats that email receivers query and compare
@@ -190,7 +189,7 @@ want to act upon. These results are:</p>
 </section>
 </section>
 <section id="proxy-protocol-with-smtp-edge">
-<h3>Proxy Protocol with SMTP Edge<a class="headerlink" href="#proxy-protocol-with-smtp-edge" title="Permalink to this heading">¶</a></h3>
+<h3>Proxy Protocol with SMTP Edge<a class="headerlink" href="#proxy-protocol-with-smtp-edge" title="Link to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.0.</span></p>
 </div>
@@ -213,7 +212,7 @@ behind a proxy that is configured to use <a class="reference external" href="htt
 </section>
 </section>
 <section id="http-edge-services">
-<span id="edge-http"></span><h2>HTTP Edge Services<a class="headerlink" href="#http-edge-services" title="Permalink to this heading">¶</a></h2>
+<span id="edge-http"></span><h2>HTTP Edge Services<a class="headerlink" href="#http-edge-services" title="Link to this heading">¶</a></h2>
 <p>A very common desire these days is to be able to submit emails to an MTA using
 HTTP or HTTPS protocols, due to the simplicity and ubiquity of these protocols.
 Unfortunately, no standards have been settled on, so HTTP mail reception and
@@ -240,7 +239,7 @@ X-Smtp-Reply: 250; message=&quot;2.6.0 Message accepted for delivery&quot;
 Date: Mon, 29 Jul 2013 20:11:55 GMT
 Content-Length: 0</strong></pre>
 <section id="creating-http-edge-objects">
-<h3>Creating HTTP Edge Objects<a class="headerlink" href="#creating-http-edge-objects" title="Permalink to this heading">¶</a></h3>
+<h3>Creating HTTP Edge Objects<a class="headerlink" href="#creating-http-edge-objects" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.edge.wsgi</span> <span class="kn">import</span> <span class="n">WsgiEdge</span>
 
 <span class="n">wsgi</span> <span class="o">=</span> <span class="n">WsgiEdge</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
@@ -349,7 +348,7 @@ Content-Length: 0</strong></pre>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

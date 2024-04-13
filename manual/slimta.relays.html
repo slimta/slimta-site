@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Configuring the Relays &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,7 +72,7 @@
           <div class="body" role="main">
             
   <section id="configuring-the-relays">
-<h1>Configuring the Relays<a class="headerlink" href="#configuring-the-relays" title="Permalink to this heading">¶</a></h1>
+<h1>Configuring the Relays<a class="headerlink" href="#configuring-the-relays" title="Link to this heading">¶</a></h1>
 <p>The last major section in <code class="docutils literal notranslate"><span class="pre">slimta.conf</span></code> is <code class="docutils literal notranslate"><span class="pre">relay</span></code>, where you set up the
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> options for outbound message delivery. In the <code class="docutils literal notranslate"><span class="pre">relay</span></code> section, each
 key  provides an arbitrary, free-form name for the relay, and the value is a
@@ -85,7 +84,7 @@ thrown. The other keys in this mapping depend on the value of <code class="docut
 </li>
 </ul>
 <section id="mx-and-static-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">mx</span></code> and <code class="docutils literal notranslate"><span class="pre">static</span></code> Relays<a class="headerlink" href="#mx-and-static-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">mx</span></code> and <code class="docutils literal notranslate"><span class="pre">static</span></code> Relays<a class="headerlink" href="#mx-and-static-relays" title="Link to this heading">¶</a></h2>
 <p>When configuring an <a class="reference external" href="https://en.wikipedia.org/wiki/Mail_submission_agent">MSA</a>, you generally want to accept all mail from
 authorized senders for delivery to the intended target. The fundamental design
 of email uses DNS MX records to allow domains to advertize the servers that
@@ -129,7 +128,7 @@ IP on DNS blocklists. By default, the FQDN of the local machine is used.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tls</span></code>: Dictionary</p>
 <p>This mapping, which takes the same keys as the keyword parameters to
-<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
+<code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code>, both enables and configures TLS encryption on this
 SMTP relay. By default, TLS is not enabled.</p>
 </li>
 </ul>
@@ -148,14 +147,14 @@ delivery on the <code class="docutils literal notranslate"><span class="pre">&qu
 </ul>
 </section>
 <section id="lmtp-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">lmtp</span></code> Relays<a class="headerlink" href="#lmtp-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">lmtp</span></code> Relays<a class="headerlink" href="#lmtp-relays" title="Link to this heading">¶</a></h2>
 <p>This relay type is configured exactly like the <code class="docutils literal notranslate"><span class="pre">static</span></code> relay type, except the
 <code class="docutils literal notranslate"><span class="pre">host</span></code> option defaults to <code class="docutils literal notranslate"><span class="pre">&quot;localhost&quot;</span></code>. This option will produce a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">StaticLmtpRelay</span></code> object to deliver messages,
 such as when configured as an <a class="reference external" href="https://en.wikipedia.org/wiki/Mail_delivery_agent">MDA</a>.</p>
 </section>
 <section id="pipe-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">pipe</span></code> Relays<a class="headerlink" href="#pipe-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">pipe</span></code> Relays<a class="headerlink" href="#pipe-relays" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">&quot;pipe&quot;</span></code> relay type mimcs the postfix <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe</a> daemon, which is a useful
 delivery mechanism for handing off a message to an external process by piping
 the message data to the process’s <em>stdin</em> stream. This relay type has the
@@ -163,7 +162,7 @@ following configuration keys:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">args</span></code>: List</p>
 <p>These are the arguments for the subprocess, similar to the <code class="docutils literal notranslate"><span class="pre">args</span></code> parameter
-to the <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Popen</span></code></a> constructor. This list may contain
+to the <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Popen</span></code></a> constructor. This list may contain
 several macros, see the <code class="xref py py-class docutils literal notranslate"><span class="pre">PipeRelay</span></code> class
 constructor for more information.</p>
 </li>
@@ -174,7 +173,7 @@ the subprocess’s <em>stdout</em> or <em>stderr</em>, whichever matches.</p>
 </ul>
 </section>
 <section id="maildrop-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">maildrop</span></code> Relays<a class="headerlink" href="#maildrop-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">maildrop</span></code> Relays<a class="headerlink" href="#maildrop-relays" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">&quot;maildrop&quot;</span></code> relay type enables message delivery to the local machine,
 using the <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier maildrop</a> application. The behavior of this relay is mostly
 configured externally using <code class="docutils literal notranslate"><span class="pre">.mailfilter</span></code> files, though it allows for one
@@ -187,7 +186,7 @@ environment variable is searched.</p>
 </ul>
 </section>
 <section id="dovecot-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">dovecot</span></code> Relays<a class="headerlink" href="#dovecot-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">dovecot</span></code> Relays<a class="headerlink" href="#dovecot-relays" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">&quot;dovecot&quot;</span></code> relay type enables message delivery to the local machine,
 using the <a class="reference external" href="http://wiki.dovecot.org/LDA">LDA</a> agent included with <a class="reference external" href="http://www.dovecot.org/">dovecot</a>. The behavior of this relay is
 mostly configured within dovecot using Sieve or similar, though it allows for
@@ -200,7 +199,7 @@ environment variable is searched.</p>
 </ul>
 </section>
 <section id="http-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">http</span></code> Relays<a class="headerlink" href="#http-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">http</span></code> Relays<a class="headerlink" href="#http-relays" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">&quot;http&quot;</span></code> relay type uses request headers to specify the information
 about the session and envelope normally given in SMTP commands, and the
 response code and headers to determine whether delivery was successful, or if
@@ -226,26 +225,26 @@ default, connections are closed immediately.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tls</span></code>: Dictionary</p>
 <p>This mapping, which takes the same keys as the keyword parameters to
-<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a>, both enables and configures TLS encryption on this
+<code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code>, both enables and configures TLS encryption on this
 HTTP relay. This means the server must be configured for HTTPS. By default,
 TLS is not enabled.</p>
 </li>
 </ul>
 </section>
 <section id="blackhole-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">blackhole</span></code> Relays<a class="headerlink" href="#blackhole-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">blackhole</span></code> Relays<a class="headerlink" href="#blackhole-relays" title="Link to this heading">¶</a></h2>
 <p>This relay type considers every message delivered to it a successful delivery,
 but will take no actual action. This is really only useful for testing. No
 additional options are associated with this relay type.</p>
 </section>
 <section id="custom-relays">
-<h2><code class="docutils literal notranslate"><span class="pre">custom</span></code> Relays<a class="headerlink" href="#custom-relays" title="Permalink to this heading">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">custom</span></code> Relays<a class="headerlink" href="#custom-relays" title="Link to this heading">¶</a></h2>
 <p>Only one additional key is required by the <code class="docutils literal notranslate"><span class="pre">&quot;custom&quot;</span></code> relay type:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">factory</span></code>: String, required</p>
 <p>This is a string of the form <code class="docutils literal notranslate"><span class="pre">package.module:symbol</span></code>. The package and
-module portion are imported with <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>, and then
-the symbol is fetched from the loaded module with <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a>.</p>
+module portion are imported with <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.import_module" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a>, and then
+the symbol is fetched from the loaded module with <a class="reference external" href="https://docs.python.org/3/library/functions.html#getattr" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a>.</p>
 <p>The result of loading the symbol must be a function that takes one argument,
 the options object (that contains the <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">factory</span></code> keys as well
 as any others as necessary):</p>
@@ -353,7 +352,7 @@ as any others as necessary):</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

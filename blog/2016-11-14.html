@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Version 4.0.0 Released &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -72,15 +71,15 @@
           <div class="body" role="main">
             
   <section id="version-4-0-0-released">
-<h1>Version 4.0.0 Released<a class="headerlink" href="#version-4-0-0-released" title="Permalink to this heading">¶</a></h1>
+<h1>Version 4.0.0 Released<a class="headerlink" href="#version-4-0-0-released" title="Link to this heading">¶</a></h1>
 <p>November 14, 2016</p>
 <p>The release of 4.0.0 introduces some changes that are not backwards-compatible
 with previous versions, focusing mainly on the API to control SSL behavior with
 the new <code class="docutils literal notranslate"><span class="pre">context</span></code> pattern described below.</p>
 <section id="change-log-in-detail">
-<h2>Change Log In Detail<a class="headerlink" href="#change-log-in-detail" title="Permalink to this heading">¶</a></h2>
+<h2>Change Log In Detail<a class="headerlink" href="#change-log-in-detail" title="Link to this heading">¶</a></h2>
 <section id="added">
-<h3>Added<a class="headerlink" href="#added" title="Permalink to this heading">¶</a></h3>
+<h3>Added<a class="headerlink" href="#added" title="Link to this heading">¶</a></h3>
 <ul>
 <li><p>New <a class="reference internal" href="../api/slimta.util.html#module-slimta.util" title="slimta.util"><code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.util</span></code></a> functions for limiting outbound connections to IPv4.</p>
 <p>The need for this change reflects some of the difficulty currently in
@@ -97,19 +96,19 @@ it is often useful for them to be warning- or info-level logs.</p>
 </ul>
 </section>
 <section id="changed">
-<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this heading">¶</a></h3>
+<h3>Changed<a class="headerlink" href="#changed" title="Link to this heading">¶</a></h3>
 <ul>
 <li><p>Constructors and functions that took a <code class="docutils literal notranslate"><span class="pre">tls</span></code> dictionary now take a
-<code class="docutils literal notranslate"><span class="pre">context</span></code> argument that should be an <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a> object.
+<code class="docutils literal notranslate"><span class="pre">context</span></code> argument that should be an <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SSLContext</span></code></a> object.
 This allows finer control of encryption behavior, as well as the ability to
 pre-load sensitive certificate data before daemonization.</p>
 <p>Since this project began with Python 2.6 support, it relied on using the
-<a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.wrap_socket" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">ssl.wrap_socket()</span></code></a> function to take care of SSL encryption when
+<code class="xref py py-func docutils literal notranslate"><span class="pre">ssl.wrap_socket()</span></code> function to take care of SSL encryption when
 desired. Among other things, this has the disadvantage of needing to load key
 and certificate files for every new socket! In addition to being a waste of
 system resources, for a daemonized service this had implications around the
 permissions of the process and key/cert files. The primary change of this
-release is the switch to using <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ssl.SSLContext</span></code></a>. This is made
+release is the switch to using <a class="reference external" href="https://docs.python.org/3/library/ssl.html#ssl.SSLContext" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ssl.SSLContext</span></code></a>. This is made
 possible by the previous dropping of support for Python 2.6 and now 3.3 as
 well. Hopefully these changes help mail server implementations stay secure.</p>
 </li>
@@ -131,7 +130,7 @@ the top-level namespace.</p></li>
 </ul>
 </section>
 <section id="fixed">
-<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this heading">¶</a></h3>
+<h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading">¶</a></h3>
 <ul>
 <li><p>Fixed a possible race condition on enqueue.</p>
 <p>Thanks to <a class="reference external" href="https://github.com/brycedrennan">Bryce Drennan</a> for the <a class="reference external" href="https://github.com/slimta/python-slimta/pull/107">pull
@@ -240,7 +239,7 @@ correctly contains the tuple described in the documentation.</p></li>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

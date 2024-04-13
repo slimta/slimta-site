@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>slimta.lookup &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,9 +72,9 @@
           <div class="body" role="main">
             
   <section id="slimta-lookup">
-<h1>slimta.lookup<a class="headerlink" href="#slimta-lookup" title="Permalink to this heading">¶</a></h1>
+<h1>slimta.lookup<a class="headerlink" href="#slimta-lookup" title="Link to this heading">¶</a></h1>
 <section id="module-slimta.lookup.policy">
-<span id="slimta-lookup-policy"></span><h2>slimta.lookup.policy<a class="headerlink" href="#module-slimta.lookup.policy" title="Permalink to this heading">¶</a></h2>
+<span id="slimta-lookup-policy"></span><h2>slimta.lookup.policy<a class="headerlink" href="#module-slimta.lookup.policy" title="Link to this heading">¶</a></h2>
 <p>Provides an implementation of the <code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code> interface that enforces
 policies specified in a slimta lookup record.</p>
 <p>Currently the following record keys are implemented:</p>
@@ -90,20 +89,20 @@ untouched.</p>
 </dl>
 </section>
 <section id="module-slimta.lookup.drivers">
-<span id="id1"></span><span id="slimta-lookup-drivers"></span><h2>slimta.lookup.drivers<a class="headerlink" href="#module-slimta.lookup.drivers" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><span id="slimta-lookup-drivers"></span><h2>slimta.lookup.drivers<a class="headerlink" href="#module-slimta.lookup.drivers" title="Link to this heading">¶</a></h2>
 <p>This package contains several implementations of the slimta lookup
 mechanism, which provides a simple interface to control actions and policies
 with external lookups. Under normal circumstances, slimta lookup drivers do
 not modify their backend data source.</p>
 <section id="slimta-lookup-drivers-redis">
-<h3>slimta.lookup.drivers.redis<a class="headerlink" href="#slimta-lookup-drivers-redis" title="Permalink to this heading">¶</a></h3>
+<h3>slimta.lookup.drivers.redis<a class="headerlink" href="#slimta-lookup-drivers-redis" title="Link to this heading">¶</a></h3>
 <p>This module is available with the <code class="docutils literal notranslate"><span class="pre">python-slimta[redis]</span></code> package extra.</p>
-<span class="target" id="module-slimta.lookup.drivers.redis"></span><p>Implements slimta lookup against a redis data backend. By default, this
+<p id="module-slimta.lookup.drivers.redis">Implements slimta lookup against a redis data backend. By default, this
 driver expects records to be JSON-encoded <a class="reference external" href="http://redis.io/commands#string">string</a> values. It can be configured
 to use the <a class="reference external" href="http://redis.io/commands#hash">hash</a> data structure instead, but it is less flexible.</p>
 </section>
 <section id="module-slimta.lookup.drivers.dbapi2">
-<span id="slimta-lookup-drivers-dbapi2"></span><h3>slimta.lookup.drivers.dbapi2<a class="headerlink" href="#module-slimta.lookup.drivers.dbapi2" title="Permalink to this heading">¶</a></h3>
+<span id="slimta-lookup-drivers-dbapi2"></span><h3>slimta.lookup.drivers.dbapi2<a class="headerlink" href="#module-slimta.lookup.drivers.dbapi2" title="Link to this heading">¶</a></h3>
 <p>Implements slimta lookup against a <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0249/">DB API 2.0</a> database interface. This
 driver should be flexible enough to support any implementing database.</p>
 <p>Any database used with this driver should use gevent sockets (or
@@ -111,13 +110,13 @@ monkey-patching) to ensure good performance.</p>
 <p>This module also provides a <a class="reference external" href="http://www.sqlite.org/">SQLite</a> convenience class.</p>
 </section>
 <section id="module-slimta.lookup.drivers.dict">
-<span id="slimta-lookup-drivers-dict"></span><h3>slimta.lookup.drivers.dict<a class="headerlink" href="#module-slimta.lookup.drivers.dict" title="Permalink to this heading">¶</a></h3>
+<span id="slimta-lookup-drivers-dict"></span><h3>slimta.lookup.drivers.dict<a class="headerlink" href="#module-slimta.lookup.drivers.dict" title="Link to this heading">¶</a></h3>
 <p>Implements slimta lookup against a standard Python dictionary-like object.
 This object should be given pre-populated in the constructor, or be a proxy to
-a persistent backend like <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>.</p>
+a persistent backend like <a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>.</p>
 </section>
 <section id="module-slimta.lookup.drivers.regex">
-<span id="slimta-lookup-drivers-regex"></span><h3>slimta.lookup.drivers.regex<a class="headerlink" href="#module-slimta.lookup.drivers.regex" title="Permalink to this heading">¶</a></h3>
+<span id="slimta-lookup-drivers-regex"></span><h3>slimta.lookup.drivers.regex<a class="headerlink" href="#module-slimta.lookup.drivers.regex" title="Link to this heading">¶</a></h3>
 <p>Implements slimta lookup against a series of regular expressions.</p>
 </section>
 </section>
@@ -215,7 +214,7 @@ a persistent backend like <a class="reference external" href="https://docs.pytho
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

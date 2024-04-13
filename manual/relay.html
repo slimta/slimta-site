@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Relay Services &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,7 +72,7 @@
           <div class="body" role="main">
             
   <section id="relay-services">
-<h1>Relay Services<a class="headerlink" href="#relay-services" title="Permalink to this heading">¶</a></h1>
+<h1>Relay Services<a class="headerlink" href="#relay-services" title="Link to this heading">¶</a></h1>
 <p>Relay services are given an existing message and attempt to delivery it to the
 message’s next destination. In a traditional MTA, this next destination will be
 looked up by the recipient’s domain MX record and delivery is done with SMTP.
@@ -82,7 +81,7 @@ destination and delivery occurs locally with something like <a class="reference 
 <p>In any case, the relay will report either its attempt was a success or whether
 failure was permanent or transient.</p>
 <section id="smtp-smart-host-relaying">
-<span id="relay-smtp-smarthost"></span><h2>SMTP Smart-Host Relaying<a class="headerlink" href="#smtp-smart-host-relaying" title="Permalink to this heading">¶</a></h2>
+<span id="relay-smtp-smarthost"></span><h2>SMTP Smart-Host Relaying<a class="headerlink" href="#smtp-smart-host-relaying" title="Link to this heading">¶</a></h2>
 <p>A very common type of relaying is sending all mail through to a single
 destination. This could be a local mail server that delivers all mail to its
 ISP mail servers, or it could be useful for a “front-line” of email servers
@@ -99,7 +98,7 @@ once:</p>
 </div>
 </section>
 <section id="smtp-mx-relaying">
-<span id="relay-smtp-mx"></span><h2>SMTP MX Relaying<a class="headerlink" href="#smtp-mx-relaying" title="Permalink to this heading">¶</a></h2>
+<span id="relay-smtp-mx"></span><h2>SMTP MX Relaying<a class="headerlink" href="#smtp-mx-relaying" title="Link to this heading">¶</a></h2>
 <p>Email messages destined for a recipient address hosted elsewhere on the
 Internet are relayed by querying the recipient domain’s MX records. The result
 is a prioritized list of hostnames that should be considered the next hop for
@@ -121,7 +120,7 @@ deliver to a certain hostname using the
 </pre></div>
 </div>
 <section id="changing-source-ip">
-<span id="relay-lmtp"></span><h3>Changing Source IP<a class="headerlink" href="#changing-source-ip" title="Permalink to this heading">¶</a></h3>
+<span id="relay-lmtp"></span><h3>Changing Source IP<a class="headerlink" href="#changing-source-ip" title="Link to this heading">¶</a></h3>
 <p>The source IP address of delivered mail is often hugely important, since one
 wrong move and you may find your IP on one of hundreds of spam blacklists. With
 more complex setups, an MTA will often have a pool of IP addresses to send
@@ -153,7 +152,7 @@ intermediate <code class="xref py py-class docutils literal notranslate"><span c
 </section>
 </section>
 <section id="lmtp-relaying">
-<h2>LMTP Relaying<a class="headerlink" href="#lmtp-relaying" title="Permalink to this heading">¶</a></h2>
+<h2>LMTP Relaying<a class="headerlink" href="#lmtp-relaying" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Local_Mail_Transfer_Protocol">LMTP protocol</a> is designed for delivering a message to its final
 destination. It’s greatest strength in this regard over SMTP is that it can
 report success or failure on a per-recipient basis.</p>
@@ -166,7 +165,7 @@ similarly to static SMTP relaying:</p>
 </div>
 </section>
 <section id="http-relaying">
-<span id="relay-http"></span><h2>HTTP Relaying<a class="headerlink" href="#http-relaying" title="Permalink to this heading">¶</a></h2>
+<span id="relay-http"></span><h2>HTTP Relaying<a class="headerlink" href="#http-relaying" title="Link to this heading">¶</a></h2>
 <p>Similar to the <a class="reference internal" href="edge.html#edge-http"><span class="std std-ref">HTTP Edge</span></a>, HTTP can be used to relay messages
 as the data payload of a request. The EHLO, sender, and recipients information
 usually transferred in the SMTP request are sent as headers in the request.
@@ -186,7 +185,7 @@ object:</p>
 </div>
 </section>
 <section id="external-process-relaying">
-<span id="relay-pipe"></span><h2>External Process Relaying<a class="headerlink" href="#external-process-relaying" title="Permalink to this heading">¶</a></h2>
+<span id="relay-pipe"></span><h2>External Process Relaying<a class="headerlink" href="#external-process-relaying" title="Link to this heading">¶</a></h2>
 <p>When <a class="reference external" href="https://slimta.org/">slimta</a> is configured to be the final destination for the email message,
 it can stream a message to an external process to locally deliver the message.
 This is how applications like <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> and <a class="reference external" href="http://wiki.dovecot.org/LDA">dovecot-lda</a> are given
@@ -294,7 +293,7 @@ module documentation may be useful.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">

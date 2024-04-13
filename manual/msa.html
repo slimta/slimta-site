@@ -1,21 +1,20 @@
 
 
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Mail Submission Agent &#8212; slimta 5.0.5 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cloud.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/cloud.css?v=f9ae72be" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noticia+Text:400,i,b,bi|Open+Sans:400,i,b,bi|Roboto+Mono:400,i,b,bi&amp;display=swap" type="text/css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=967d581c"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
 
     
     
@@ -73,9 +72,9 @@
           <div class="body" role="main">
             
   <section id="mail-submission-agent">
-<h1>Mail Submission Agent<a class="headerlink" href="#mail-submission-agent" title="Permalink to this heading">¶</a></h1>
+<h1>Mail Submission Agent<a class="headerlink" href="#mail-submission-agent" title="Link to this heading">¶</a></h1>
 <section id="step-1-create-the-relay">
-<h2>Step 1: Create the Relay<a class="headerlink" href="#step-1-create-the-relay" title="Permalink to this heading">¶</a></h2>
+<h2>Step 1: Create the Relay<a class="headerlink" href="#step-1-create-the-relay" title="Link to this heading">¶</a></h2>
 <p>To get started, we create a <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> object. This is first because <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code> depends
 on <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> depends on <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">slimta.relay.smtp.mx</span> <span class="kn">import</span> <span class="n">MxSmtpRelay</span>
@@ -90,12 +89,12 @@ constructor. The <code class="docutils literal notranslate"><span class="pre">re
 transient errors if remote servers take too long to reply.</p>
 </section>
 <section id="step-2-create-the-queue">
-<h2>Step 2: Create the Queue<a class="headerlink" href="#step-2-create-the-queue" title="Permalink to this heading">¶</a></h2>
+<h2>Step 2: Create the Queue<a class="headerlink" href="#step-2-create-the-queue" title="Link to this heading">¶</a></h2>
 <p>Now that we have a <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code>, we can create the <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code>
 objects. The simplest <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code> sub-class is
 <code class="xref py py-class docutils literal notranslate"><span class="pre">DictStorage</span></code>, which stores message contents and meta
-in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> objects. However, this can be made persistent using
-<a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.11)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>:</p>
+in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> objects. However, this can be made persistent using
+<a class="reference external" href="https://docs.python.org/3/library/shelve.html#module-shelve" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shelve</span>
 <span class="kn">from</span> <span class="nn">slimta.queue.dict</span> <span class="kn">import</span> <span class="n">DictStorage</span>
 
@@ -112,11 +111,11 @@ our <code class="xref py py-class docutils literal notranslate"><span class="pre
 <span class="n">queue</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Because queue objects inherit <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v22.10.3.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.Greenlet</span></code></a>, they must call their
+<p>Because queue objects inherit <a class="reference external" href="http://www.gevent.org/api/gevent.greenlet.html#gevent.Greenlet" title="(in gevent v24.2.2.dev0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">gevent.Greenlet</span></code></a>, they must call their
 <code class="docutils literal notranslate"><span class="pre">.start()</span></code> method to function properly.</p>
 </section>
 <section id="step-3-add-queue-policies">
-<h2>Step 3: Add Queue Policies<a class="headerlink" href="#step-3-add-queue-policies" title="Permalink to this heading">¶</a></h2>
+<h2>Step 3: Add Queue Policies<a class="headerlink" href="#step-3-add-queue-policies" title="Link to this heading">¶</a></h2>
 <p>Now that we have our <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code>, we will most likely want to add various
 <code class="xref py py-class docutils literal notranslate"><span class="pre">QueuePolicy</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">RelayPolicy</span></code> rules to affect behavior. MSAs should add
 various headers, such as <code class="docutils literal notranslate"><span class="pre">Date</span></code> and <code class="docutils literal notranslate"><span class="pre">Received</span></code>, for example:</p>
@@ -142,7 +141,7 @@ policy for the <a class="reference internal" href="mda.html"><span class="doc">M
 policy may prove useful in some MSA configurations.</p>
 </section>
 <section id="step-4-create-the-edge">
-<h2>Step 4: Create the Edge<a class="headerlink" href="#step-4-create-the-edge" title="Permalink to this heading">¶</a></h2>
+<h2>Step 4: Create the Edge<a class="headerlink" href="#step-4-create-the-edge" title="Link to this heading">¶</a></h2>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code> is how messages are injected into the system from mail clients, and
 now that we have a <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> object, we can create one. The most common <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code>
 for an MSA will obviously be <code class="xref py py-class docutils literal notranslate"><span class="pre">SmtpEdge</span></code>, but you could
@@ -211,7 +210,7 @@ simultaneously:</p>
 </div>
 </section>
 <section id="step-5-daemonizing">
-<h2>Step 5: Daemonizing<a class="headerlink" href="#step-5-daemonizing" title="Permalink to this heading">¶</a></h2>
+<h2>Step 5: Daemonizing<a class="headerlink" href="#step-5-daemonizing" title="Link to this heading">¶</a></h2>
 <p>You probably don’t want to keep a terminal open the entire time your MTA is
 running. There are some daemonization tools in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">slimta.system</span></code> module.
 Their usage is relatively simple:</p>
@@ -227,12 +226,12 @@ Their usage is relatively simple:</p>
 <p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">drop_privileges()</span></code> command is only necessary if you
 ran your MTA as <code class="docutils literal notranslate"><span class="pre">root</span></code>, which is necessary to create servers listening on
 privileged ports such as 25, 587 or 465.</p>
-<p>The <a class="reference external" href="http://www.gevent.org/api/gevent.html#gevent.sleep" title="(in gevent v22.10.3.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gevent.sleep()</span></code></a> call is not always necessary, but sometimes gevent
+<p>The <a class="reference external" href="http://www.gevent.org/api/gevent.html#gevent.sleep" title="(in gevent v24.2.2.dev0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gevent.sleep()</span></code></a> call is not always necessary, but sometimes gevent
 will not have opened the ports by the time you drop privileges and then it will
 fail, so calling a short sleep will make sure everything is ready.</p>
 </section>
 <section id="step-6-profit">
-<h2>Step 6: Profit<a class="headerlink" href="#step-6-profit" title="Permalink to this heading">¶</a></h2>
+<h2>Step 6: Profit<a class="headerlink" href="#step-6-profit" title="Link to this heading">¶</a></h2>
 <p>Once you have all your pieces together, you can simply let the system function:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">edge</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -333,7 +332,7 @@ fail, so calling a short sleep will make sure everything is ready.</p>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020, Ian Good.
+    &#169; Copyright 2020, Ian Good.
     </div>
     <!-- cloud_sptheme 1.4 -->
 <script type="text/javascript">
