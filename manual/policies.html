@@ -73,17 +73,17 @@
             
   <section id="policy-implementation">
 <h1>Policy Implementation<a class="headerlink" href="#policy-implementation" title="Link to this heading">¶</a></h1>
-<p>Many policies in <a class="reference external" href="https://slimta.org/">slimta</a> will be applied directly before queuing the message.
+<p>Many policies in <a class="reference external" href="https://slimta.github.io/">slimta</a> will be applied directly before queuing the message.
 These are called queue policies, and they are especially useful because they
 are executed <strong>once</strong> for every message and the results are persistently
 stored.  Spam filtering is an example of a great queue policy, because it is
 expensive and the results can be stored in the <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object as an
 attribute or header.</p>
-<p>Other policies in <a class="reference external" href="https://slimta.org/">slimta</a> will be applied directly before each delivery
+<p>Other policies in <a class="reference external" href="https://slimta.github.io/">slimta</a> will be applied directly before each delivery
 attempt, called relay policies. A great example of a relay policy would be
 recipient forwarding looked up from a database; you would want to make sure the
 latest forwarding rules are applied on each delivery attempt, to not use a
-stale rule. At the moment, no relay policies are included with <a class="reference external" href="https://slimta.org/">slimta</a>.</p>
+stale rule. At the moment, no relay policies are included with <a class="reference external" href="https://slimta.github.io/">slimta</a>.</p>
 <section id="date-header">
 <span id="policy-add-date-header"></span><h2><code class="docutils literal notranslate"><span class="pre">Date</span></code> Header<a class="headerlink" href="#date-header" title="Link to this heading">¶</a></h2>
 <p>Addition of a <code class="docutils literal notranslate"><span class="pre">Date:</span></code> header is a necessary policy for most MTAs, when the
@@ -120,7 +120,7 @@ by concatenating a randomly-generated UUID to a timestamp.</p>
 MTAs should add to a message. The header should be pre-pended to every message,
 so that the order that each MTA handled the message is preserved. The header
 does not have a strict, RFC-mandated format, but <a class="reference external" href="https://cr.yp.to/immhf/envelope.html#received">cr.yp.to</a> has a good
-recommendation that fits what <em>most</em> good MTAs will do, and <a class="reference external" href="https://slimta.org/">slimta</a> attempts to
+recommendation that fits what <em>most</em> good MTAs will do, and <a class="reference external" href="https://slimta.github.io/">slimta</a> attempts to
 follow.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Received:</span></code> header addition is a queue policy, given by the
 <code class="xref py py-class docutils literal notranslate"><span class="pre">AddReceivedHeader</span></code> class:</p>
@@ -132,7 +132,7 @@ follow.</p>
 <section id="recipient-forwarding">
 <span id="policy-forwarding"></span><h2>Recipient Forwarding<a class="headerlink" href="#recipient-forwarding" title="Link to this heading">¶</a></h2>
 <p>Forwarding policies range from quite simple to exorbitantly complex. The
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code> policy included with <a class="reference external" href="https://slimta.org/">slimta</a> can only
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Forward</span></code> policy included with <a class="reference external" href="https://slimta.github.io/">slimta</a> can only
 handle <em>static</em> rules (e.g. not queried from a database) using regular
 expression-based substitution.</p>
 <p>Because the mappings are static and thus will never become stale like a database

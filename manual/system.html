@@ -79,7 +79,7 @@
 security.</p>
 <section id="daemonization">
 <h2>Daemonization<a class="headerlink" href="#daemonization" title="Link to this heading">¶</a></h2>
-<p>Running <a class="reference external" href="https://slimta.org/">slimta</a> in the background as a daemon is relatively easy:</p>
+<p>Running <a class="reference external" href="https://slimta.github.io/">slimta</a> in the background as a daemon is relatively easy:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pid</span> <span class="o">=</span> <span class="n">slimta</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">daemonize</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -100,11 +100,11 @@ Before calling <code class="xref py py-func docutils literal notranslate"><span 
 </section>
 <section id="dropping-system-privileges">
 <h2>Dropping System Privileges<a class="headerlink" href="#dropping-system-privileges" title="Link to this heading">¶</a></h2>
-<p>Most ports that <a class="reference external" href="https://slimta.org/">slimta</a> systems will often need to open require root
+<p>Most ports that <a class="reference external" href="https://slimta.github.io/">slimta</a> systems will often need to open require root
 privileges, such as port 25. However, once these sockets are open, there is
 little reason to retain those privileges.</p>
 <p>A call to <code class="xref py py-func docutils literal notranslate"><span class="pre">slimta.system.drop_privileges()</span></code> is <em>highly</em> recommended after
-opening all ports, if running <a class="reference external" href="https://slimta.org/">slimta</a> as root.</p>
+opening all ports, if running <a class="reference external" href="https://slimta.github.io/">slimta</a> as root.</p>
 </section>
 </section>
 

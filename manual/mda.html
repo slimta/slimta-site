@@ -171,7 +171,7 @@ the <code class="docutils literal notranslate"><span class="pre">RCPT</span> <sp
             <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;550&#39;</span>
             <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;5.7.1 &lt;</span><span class="si">{0}</span><span class="s1">&gt; Not a valid address&#39;</span>
             <span class="k">return</span>
-        <span class="k">if</span> <span class="n">domain</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;slimta.org&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">domain</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;example.com&#39;</span><span class="p">:</span>
             <span class="n">reply</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;550&#39;</span>
             <span class="n">reply</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;5.7.1 &lt;</span><span class="si">{0}</span><span class="s1">&gt; Not authenticated&#39;</span>
             <span class="k">return</span>
@@ -182,7 +182,7 @@ the <code class="docutils literal notranslate"><span class="pre">RCPT</span> <sp
 </pre></div>
 </div>
 <p>Your SMTP server will now reject a client’s <code class="docutils literal notranslate"><span class="pre">RCPT</span> <span class="pre">TO:&lt;...&gt;</span></code> command if the
-address is not on the <code class="docutils literal notranslate"><span class="pre">slimta.org</span></code> domain.</p>
+address is not on the <code class="docutils literal notranslate"><span class="pre">example.com</span></code> domain.</p>
 </section>
 <section id="step-5-daemonizing">
 <h2>Step 5: Daemonizing<a class="headerlink" href="#step-5-daemonizing" title="Link to this heading">¶</a></h2>

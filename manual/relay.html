@@ -76,7 +76,7 @@
 <p>Relay services are given an existing message and attempt to delivery it to the
 message’s next destination. In a traditional MTA, this next destination will be
 looked up by the recipient’s domain MX record and delivery is done with SMTP.
-In other cases, such as when acting as an <em>MDA</em>, <a class="reference external" href="https://slimta.org/">slimta</a> is the final
+In other cases, such as when acting as an <em>MDA</em>, <a class="reference external" href="https://slimta.github.io/">slimta</a> is the final
 destination and delivery occurs locally with something like <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a>.</p>
 <p>In any case, the relay will report either its attempt was a success or whether
 failure was permanent or transient.</p>
@@ -186,7 +186,7 @@ object:</p>
 </section>
 <section id="external-process-relaying">
 <span id="relay-pipe"></span><h2>External Process Relaying<a class="headerlink" href="#external-process-relaying" title="Link to this heading">¶</a></h2>
-<p>When <a class="reference external" href="https://slimta.org/">slimta</a> is configured to be the final destination for the email message,
+<p>When <a class="reference external" href="https://slimta.github.io/">slimta</a> is configured to be the final destination for the email message,
 it can stream a message to an external process to locally deliver the message.
 This is how applications like <a class="reference external" href="http://www.courier-mta.org/maildrop/">courier-maildrop</a> and <a class="reference external" href="http://wiki.dovecot.org/LDA">dovecot-lda</a> are given
 messages. This method is modeled off the <a class="reference external" href="http://www.postfix.org/pipe.8.html">pipe daemon</a> from postfix.  This

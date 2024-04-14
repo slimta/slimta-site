@@ -108,7 +108,7 @@ the ``RCPT TO:<...>`` command::
                 reply.code = '550'
                 reply.message = '5.7.1 <{0}> Not a valid address'
                 return
-            if domain.lower() != 'slimta.org':
+            if domain.lower() != 'example.com':
                 reply.code = '550'
                 reply.message = '5.7.1 <{0}> Not authenticated'
                 return
@@ -118,7 +118,7 @@ the ``RCPT TO:<...>`` command::
     edge.start()
 
 Your SMTP server will now reject a client's ``RCPT TO:<...>`` command if the
-address is not on the ``slimta.org`` domain.
+address is not on the ``example.com`` domain.
 
 Step 5: Daemonizing
 -------------------

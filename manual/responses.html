@@ -63,7 +63,7 @@
             
   <section id="deciphering-message-delivery-responses">
 <h1>Deciphering Message Delivery Responses<a class="headerlink" href="#deciphering-message-delivery-responses" title="Link to this heading">¶</a></h1>
-<p>Because <a class="reference external" href="https://slimta.org/">slimta</a> is an email server, responses are always given as or translated
+<p>Because <a class="reference external" href="https://slimta.github.io/">slimta</a> is an email server, responses are always given as or translated
 to SMTP-style code and message. That is, a 3-digit code and a free-form message
 describing the success or what caused the failure. The <code class="xref py py-class docutils literal notranslate"><span class="pre">Reply</span></code> objects that
 represent the responses have <code class="docutils literal notranslate"><span class="pre">code</span></code> and <code class="docutils literal notranslate"><span class="pre">message</span></code> properties for accessing
@@ -79,7 +79,7 @@ HTTP, for example, uses <em>4xx</em> error codes for client errors (often perman
 and <em>5xx</em> error codes for server errors (often transient).</p>
 <p>If a response message begins with an <a class="reference external" href="https://tools.ietf.org/html/rfc2034">ENHANCEDSTATUSCODES</a> string, it is made
 available by the <code class="docutils literal notranslate"><span class="pre">enhanced_status_code</span></code> property. This value <em>can</em> be used
-programmatically, though <a class="reference external" href="https://slimta.org/">slimta</a> does not currently do so. No other part of the
+programmatically, though <a class="reference external" href="https://slimta.github.io/">slimta</a> does not currently do so. No other part of the
 response message should be parsed programmatically.</p>
 </section>
 

@@ -74,13 +74,13 @@
   <section id="integrating-everything">
 <h1>Integrating Everything<a class="headerlink" href="#integrating-everything" title="Link to this heading">¶</a></h1>
 <figure class="align-right" id="id1" style="width: 400px">
-<a class="reference external image-reference" href="https://slimta.org/en/latest/_static/reception-to-delivery.png"><img alt="https://slimta.org/en/latest/_static/reception-to-delivery.png" src="https://slimta.org/en/latest/_static/reception-to-delivery.png" style="width: 100%;" /></a>
+<a class="reference external image-reference" href="https://slimta.github.io/en/latest/_static/reception-to-delivery.png"><img alt="https://slimta.github.io/en/latest/_static/reception-to-delivery.png" src="https://slimta.github.io/en/latest/_static/reception-to-delivery.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-text">Diagram of an <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object’s path from reception to delivery.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Piecing together the building blocks described in previous section is the last
-crucial step in setting up your MTA. Nearly everything in <a class="reference external" href="https://slimta.org/">slimta</a> starts with
+crucial step in setting up your MTA. Nearly everything in <a class="reference external" href="https://slimta.github.io/">slimta</a> starts with
 an <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code> service which receives messages. They hand messages off to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code>
 service which talks to a <code class="xref py py-class docutils literal notranslate"><span class="pre">QueueStorage</span></code> object to persistently store messages.
 The queue initiates delivery attempts with a <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> object.</p>
@@ -89,7 +89,7 @@ The queue initiates delivery attempts with a <code class="xref py py-class docut
 <p>If you read the <a class="reference internal" href="terminology.html"><span class="doc">Terminology</span></a> page, there are <a class="reference external" href="https://en.wikipedia.org/wiki/Message_transfer_agent">MTAs</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Mail_delivery_agent">MDAs</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Mail_submission_agent">MSAs</a>,
 as well as other special configurations like <a class="reference external" href="https://en.wikipedia.org/wiki/Smart_host">Smart hosts</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/SMTP_proxy">SMTP proxies</a>,
 or <a class="reference external" href="https://en.wikipedia.org/wiki/E-mail_hub">Mail hubs</a>. Depending on how you sub-class the different building blocks
-of a <a class="reference external" href="https://slimta.org/">slimta</a> MTA, you can pretty much handle any of these configurations.</p>
+of a <a class="reference external" href="https://slimta.github.io/">slimta</a> MTA, you can pretty much handle any of these configurations.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>MSA</strong>: An MSA is all about taking a message from a mail client like
@@ -103,7 +103,7 @@ Use a <code class="xref py py-class docutils literal notranslate"><span class="p
 <li><p><strong>SMTP proxy</strong>: An SMTP proxy skips the <code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code> altogether, taking <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code>
 from the <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code> and directly attempting delivery with a <code class="xref py py-class docutils literal notranslate"><span class="pre">Relay</span></code> and returning
 the success or failure back to the edge client. SMTP proxies are not yet
-supported by <a class="reference external" href="https://slimta.org/">slimta</a>, but they are on the radar.</p></li>
+supported by <a class="reference external" href="https://slimta.github.io/">slimta</a>, but they are on the radar.</p></li>
 <li><p><strong>Mail Hubs</strong>: A mail hub is a pretty generic term, but one particular use
 could be a dedicated spam scanner. It receives messages by any <code class="xref py py-class docutils literal notranslate"><span class="pre">Edge</span></code>, calls
 the <code class="xref py py-class docutils literal notranslate"><span class="pre">SpamAssassin</span></code> policy, and delivers

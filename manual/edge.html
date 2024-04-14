@@ -74,9 +74,9 @@
   <section id="edge-services">
 <h1>Edge Services<a class="headerlink" href="#edge-services" title="Link to this heading">¶</a></h1>
 <p>The term <em>edge</em> is not necessarily common among other <em>MTAs</em>. It was adapted
-loosely by <a class="reference external" href="https://slimta.org/">slimta</a> from the <a class="reference external" href="https://technet.microsoft.com/en-us/library/bb124701.aspx">Edge Transport Server Role</a> in Microsoft
+loosely by <a class="reference external" href="https://slimta.github.io/">slimta</a> from the <a class="reference external" href="https://technet.microsoft.com/en-us/library/bb124701.aspx">Edge Transport Server Role</a> in Microsoft
 Exchange, but the name is about where the similarities end.</p>
-<p>In <a class="reference external" href="https://slimta.org/">slimta</a>, an edge service are those that are listening for new messages
+<p>In <a class="reference external" href="https://slimta.github.io/">slimta</a>, an edge service are those that are listening for new messages
 entering the system. The protocol does not matter, an edge service produces an
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Envelope</span></code> object and hands it off to the next stage of delivery.</p>
 <p>Edge services (usually) send their requests to and receive their responses from
@@ -89,7 +89,7 @@ signify whether the message was successfully delivered, but rather that the
 clients using the SMTP protocol (<a class="reference external" href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc2821">RFC 2821</a>, <a class="reference external" href="https://tools.ietf.org/html/rfc821">RFC 821</a>). An SMTP
 session delivering a message from a client to a server might look like this,
 with server (edge) replies back to the client bolded:</p>
-<pre class="literal-block"><strong>220 slimta.org ESMTP Mail Gateway</strong>
+<pre class="literal-block"><strong>220 server.example.com ESMTP Mail Gateway</strong>
 EHLO client.example.com
 <strong>250-Hello client.example.com</strong>
 <strong>250-8BITMIME</strong>
@@ -193,7 +193,7 @@ want to act upon. These results are:</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.0.0.</span></p>
 </div>
-<p>When using a TCP proxy in front of <a class="reference external" href="https://slimta.org/">slimta</a>, it is common to lose information
+<p>When using a TCP proxy in front of <a class="reference external" href="https://slimta.github.io/">slimta</a>, it is common to lose information
 about the original source address of the connection. The <a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">PROXY protocol</a>
 adds a header to each connection where the client posts information about the
 request’s original connection information. To use the proxy protocol:</p>
@@ -207,7 +207,7 @@ request’s original connection information. To use the proxy protocol:</p>
 <span class="n">smtp</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Please note, this will cause strange behavior if you are not running <a class="reference external" href="https://slimta.org/">slimta</a>
+<p>Please note, this will cause strange behavior if you are not running <a class="reference external" href="https://slimta.github.io/">slimta</a>
 behind a proxy that is configured to use <a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">PROXY protocol</a> version 1.</p>
 </section>
 </section>
