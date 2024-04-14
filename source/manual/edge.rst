@@ -29,7 +29,7 @@ with server (edge) replies back to the client bolded:
 
 .. parsed-literal::
 
-   **220 slimta.org ESMTP Mail Gateway**
+   **220 server.example.com ESMTP Mail Gateway**
    EHLO client.example.com
    **250-Hello client.example.com**
    **250-8BITMIME**
